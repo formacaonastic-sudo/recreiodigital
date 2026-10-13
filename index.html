@@ -428,10 +428,10 @@ footer{margin-top:45px;background:#102e59}
 })();
 </script>
 
-<!-- Firebase: leitura pública dos contadores (sem permissões de escrita) -->
+<!-- Firebase: leitura e incremento dos contadores; contagem de jogos nesta página inicial -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
-  import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
+  import { getFirestore, doc, onSnapshot, updateDoc, increment } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB1vAd842sLUXN7-L6aiDk67IyBaawOC-s",
@@ -449,7 +449,8 @@ footer{margin-top:45px;background:#102e59}
   try {
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    onSnapshot(doc(db, "estatisticas", "contadores"), snapshot => {
+    const referencia = doc(db, "estatisticas", "contadores");
+    onSnapshot(referencia, snapshot => {
       if (!snapshot.exists()) {
         console.warn("Documento estatisticas/contadores não encontrado.");
         return;
@@ -459,6 +460,36 @@ footer{margin-top:45px;background:#102e59}
       if (typeof dados.jogosIniciados === "number") jogosIniciados.textContent = formatar(dados.jogosIniciados);
     }, erro => {
       console.error("Não foi possível ler os contadores do Firebase:", erro);
+    });
+
+    // Uma visita por separador/sessão. A marca só é guardada após escrita bem-sucedida.
+    try {
+      if (sessionStorage.getItem("recreio-visita-contada") !== "sim") {
+        updateDoc(referencia, { visitas: increment(1) })
+          .then(() => sessionStorage.setItem("recreio-visita-contada", "sim"))
+          .catch(erro => console.warn("Não foi possível registar a visita:", erro));
+      }
+    } catch (erro) {
+      console.warn("Armazenamento de sessão indisponível:", erro);
+    }
+
+    // Conta lançamentos a partir dos cartões de jogos da página inicial.
+    // As páginas de cada ano precisam de integração própria para cobertura completa.
+    document.addEventListener("click", async evento => {
+      const link = evento.target.closest("a.play");
+      if (!link || evento.defaultPrevented || evento.button !== 0 ||
+          evento.ctrlKey || evento.metaKey || evento.shiftKey || evento.altKey) return;
+      evento.preventDefault();
+      const destino = link.href;
+      try {
+        await Promise.race([
+          updateDoc(referencia, { jogosIniciados: increment(1) }),
+          new Promise(resolve => setTimeout(resolve, 1300))
+        ]);
+      } catch (erro) {
+        console.warn("Não foi possível registar o início do jogo:", erro);
+      }
+      window.location.assign(destino);
     });
   } catch (erro) {
     console.error("Erro ao iniciar a leitura dos contadores:", erro);
