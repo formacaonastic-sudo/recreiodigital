@@ -428,10 +428,10 @@ footer{margin-top:45px;background:#102e59}
 })();
 </script>
 
-<!-- Firebase: leitura pública dos contadores (sem permissões de escrita) -->
+<!-- Firebase: leitura dos contadores e registo de uma visita por sessão -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
-  import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
+  import { getFirestore, doc, onSnapshot, updateDoc, increment } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB1vAd842sLUXN7-L6aiDk67IyBaawOC-s",
@@ -449,7 +449,15 @@ footer{margin-top:45px;background:#102e59}
   try {
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    onSnapshot(doc(db, "estatisticas", "contadores"), snapshot => {
+    const referencia = doc(db, "estatisticas", "contadores");
+    // Uma visita por sessão do separador; só marcar depois de confirmação do servidor.
+    const chaveSessao = "recreioDigitalVisitaRegistada_v1";
+    if (sessionStorage.getItem(chaveSessao) !== "sim") {
+      updateDoc(referencia, { visitas: increment(1) })
+        .then(() => sessionStorage.setItem(chaveSessao, "sim"))
+        .catch(erro => console.error("Não foi possível registar a visita:", erro));
+    }
+    onSnapshot(referencia, snapshot => {
       if (!snapshot.exists()) {
         console.warn("Documento estatisticas/contadores não encontrado.");
         return;
