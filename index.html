@@ -256,6 +256,31 @@ footer{margin-top:45px;background:#102e59}
 .contadores-linha .mini-contadores strong{color:#fff;font-size:1.2rem}
 .contadores-linha .mini-separador{background:rgba(255,255,255,.42);height:22px}
 @media(max-width:560px){.contadores-linha .mini-contadores{font-size:.9rem;padding:11px 15px;gap:11px}.contadores-linha .mini-contadores strong{font-size:1.05rem}}
+
+/* Identificação do projeto à esquerda e contadores à direita */
+.bandeira-madeira{width:51px;height:34px;object-fit:contain;flex:none;border:1px solid #d6e2ed;border-radius:3px;box-shadow:0 2px 5px #001b3918}
+.informacoes-portal{display:flex;justify-content:space-between;align-items:center;gap:18px;margin:17px 0 0;flex-wrap:wrap}
+.creditos-portal{display:flex;flex-direction:column;gap:3px;color:#173b66;font-size:1rem;line-height:1.35}
+.creditos-portal strong{font-weight:900;font-size:1.08rem}
+.creditos-portal a{color:#145ca8;text-decoration:none;overflow-wrap:anywhere}
+.creditos-portal a:hover{text-decoration:underline}
+.informacoes-portal .contadores-linha{margin:0}
+.identidade-portal{display:flex;align-items:center;gap:13px}
+@media(max-width:650px){.informacoes-portal{justify-content:center;gap:12px}.creditos-portal{text-align:left}.informacoes-portal .contadores-linha{justify-content:center}}
+@media(max-width:420px){.bandeira-madeira{width:44px;height:29px}.brand{gap:7px}}
+
+/* Janela informativa do portal */
+.botao-bandeira{border:0;background:transparent;padding:0;display:inline-flex;cursor:pointer;border-radius:5px;flex:none}
+.botao-bandeira:hover .bandeira-madeira{transform:scale(1.06);box-shadow:0 4px 10px #001b3930}
+.botao-bandeira .bandeira-madeira{transition:transform .15s,box-shadow .15s}
+.sobre-portal-dialog{width:min(480px,calc(100% - 28px));max-height:calc(100dvh - 40px);overflow:auto;border:0;border-radius:20px;padding:28px 30px;background:#fff;color:#17345b;box-shadow:0 20px 70px #001e3b60}
+.sobre-portal-dialog::backdrop{background:rgba(7,32,65,.60)}
+.sobre-portal-dialog h2{margin:0 0 13px;color:#145ca8;font-size:1.6rem}
+.sobre-portal-dialog p{font-size:1rem;line-height:1.6;margin:0 0 13px}
+.sobre-portal-dialog .sobre-assinatura{font-size:.91rem;color:#60728b}
+.fechar-sobre-portal{border:0;border-radius:12px;background:#145ca8;color:white;font-weight:900;padding:11px 24px;cursor:pointer;margin-top:6px}
+.fechar-sobre-portal:hover{background:#0d467f}
+@media(max-width:560px){.sobre-portal-dialog{padding:23px 20px}}
 </style>
 </head>
 <body>
@@ -287,12 +312,13 @@ footer{margin-top:45px;background:#102e59}
 </section>
 
 <main class="content">
- <div class="contadores-linha"><div class="mini-contadores" aria-label="Estatísticas do Recreio Digital">
+  <div class="informacoes-portal"><div class="identidade-portal"><button type="button" class="botao-bandeira" id="abrir-sobre-portal" aria-label="Saber mais sobre o Recreio Digital" aria-haspopup="dialog" title="Sobre o Recreio Digital"><img class="bandeira-madeira" src="https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Madeira.svg" alt="Bandeira oficial da Região Autónoma da Madeira" loading="lazy" referrerpolicy="no-referrer"></button><div class="creditos-portal"><strong>Desenvolvido por Professor Mário Menezes</strong><a href="mailto:mario_menezes2009@edu.madeira.gov.pt">mario_menezes2009@edu.madeira.gov.pt</a></div></div>
+<div class="contadores-linha"><div class="mini-contadores" aria-label="Estatísticas do Recreio Digital">
   <span>👀 <strong id="contador-visitas">—</strong> visitas</span>
   <span class="mini-separador" aria-hidden="true"></span>
   <span>🎮 <strong id="contador-inicios">—</strong> jogos iniciados</span>
- </div></div>
- <section aria-label="O portal em números">
+  </div></div></div>
+  <section aria-label="O portal em números">
   <h2 class="stats-heading">✨ Um recreio cheio de descobertas</h2>
   <div class="portal-stats">
    <div class="stat-card"><span class="stat-icon" aria-hidden="true">🎮</span><div><strong class="stat-number" id="total-jogos">…</strong><span class="stat-label">Jogos disponíveis</span></div></div>
@@ -471,5 +497,21 @@ footer{margin-top:45px;background:#102e59}
   } catch (erro) {
     console.error("Erro ao iniciar a leitura dos contadores:", erro);
   }
+</script>
+
+<dialog class="sobre-portal-dialog" id="sobre-portal" aria-labelledby="titulo-sobre-portal">
+  <h2 id="titulo-sobre-portal">🦉 Sobre o Recreio Digital</h2>
+  <p>O <strong>Recreio Digital</strong> é um portal educativo gratuito, criado para ajudar as crianças do Pré-escolar e do 1.º Ciclo a aprender de forma divertida e interativa.</p>
+  <p>Reúne jogos e atividades de <strong>Português, Matemática e Estudo do Meio</strong>, promovendo a aprendizagem, a criatividade e o desenvolvimento de competências digitais.</p>
+  <p class="sobre-assinatura">Desenvolvido por <strong>Professor Mário Menezes</strong> · Ilha da Madeira 🇵🇹<br><a href="mailto:mario_menezes2009@edu.madeira.gov.pt">mario_menezes2009@edu.madeira.gov.pt</a></p>
+  <form method="dialog"><button class="fechar-sobre-portal" type="submit">Fechar</button></form>
+</dialog>
+<script>
+(function(){
+  const botao=document.getElementById('abrir-sobre-portal');
+  const janela=document.getElementById('sobre-portal');
+  botao.addEventListener('click',()=>janela.showModal());
+  janela.addEventListener('click',evento=>{if(evento.target===janela)janela.close();});
+})();
 </script>
 </body></html>
