@@ -1,0 +1,11 @@
+APRENDE & BRINCA — ADICIONAR JOGOS
+
+1. Coloque o novo ficheiro HTML na pasta do ano (por exemplo: pre-escolar/jogo-memoria.html).
+2. Abra o ficheiro jogos.js dessa pasta no Bloco de Notas.
+3. Acrescente um objeto com titulo, descricao, icone e ficheiro na lista window.JOGOS_DO_ANO.
+4. Guarde o jogos.js e volte a abrir o index.html do ano. O cartão aparece sem editar a página.
+
+EXEMPLO DE ENTRADA:
+{ "titulo": "Jogo da Memória", "descricao": "Encontra os pares!", "icone": "🧠", "ficheiro": "jogo-memoria.html" }
+
+IMPORTANTE: O navegador não permite detetar automaticamente novos ficheiros ao abrir páginas diretamente no computador. É necessário acrescentar a entrada ao jogos.js. O catálogo funciona tanto offline como no GitHub Pages.

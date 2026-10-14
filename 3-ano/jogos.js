@@ -1,0 +1,58 @@
+window.JOGOS_DO_ANO = [
+  {
+    titulo: "Pensa Rápido!",
+    descricao: "Desafia a tua rapidez com adições e subtrações!",
+    icone: "⚡",
+    ficheiro: "../jogos/pensa-rapido.html?ano=3",
+    disciplina: "Matemática"
+  },
+{
+  titulo: "Missão Segurança — Sismos e Incêndios",
+  descricao: "Aprende a proteger-te em situações de sismo e incêndio!",
+  icone: "🛡️",
+  ficheiro: "../jogos/missao-seguranca.html?ano=3",
+  disciplina: "Estudo do Meio"
+},
+{
+  titulo: "Digit@Kids",
+  descricao: "Treina a digitação e melhora a rapidez no teclado!",
+  icone: "⌨️",
+  ficheiro: "../jogos/digitakids.html?ano=3",
+  disciplina: "Português"
+},
+{
+  titulo: "Espelho Mágico",
+  descricao: "Completa as figuras e descobre o mundo das simetrias!",
+  icone: "🪞",
+  ficheiro: "../jogos/simetrias.html?ano=3",
+  disciplina: "Matemática"
+},
+{
+  titulo: "Frase Secreta",
+  descricao: "Ordena as palavras, descobre frases e diverte-te a aprender!",
+  icone: "🔎",
+  ficheiro: "../jogos/frase-secreta.html?ano=3",
+  disciplina: "Português"
+},
+{
+  titulo: "Tabuadas do Recreio",
+  descricao: "Desafia os teus conhecimentos das tabuadas, ganha pontos e torna-te um campeão!",
+  icone: "🎮",
+  ficheiro: "../jogos/tabuadas-do-recreio.html?ano=3",
+  disciplina: "Matemática"
+},
+{
+  titulo: "Sopa de Letras do Recreio",
+  descricao: "Encontra 10 palavras escondidas, explora vários temas e diverte-te!",
+  icone: "🔤",
+  ficheiro: "../jogos/sopa-de-letras-do-recreio.html?ano=3",
+  disciplina: "Português"
+},
+{
+  titulo: "Ordena as frases no recreio",
+  descricao: "Ordena as palavras, escreve as frases e conquista pontos!",
+    icone: "🧱",
+  ficheiro: "../jogos/ordena-as-frases-no-recreio.html?ano=3",
+  disciplina: "Português"
+}
+];

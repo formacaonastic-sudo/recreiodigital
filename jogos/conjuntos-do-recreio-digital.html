@@ -1,0 +1,344 @@
+<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Conjuntos do Recreio Digital</title><style>
+:root{font-family:'Arial Black',Arial,sans-serif;color:#253f70}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 8% 10%,#fff6b7 0 5%,transparent 19%),radial-gradient(circle at 90% 20%,#ffd6e9 0 6%,transparent 23%),linear-gradient(140deg,#d5f5ff,#e9e6ff 55%,#e0fff1);padding:16px}button,a{font:inherit}header{max-width:1160px;margin:0 auto 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}.brand{font-size:clamp(19px,2.6vw,26px);font-weight:1000;color:#3854a5}.links{display:flex;gap:8px}.links a{background:white;color:#435da2;text-decoration:none;border:2px solid #d9e4ff;border-radius:14px;padding:9px 14px;font-weight:900}.shell{max-width:1160px;margin:auto;background:#ffffffef;border:3px solid white;border-radius:32px;box-shadow:0 20px 60px #4355a522;padding:18px 22px 22px;position:relative;overflow:hidden}.shell:before{content:'';position:absolute;inset:0 0 auto;height:8px;background:linear-gradient(90deg,#ffbf5a,#ff81a6,#a28cff,#5cc8ed,#69dca8)}.top{text-align:center}.top h1{font-size:clamp(26px,4vw,42px);margin:7px 0 2px;color:#3454a0;letter-spacing:-1px}.instruction{display:flex;align-items:center;justify-content:center;gap:14px;margin:5px 0 10px;font-size:clamp(24px,3vw,33px)}.instruction .mini{background:#f0f5ff;border:2px solid #dbe7ff;border-radius:13px;padding:2px 15px;font-weight:1000;color:#6a62e9}.progress{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:13px}.round{font-weight:1000;background:#e9f3ff;padding:7px 17px;border-radius:30px;color:#4b66a5}.stars{font-size:25px;letter-spacing:4px;color:#f4b63d}.board{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.72fr) minmax(0,1fr);gap:14px;align-items:stretch}.panel{border-radius:24px;padding:13px;background:#f5f8ff;border:2px solid #e3eaff}.panel.left{background:#f2f0ff;border-color:#dfdbff}.panel.right{background:#eafaff;border-color:#cdeefa}.panel-label{text-align:center;font-weight:1000;color:#6578a3;font-size:15px;margin:0 0 10px;letter-spacing:.4px}.stack{display:grid;grid-template-rows:repeat(5,minmax(74px,1fr));gap:10px}.num,.set{height:82px;border-radius:18px;background:white;border:3px solid #dedaff;box-shadow:0 5px 0 #d7d3f5;display:flex;justify-content:center;align-items:center;user-select:none;touch-action:none;cursor:grab;transition:background .15s,border-color .15s,transform .15s;position:relative}.num{font-size:52px;font-weight:1000;color:#6957d9}.num:nth-child(5n+2){color:#ef6a91}.num:nth-child(5n+3){color:#1aafa2}.num:nth-child(5n+4){color:#ee9d3b}.num:nth-child(5n+5){color:#558be9}.set{border-color:#b9e4f3;box-shadow:0 5px 0 #b6e1ee;padding:6px;gap:3px;flex-wrap:wrap;align-content:center}.item{font-size:clamp(20px,2.4vw,29px);line-height:1.08;display:inline-block}.num:focus-visible,.set:focus-visible{outline:4px solid #ffb64c;outline-offset:3px}.num.selected{border-color:#ffb64c;background:#fff6d8;box-shadow:0 0 0 4px #ffe5a3}.set.hovered{border-color:#30b5a4;background:#d9fff4;box-shadow:0 0 0 5px #96f0dc;transform:scale(1.035)}.done{visibility:hidden;pointer-events:none}.wrong{animation:shake .32s}.surprise{min-height:455px;border:5px solid #ffdf9d;border-radius:25px;position:relative;overflow:hidden;background:linear-gradient(180deg,#9be0ff,#e8ffe2);display:grid;place-items:center;box-shadow:0 6px 0 #f5d38d}.scene{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(circle at 78% 20%,#fff8a8 0 11%,transparent 12%),linear-gradient(180deg,#a3dfff 0 65%,#a5e8ad 65%)}.scene .hero{font-size:clamp(90px,11vw,160px);filter:drop-shadow(0 12px 9px #2b699c33);animation:bob 2.6s ease-in-out infinite}.tiles{position:absolute;inset:0;display:grid;grid-template-rows:repeat(5,1fr);z-index:2}.tile{display:grid;place-items:center;background:linear-gradient(135deg,#8880ed,#65b5ed);border:1px solid #ffffff7c;color:#ffffffc9;font-size:26px;transition:opacity .5s,transform .5s}.tile.gone{opacity:0;transform:scale(.75);pointer-events:none}.gift{position:absolute;bottom:11px;z-index:3;background:#ffffffdd;border-radius:30px;padding:5px 12px;font-size:22px}.bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}.action{border:0;border-radius:17px;padding:12px 20px;font-weight:1000;cursor:pointer}.restart{background:#edf1ff;color:#5369ad}.next{background:linear-gradient(135deg,#7c69f4,#4e9bea);color:white;box-shadow:0 5px 0 #4866bb;font-size:19px}.next:disabled{opacity:.35;cursor:default}.message{min-height:30px;text-align:center;font-size:25px;font-weight:1000;color:#24a984}.finish{position:absolute;inset:0;background:#fffef6f5;z-index:9;display:none;align-items:center;justify-content:center;flex-direction:column;gap:10px;text-align:center;padding:20px}.finish.show{display:flex}.finish .big{font-size:110px;animation:bob 2s infinite}.finish h2{font-size:clamp(26px,4vw,42px);margin:0;color:#4d61b2}.finish button{font-size:29px;padding:13px 30px}.ghost-drag{position:fixed;z-index:9999;pointer-events:none;margin:0!important;opacity:.94;transform:scale(1.06);box-shadow:0 13px 30px #355a9b55!important;cursor:grabbing}.confetti{position:fixed;top:-30px;z-index:999;pointer-events:none;animation:fall 2.7s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(600deg);opacity:0}}@keyframes bob{50%{transform:translateY(-10px)}}@keyframes shake{25%,75%{transform:translateX(-6px)}50%{transform:translateX(6px)}}@media(max-width:800px){.board{grid-template-columns:1fr 1fr}.surprise{grid-column:1/-1;grid-row:2;min-height:180px}.tiles{grid-template-rows:1fr;grid-template-columns:repeat(5,1fr)}.scene .hero{font-size:100px}.stack{gap:8px}.num,.set{height:78px}}@media(max-width:460px){body{padding:7px}.shell{padding:12px 9px 16px;border-radius:20px}.board{gap:7px}.panel{padding:7px;border-radius:16px}.panel-label{font-size:13px}.num,.set{height:72px;border-radius:12px}.num{font-size:44px}.item{font-size:18px}.links a{padding:7px;font-size:12px}.brand{font-size:16px}.instruction{gap:7px}.bottom{flex-wrap:wrap}.message{font-size:20px}}
+
+/* Identidade visual do Recreio Digital */
+body{background:radial-gradient(circle at 14% 23%,#ffffffa8 0 2px,transparent 3px) 0 0/28px 28px,linear-gradient(180deg,#eaf9ff 0%,#f8fbff 63%,#eef8f0 100%);padding:0 14px 28px;color:#17345b}
+header{max-width:none;background:#073b78;color:#fff;margin:0 -14px 22px;padding:11px max(18px,calc((100vw - 1160px)/2));min-height:78px;box-shadow:0 5px 0 #1597ed33}
+.brand{display:flex;align-items:center;gap:11px;color:white;font-size:clamp(20px,2.5vw,27px)}
+.brand .owl{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#ffcc35;border:3px solid white;box-shadow:0 4px 0 #042e61;font-size:29px}
+.links a{background:#1597ed;color:#fff;border:2px solid #57c7ff;border-radius:15px;padding:10px 15px;box-shadow:0 3px 0 #0866ae}
+.links a:hover{background:#36b5fa}
+.shell{border:3px solid #d6efff;box-shadow:0 18px 40px #0c55931b,0 5px 0 #b8def5;background:#fff;border-radius:28px;padding:17px 21px 19px}
+.shell:before{height:9px;background:linear-gradient(90deg,#1597ed 0 28%,#39c866 28% 49%,#ffd33d 49% 70%,#ef4d75 70% 85%,#8050df 85%)}
+.top h1{color:#073b78;text-shadow:0 2px 0 #cbefff;letter-spacing:-.6px}
+.instruction .mini{background:#fff8e3;border:3px solid #ffd33d;color:#073b78;box-shadow:0 4px 0 #e9bf40}
+.round{background:#e7f5ff;color:#073b78;border:2px solid #c4e8ff}
+.panel{border-radius:22px;border-width:3px}
+.panel.left{background:#f0f7ff;border-color:#c8e6ff}
+.panel.right{background:#f0fff6;border-color:#bdeecf}
+.panel-label{color:#073b78;font-size:16px}
+.num{border:3px solid #aed9ff;box-shadow:0 5px 0 #9bc9eb;background:#fff;font-weight:1000}
+.set{border:3px solid #a9e5be;box-shadow:0 5px 0 #9ddbb3;background:#fff}
+.num:hover,.set:hover{filter:brightness(.985)}
+.num.selected{background:#fff6d6;border-color:#ffd33d;box-shadow:0 0 0 4px #ffe7a1}
+.set.hovered{border-color:#18b86a;background:#d9ffe7;box-shadow:0 0 0 5px #9aebba}
+.surprise{border:5px solid #ffd33d;box-shadow:0 6px 0 #e5b72c}
+.tile{background:linear-gradient(145deg,#1597ed,#0766c0);border-color:#ffffff8a}
+.restart{background:#e6f4ff;color:#073b78;border:2px solid #bee5ff}
+.next{background:linear-gradient(135deg,#39c866,#1aa75c);box-shadow:0 5px 0 #118448}
+.message{color:#188d56}
+.finish{background:#ffffffed;backdrop-filter:blur(3px)}
+.finish .big{font-size:clamp(110px,17vw,185px)}
+.finish h2{color:#073b78}
+.success-toast{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);background:#fffef1f2;border:4px solid #ffd33d;box-shadow:0 10px 35px #0b45893d;border-radius:22px;padding:12px 22px;z-index:8;pointer-events:none;font-size:clamp(20px,3vw,30px);font-weight:1000;color:#073b78;white-space:nowrap;opacity:0;transition:opacity .3s,transform .3s}
+.success-toast.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+@media(max-width:800px){header{padding:10px 16px}.shell{padding:14px 12px}.surprise{min-height:185px}}
+@media(max-width:460px){body{padding:0 7px 20px}header{margin:0 -7px 12px;gap:5px}.brand .owl{width:38px;height:38px;font-size:22px}.links a{font-size:12px;padding:8px}.shell{padding:12px 8px}.num,.set{height:72px}.panel{padding:6px}.item{font-size:18px}.success-toast{white-space:normal;text-align:center;width:85%}}
+
+/* Refinamento visual — Recreio Digital */
+:root{font-family:'Arial Black',Arial,sans-serif;color:#14395b}
+body{background:radial-gradient(circle at 12% 17%,#d7f2ff 0 0.5%,transparent 16%),radial-gradient(circle at 88% 72%,#d7f9e7 0 0.5%,transparent 22%),linear-gradient(150deg,#f1f9ff 0%,#eaf5ff 55%,#f2fff7 100%);padding-bottom:30px}
+header{background:#ffffffed;border-bottom:1px solid #dbe9f6;box-shadow:0 8px 25px #234a7810;min-height:76px;margin-bottom:24px}
+.brand{color:#103f75;letter-spacing:-.5px;font-size:clamp(18px,2.1vw,25px);font-weight:950}
+.brand strong{color:#148dd6}.brand .owl{background:linear-gradient(145deg,#0c84d5,#3fc6eb);color:white;border:0;box-shadow:0 6px 16px #1588d433;border-radius:17px;width:46px;height:46px;font-size:27px}
+.links a{background:#eef7ff;color:#164e84;border:1px solid #d6e9fa;box-shadow:none;border-radius:12px;padding:10px 16px;transition:.2s}
+.links a:hover{background:#dcefff;transform:translateY(-1px)}
+.shell{max-width:1180px;border:1px solid #dbe9f5;border-radius:30px;padding:23px 25px 22px;box-shadow:0 24px 70px #1b54801b,0 2px 8px #1b548008;background:#fff}
+.shell:before{height:6px;background:linear-gradient(90deg,#1597e8,#32b8b3,#6fd18d,#ffcd69,#ff9caa)}
+.top h1{color:#123d70;font-size:clamp(26px,3.4vw,39px);letter-spacing:-1.1px;margin:8px 0 8px;text-shadow:none}
+.instruction{margin:6px 0 15px;gap:15px}.instruction .mini{background:#eff6ff;color:#145b9d;border:2px solid #cfe5fa;border-radius:13px;box-shadow:none;min-width:58px}
+.progress{margin-bottom:16px}.round{border:1px solid #d9e9f6;background:#f5faff;color:#3a6b96;font-size:14px;box-shadow:none}.stars{color:#f0ae38;font-size:26px}
+.board{grid-template-columns:minmax(0,1fr) minmax(185px,.73fr) minmax(0,1fr);gap:17px}
+.panel,.panel.left,.panel.right{background:#f6f9fd;border:1px solid #e3ebf4;border-radius:23px;padding:15px;box-shadow:inset 0 1px 0 #fff}
+.panel.left{background:#f4f8ff}.panel.right{background:#f2fbf7}
+.panel-label{color:#58718c;font-size:13px;font-weight:950;letter-spacing:1.1px;margin:0 0 13px}
+.stack{gap:11px}.num,.set{height:82px;border-radius:16px;box-shadow:0 4px 0 #d7e5f3,0 7px 15px #214c7510;transition:border-color .18s,background .18s,box-shadow .18s,transform .18s}
+.num{background:#fff;border:2px solid #d4e4f4;font-size:50px;color:#146ab0}.num:nth-child(5n+2){color:#e26d83}.num:nth-child(5n+3){color:#17a997}.num:nth-child(5n+4){color:#c98a36}.num:nth-child(5n+5){color:#7962c7}
+.set{background:white;border:2px solid #cbe9d9;box-shadow:0 4px 0 #cce6d8,0 7px 15px #214c7510;gap:3px;padding:5px}.item{font-size:clamp(21px,2.3vw,30px)}
+.num:hover:not(.done){border-color:#91c9ed;transform:translateY(-1px)}.set:hover:not(.done){border-color:#8ddab5}
+.num.selected{background:#fff8e8;border-color:#ffbf58;box-shadow:0 0 0 4px #ffe6b3}.set.hovered{background:#e8fff1;border-color:#29b776;box-shadow:0 0 0 5px #b3efd1;transform:scale(1.025)}
+.surprise{min-height:450px;border:3px solid #f7d99c;border-radius:22px;box-shadow:0 7px 20px #e1b96624;background:#f6fbff}
+.tile{background:linear-gradient(140deg,#248ed7,#59b8e8);border:1px solid #ffffff55;font-size:21px}.gift{bottom:14px;background:#fffefaed;color:#ad7a24;font-size:12px;letter-spacing:1.5px;font-weight:1000;border:1px solid #f4e3b5;padding:8px 13px;box-shadow:0 3px 10px #214c7515}
+.bottom{margin-top:18px}.action{border-radius:13px}.restart{background:#f2f7fc;color:#51789c;border:1px solid #dbe9f6;box-shadow:none;font-size:21px}.next{background:linear-gradient(135deg,#13b881,#079e75);box-shadow:0 4px 0 #0c8064}.bottom-hint{font-size:24px;color:#7190a8;display:flex;align-items:center;gap:15px}.bottom-hint span{font-size:22px;color:#0f9d7e}.message{color:#0e9d79;min-height:25px}
+.success-toast{border:2px solid #f5d38a;border-radius:20px;box-shadow:0 14px 40px #1d567c27;background:#fffef9;color:#14517f;padding:16px 26px}
+.finish h2{color:#164e84}
+@media(max-width:800px){.board{grid-template-columns:1fr 1fr;gap:10px}.surprise{min-height:190px}.panel{padding:9px!important}.shell{padding:16px 12px}.num,.set{height:76px}}
+@media(max-width:460px){.shell{border-radius:19px;padding:14px 8px}.brand .owl{width:37px;height:37px}.brand{font-size:16px}.links a{padding:8px 9px;font-size:12px}.top h1{font-size:25px}.panel-label{font-size:11px;letter-spacing:.4px}.num,.set{height:70px}.num{font-size:42px}.item{font-size:18px}.instruction{font-size:22px}.round{font-size:12px}.surprise{min-height:160px}}
+
+/* Identidade premium — cabeçalho e apresentação do jogo */
+body{background:radial-gradient(ellipse at 7% 28%,#d9f4ff 0,transparent 31%),radial-gradient(ellipse at 94% 74%,#dcfbe8 0,transparent 34%),#f2f8ff}
+.sitebar{max-width:none;min-height:91px;padding:12px max(20px,calc((100vw - 1160px)/2));margin:0 -14px 22px;background:#fff;border-bottom:1px solid #e4edf8;display:flex;align-items:center;gap:15px;box-shadow:0 6px 24px #18476d0c}
+.sitebar .brand{display:flex;align-items:center;gap:11px;color:#123d70;font-size:22px;font-weight:1000;line-height:1.03;letter-spacing:-.6px}
+.sitebar .brand .owl{width:53px;height:53px;border-radius:17px;display:grid;place-items:center;background:linear-gradient(145deg,#e7f7ff,#cceaff);border:1px solid #b5e0f7;font-size:32px;box-shadow:0 5px 14px #0b73ad1b}
+.sitebar .brand small{display:block;font-size:9px;letter-spacing:2px;margin-top:6px;color:#78a0bd;font-weight:900}
+.sitebar .links{display:flex;gap:11px}
+.sitebar .links a{display:flex;align-items:center;gap:9px;min-height:49px;padding:9px 15px;border-radius:15px;text-decoration:none;font-weight:1000;font-size:14px;box-shadow:0 4px 0 #c8ddeb;transition:transform .15s,box-shadow .15s}
+.sitebar .links a:hover{transform:translateY(-2px);box-shadow:0 6px 0 #c8ddeb}
+.sitebar .links .navgames{background:#eaf6ff;color:#14669d;border:2px solid #c3e6fb}
+.sitebar .links .navhome{background:linear-gradient(130deg,#177bd4,#0c5da9);color:white;border:2px solid #1575c9;box-shadow:0 4px 0 #08487f}
+.sitebar .links .navhome:hover{box-shadow:0 6px 0 #08487f}
+.sitebar .nav-icon{font-size:22px;line-height:1}.sitebar .nav-arrow{font-size:16px;opacity:.75}
+.shell{max-width:1160px;border:1px solid #dbeaf7;border-radius:29px;padding:0 23px 20px;box-shadow:0 16px 55px #16456b12;background:#fff}
+.shell:before{height:5px;background:linear-gradient(90deg,#2196ed,#5fcaec,#70d4aa,#ffd56b,#ff8fb0)}
+.game-hero{display:flex;align-items:center;justify-content:center;gap:32px;padding:21px 20px 18px;margin:5px -10px 10px;border-bottom:1px solid #eaf0f7;background:radial-gradient(ellipse at 11% 50%,#e7f8ff,transparent 50%),linear-gradient(100deg,#fbfdff,#f4f9ff);border-radius:23px}
+.hero-illustration{flex:0 0 165px;width:165px;height:132px;position:relative;display:grid;place-items:center}
+.hero-illustration:before{content:'';position:absolute;width:116px;height:116px;background:linear-gradient(145deg,#e5f6ff,#e5f0ff);border-radius:32px;transform:rotate(-12deg);border:2px solid white;box-shadow:0 10px 22px #175caa20}
+.hero-main{font-size:76px;position:relative;z-index:2;filter:drop-shadow(0 6px 3px #1b55841c);transform:rotate(-8deg)}
+.hero-orbit{position:absolute;z-index:3;display:grid;place-items:center;border-radius:14px;font-weight:1000;box-shadow:0 5px 13px #1c5b8c25;border:2px solid white}
+.orbit-one{top:3px;left:3px;width:47px;height:47px;background:#ffdb6f;color:#81561d;font-size:31px;transform:rotate(-13deg)}
+.orbit-two{right:-5px;top:5px;width:69px;height:43px;background:#e2ffeb;font-size:24px;transform:rotate(11deg)}
+.orbit-three{right:0;bottom:0;width:47px;height:47px;background:#fce1ef;color:#c44480;font-size:29px;transform:rotate(9deg)}
+.hero-spark{position:absolute;color:#f1ae39;font-size:26px;z-index:4}.spark-one{left:0;bottom:14px}.spark-two{right:4px;top:-12px;color:#43bba4}
+.hero-copy{text-align:left;max-width:670px}.hero-eyebrow{display:inline-block;font-size:11px;font-weight:1000;letter-spacing:1.6px;color:#1379b6;background:#e6f5ff;border:1px solid #cdeaff;padding:7px 12px;border-radius:100px}
+.top .hero-copy h1{font-size:clamp(29px,3.5vw,43px);line-height:1.12;margin:10px 0 8px;color:#103d72;letter-spacing:-1.2px;text-shadow:none}
+.hero-copy h1 span{display:block;color:#0b88bd}.hero-copy p{font-size:15px;color:#6685a0;margin:0;font-weight:750}
+.instruction{margin:7px 0 14px}
+.panel{box-shadow:0 5px 17px #214d7410!important}.panel-label{font-size:13px!important}
+.num,.set{border-radius:17px!important}.surprise{box-shadow:0 8px 20px #bd984025}
+@media(max-width:760px){.sitebar{flex-wrap:wrap;justify-content:center;padding:11px 12px;margin-bottom:14px}.sitebar .links{width:100%;justify-content:center}.sitebar .links a{flex:1;justify-content:center;max-width:260px}.game-hero{gap:16px;padding:16px 9px}.hero-illustration{transform:scale(.82);flex-basis:125px;width:125px}.hero-copy h1{font-size:29px!important}}
+@media(max-width:480px){.sitebar{margin-left:-7px;margin-right:-7px}.sitebar .brand{font-size:20px}.sitebar .links a{padding:9px 7px;font-size:12px;gap:5px}.sitebar .nav-arrow{display:none}.sitebar .nav-icon{font-size:18px}.shell{padding:0 8px 15px}.game-hero{gap:8px;padding:12px 6px;margin:5px 0 8px}.hero-illustration{transform:scale(.65);flex:0 0 89px;margin-left:-10px;margin-right:-11px}.hero-copy h1{font-size:24px!important;letter-spacing:-.7px}.hero-copy p{font-size:12px}.hero-eyebrow{font-size:9px;letter-spacing:.6px;padding:5px 7px}.instruction{margin:5px 0 9px}}
+
+/* Redesenho editorial infantil: hierarquia visual, peças e superfície de jogo */
+:root{--ink:#143963;--blue:#2076d8;--line:#d9e7f6}
+body{background:radial-gradient(ellipse 480px 300px at 4% 26%,#ccefff 0,transparent 100%),radial-gradient(ellipse 460px 370px at 96% 83%,#d9f8e9 0,transparent 100%),linear-gradient(180deg,#edf7ff,#f8fbff 55%,#eff8ff);color:var(--ink)}
+body:before{content:'';position:fixed;inset:0;pointer-events:none;opacity:.24;background-image:radial-gradient(#6aade4 1.2px,transparent 1.2px);background-size:28px 28px;mask-image:linear-gradient(to bottom,#000,transparent 68%)}
+.sitebar{position:relative;z-index:1;background:#fff;border-bottom:1px solid #e0eaf5;box-shadow:0 5px 25px #0b438312;margin-bottom:25px}
+.sitebar .brand{font-size:21px;letter-spacing:-.4px;color:#124679}
+.sitebar .brand .owl{background:#fff3cb;border:2px solid #ffe29a;box-shadow:0 5px 0 #f2dfb4;border-radius:16px}
+.sitebar .brand small{color:#7693ac}
+.sitebar .links a{border-radius:15px;min-height:52px;padding:9px 17px;font-weight:900;transition:transform .18s,filter .18s}
+.sitebar .links .navgames{background:#f0f7ff;border:2px solid #b9dcfa;color:#165c9d;box-shadow:0 4px 0 #c5def1}
+.sitebar .links .navhome{background:linear-gradient(140deg,#168ae9,#1466cb);border:2px solid #1476d7;box-shadow:0 4px 0 #0b4f9b}
+.sitebar .links a:hover{filter:brightness(1.04);transform:translateY(-2px)}
+.shell{max-width:1190px;position:relative;border:1px solid #d8e9f7;border-radius:32px;background:#fff;padding:0 25px 20px;box-shadow:0 22px 65px #1a5b9922,0 5px 0 #cfe7f8;overflow:hidden}
+.shell:before{height:6px;background:linear-gradient(90deg,#299cf2 0 30%,#5dd3b1 30% 56%,#ffc96c 56% 78%,#ff8fac 78%)}
+.game-hero{margin:6px -15px 0;padding:12px 22px 8px;min-height:165px;justify-content:center;gap:27px;background:radial-gradient(ellipse at 25% 40%,#e6f6ff 0,transparent 58%),linear-gradient(100deg,#fbfdff,#f7fbff);border-radius:24px 24px 10px 10px;border-bottom:1px solid #e7eff8}
+.hero-illustration{width:225px;height:162px;flex:0 0 225px;transform:none;filter:drop-shadow(0 9px 10px #2b79bf1c)}
+.hero-illustration:before{display:none}.hero-illustration svg{width:100%;height:100%}
+.hero-copy{max-width:720px;text-align:left}
+.top .hero-copy h1{font-size:clamp(31px,3.6vw,48px);line-height:1.07;margin:0 0 12px;color:#123b6c;letter-spacing:-1.8px;font-weight:1000;text-shadow:none}
+.hero-copy h1 span{display:block;color:#1589d2}
+.hero-copy p{font-size:16px;font-weight:750;color:#6b89a4;letter-spacing:.1px}
+.hero-dots{display:flex;gap:7px;margin-top:14px}.hero-dots i{display:block;width:28px;height:6px;border-radius:6px;background:#38a9ec}.hero-dots i:nth-child(2){background:#66d1a4}.hero-dots i:nth-child(3){background:#ffd073}.hero-dots i:nth-child(4){background:#ff9fb7}
+.instruction{margin:11px 0 8px;font-size:27px;gap:18px}.instruction .mini{background:#eaf4ff;border:2px solid #b8dbff;color:#1d6bc7;box-shadow:0 3px 0 #c6dff5}
+.progress{margin:0 auto 11px;gap:18px}.round{font-size:13px;letter-spacing:.4px;background:#eef7ff;border:1px solid #d7eaf9;padding:7px 16px;color:#35658e}.stars{font-size:24px;color:#ffb53f}
+.message{min-height:19px;line-height:19px;font-size:19px}
+.board{grid-template-columns:minmax(0,1fr) minmax(210px,.78fr) minmax(0,1fr);gap:17px}
+.panel{background:#f7faff!important;border:1px solid #dbeafa!important;border-radius:24px;padding:14px;box-shadow:inset 0 1px 0 white,0 8px 24px #185f9810!important}
+.panel.left{background:linear-gradient(180deg,#f2f6ff,#f9fbff)!important}.panel.right{background:linear-gradient(180deg,#f0fbf8,#f8fffc)!important;border-color:#d1eee4!important}
+.panel-label{font-size:13px!important;color:#527499!important;letter-spacing:1.1px;margin:1px 0 14px!important}
+.stack{gap:11px;grid-template-rows:repeat(5,78px)}
+.num,.set{height:78px;border-radius:16px!important;background:white;border:2px solid #d8e4f3;box-shadow:0 4px 0 #d7e4f3,0 6px 15px #16497b0d;transition:transform .16s,border-color .16s,box-shadow .16s,background .16s}
+.num{font-size:48px;font-weight:1000;color:#1f72d7;border-color:#c9ddfa;box-shadow:0 4px 0 #bfd7f4,0 7px 13px #1e69b710}
+.num:hover:not(.done){transform:translateY(-2px);box-shadow:0 6px 0 #bfd7f4,0 10px 18px #1e69b71b}
+.num:nth-child(5n+2){color:#e66c9b}.num:nth-child(5n+3){color:#23a88d}.num:nth-child(5n+4){color:#d99125}.num:nth-child(5n+5){color:#806bdc}
+.set{border-color:#bde7da;box-shadow:0 4px 0 #b8e2d5,0 6px 15px #16497b0d;gap:5px;padding:8px}
+.set.hovered{background:#dffcf0;border-color:#35c8a1;box-shadow:0 0 0 5px #83e8c34a,0 4px 0 #81d9bc;transform:scale(1.02)}
+.num.selected{background:#fff6e0;border-color:#f4b944;box-shadow:0 0 0 4px #ffe4a2}
+.item{font-size:clamp(22px,2.6vw,30px)}
+.surprise{border:5px solid white;border-radius:24px;box-shadow:0 0 0 1px #c9e5f5,0 10px 24px #1c5d9a22;min-height:440px}
+.scene{background:radial-gradient(circle at 77% 18%,#fff8b8 0 11%,transparent 12%),linear-gradient(180deg,#aee4ff 0 67%,#a2e6c0 67%)}
+.tile{background:linear-gradient(135deg,#2b83df,#65bce9);border:1px solid #ffffff4f;font-size:28px}
+.tile:nth-child(even){background:linear-gradient(135deg,#43b4df,#3a92dc)}
+.gift{font-size:24px;bottom:12px;padding:6px 12px;box-shadow:0 3px 10px #13518b1a}
+.bottom{margin-top:17px}.action{min-height:54px;border-radius:16px;transition:transform .15s}.action:hover:not(:disabled){transform:translateY(-2px)}.restart{background:#f0f6ff;color:#256eaf;border:2px solid #d7e8f8;font-size:25px;padding:9px 21px}.next{background:linear-gradient(135deg,#239ee8,#1670d5);box-shadow:0 5px 0 #0e54a2;font-size:25px;padding:9px 24px}.bottom-hint{font-size:25px}
+.finish{background:#fffffff5}.finish h2{color:#1977c8}.finish .big{font-size:130px}
+@media(max-width:800px){.board{grid-template-columns:1fr 1fr}.surprise{grid-column:1/-1;grid-row:2;min-height:200px}.tiles{grid-template-rows:1fr;grid-template-columns:repeat(5,1fr)}.hero-illustration{width:155px;height:122px;flex-basis:155px}.game-hero{min-height:130px;gap:12px}.top .hero-copy h1{font-size:30px}.stack{grid-template-rows:repeat(5,76px)}}
+@media(max-width:480px){body{padding:0 7px 20px}.sitebar{margin:0 -7px 13px;padding:10px 12px}.sitebar .links a{font-size:12px;padding:8px 9px;min-height:46px}.shell{padding:0 9px 15px;border-radius:21px}.game-hero{margin:5px -3px 0;padding:8px 7px;gap:2px;min-height:108px}.hero-illustration{width:98px;height:92px;flex:0 0 98px}.top .hero-copy h1{font-size:23px;letter-spacing:-.8px;margin:0 0 5px}.hero-copy p{font-size:11px}.hero-dots{margin-top:8px}.hero-dots i{width:17px;height:4px}.board{gap:9px}.panel{padding:8px;border-radius:15px}.panel-label{font-size:11px!important;margin-bottom:10px!important}.stack{grid-template-rows:repeat(5,73px);gap:8px}.num,.set{height:73px}.num{font-size:43px}.item{font-size:19px}.instruction{margin:7px 0}.surprise{min-height:175px}.progress{margin-bottom:8px}}
+
+/* Marca mais expressiva e legível */
+.sitebar .brand{gap:14px;flex-shrink:0}
+.sitebar .brand .owl{width:62px;height:62px;font-size:37px;border-radius:20px;box-shadow:0 5px 0 #efd49a,0 9px 18px #1b5c9118}
+.sitebar .brand-words{display:flex;flex-direction:column;align-items:flex-start;gap:6px;line-height:1}
+.sitebar .brand-name{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(23px,2.7vw,32px);font-weight:1000;letter-spacing:-1.25px;color:#0a396e;white-space:nowrap;text-shadow:0 1px 0 #e1effb}
+.sitebar .brand-name strong{font-weight:1000;color:#1685d9;background:linear-gradient(120deg,#168de0,#0754ad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sitebar .brand small{display:inline-flex;align-items:center;background:#e7f5ff;color:#175f99;font-size:12px;font-weight:1000;letter-spacing:1.25px;padding:6px 10px;border:1px solid #c9e7fa;border-radius:7px;margin:0;line-height:1.15}
+@media(max-width:760px){.sitebar .brand-name{font-size:26px}}
+@media(max-width:480px){.sitebar .brand{gap:9px}.sitebar .brand .owl{width:46px;height:46px;font-size:27px;border-radius:14px}.sitebar .brand-name{font-size:clamp(18px,5.4vw,24px);letter-spacing:-.8px}.sitebar .brand small{font-size:10px;letter-spacing:.65px;padding:4px 7px}.sitebar .brand-words{gap:4px}}
+/* Marca em vermelho forte, sem alterar o jogo */
+.sitebar .brand-name,.sitebar .brand-name strong{color:#d71920!important;-webkit-text-fill-color:#d71920!important;background:none!important;text-shadow:none!important;font-family:'Arial Black',Arial,sans-serif!important;font-weight:1000!important;letter-spacing:-.85px!important}
+
+.scoreboard{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:10px 0 4px}
+.score-chip{display:flex;align-items:center;gap:10px;min-width:158px;padding:10px 18px;border:1px solid #d5e6fa;border-radius:17px;background:linear-gradient(135deg,#fff,#f1f8ff);box-shadow:0 5px 16px #1a4e8520;color:#173b6a;font-weight:800}
+.score-chip>span:first-child{font-size:28px}.score-chip>span:last-child{display:flex;flex-direction:column;line-height:1.15}.score-chip strong{font-size:25px;font-weight:950;font-variant-numeric:tabular-nums}.score-chip small{font-size:11px;font-weight:800;color:#56718e;margin-top:3px;letter-spacing:.02em}
+@media(max-width:550px){.score-chip{min-width:135px;padding:8px 12px}.score-chip strong{font-size:22px}.score-chip>span:first-child{font-size:24px}}
+
+/* Ajuste estrutural: título dentro da coluna dos números, sem alterar o tabuleiro */
+.top{display:flex;justify-content:center;align-items:center;min-height:45px}
+.top .instruction{margin:4px 0 7px}
+.panel.left .game-hero{display:flex;align-items:center;justify-content:flex-start;gap:9px;min-height:0;height:79px;margin:0 0 9px;padding:4px 5px;border:0;border-radius:13px;background:#eaf5ff}
+.panel.left .hero-illustration{width:72px;height:68px;flex:0 0 72px;transform:none;margin:0}
+.panel.left .hero-illustration svg{width:72px;height:68px}
+.panel.left .hero-copy{min-width:0;flex:1}
+.panel.left .hero-copy h1{font-size:clamp(15px,1.5vw,21px)!important;line-height:1.07;letter-spacing:-.5px;margin:0 0 5px}
+.panel.left .hero-copy h1 span{display:block}
+.panel.left .hero-copy p{font-size:10px;line-height:1.25;margin:0}
+.panel.left .hero-dots{display:none}
+.panel.left .panel-label{margin:4px 0 8px!important}
+.panel.left .stack{grid-template-rows:repeat(5,67px);gap:8px}
+.panel.left .num{height:67px;font-size:44px}
+.sitebar{min-height:70px;margin-bottom:12px;padding-top:7px;padding-bottom:7px}
+.sitebar .brand .owl{width:46px;height:46px;font-size:28px}
+.sitebar .brand-name{font-size:clamp(20px,2.3vw,27px)}
+.sitebar .brand small{font-size:10px;padding:4px 8px}
+.sitebar .links a{min-height:43px;padding:7px 12px}
+.shell{padding-bottom:12px}
+.scoreboard{margin:4px 0 2px}
+.score-chip{padding:5px 13px;min-width:140px}
+.score-chip strong{font-size:20px}
+.progress{margin-bottom:4px}
+.board{align-items:stretch}
+@media(max-width:800px){.panel.left .game-hero{height:74px}.panel.left .hero-illustration{width:56px;height:56px;flex-basis:56px}.panel.left .hero-illustration svg{width:56px;height:56px}.panel.left .hero-copy h1{font-size:15px!important}.panel.left .stack{grid-template-rows:repeat(5,67px)}}
+@media(max-width:480px){.panel.left .game-hero{height:68px;gap:3px;padding:3px}.panel.left .hero-illustration{width:39px;height:45px;flex-basis:39px}.panel.left .hero-illustration svg{width:39px;height:45px}.panel.left .hero-copy h1{font-size:12px!important}.panel.left .hero-copy p{font-size:9px}.panel.left .stack{grid-template-rows:repeat(5,65px)}.panel.left .num{height:65px}.score-chip{min-width:120px}}
+/* Ajuste pontual: elevar o título dentro do painel dos números, sem mexer no tabuleiro */
+.panel.left{padding-top:5px!important}
+.panel.left .game-hero{margin-top:-3px!important;margin-bottom:8px!important}
+@media(max-width:480px){.panel.left{padding-top:4px!important}.panel.left .game-hero{margin-top:-2px!important}}
+
+/* Tipografia uniforme do jogo */
+html,body,button,a,input,.shell,.panel,.sitebar,.brand-name{font-family:'Arial Black',Arial,sans-serif!important}
+
+/* REFORMULAÇÃO VISUAL 2026 — sem alterar a lógica de associação */
+:root{--azul:#1258a8;--azul-escuro:#103d75;--vermelho:#d71920;--verde:#15a777}
+body{background:radial-gradient(circle at 8% 24%,#ccefff 0,transparent 25%),radial-gradient(circle at 92% 88%,#d9f7e9 0,transparent 27%),#edf6ff}
+.sitebar{background:#fff;min-height:67px;margin-bottom:12px;border-bottom:3px solid #d9eafb;box-shadow:0 6px 18px #174c8010}
+.sitebar .brand-name,.sitebar .brand-name strong{color:var(--vermelho)!important;-webkit-text-fill-color:var(--vermelho)!important;font-weight:1000!important}
+.sitebar .brand small{background:#fff0ef;color:#a83838;border-color:#ffdbd9;font-size:10px}
+.sitebar .links a{border-radius:15px;min-height:46px;font-size:13px;box-shadow:0 3px 0 #c5ddec}
+.sitebar .links .navgames{background:#e8f5ff;border:2px solid #b7dffc;color:#11538c}
+.sitebar .links .navhome{background:linear-gradient(135deg,#147ad5,#0759b5);border:2px solid #146dc0;color:#fff;box-shadow:0 4px 0 #064681}
+.shell{max-width:1190px;padding:12px 17px 13px;background:#fff;border:2px solid #dbeafb;border-radius:25px;box-shadow:0 18px 55px #164c7b1c}
+.shell:before{height:5px;background:linear-gradient(90deg,#1596ed,#32c7b0,#ffcf60,#f5829d)}
+.top{min-height:37px}.top .instruction{margin:0 0 5px;font-size:24px;gap:10px}.instruction .mini{padding:1px 11px;font-size:25px;min-width:44px}
+.progress{gap:12px;margin:0 0 5px}.round{font-size:12px;padding:4px 11px;border-radius:10px}.stars{font-size:22px;letter-spacing:3px}
+.scoreboard{gap:8px;margin:0 0 8px}.score-chip{min-width:137px;padding:5px 13px;border-radius:12px;background:#f5faff;box-shadow:none}.score-chip>span:first-child{font-size:21px}.score-chip strong{font-size:19px}.score-chip small{font-size:10px}
+.message{min-height:0;font-size:17px;line-height:1.1}
+.board{grid-template-columns:minmax(0,1.12fr) minmax(180px,.77fr) minmax(0,1.12fr);gap:13px;align-items:stretch}
+.panel,.panel.left,.panel.right{border-radius:20px;padding:10px 12px!important;box-shadow:0 5px 18px #1c568012}
+.panel.left{background:linear-gradient(180deg,#edf6ff,#f8fbff);border:2px solid #d3e8fa}
+.panel.right{background:linear-gradient(180deg,#edfff6,#f8fffb);border:2px solid #cceedd}
+.panel.left .game-hero{height:75px;min-height:75px;gap:10px;margin:-4px 0 7px!important;padding:5px 9px;background:linear-gradient(110deg,#d8edff,#f0f8ff);border:1px solid #c6e3f8;border-radius:15px}
+.panel.left .hero-illustration{flex:0 0 62px;width:62px;height:62px}.panel.left .hero-illustration svg{width:62px;height:62px}
+.panel.left .hero-copy h1{font-size:clamp(15px,1.45vw,20px)!important;color:#103d75;line-height:1.08;margin:0 0 5px}.panel.left .hero-copy h1 span{color:#1578cb}.panel.left .hero-copy p{font-size:10px;color:#547c9d}
+.panel-label{font-size:13px!important;letter-spacing:.8px;margin:0 0 8px!important;color:#345e80}
+.panel.left .stack,.panel.right .stack{grid-template-rows:repeat(5,72px);gap:9px}
+.panel.left .num,.panel.right .set{height:72px;border-radius:15px;background:#fff;box-shadow:0 4px 0 #c8dced,0 6px 12px #1b588012}
+.panel.left .num{font-size:46px;border:2px solid #bfdaf1}
+.panel.right .set{border:2px solid #bce5cf;box-shadow:0 4px 0 #b8ddc9,0 6px 12px #1b588012}
+.item{font-size:clamp(20px,2.25vw,29px)}
+.num.selected{border-color:#f4b640!important;background:#fff6df!important;box-shadow:0 0 0 4px #ffe5a3!important}
+.set.hovered{border-color:#13b879!important;background:#e1ffed!important;box-shadow:0 0 0 4px #b0efd0!important}
+.surprise{min-height:0;border:3px solid #f7d28a;border-radius:20px;box-shadow:0 6px 0 #e9ca8b,0 12px 25px #cf9e4920}
+.scene{background:radial-gradient(circle at 75% 18%,#fff3a1 0 10%,transparent 11%),linear-gradient(180deg,#a2dfff 0 66%,#a4e9b7 66%)}
+.tile{background:linear-gradient(145deg,#1b91d6,#1567bd);border-color:#ffffff55}
+.gift{bottom:10px;padding:6px 11px;background:#fffef4ed;border:1px solid #f5dc9d;border-radius:13px}
+.bottom{margin-top:10px}.action{min-height:44px;border-radius:13px}.restart{font-size:22px;padding:5px 17px}.next{font-size:23px;padding:5px 19px}.bottom-hint{font-size:23px}
+@media(max-width:850px){.board{grid-template-columns:1fr 1fr;gap:10px}.surprise{grid-column:1/-1;grid-row:2;min-height:185px}.panel.left .stack,.panel.right .stack{grid-template-rows:repeat(5,69px)}.panel.left .num,.panel.right .set{height:69px}.shell{padding:11px}.sitebar{padding:8px 12px}}
+@media(max-width:500px){.sitebar{gap:6px;flex-wrap:wrap}.sitebar .brand-name{font-size:19px}.sitebar .links{gap:5px}.sitebar .links a{font-size:11px;min-height:40px;padding:6px 8px}.sitebar .nav-arrow{display:none}.shell{padding:8px}.board{gap:7px}.panel,.panel.left,.panel.right{padding:6px!important}.panel.left .game-hero{height:66px;min-height:66px;padding:4px;gap:4px}.panel.left .hero-illustration{flex-basis:35px;width:35px;height:43px}.panel.left .hero-illustration svg{width:35px;height:43px}.panel.left .hero-copy h1{font-size:12px!important}.panel.left .hero-copy p{font-size:9px}.panel.left .stack,.panel.right .stack{grid-template-rows:repeat(5,66px);gap:7px}.panel.left .num,.panel.right .set{height:66px}.panel.left .num{font-size:42px}.item{font-size:18px}.panel-label{font-size:11px!important}.surprise{min-height:165px}.score-chip{min-width:110px;padding:4px 8px}.score-chip strong{font-size:17px}}
+
+/* Fundo verde mais escuro e bem definido, mantendo intacto o tabuleiro */
+body{
+  background:
+    radial-gradient(ellipse 420px 310px at 8% 14%, rgba(168,231,166,.25), transparent 78%),
+    radial-gradient(ellipse 520px 380px at 94% 85%, rgba(9,86,45,.30), transparent 78%),
+    linear-gradient(145deg,#278a4b 0%,#19723e 48%,#0d5634 100%);
+  background-attachment:fixed;
+}
+.sitebar{border-bottom-color:#badcc5;box-shadow:0 6px 24px #063b2433}
+.shell{box-shadow:0 18px 55px #063b2452;border-color:#b6ddc0}
+
+/* Etiquetas numéricas compactas, centradas e fáceis de arrastar. */
+.panel.left .stack{justify-items:center}
+.panel.left .num{
+  width:min(100%,132px);
+  max-width:132px;
+  justify-self:center;
+  border-radius:17px;
+}
+@media(max-width:850px){.panel.left .num{width:min(100%,116px)}}
+@media(max-width:500px){.panel.left .num{width:min(100%,94px);border-radius:13px}}
+
+/* Identidade da marca e rodapé — Recreio Digital */
+.sitebar .brand-words{gap:4px!important}
+.sitebar .brand-name,.sitebar .brand-name strong{font-family:'Arial Black',Arial,sans-serif!important;font-size:clamp(24px,2.8vw,35px)!important;font-weight:1000!important;letter-spacing:-1.1px!important;color:#d71920!important;-webkit-text-fill-color:#d71920!important;text-shadow:0 2px 0 #ffe1dd!important;line-height:1.08!important}
+.sitebar .brand small{font-family:'Arial Black',Arial,sans-serif!important;font-size:clamp(11px,1.15vw,14px)!important;letter-spacing:.8px!important;color:#fff!important;background:linear-gradient(110deg,#cf252e,#f14a48)!important;border:0!important;border-radius:8px!important;padding:6px 12px!important;box-shadow:0 3px 0 #a81722!important;line-height:1.2!important}
+.game-footer{max-width:1190px;margin:11px auto 4px;text-align:center;color:#fff;font:900 14px 'Arial Black',Arial,sans-serif;letter-spacing:.15px;text-shadow:0 2px 5px #07532a55}
+.game-footer strong{color:#ffea86}
+@media(max-width:650px){.sitebar .brand-name,.sitebar .brand-name strong{font-size:clamp(17px,4.3vw,24px)!important}.sitebar .brand small{font-size:9px!important;padding:4px 7px!important;letter-spacing:.25px!important}.game-footer{font-size:11px;margin-top:9px}}
+
+/* Cabeçalho preto com marca branca, sem alterar o tabuleiro. */
+.sitebar{background:#090d12!important;border-bottom:3px solid #303943!important;box-shadow:0 7px 24px #05160f55!important}
+.sitebar .brand-name,.sitebar .brand-name strong{color:#fff!important;-webkit-text-fill-color:#fff!important;text-shadow:none!important}
+.sitebar .brand small{background:#222b35!important;color:#fff!important;border:1px solid #566474!important;box-shadow:none!important}
+.sitebar .brand .owl{background:#1b2530!important;border:2px solid #526172!important;box-shadow:none!important}
+.sitebar .links .navgames{background:#202a35!important;color:#fff!important;border:2px solid #566677!important;box-shadow:0 3px 0 #05080c!important}
+.sitebar .links .navhome{background:#fff!important;color:#101820!important;border:2px solid #fff!important;box-shadow:0 3px 0 #64707c!important}
+.sitebar .links a:hover{filter:brightness(1.12)}
+
+/* Fundo azul-noite: harmoniza com a barra preta e mantém o tabuleiro claro. */
+body{background:radial-gradient(ellipse at 12% 24%,#253f65 0%,transparent 38%),radial-gradient(ellipse at 88% 75%,#183c54 0%,transparent 40%),linear-gradient(145deg,#101b2b 0%,#192b42 55%,#102437 100%)!important;background-attachment:fixed!important}
+.shell{box-shadow:0 24px 70px #0007,0 4px 0 #ffffff14!important}
+.game-footer{color:#ffffff!important;font:900 clamp(15px,1.55vw,20px) "Arial Black",Arial,sans-serif!important;letter-spacing:.35px!important;text-shadow:0 3px 12px #000b,0 0 18px #ffffff25!important;padding:9px 12px!important}.game-footer strong{color:#ffffff!important;font-weight:900!important}
+
+/* Destaque editorial do título, sem alterar a geometria do tabuleiro. */
+.panel.left .game-hero{
+ background:linear-gradient(120deg,#111827 0%,#172b4a 58%,#214d74 100%)!important;
+ border:1px solid #547c9f!important;
+ box-shadow:inset 0 1px 0 #ffffff2b,0 5px 12px #102d4a26!important;
+ position:relative;overflow:hidden;
+}
+.panel.left .game-hero:after{content:"";position:absolute;right:-28px;top:-52px;width:130px;height:130px;border-radius:50%;border:22px solid #ffffff0d;pointer-events:none}
+.panel.left .hero-illustration{position:relative;z-index:1;filter:drop-shadow(0 3px 4px #0005)}
+.panel.left .hero-copy{position:relative;z-index:1}
+.panel.left .hero-copy h1{
+ font-family:'Arial Black',Arial,sans-serif!important;
+ font-size:clamp(17px,1.6vw,22px)!important;
+ line-height:1.08!important;letter-spacing:-.45px!important;
+ color:#ffffff!important;text-shadow:0 2px 4px #0006!important;
+ margin:0 0 4px!important;
+}
+.panel.left .hero-copy h1 span{color:#ffda66!important;text-shadow:0 2px 3px #0005!important}
+.panel.left .hero-copy p{color:#f4f8ff!important;font-family:Arial,sans-serif!important;font-size:clamp(10px,.85vw,12px)!important;font-weight:800!important;line-height:1.18!important}
+@media(max-width:500px){.panel.left .hero-copy h1{font-size:12px!important}.panel.left .hero-copy p{font-size:9px!important}}
+
+
+/* Ajuste pontual: título maior e mais acima, sem tocar no tabuleiro. */
+@media(min-width:801px){
+ .panel.left .game-hero{margin-top:-11px!important;margin-bottom:7px!important;padding:2px 6px 7px!important;align-items:flex-start!important}
+ .panel.left .hero-copy{padding-top:0!important}
+ .panel.left .hero-copy h1{font-size:clamp(19px,1.8vw,25px)!important;line-height:1.05!important;margin-bottom:3px!important}
+ .panel.left .hero-copy p{font-size:11px!important}
+ .panel.left .hero-illustration{transform:translateY(-3px)!important}
+}
+@media(min-width:501px) and (max-width:800px){
+ .panel.left .game-hero{margin-top:-7px!important;align-items:flex-start!important}
+ .panel.left .hero-copy h1{font-size:17px!important}
+}
+@media(max-width:500px){.panel.left .game-hero{margin-top:-5px!important}.panel.left .hero-copy h1{font-size:13px!important}}
+
+/* Aproveitar o espaço vazio acima do título sem alterar o tabuleiro. */
+.shell .top{min-height:0!important;margin:0!important}
+.shell .top .instruction{margin:0 0 3px!important;font-size:24px!important}
+.shell .progress{margin:0 0 2px!important}
+.shell .scoreboard{margin:2px 0 4px!important}
+.shell .message{min-height:0!important;height:0!important;margin:0!important;overflow:visible;position:relative;z-index:5}
+.panel.left{padding-top:7px!important}
+.panel.left .game-hero{margin-top:0!important}
+@media(max-width:500px){.shell .top .instruction{font-size:19px!important}.panel.left{padding-top:6px!important}}
+</style></head><body><header class="sitebar"><div class="brand"><span class="owl">🦉</span><span class="brand-words"><span class="brand-name">RECREIO <strong>DIGITAL</strong></span><small>JOGOS PARA APRENDER</small></span></div><nav class="links" aria-label="Navegação"><a class="navgames" id="voltar-jogos" href="../pre-escolar/index.html"><span class="nav-icon">🎮</span><span>Os meus jogos</span><span class="nav-arrow">↗</span></a><a class="navhome" href="../index.html"><span class="nav-icon">🏠</span><span>Página inicial</span><span class="nav-arrow">↗</span></a></nav></header><main class="shell"><div class="top"><div class="instruction" aria-label="Arrasta o número para o conjunto correspondente"><span class="mini">3</span><span>➡️</span><span>🐥🐥🐥</span></div></div><div class="progress"><span class="round" id="round">🌟 1</span><span class="stars" id="stars">☆☆☆☆☆</span><span class="round" id="range">1–5</span></div><div class="scoreboard" aria-label="Progresso do jogo"><div class="score-chip"><span>⭐</span><span><strong id="total-hits">0</strong><small>Acertos</small></span></div><div class="score-chip"><span>🧩</span><span><strong id="total-rounds">0</strong><small>Rondas concluídas</small></span></div></div><div class="message" id="message" aria-live="polite"></div><section class="board"><div class="panel left"><div class="game-hero"><div class="hero-illustration" aria-hidden="true"><svg viewBox="0 0 240 172" width="240" height="172" role="img"><defs><linearGradient id="tilegrad" x2="1" y2="1"><stop stop-color="#4eb8ff"/><stop offset="1" stop-color="#2569df"/></linearGradient></defs><circle cx="121" cy="87" r="77" fill="#dff2ff"/><circle cx="121" cy="87" r="63" fill="#c9e8ff"/><rect x="29" y="28" width="76" height="72" rx="19" fill="#fff" stroke="#c8dff6" stroke-width="3" transform="rotate(-11 67 64)"/><text x="66" y="78" text-anchor="middle" font-size="49" font-weight="900" fill="#2368d9" transform="rotate(-11 67 64)">3</text><rect x="122" y="46" width="92" height="79" rx="20" fill="url(#tilegrad)" stroke="white" stroke-width="5" transform="rotate(8 168 85)"/><text x="166" y="98" text-anchor="middle" font-size="34" transform="rotate(8 168 85)">🐥🐥</text><text x="169" y="122" text-anchor="middle" font-size="31">🐥</text><circle cx="33" cy="121" r="13" fill="#ffcc62"/><path d="M32 112v18M23 121h18" stroke="white" stroke-width="4" stroke-linecap="round"/><circle cx="213" cy="26" r="8" fill="#ff8ca7"/><circle cx="219" cy="143" r="5" fill="#6ad8b1"/><path d="M113 13l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#ffc55d"/></svg></div><div class="hero-copy"><h1>Conjuntos <span>do Recreio Digital</span></h1><p>Observa, arrasta e descobre a surpresa!</p><div class="hero-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div></div><p class="panel-label">🔢 NÚMEROS</p><div class="stack" id="numbers"></div></div><div class="surprise"><div class="success-toast" id="success-toast">🌟 Muito bem! 🌟</div><div class="scene"><span class="hero" id="picture">🦄</span></div><div class="tiles" id="tiles"></div><span class="gift">🎁</span></div><div class="panel right"><p class="panel-label">🐻 CONJUNTOS</p><div class="stack" id="sets"></div></div></section><div class="bottom"><button class="action restart" id="restart">↻</button><span class="bottom-hint">🔢 <span>➜</span> 🧸</span><button class="action next" id="next" disabled>➡️</button></div><div class="finish" id="finish"><div class="big" id="finalpicture">🦄</div><h2>🌟 Muito bem! 🌟</h2><button class="action next" id="continue" aria-label="Próxima ronda">➡️</button></div></main><footer class="game-footer"><strong>Feito para aprender a brincar · Recreio Digital 💙</strong></footer><script>
+/* Regressa ao menu de origem indicado no endereço do jogo. */
+(function () {
+  const ano = new URLSearchParams(window.location.search).get('ano');
+  const destinos = {
+    '1': '../1-ano/index.html',
+    '2': '../2-ano/index.html',
+    '3': '../3-ano/index.html',
+    '4': '../4-ano/index.html',
+    'pre': '../pre-escolar/index.html',
+    'pre-escolar': '../pre-escolar/index.html'
+  };
+  document.getElementById('voltar-jogos').href = destinos[ano] || destinos.pre;
+})();
+
+(()=>{'use strict';const $=id=>document.getElementById(id),random=a=>a[Math.floor(Math.random()*a.length)],shuffle=a=>{for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};const icons=['🐥','🐻','🐞','🐸','🐼','🐟','🍎','🍓','🌼','🚗','🦋','⭐','🎈','🐰'],pictures=['🦄','🏰','🚀','🌈','🐬','🦖','🎪','🦁','🐙','🎂'];let round=1,correct=0,totalHits=0,totalRounds=0,selected=null,locked=false,drag=null,values=[],autoTimer=null;function celebration(){for(let i=0;i<55;i++){const e=document.createElement('span');e.className='confetti';e.textContent=['✨','⭐','🎉','💛','💙'][i%5];e.style.left=Math.random()*100+'vw';e.style.fontSize=(12+Math.random()*16)+'px';e.style.animationDelay=Math.random()*.4+'s';document.body.append(e);setTimeout(()=>e.remove(),3200)}}function begin(){clearTimeout(autoTimer);autoTimer=null;correct=0;selected=null;locked=false;$('success-toast').classList.remove('show');$('finish').classList.remove('show');$('next').disabled=true;$('message').textContent='';$('stars').textContent='☆☆☆☆☆';$('round').textContent='🌟 '+round;let pool=round<3?[1,2,3,4,5]:[1,2,3,4,5,6,7,8,9,10];values=shuffle([...pool]).slice(0,5);$('range').textContent=round<3?'1–5':'1–10';const symbol=random(icons),picture=pictures[(round-1)%pictures.length];$('picture').textContent=picture;$('finalpicture').textContent=picture;$('numbers').replaceChildren();$('sets').replaceChildren();$('tiles').replaceChildren();for(let i=0;i<5;i++){const t=document.createElement('div');t.className='tile';t.textContent='✦';$('tiles').append(t)}shuffle([...values]).forEach(n=>{const b=document.createElement('div');b.className='num';b.textContent=n;b.dataset.n=n;b.tabIndex=0;b.setAttribute('role','button');b.setAttribute('aria-label','Número '+n);b.addEventListener('pointerdown',e=>startDrag(e,b));b.addEventListener('click',()=>choose(b));b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(b)}});$('numbers').append(b)});shuffle([...values]).forEach(n=>{const b=document.createElement('div');b.className='set';b.dataset.n=n;b.tabIndex=0;b.setAttribute('role','button');b.setAttribute('aria-label','Conjunto com '+n+' elementos');for(let j=0;j<n;j++){const s=document.createElement('span');s.className='item';s.textContent=symbol;b.append(s)}b.addEventListener('click',()=>match(b));b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();match(b)}});$('sets').append(b)})}function choose(b){if(locked||b.classList.contains('done'))return;document.querySelectorAll('.num').forEach(x=>x.classList.remove('selected'));selected=b;b.classList.add('selected');$('message').textContent='👇'}function match(target){if(!selected||locked||target.classList.contains('done'))return;if(+selected.dataset.n===+target.dataset.n){locked=true;selected.classList.remove('selected');selected.classList.add('done');target.classList.add('done');selected=null;correct++;totalHits++;$('total-hits').textContent=totalHits;$('stars').textContent='★'.repeat(correct)+'☆'.repeat(5-correct);$('tiles').children[correct-1].classList.add('gone');$('message').textContent='⭐';setTimeout(()=>{locked=false;if(correct===5){totalRounds++;$('total-rounds').textContent=totalRounds;$('next').disabled=false;celebration();setTimeout(()=>{$('success-toast').classList.add('show');autoTimer=setTimeout(()=>{round++;begin()},2800)},650)}else $('message').textContent=''},360)}else{target.classList.add('wrong');$('message').textContent='💛';setTimeout(()=>{target.classList.remove('wrong');$('message').textContent=''},500)}}function targetAt(x,y){const el=document.elementFromPoint(x,y);const target=el&&el.closest('.set');return target&&!target.classList.contains('done')?target:null}function highlight(x,y){document.querySelectorAll('.set').forEach(t=>t.classList.toggle('hovered',t===targetAt(x,y)))}function clearDrag(){if(!drag)return;drag.ghost?.remove();drag.b.style.opacity='';document.querySelectorAll('.set').forEach(t=>t.classList.remove('hovered'));drag=null}function startDrag(e,b){if(locked||b.classList.contains('done')||(e.pointerType==='mouse'&&e.button!==0))return;const r=b.getBoundingClientRect();drag={b,id:e.pointerId,x:e.clientX,y:e.clientY,dx:e.clientX-r.left,dy:e.clientY-r.top,w:r.width,h:r.height,ghost:null,moved:false};b.setPointerCapture(e.pointerId)}document.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const d=drag;if(!d.moved&&Math.hypot(e.clientX-d.x,e.clientY-d.y)>8){d.moved=true;d.ghost=d.b.cloneNode(true);d.ghost.className='num ghost-drag';d.ghost.removeAttribute('id');d.ghost.style.width=d.w+'px';d.ghost.style.height=d.h+'px';document.body.append(d.ghost);d.b.style.opacity='.3'}if(d.moved){d.ghost.style.left=e.clientX-d.dx+'px';d.ghost.style.top=e.clientY-d.dy+'px';highlight(e.clientX,e.clientY)}});document.addEventListener('pointerup',e=>{if(!drag||e.pointerId!==drag.id)return;const d=drag,target=d.moved?targetAt(e.clientX,e.clientY):null;clearDrag();if(d.moved&&target){choose(d.b);match(target)}});document.addEventListener('pointercancel',clearDrag);function next(){clearTimeout(autoTimer);round++;begin()}$('continue').onclick=next;$('next').onclick=next;$('restart').onclick=()=>{round=1;totalHits=0;totalRounds=0;$('total-hits').textContent='0';$('total-rounds').textContent='0';begin()};begin()})();
+</script></body></html>

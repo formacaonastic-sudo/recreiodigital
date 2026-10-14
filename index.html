@@ -228,34 +228,6 @@ footer{margin-top:45px;background:#102e59}
 @media(max-width:650px){.hero{padding:35px 0 40px}.hero-inner{grid-template-columns:1fr}.hero-copy{text-align:center}.hero-title h1{font-size:clamp(3.4rem,14vw,5.2rem)}.hero-ribbon{margin:20px auto 0}.hero-copy p{margin-top:16px}.hero-art{min-height:0}.hero-illustration{min-height:190px;max-width:270px;transform:rotate(1deg)}.hero-owl{font-size:5rem}.hero-illustration-top{font-size:.8rem}.hero-illustration-bottom{font-size:1.1rem}.portal-stats{grid-template-columns:repeat(3,1fr)}.stat-card{flex-direction:column;text-align:center;gap:5px;padding:16px 5px!important}.stat-card+.stat-card{border-left:1px solid #e5edf5;border-top:0}.stat-icon{font-size:1.5rem}.stat-number{font-size:1.75rem}.stat-label{font-size:.73rem}.years{grid-template-columns:repeat(2,1fr)}.year{min-height:152px}.year-emoji{font-size:2.5rem}.section-title{margin-top:34px}}
 @media(max-width:380px){.portal-stats{grid-template-columns:1fr}.stat-card{flex-direction:row;justify-content:flex-start;text-align:left;padding:10px 20px!important}.stat-card+.stat-card{border-left:0;border-top:1px solid #e5edf5}}
 @media(prefers-reduced-motion:reduce){.hero-owl{animation:none}}
-
-.public-counters{margin:10px 0 35px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.public-counter{display:flex;align-items:center;justify-content:center;gap:18px;background:#fff;border:1px solid #dce9f5;border-radius:20px;padding:24px 18px;box-shadow:0 9px 26px #163c6512}
-.public-counter-icon{font-size:2.5rem;line-height:1}.public-counter-value{display:block;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:1000;color:#102e59;font-variant-numeric:tabular-nums}.public-counter-label{display:block;font-weight:800;color:#60728b;font-size:1rem}.public-counter-note{color:#60728b;font-size:.85rem;margin:-20px 0 30px}@media(max-width:560px){.public-counters{grid-template-columns:1fr}.public-counter{justify-content:flex-start;padding:18px}}
-
-/* Contadores compactos, por cima do painel de descobertas */
-.mini-contadores{display:flex;align-items:center;justify-content:center;gap:17px;width:fit-content;max-width:100%;margin:20px auto 0;padding:9px 20px;background:#fff;border:1px solid #dce9f5;border-radius:999px;box-shadow:0 5px 15px #163c6510;color:#526781;font-size:.88rem;font-weight:800;flex-wrap:wrap}
-.mini-contadores strong{color:#102e59;font-size:1rem;font-variant-numeric:tabular-nums}
-.mini-separador{width:1px;height:17px;background:#dce9f5}
-.mini-estado[hidden]{display:none}
-@media(max-width:420px){.mini-contadores{gap:9px;padding:9px 12px;font-size:.78rem}.mini-separador{height:14px}}
-/* Contadores públicos: pequena caixa escura sob a coruja, à direita */
-.hero-art{flex-direction:column;align-items:center;justify-content:center;gap:17px}
-.hero-art .mini-contadores{margin:0;background:#101820;border:1px solid #273747;color:#fff;border-radius:12px;padding:10px 15px;box-shadow:0 9px 20px #08274335;font-size:.84rem;gap:12px;white-space:normal}
-.hero-art .mini-contadores strong{color:#fff;font-size:.98rem}
-.hero-art .mini-separador{background:#56616d}
-@media(max-width:420px){.hero-art .mini-contadores{gap:8px;padding:9px 11px;font-size:.75rem}}
-/* Contadores discretos abaixo da faixa da coruja, alinhados à direita */
-.contadores-linha{display:flex;justify-content:flex-end;margin:17px 0 0}
-.contadores-linha .mini-contadores{margin:0;background:#e9f4ff;border:1px solid #cbdff3;color:#173b66;border-radius:12px;box-shadow:none;padding:8px 15px;font-size:.82rem;gap:12px}
-.contadores-linha .mini-contadores strong{color:#102e59}
-.contadores-linha .mini-separador{background:#b9cee5}
-@media(max-width:560px){.contadores-linha{justify-content:center}.contadores-linha .mini-contadores{font-size:.78rem}}
-/* Ajuste final: azul do cabeçalho, dimensões ligeiramente maiores */
-.contadores-linha .mini-contadores{background:#145ca8;color:#fff;border:1px solid #1688c5;padding:13px 22px;font-size:1rem;gap:18px;box-shadow:0 6px 16px rgba(16,46,89,.14)}
-.contadores-linha .mini-contadores strong{color:#fff;font-size:1.2rem}
-.contadores-linha .mini-separador{background:rgba(255,255,255,.42);height:22px}
-@media(max-width:560px){.contadores-linha .mini-contadores{font-size:.9rem;padding:11px 15px;gap:11px}.contadores-linha .mini-contadores strong{font-size:1.05rem}}
 </style>
 </head>
 <body>
@@ -281,17 +253,11 @@ footer{margin-top:45px;background:#102e59}
    <div class="hero-ribbon">O teu espaço de jogos, desafios e grandes descobertas!</div>
    <p>✨ Descobre &nbsp; • &nbsp; 🎮 Joga &nbsp; • &nbsp; 🚀 Aprende</p>
   </div>
-  <div class="hero-art"><div class="hero-illustration" aria-hidden="true"><span class="hero-illustration-top">A A A &nbsp; ✦ &nbsp; 1 2 3</span><span class="hero-owl">🦉</span><span class="hero-illustration-bottom">🎨 &nbsp; 📚 &nbsp; 🎮 &nbsp; 🚀</span></div>
-</div>
+  <div class="hero-art" aria-hidden="true"><div class="hero-illustration"><span class="hero-illustration-top">A A A &nbsp; ✦ &nbsp; 1 2 3</span><span class="hero-owl">🦉</span><span class="hero-illustration-bottom">🎨 &nbsp; 📚 &nbsp; 🎮 &nbsp; 🚀</span></div></div>
  </div>
 </section>
 
 <main class="content">
- <div class="contadores-linha"><div class="mini-contadores" aria-label="Estatísticas do Recreio Digital">
-  <span>👀 <strong id="contador-visitas">—</strong> visitas</span>
-  <span class="mini-separador" aria-hidden="true"></span>
-  <span>🎮 <strong id="contador-inicios">—</strong> jogos iniciados</span>
- </div></div>
  <section aria-label="O portal em números">
   <h2 class="stats-heading">✨ Um recreio cheio de descobertas</h2>
   <div class="portal-stats">
@@ -426,73 +392,5 @@ footer{margin-top:45px;background:#102e59}
  }
  proximo(0);
 })();
-</script>
-
-<!-- Firebase: leitura e incremento dos contadores; contagem de jogos nesta página inicial -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
-  import { getFirestore, doc, onSnapshot, updateDoc, increment } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyB1vAd842sLUXN7-L6aiDk67IyBaawOC-s",
-    authDomain: "recreio-digital-a8f2b.firebaseapp.com",
-    projectId: "recreio-digital-a8f2b",
-    storageBucket: "recreio-digital-a8f2b.firebasestorage.app",
-    messagingSenderId: "569236216149",
-    appId: "1:569236216149:web:9548ec12f40cd11bc437dc",
-    measurementId: "G-DV79DRN4WJ"
-  };
-
-  const visitas = document.getElementById("contador-visitas");
-  const jogosIniciados = document.getElementById("contador-inicios");
-  const formatar = n => new Intl.NumberFormat("pt-PT").format(n);
-  try {
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const referencia = doc(db, "estatisticas", "contadores");
-    onSnapshot(referencia, snapshot => {
-      if (!snapshot.exists()) {
-        console.warn("Documento estatisticas/contadores não encontrado.");
-        return;
-      }
-      const dados = snapshot.data();
-      if (typeof dados.visitas === "number") visitas.textContent = formatar(dados.visitas);
-      if (typeof dados.jogosIniciados === "number") jogosIniciados.textContent = formatar(dados.jogosIniciados);
-    }, erro => {
-      console.error("Não foi possível ler os contadores do Firebase:", erro);
-    });
-
-    // Uma visita por separador/sessão. A marca só é guardada após escrita bem-sucedida.
-    try {
-      if (sessionStorage.getItem("recreio-visita-contada") !== "sim") {
-        updateDoc(referencia, { visitas: increment(1) })
-          .then(() => sessionStorage.setItem("recreio-visita-contada", "sim"))
-          .catch(erro => console.warn("Não foi possível registar a visita:", erro));
-      }
-    } catch (erro) {
-      console.warn("Armazenamento de sessão indisponível:", erro);
-    }
-
-    // Conta lançamentos a partir dos cartões de jogos da página inicial.
-    // As páginas de cada ano precisam de integração própria para cobertura completa.
-    document.addEventListener("click", async evento => {
-      const link = evento.target.closest("a.play");
-      if (!link || evento.defaultPrevented || evento.button !== 0 ||
-          evento.ctrlKey || evento.metaKey || evento.shiftKey || evento.altKey) return;
-      evento.preventDefault();
-      const destino = link.href;
-      try {
-        await Promise.race([
-          updateDoc(referencia, { jogosIniciados: increment(1) }),
-          new Promise(resolve => setTimeout(resolve, 1300))
-        ]);
-      } catch (erro) {
-        console.warn("Não foi possível registar o início do jogo:", erro);
-      }
-      window.location.assign(destino);
-    });
-  } catch (erro) {
-    console.error("Erro ao iniciar a leitura dos contadores:", erro);
-  }
 </script>
 </body></html>

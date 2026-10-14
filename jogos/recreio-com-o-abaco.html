@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-PT"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Observa o ábaco e escolhe o número correto, com unidades, dezenas e centenas até 100. Um jogo de Matemática do Recreio Digital."><title>Recreio com o Ábaco | Recreio Digital</title>
+<style>
+:root{color-scheme:light;--ink:#17345b;--blue:#073b78;--line:#dce9f4}
+*{box-sizing:border-box}
+body{margin:0;height:100vh;height:100svh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden;font-family:"Trebuchet MS",Arial,sans-serif;color:var(--ink);background:linear-gradient(145deg,#eaf6ff,#fff9ed)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px max(16px,calc((100vw - 1180px)/2));color:white;background:var(--blue)}
+.brand{font-size:21px;font-weight:900;white-space:nowrap}
+.links{display:flex;gap:8px}
+.links a{padding:8px 12px;border-radius:10px;background:#fff;color:var(--blue);font-size:13px;font-weight:900;text-decoration:none;white-space:nowrap}
+.wrap{width:100%;max-width:1180px;min-height:0;margin:auto;padding:10px 14px;display:grid;grid-template-rows:auto minmax(0,1fr);gap:10px;height:100%}
+.hero{border-radius:18px;background:linear-gradient(110deg,#1597ed,#8050df);color:white;text-align:center;padding:10px 16px}
+.hero h1{font-size:clamp(22px,3vw,32px);line-height:1.15;margin:0;font-weight:900}
+.hero p{font-size:14px;margin:5px 0 0}
+.panel{position:relative;min-height:0;display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;gap:10px;background:white;border:1px solid var(--line);border-radius:20px;padding:12px;box-shadow:0 4px 0 #dce8f1}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.level-picker{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:900;white-space:nowrap}
+select{font:900 15px "Trebuchet MS",Arial,sans-serif;color:var(--blue);padding:8px 10px;min-height:40px;max-width:120px;border:1px solid #b6d1e9;border-radius:11px;background:#f6fbff}
+.tools{display:flex;align-items:center;gap:7px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:40px;border:1px solid #cde3f5;border-radius:11px;padding:8px 11px;font:900 14px "Trebuchet MS",Arial,sans-serif;color:var(--blue);background:#edf7ff;cursor:pointer}
+.btn:hover{background:#dfedff}
+.btn:active,.choice:active:not(:disabled){transform:translateY(1px)}
+#help[aria-pressed=true]{background:#fff2bb;border-color:#e9c857}
+#restart{background:#fff4c8;border-color:#f0dd91}
+button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #8050df;outline-offset:3px}
+.status-row{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:19px}
+.stats{margin:0;font-size:14px;font-weight:900;color:#57708e;white-space:nowrap}
+.progress-box{display:flex;align-items:center;gap:9px;width:35%;max-width:330px;font-size:12px;font-weight:900;color:#57708e}
+.progress{height:8px;flex:1;background:#e8eff6;border-radius:20px;overflow:hidden;min-width:25px}
+.progress span{display:block;height:100%;width:0;border-radius:20px;background:linear-gradient(90deg,#1597ed,#39c866);transition:width .2s}
+#progressText{white-space:nowrap}
+.play{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.43fr);gap:12px}
+.abacus-area{min-height:0;min-width:0;background:#f4f9fd;border:1px solid #e0edf7;border-radius:16px;padding:8px;display:flex;align-items:center;justify-content:center}
+.abacus-svg{display:block;width:100%;height:100%;max-width:700px;min-height:0;overflow:visible}
+.question-box{min-height:0;display:flex;flex-direction:column;gap:10px;border-radius:16px;background:#f7f3ff;border:1px solid #e5daf8;padding:14px;text-align:center}
+.question-box h2{font-size:22px;line-height:1.2;margin:0;color:#573993}
+.hint{font-size:14px;line-height:1.35;margin:0;color:#64718a}
+.help-box{font-size:13px;line-height:1.4;margin:0;padding:9px;border-radius:10px;background:#fff5c9;color:#67511b}
+.choices{flex:1;min-height:0;display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:10px}
+.choice{position:relative;min-height:0;min-width:0;width:100%;border:2px solid #d9d3ee;border-bottom-width:4px;border-radius:14px;background:white;color:var(--blue);font:900 clamp(30px,4vw,46px) "Trebuchet MS",Arial,sans-serif;line-height:1;padding:6px;cursor:pointer;transition:background .15s,border-color .15s}
+.choice:hover:not(:disabled){background:#eaf7ff;border-color:#1597ed}
+.choice.correct{background:#e1f8e7;border-color:#39b667;color:#16763f}
+.choice.wrong{background:#ffe8ee;border-color:#e26e8a;color:#ab3653}
+.choice:disabled{cursor:default}
+.choice.wrong:disabled{opacity:.65}
+.mark{position:absolute;right:9px;top:6px;font-size:20px}
+.feedback{height:44px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;text-align:center}
+.msg{margin:0;font-size:17px;line-height:1.25;font-weight:900;color:#127d47}
+.result{font-size:14px;line-height:1.25;color:#57708e}
+.finish{position:absolute;inset:0;z-index:3;display:none;place-items:center;padding:20px;border-radius:inherit;background:#f6fcfff5;text-align:center}
+.finish.show{display:grid}
+.finish-card{max-width:430px;width:100%;padding:28px 22px;border-radius:23px;border:2px solid #b2e5c4;background:white;box-shadow:0 10px 35px #073b7815}
+.finish-icon{font-size:58px;line-height:1.15}
+.finish h2{font-size:29px;margin:10px 0;color:#127d47}
+.finish p{font-size:18px;line-height:1.4;margin:10px 0 20px}
+.finish .btn{background:#ffd33d;border-color:#edc032;font-size:18px;padding:12px 20px}
+footer{text-align:center;padding:5px 10px 7px;font-size:12px;color:#57708e}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+[hidden]{display:none!important}
+@media(max-width:700px){
+ .top{padding:7px 12px;flex-wrap:wrap;justify-content:center;gap:6px}.brand{font-size:18px}.links a{font-size:12px;padding:6px 10px}
+ .wrap{padding:7px 9px;gap:7px}.hero{padding:8px}.hero h1{font-size:23px}.hero p{font-size:12px;margin-top:3px}
+ .panel{padding:9px;gap:7px;border-radius:16px}.toolbar{flex-wrap:wrap;gap:6px}.level-picker{font-size:13px}.tools{gap:5px;margin-left:auto}.btn{font-size:12px;min-height:36px;padding:6px 8px}select{font-size:13px;min-height:36px;padding:6px 8px}
+ .status-row{gap:8px}.stats{font-size:12px}.progress-box{width:33%;gap:5px;font-size:11px}
+ .play{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;gap:7px}.abacus-area{padding:3px;border-radius:12px}
+ .question-box{border:0;background:transparent;padding:0;gap:6px}.question-box h2{font-size:18px}.hint{display:none}.help-box{font-size:12px;padding:6px;line-height:1.25}
+ .choices{flex:none;height:70px;grid-template-rows:1fr;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.choice{font-size:35px;border-radius:12px}.mark{right:6px;top:4px;font-size:17px}
+ .feedback{height:48px;gap:2px}.msg{font-size:14px}.result{font-size:12px}footer{font-size:11px;padding:4px 8px 5px}
+}
+@media(max-width:480px){.toolbar{justify-content:center}.level-picker{width:100%;justify-content:center}.tools{width:100%;margin:0;justify-content:center}.hero h1{font-size:21px}.hero p{display:none}.stats{font-size:11px}.progress-box{width:34%}}
+@media(max-height:620px) and (min-width:701px){.top{padding-top:6px;padding-bottom:6px}.hero{padding:7px}.hero h1{font-size:26px}.hero p{display:none}.wrap{padding-top:7px;padding-bottom:7px;gap:7px}.panel{padding:9px;gap:7px}.question-box{padding:10px;gap:7px}.question-box h2{font-size:19px}.hint{font-size:12px}.choice{font-size:35px}.feedback{height:37px}.msg{font-size:15px}.result{font-size:12px}}
+@media(max-height:560px) and (max-width:700px) and (min-aspect-ratio:1/1){.top{flex-wrap:nowrap;justify-content:space-between;padding:5px 9px}.brand{font-size:14px}.links{gap:5px}.links a{font-size:10px;padding:5px}.wrap{padding:5px 7px;gap:5px}.hero{padding:5px}.hero h1{font-size:20px}.hero p{display:none}.panel{padding:7px;gap:5px}.toolbar{flex-wrap:nowrap}.level-picker{width:auto;font-size:0;gap:0}.tools{width:auto;margin-left:auto;gap:4px}.btn{min-height:32px;padding:5px 6px;font-size:11px}select{min-height:32px;font-size:11px;padding:5px}.play{grid-template-columns:minmax(0,1fr) minmax(145px,.45fr);grid-template-rows:minmax(0,1fr);gap:7px}.question-box{padding:6px;gap:5px;background:#f7f3ff;border-radius:12px}.question-box h2{font-size:16px}.choices{flex:1;height:auto;grid-template-columns:1fr;grid-template-rows:repeat(3,minmax(0,1fr));gap:5px}.choice{font-size:29px}.feedback{height:36px}.msg{font-size:12px}.result{font-size:11px}footer{font-size:10px;padding:3px}.help-box{font-size:10px;padding:4px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+</style></head><body>
+<header class="top"><div class="brand">🦉 Recreio Digital</div><nav class="links" aria-label="Navegação"><a id="backLink" href="../1-ano/index.html">⬅ Voltar ao 1.º Ano</a><a href="../index.html">🏠 Página inicial</a></nav></header>
+<main class="wrap">
+ <section class="hero"><h1>🧮 Recreio com o Ábaco</h1><p>Observa, conta e escolhe o número!</p></section>
+ <section class="panel" aria-label="Jogo do ábaco">
+  <div class="toolbar">
+   <label class="level-picker" for="level">Números: <select id="level"><option value="9">Até 9</option><option value="20" selected>Até 20</option><option value="100">Até 100</option></select></label>
+   <div class="tools"><button class="btn" id="help" type="button" aria-pressed="false" aria-controls="helpBox" title="Mostrar ajuda">💡 Ajuda</button><button class="btn" id="sound" type="button" aria-pressed="true" title="Ligar ou desligar o som">🔊 Som</button><button class="btn" id="hear" type="button" title="Ouvir a instrução">▶ Ouvir</button><button class="btn" id="restart" type="button">↻ Recomeçar</button></div>
+  </div>
+  <div class="status-row"><p class="stats" id="stats"></p><div class="progress-box"><div class="progress" id="progress" role="progressbar" aria-label="Desafios concluídos" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0"><span id="progressFill"></span></div><span id="progressText">0/20</span><span class="sr-only" id="percent">0%</span></div></div>
+  <div class="play">
+   <section class="abacus-area" aria-label="Ábaco"><svg class="abacus-svg" id="columns" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 420" role="group" aria-label="Ábaco com hastes de valor posicional"></svg></section>
+   <aside class="question-box"><h2>Que número vês no ábaco?</h2><p class="hint" id="hint">Conta as contas de cada haste e escolhe a resposta.</p><p class="help-box" id="helpBox" hidden></p><div class="choices" id="choices" role="group" aria-label="Escolhe o número representado no ábaco"></div></aside>
+  </div>
+  <div class="feedback" role="status" aria-live="polite" aria-atomic="true"><p class="msg" id="msg"></p><div class="result" id="result" hidden></div></div>
+  <div class="finish" id="finish"><div class="finish-card"><div class="finish-icon" aria-hidden="true">🏆</div><h2>Missão cumprida!</h2><p>Concluíste os 20 desafios e ganhaste <strong>20 estrelas!</strong></p><button class="btn" id="playAgain" type="button">Jogar novamente ▶</button></div></div>
+ </section>
+</main>
+<footer>Feito para aprender a brincar · Recreio Digital 💙</footer>
+<script>
+'use strict';
+const $=id=>document.getElementById(id),ROUND_COUNT=20;
+const PLACES=[{power:100,short:'C',name:'Centenas',singular:'centena',color:'#39c866',light:'#8be8a7',dark:'#168448',pale:'#e3fae9'},{power:10,short:'D',name:'Dezenas',singular:'dezena',color:'#ef4d75',light:'#ff9cb4',dark:'#be3055',pale:'#fff0f4'},{power:1,short:'U',name:'Unidades',singular:'unidade',color:'#1597ed',light:'#83d0ff',dark:'#096caf',pale:'#e4f4ff'}];
+const schoolYear=new URLSearchParams(window.location.search).get('ano')==='2'?'2':'1';
+$('backLink').href='../'+schoolYear+'-ano/index.html';$('backLink').textContent='⬅ Voltar ao '+schoolYear+'.º Ano';
+let maxValue=schoolYear==='2'?100:20,help=false,soundOn=true,target=0,digits=[0,0,0],round=0,locked=false,advanceTimer=null,audio=null,queue=[],answers=[];
+function visiblePlaces(){return PLACES.filter(p=>p.power<=maxValue)}
+function splitNumber(value){return PLACES.map(p=>Math.floor(value/p.power)%10)}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function makeQueue(){
+ const candidates=maxValue===9?[0,1,2,3,4,5,6,7,8,9]:maxValue===20?[0,1,3,5,7,9,10,11,12,13,14,15,16,17,18,19,20]:[0,7,9,10,12,19,20,25,30,35,40,47,50,60,70,80,89,90,99,100];
+ const out=shuffle(candidates.slice());
+ while(out.length<ROUND_COUNT){const n=Math.floor(Math.random()*(maxValue+1));if(n!==out[out.length-1])out.push(n)}
+ return out.slice(0,ROUND_COUNT);
+}
+function makeAnswers(value){const near=shuffle([value-1,value+1,value-2,value+2,value-10,value+10,value-5,value+5].filter(n=>n>=0&&n<=maxValue&&n!==value));const options=new Set([value]);for(const n of near){options.add(n);if(options.size===3)break}while(options.size<3)options.add(Math.floor(Math.random()*(maxValue+1)));return shuffle([...options])}
+function cancelAdvance(){if(advanceTimer!==null){clearTimeout(advanceTimer);advanceTimer=null}}
+function message(text){$('msg').textContent=text}
+function speak(text){if(!soundOn||!window.speechSynthesis)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='pt-PT';u.rate=.82;u.pitch=1.1;const voices=speechSynthesis.getVoices();const voice=voices.find(v=>v.lang.toLowerCase()==='pt-pt')||voices.find(v=>v.lang.toLowerCase().startsWith('pt'));if(voice)u.voice=voice;speechSynthesis.speak(u)}
+function tone(){if(!soundOn)return;try{audio=audio||new(window.AudioContext||window.webkitAudioContext)();if(audio.state==='suspended')audio.resume();[523.25,659.25,783.99].forEach((f,i)=>{const o=audio.createOscillator(),g=audio.createGain(),t=audio.currentTime+i*.12;o.connect(g);g.connect(audio.destination);o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.04,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+.2);o.start(t);o.stop(t+.22)})}catch(e){}}
+function svgNode(tag,attributes={},text=''){
+ const node=document.createElementNS('http://www.w3.org/2000/svg',tag);
+ for(const [name,value] of Object.entries(attributes))node.setAttribute(name,value);
+ if(text)node.textContent=text;
+ return node;
+}
+function buildBoard(){
+ const svg=$('columns');svg.innerHTML='';svg.setAttribute('aria-label','Ábaco de '+visiblePlaces().map(p=>p.name.toLowerCase()).join(', '));
+ const defs=svgNode('defs');
+ const wood=svgNode('linearGradient',{id:'wood',x1:'0',y1:'0',x2:'0',y2:'1'});
+ wood.append(svgNode('stop',{offset:'0','stop-color':'#f0c78f'}),svgNode('stop',{offset:'1','stop-color':'#c38e54'}));defs.appendChild(wood);
+ const rod=svgNode('linearGradient',{id:'rod'});
+ rod.append(svgNode('stop',{offset:'0','stop-color':'#9caec0'}),svgNode('stop',{offset:'.45','stop-color':'#e2edf5'}),svgNode('stop',{offset:'1','stop-color':'#879caf'}));defs.appendChild(rod);
+ for(const p of visiblePlaces()){
+  const gradient=svgNode('linearGradient',{id:'bead-'+p.power,x1:'0',y1:'0',x2:'0',y2:'1'});
+  gradient.append(svgNode('stop',{offset:'0','stop-color':p.light}),svgNode('stop',{offset:'.45','stop-color':p.color}),svgNode('stop',{offset:'1','stop-color':p.dark}));defs.appendChild(gradient);
+ }
+ svg.appendChild(defs);
+ svg.appendChild(svgNode('ellipse',{cx:310,cy:385,rx:270,ry:9,fill:'#dbe6ee','aria-hidden':'true'}));
+ const frame=svgNode('g',{'aria-hidden':'true'});
+ frame.append(svgNode('rect',{x:44,y:87,width:15,height:276,rx:6,fill:'url(#wood)',stroke:'#b9834a','stroke-width':1}),svgNode('rect',{x:561,y:87,width:15,height:276,rx:6,fill:'url(#wood)',stroke:'#b9834a','stroke-width':1}));
+ svg.appendChild(frame);
+ const places=visiblePlaces(),centres=places.length===3?[127,310,493]:places.length===2?[207,413]:[310];
+ places.forEach((p,k)=>{
+  const cx=centres[k],n=digits[PLACES.indexOf(p)],column=svgNode('g',{'class':'abacus-column','data-power':p.power,role:'group','aria-label':p.name});
+  column.append(svgNode('rect',{x:cx-27,y:8,width:54,height:37,rx:12,fill:p.pale,'aria-hidden':'true'}),svgNode('text',{x:cx,y:35,'text-anchor':'middle','font-family':'Trebuchet MS,Arial,sans-serif','font-size':28,'font-weight':900,fill:p.dark,'aria-hidden':'true'},p.short),svgNode('text',{x:cx,y:65,'text-anchor':'middle','font-family':'Trebuchet MS,Arial,sans-serif','font-size':20,'font-weight':700,fill:p.dark,'aria-hidden':'true'},p.name));
+  column.appendChild(svgNode('rect',{x:cx-4,y:94,width:8,height:263,rx:4,fill:'url(#rod)','aria-hidden':'true'}));
+  for(let j=0;j<n;j++){
+   const cy=341-j*27,bead=svgNode('ellipse',{'class':'bead',cx,cy,rx:42,ry:11.5,fill:'url(#bead-'+p.power+')',stroke:p.dark,'stroke-width':1.2,role:'img','aria-label':'Conta de '+p.singular});
+   column.appendChild(bead);
+   column.appendChild(svgNode('path',{d:'M '+(cx-25)+' '+(cy-4)+' Q '+cx+' '+(cy-10)+' '+(cx+25)+' '+(cy-4),fill:'none',stroke:'#ffffff','stroke-opacity':.4,'stroke-width':2,'stroke-linecap':'round','aria-hidden':'true'}));
+  }
+  column.appendChild(svgNode('text',{x:cx,y:408,'text-anchor':'middle','font-family':'Trebuchet MS,Arial,sans-serif','font-size':places.length===3?15:18,'font-weight':700,fill:p.dark,'aria-hidden':'true'},'Cada conta vale '+p.power));
+  svg.appendChild(column);
+ });
+ svg.append(svgNode('rect',{x:38,y:76,width:544,height:22,rx:9,fill:'url(#wood)',stroke:'#b9834a','stroke-width':1.5,'aria-hidden':'true'}),svgNode('rect',{x:30,y:355,width:560,height:28,rx:11,fill:'url(#wood)',stroke:'#b9834a','stroke-width':1.5,'aria-hidden':'true'}));
+}
+function updateHelp(){
+ $('helpBox').hidden=!help;$('hint').hidden=help;
+ $('helpBox').textContent='💡 '+visiblePlaces().map(p=>'Cada conta '+(p.power===100?'verde':p.power===10?'vermelha':'azul')+' vale '+p.power+'.').join(' ')+' Uma haste vazia vale 0.';
+ $('help').setAttribute('aria-pressed',help);$('help').title=help?'Esconder ajuda':'Mostrar ajuda';
+}
+function updateStats(){
+ const question=Math.min(ROUND_COUNT,round+(locked?0:1));
+ $('stats').textContent=(round<ROUND_COUNT?'Desafio '+question+' de '+ROUND_COUNT:'🏆 Jogo terminado')+' · ⭐ '+round;
+ $('progressText').textContent=round+'/'+ROUND_COUNT;
+ const percent=Math.round(round/ROUND_COUNT*100);$('percent').textContent=percent+'%';$('progressFill').style.width=percent+'%';$('progress').setAttribute('aria-valuenow',round);
+}
+function explanation(){return target+' = '+visiblePlaces().map(p=>{const i=PLACES.indexOf(p),n=digits[i];return n+' '+(n===1?p.singular:p.name.toLowerCase())}).join(' + ')}
+function showQuestion(){cancelAdvance();locked=false;$('finish').classList.remove('show');$('result').hidden=true;target=queue[round];digits=splitNumber(target);answers=makeAnswers(target);buildBoard();$('choices').innerHTML='';for(const value of answers){const button=document.createElement('button');button.type='button';button.className='choice';button.textContent=String(value);button.setAttribute('aria-label','Responder '+value);button.onclick=()=>choose(button,value);$('choices').appendChild(button)}updateHelp();updateStats();message('👀 Escolhe o número representado no ábaco!')}
+function choose(button,value){if(locked||button.disabled)return;if(value!==target){button.classList.add('wrong');button.disabled=true;message('😊 Conta novamente e tenta outra resposta!');speak('Conta novamente e tenta outra resposta!');return}locked=true;button.classList.add('correct');const mark=document.createElement('span');mark.className='mark';mark.textContent='✓';mark.setAttribute('aria-hidden','true');button.appendChild(mark);round++;for(const option of $('choices').children)option.disabled=true;$('result').textContent=explanation();$('result').hidden=false;updateStats();message('🎉 Muito bem! O número é '+target+'.');tone();speak('Muito bem! O número é '+target+'.');advanceTimer=setTimeout(()=>{advanceTimer=null;if(round>=ROUND_COUNT)finishGame();else showQuestion()},3000)}
+function finishGame(){cancelAdvance();locked=true;$('finish').classList.add('show');updateStats();message('🎉 Parabéns! Ganhaste 20 estrelas!');speak('Parabéns! Concluíste todos os desafios!')}
+function restart(){cancelAdvance();if(window.speechSynthesis)speechSynthesis.cancel();round=0;queue=makeQueue();showQuestion()}
+$('restart').onclick=$('playAgain').onclick=restart;$('level').onchange=()=>{maxValue=Number($('level').value);restart()};$('help').onclick=()=>{help=!help;updateHelp()};$('sound').onclick=()=>{soundOn=!soundOn;$('sound').setAttribute('aria-pressed',soundOn);$('sound').textContent=soundOn?'🔊 Som':'🔇 Som';if(!soundOn&&window.speechSynthesis)speechSynthesis.cancel()};$('hear').onclick=()=>{if(!soundOn){message('🔇 Liga o som para ouvir.');return}speak(round>=ROUND_COUNT?'Parabéns! Concluíste os desafios!':'Observa o ábaco. Conta as contas coloridas e escolhe o número correto.')};
+function startFresh(){maxValue=schoolYear==='2'?100:20;help=false;soundOn=true;$('level').value=String(maxValue);$('sound').setAttribute('aria-pressed','true');$('sound').textContent='🔊 Som';restart()}
+startFresh();window.addEventListener('pageshow',e=>{if(e.persisted)startFresh()});window.addEventListener('pagehide',cancelAdvance);
+
+</script></body></html>

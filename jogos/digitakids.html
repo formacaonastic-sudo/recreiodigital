@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://formacaonastic-sudo.github.io/digitakifsf/ -->
+<html lang="pt"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Digit@Kids</title>
+
+
+
+<style>
+body{
+  font-family:'Roboto',Arial;
+  margin:0;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-height:100vh;
+  background:linear-gradient(135deg,#174478,#2282a7 55%,#294c83) fixed;
+  background-size:cover;
+  position:relative;
+}
+
+body::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba(0,0,0,0.4);
+  z-index:0;
+}
+
+/* CABEÇALHO - título + créditos */
+.cabecalho{
+  width:95%;
+  max-width:1200px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+  z-index:1;
+  position:relative;
+}
+
+.titulo{
+  font-size:80px;
+  margin:0;
+  text-shadow:2px 2px 5px black;
+  display:flex;
+  align-items:center;
+}
+
+.titulo span{
+  font-weight:bold;
+}
+
+.titulo span:nth-child(1){color:#ff5252;}
+.titulo span:nth-child(2){color:#ff9800;}
+.titulo span:nth-child(3){color:#ffeb3b;}
+.titulo span:nth-child(4){color:#4caf50;}
+.titulo span:nth-child(5){color:#2196f3;}
+.titulo span:nth-child(6){color:#9c27b0;}
+.titulo span:nth-child(7){color:#ff5252;}
+.titulo span:nth-child(8){color:#ff9800;}
+.titulo span:nth-child(9){color:#4caf50;}
+.titulo span:nth-child(10){color:#2196f3;}
+
+.titulo img{
+  height:130px;
+  margin-left:15px;
+  border-radius:10px;
+  vertical-align:middle;
+  position:relative;
+  top:-5px;
+}
+
+#rodape{
+  font-size:20px;
+  color:white;
+  text-shadow:1px 1px 2px black;
+}
+
+/* TEXTO */
+
+#texto{
+  max-width:1100px;
+  width:95%;
+  background:white;
+  padding:40px;
+  font-size:24px;
+  line-height:1.7;
+  border-radius:25px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.25);
+  margin-bottom:20px;
+  min-height:280px;
+  overflow-y:auto;
+  z-index:1;
+  position:relative;
+}
+
+/* CAMPO DIGITAÇÃO */
+
+#campo{
+  font-size:26px;
+  font-weight:bold;
+  padding:30px;
+  width:95%;
+  max-width:1100px;
+  min-height:150px;
+  border-radius:30px;
+  border:5px solid #ccc;
+  outline:none;
+  resize:vertical;
+  background:#f9f9f9;
+  z-index:1;
+  position:relative;
+}
+
+#campo:focus{
+  border-color:#000000;
+  box-shadow:0 0 12px rgba(76,175,80,0.5);
+}
+
+/* INFO */
+
+#info{
+  margin-top:20px;
+  font-size:20px;
+  color:white;
+  text-shadow:1px 1px 2px black;
+  z-index:1;
+  position:relative;
+}
+
+/* BOTAO */
+
+button{
+  margin-top:25px;
+  padding:15px 35px;
+  font-size:30px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(90deg,#4CAF50,#81C784);
+  color:white;
+  cursor:pointer;
+  z-index:1;
+  position:relative;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+/* BARRA PROGRESSO */
+
+#progresso{
+  margin-top:20px;
+  width:95%;
+  max-width:1100px;
+  height:25px;
+  background:#ddd;
+  border-radius:10px;
+  overflow:hidden;
+  z-index:1;
+  position:relative;
+}
+
+#barra{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#4CAF50,#81C784);
+}
+
+/* CORES LETRAS */
+
+.correto{
+  color:#4CAF50;
+}
+
+.errado{
+  color:#F44336;
+  background:#ffe5e5;
+}
+
+/* RESULTADO FINAL */
+
+#resultado{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+#caixaResultado{
+  background:white;
+  padding:50px;
+  border-radius:25px;
+  text-align:center;
+  max-width:500px;
+}
+
+#caixaResultado h2{
+  font-size:40px;
+  color:#4CAF50;
+}
+
+#caixaResultado p{
+  font-size:24px;
+  margin:25px 0;
+}
+
+
+/* Navegação Recreio Digital: adicionada sem modificar o jogo */
+.rd-nav{position:relative;z-index:10;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;width:95%;max-width:1100px;margin:0 auto 18px}
+.rd-nav a{display:inline-block;text-decoration:none;background:#fff;color:#073b78;padding:11px 17px;border-radius:13px;font:800 17px Arial,sans-serif;box-shadow:0 3px 8px #0003}
+.rd-nav a:hover{background:#ffeb3b}
+</style>
+</head>
+
+<body>
+<nav class="rd-nav" aria-label="Navegação Recreio Digital">
+<a id="rd-voltar" href="../3-ano/index.html">⬅ Voltar aos jogos</a>
+<a href="../index.html">🏠 Página inicial</a>
+</nav>
+
+
+<div class="cabecalho">
+  <h1 class="titulo">
+    <span>D</span><span>I</span><span>G</span><span>I</span><span>T</span><span>@</span><span>K</span><span>I</span><span>D</span><span>S</span>
+    <img src="./imagens-digitakids/crianca.png" alt="Criança a digitar">
+  </h1>
+
+  <div id="rodape">RECURSO DESENVOLVIDO POR PROFESSOR MÁRIO MENEZES mario_menezes2009@edu.madeira.gov.pt</div>
+</div>
+
+<div id="texto"><span>A</span><span>s</span><span> </span><span>c</span><span>h</span><span>u</span><span>v</span><span>a</span><span>s</span><span> </span><span>a</span><span>j</span><span>u</span><span>d</span><span>a</span><span>m</span><span> </span><span>a</span><span>s</span><span> </span><span>p</span><span>l</span><span>a</span><span>n</span><span>t</span><span>a</span><span>s</span><span> </span><span>a</span><span> </span><span>c</span><span>r</span><span>e</span><span>s</span><span>c</span><span>e</span><span>r</span><span>.</span><span> </span><span>O</span><span>s</span><span> </span><span>r</span><span>i</span><span>o</span><span>s</span><span> </span><span>l</span><span>e</span><span>v</span><span>a</span><span>m</span><span> </span><span>á</span><span>g</span><span>u</span><span>a</span><span> </span><span>p</span><span>a</span><span>r</span><span>a</span><span> </span><span>o</span><span> </span><span>m</span><span>a</span><span>r</span><span>.</span><span> </span><span>A</span><span> </span><span>á</span><span>g</span><span>u</span><span>a</span><span> </span><span>e</span><span>v</span><span>a</span><span>p</span><span>o</span><span>r</span><span>a</span><span> </span><span>n</span><span>o</span><span>v</span><span>a</span><span>m</span><span>e</span><span>n</span><span>t</span><span>e</span><span> </span><span>c</span><span>o</span><span>m</span><span> </span><span>o</span><span> </span><span>S</span><span>o</span><span>l</span><span>.</span><span> </span><span>O</span><span> </span><span>c</span><span>i</span><span>c</span><span>l</span><span>o</span><span> </span><span>d</span><span>a</span><span> </span><span>á</span><span>g</span><span>u</span><span>a</span><span> </span><span>m</span><span>a</span><span>n</span><span>t</span><span>é</span><span>m</span><span> </span><span>a</span><span> </span><span>T</span><span>e</span><span>r</span><span>r</span><span>a</span><span> </span><span>v</span><span>i</span><span>v</span><span>a</span><span>.</span><span> </span><span>S</span><span>e</span><span>m</span><span> </span><span>á</span><span>g</span><span>u</span><span>a</span><span>,</span><span> </span><span>o</span><span>s</span><span> </span><span>s</span><span>e</span><span>r</span><span>e</span><span>s</span><span> </span><span>v</span><span>i</span><span>v</span><span>o</span><span>s</span><span> </span><span>n</span><span>ã</span><span>o</span><span> </span><span>c</span><span>o</span><span>n</span><span>s</span><span>e</span><span>g</span><span>u</span><span>e</span><span>m</span><span> </span><span>s</span><span>o</span><span>b</span><span>r</span><span>e</span><span>v</span><span>i</span><span>v</span><span>e</span><span>r</span><span>.</span><span> </span><span>O</span><span>b</span><span>s</span><span>e</span><span>r</span><span>v</span><span>a</span><span>r</span><span> </span><span>a</span><span> </span><span>c</span><span>h</span><span>u</span><span>v</span><span>a</span><span> </span><span>é</span><span> </span><span>a</span><span>p</span><span>r</span><span>e</span><span>n</span><span>d</span><span>e</span><span>r</span><span> </span><span>s</span><span>o</span><span>b</span><span>r</span><span>e</span><span> </span><span>o</span><span> </span><span>c</span><span>i</span><span>c</span><span>l</span><span>o</span><span>.</span></div>
+
+<textarea id="campo" placeholder="🖊️ Começa a digitar e diverte-te!"></textarea>
+
+<div id="info">
+Tempo: <span id="tempo">0</span>s |
+Erros: <span id="erros">0</span>
+</div>
+
+<div id="progresso">
+<div id="barra" style="width: 0%;"></div>
+</div>
+
+<button onclick="novoTexto()">NOVO TEXTO</button>
+
+<div id="resultado" style="display: none;">
+<div id="caixaResultado">
+<h2>🎉 Parabéns!</h2>
+<p id="mensagemFinal"></p>
+<button onclick="novoTexto()">JOGAR NOVAMENTE</button>
+</div>
+</div>
+
+<script>
+const textos=[
+ // Plantas
+  "Plantas crescem em jardins, campos e florestas. Elas precisam de água, sol e ar. As raízes seguram a planta e bebem água. Algumas têm flores coloridas e frutos deliciosos. As folhas ajudam a fazer comida para a planta. Plantas são muito importantes para a vida na Terra.",
+  
+  "As árvores são plantas grandes que vivem muitos anos. Têm tronco forte e folhas verdes. No outono, algumas folhas caem ao chão. Elas dão sombra e ajudam a purificar o ar. Os frutos das árvores alimentam animais e pessoas. Plantar árvores é importante para o planeta.",
+  
+  "As flores são plantas que têm cores bonitas. Algumas têm cheiros agradáveis. Elas atraem abelhas e borboletas. As flores ajudam as plantas a produzir sementes. Cada flor tem uma forma diferente. As crianças gostam de observar flores no jardim.",
+
+  // Animais
+  "Os animais vivem na terra, no mar ou no ar. Alguns comem plantas, outros carne. Alguns são grandes e outros muito pequenos. Os animais têm diferentes formas de se proteger. Alguns vivem em grupos, outros sozinhos. Observar animais ajuda a aprender sobre a natureza.",
+  
+  "Os cães são animais domésticos e fiéis. Eles gostam de brincar e passear. Os gatos são ágeis e gostam de dormir. Todos os animais precisam de comida e água. Alguns animais ajudam os humanos no trabalho. Ter animais em casa ensina responsabilidade.",
+  
+  "Os peixes vivem nos rios, lagos e no mar. Têm escamas e nadadeiras. Precisam de água para viver. Alguns são coloridos e outros muito pequenos. Alimentam-se de plantas e pequenos animais. Os peixes são importantes para o ecossistema aquático.",
+
+  // Sistema Solar
+  "O Sol é uma estrela que nos dá luz e calor. Os planetas giram à volta do Sol. A Terra tem água, ar e vida. Marte é vermelho e frio. Júpiter é o maior planeta do sistema solar. Aprender sobre os planetas é divertido.",
+  
+  "Mercúrio é o planeta mais próximo do Sol. Vénus é muito quente. A Terra é azul e verde. Marte tem montanhas e desertos. Urano e Neptuno são planetas frios. Cada planeta é diferente do outro.",
+  
+  "A Lua gira à volta da Terra. Ela muda de forma durante o mês. A Lua ilumina a noite. Os astronautas já foram visitá-la. A Lua ajuda a controlar as marés. É fascinante olhar para a Lua no céu.",
+
+  // Romanos
+  "Os romanos viveram há muitos anos. Construíram estradas e aquedutos. Tinham exércitos poderosos. Falaram latim, que deu origem ao português. Os romanos ajudaram a organizar cidades. A sua história é muito interessante.",
+  
+  "Roma foi uma cidade muito importante no passado. Os romanos adoravam deuses e deusas. Eles criaram leis e tribunais. Alguns edifícios romanos ainda existem hoje. Os romanos viajaram e conquistaram outros povos. Aprender sobre Roma ensina história.",
+  
+  "Os romanos gostavam de jogos e teatros. Construíram arenas para lutas e espetáculos. Tinham escolas para ensinar os jovens. Usavam togas e roupas especiais. Inventaram muitas coisas para a vida diária. O legado romano ainda é visto hoje.",
+
+  // Povos
+  "Os celtas viviam em tribos na Europa antiga. Construíam casas simples e cultivavam a terra. Os lusitanos eram guerreiros corajosos. Os visigodos chegaram mais tarde. Cada povo tinha tradições diferentes. Aprender sobre eles ajuda a conhecer a história.",
+  
+  "No passado, existiam vários povos em Portugal. Alguns eram agricultores, outros guerreiros. Cada povo tinha roupas e casas próprias. Alguns viviam perto dos rios. Conhecer os povos antigos ajuda a entender a cultura. A história é cheia de aventuras.",
+  
+  "Os povos antigos celebravam festas e rituais. Cada região tinha costumes diferentes. Alguns viviam em montanhas, outros em planícies. As crianças aprendiam com os mais velhos. Os povos antigos construíram aldeias e vilas. A vida deles era ligada à natureza.",
+
+  // Dinastias em Portugal
+  "Portugal teve várias dinastias ao longo da história. A primeira foi a dinastia de Borgonha. Depois veio a dinastia de Avis e a de Bragança. Cada dinastia teve reis e rainhas. Eles ajudaram a construir castelos e cidades. A história de Portugal é fascinante.",
+  
+  "Os reis e rainhas governavam o país. Alguns combateram invasões e protegeram o território. Outros apoiaram a educação e cultura. As dinastias mudaram ao longo do tempo. Cada monarca deixou a sua marca. Aprender sobre dinastias ajuda a entender Portugal.",
+  
+  "A dinastia de Avis começou com D. João I. Durante esta dinastia houve descobertas marítimas. Portugal cresceu e ganhou novas terras. A dinastia de Bragança veio depois. Cada dinastia teve desafios e vitórias. O povo aprendeu a viver com cada mudança.",
+
+  // Ciclo da Água
+  "A água evapora com o calor do Sol. O vapor sobe e forma nuvens. Quando as nuvens ficam pesadas, chove. A água volta para rios, lagos e mares. O ciclo da água nunca acaba. É muito importante para a vida.",
+  
+  "As chuvas ajudam as plantas a crescer. Os rios levam água para o mar. A água evapora novamente com o Sol. O ciclo da água mantém a Terra viva. Sem água, os seres vivos não conseguem sobreviver. Observar a chuva é aprender sobre o ciclo.",
+  
+  "A água pode ser líquida, sólida ou vapor. Nos rios e lagos está líquida. No inverno, pode formar gelo. Com o calor, transforma-se em vapor. As nuvens levam a água para outros lugares. O ciclo da água é um processo natural.",
+  
+  // Textos extras para ter 30
+  "As sementes das plantas crescem quando têm água e terra. Elas podem virar flores, frutos ou árvores. Observar sementes ajuda a entender a natureza. Cada planta tem o seu tempo para crescer. Algumas crescem rápido, outras devagar. Cuidar das plantas é divertido.",
+  
+  "Os pássaros voam pelos céus e constroem ninhos. Alguns migram para outros países. Os filhotes aprendem a voar com os pais. Os pássaros cantam para comunicar. Cada espécie tem cores e sons diferentes. É divertido observar pássaros no jardim.",
+  
+  "Os dinossauros viveram há milhões de anos. Alguns eram grandes, outros pequenos. Alimentavam-se de plantas ou de outros animais. Alguns viviam em grupos, outros sozinhos. Hoje estudamos os fósseis deles. Os dinossauros são fascinantes.",
+  
+  "O Sol aquece a Terra e permite a vida. A luz do Sol ajuda as plantas a crescer. Sem o Sol, não haveria calor nem energia. Os dias e as noites dependem da rotação da Terra. Aprender sobre o Sol é aprender sobre o planeta. Ele é essencial para todos nós.",
+  
+  "Os castelos foram construídos para proteger os reis. Tinham muralhas e torres altas. Dentro viviam famílias e soldados. Alguns castelos ainda existem hoje. As crianças gostam de imaginar cavaleiros e princesas. Os castelos fazem parte da história de Portugal.",
+  
+  "As árvores dão sombra, frutos e madeira. Algumas flores crescem à beira dos caminhos. Plantas e árvores ajudam a purificar o ar. Os jardins são locais bonitos e tranquilos. Observar a natureza é divertido. Cuidar das plantas ensina responsabilidade.",
+
+"Os animais fazem parte do nosso planeta e são muito importantes para a natureza e para as pessoas. Existem muitos tipos de animais, como cães, gatos, pássaros, peixes, coelhos e cavalos. Cada animal é diferente e tem características próprias. Alguns são grandes, outros são pequenos; alguns vivem na terra, outros na água ou no ar. Muitos animais vivem nas nossas casas e tornam-se animais de estimação. Os cães são conhecidos por serem fiéis e gostam de brincar, correr e passear com os donos. Os gatos são mais tranquilos e gostam de dormir em lugares quentinhos e confortáveis. Ter um animal de estimação pode trazer muita alegria à família.Também existem animais que vivem na natureza, como nas florestas, nos rios e no mar. Cada um tem uma forma diferente de viver e de se alimentar. Alguns comem plantas e outros comem carne.Cuidar bem dos animais é muito importante. Devemos respeitá-los, protegê-los e garantir que tenham comida, água e um lugar seguro para viver. Assim, eles podem crescer saudáveis e felizes."
+
+];
+
+let textoAtual="";
+let inicio=null;
+let erros=0;
+
+const textoDiv=document.getElementById("texto");
+const campo=document.getElementById("campo");
+const barra=document.getElementById("barra");
+
+function mostrarTexto(){
+  textoDiv.innerHTML="";
+  for(let letra of textoAtual){
+    let span=document.createElement("span");
+    span.textContent=letra;
+    textoDiv.appendChild(span);
+  }
+}
+
+function atualizarProgresso(valor){
+  let perc=(valor/textoAtual.length)*100;
+  barra.style.width=perc+"%";
+}
+
+function novoTexto(){
+  document.getElementById("resultado").style.display="none";
+  textoAtual=textos[Math.floor(Math.random()*textos.length)];
+  erros=0;
+  inicio=null;
+  campo.value="";
+  document.getElementById("erros").textContent=0;
+  document.getElementById("tempo").textContent=0;
+  atualizarProgresso(0);
+  mostrarTexto();
+  campo.focus();
+}
+
+campo.addEventListener("input",function(){
+  if(!inicio) inicio=new Date();
+  let valor=campo.value;
+  let spans=textoDiv.querySelectorAll("span");
+  erros=0;
+  for(let i=0;i<spans.length;i++){
+    let letra=valor[i];
+    if(letra==null){
+      spans[i].className="";
+    }
+    else if(letra===spans[i].textContent){
+      spans[i].className="correto";
+    }
+    else{
+      spans[i].className="errado";
+      erros++;
+    }
+  }
+  document.getElementById("erros").textContent=erros;
+  atualizarProgresso(valor.length);
+
+  if(valor.length===textoAtual.length){
+    let tempo=Math.floor((new Date()-inicio)/1000);
+    let estrelas="⭐";
+    if(erros==0) estrelas="⭐⭐⭐ Excelente!";
+    else if(erros<5) estrelas="⭐⭐ Muito bem!";
+    else estrelas="⭐ Continua a treinar!";
+    let mensagem="Tempo: "+tempo+" segundos<br>Erros: "+erros+"<br><br>Resultado: "+estrelas;
+    document.getElementById("mensagemFinal").innerHTML=mensagem;
+    document.getElementById("resultado").style.display="flex";
+  }
+});
+
+setInterval(function(){
+  if(inicio){
+    let tempo=Math.floor((new Date()-inicio)/1000);
+    document.getElementById("tempo").textContent=tempo;
+  }
+},1000);
+
+novoTexto();
+</script>
+
+
+<script>
+(function(){
+  const ano = new URLSearchParams(window.location.search).get('ano');
+  const anosPermitidos = ['1','2','3','4'];
+  const anoDestino = anosPermitidos.includes(ano) ? ano : '3';
+  document.getElementById('rd-voltar').href = '../' + anoDestino + '-ano/index.html';
+})();
+</script>
+</body></html>

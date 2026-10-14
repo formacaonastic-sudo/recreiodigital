@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="pt-PT"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>2.º Ano | Aprende &amp; Brinca</title><style>
+:root{
+ --navy:#073b78;--blue:#1597ed;--green:#39c866;--orange:#ff9d1c;
+ --purple:#8050df;--pink:#ef4d75;--yellow:#ffd33d;--cream:#fffdf4;
+ --text:#17345b;--muted:#57708e;--white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(#eaf9ff 0 34%,#f8fbff 65%,#eef8f0);color:var(--text);
+font-family:"Trebuchet MS",Arial,sans-serif;font-size:18px}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+
+.topbar{background:var(--navy);color:#fff;min-height:76px;display:flex;align-items:center}
+.nav{width:min(1240px,94%);margin:auto;display:flex;align-items:center;gap:25px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:1000;font-size:1.55rem;white-space:nowrap}
+.owl{width:52px;height:52px;border-radius:50%;background:#ffcc35;display:grid;place-items:center;
+font-size:2rem;border:4px solid #fff;box-shadow:0 5px 0 #042e61}
+.menu{display:flex;gap:8px;margin-left:auto}
+.menu a{padding:13px 17px;border-radius:18px;font-weight:900}
+.menu a:hover,.menu .active{background:#1597ed}
+.sound{font-size:1.5rem;margin-left:4px}
+
+.hero{background:linear-gradient(180deg,#24b9ee,#69d7f1 58%,#a8e88d);padding:35px 0 28px;overflow:hidden}
+.hero-inner{width:min(1240px,94%);margin:auto;display:grid;grid-template-columns:1.45fr .55fr;align-items:center;gap:20px}
+.hero-copy{text-align:center;position:relative;z-index:2}
+.hero-title{display:inline-block;background:#fff;border:8px solid #fff;border-radius:42px;
+padding:15px 38px 19px;box-shadow:0 12px 0 rgba(7,59,120,.12)}
+.hero-title h1{margin:0;font-size:clamp(3rem,7vw,5.7rem);line-height:.85;letter-spacing:-3px;
+color:var(--blue);text-shadow:3px 4px 0 #dcefff}
+.hero-title h1 span{color:#f5a900}.hero-title h1 b{color:#42bd52}
+.hero-ribbon{display:inline-block;margin-top:15px;background:var(--yellow);color:var(--navy);
+padding:12px 25px;font-weight:1000;font-size:1.25rem;transform:rotate(-1.5deg);
+clip-path:polygon(2% 0,98% 5%,94% 100%,6% 95%)}
+.hero-copy p{font-size:1.25rem;font-weight:800;color:#fff;margin:17px auto 0;text-shadow:0 2px 2px #247a98}
+.hero-art{display:flex;justify-content:center;align-items:end;min-height:260px}
+.kid{font-size:8rem;filter:drop-shadow(0 10px 4px rgba(0,0,0,.13));animation:bob 3s ease-in-out infinite}
+.kid.two{font-size:7rem;animation-delay:.5s}
+@keyframes bob{50%{transform:translateY(-9px) rotate(2deg)}}
+
+.content{width:min(1240px,94%);margin:auto}
+.section-title{font-size:2rem;font-weight:1000;margin:28px 0 15px;color:var(--navy)}
+.section-sub{color:var(--muted);font-weight:700;margin:-6px 0 18px}
+
+.years{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}
+.year{border:0;color:#fff;border-radius:25px;padding:18px 10px;cursor:pointer;
+font-weight:1000;box-shadow:0 7px 0 rgba(0,0,0,.10);transition:.18s;min-height:104px}
+.year:hover{transform:translateY(-5px)}
+.year strong{display:block;font-size:1.25rem}.year small{display:block;margin-top:6px;font-size:.9rem}
+.y1{background:var(--purple)}.y2{background:#148fe8}.y3{background:#32bd5d}.y4{background:#f48b19}.y5{background:#ee4e72}
+
+.games{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.game{background:#fff;border-radius:27px;overflow:hidden;box-shadow:0 9px 0 rgba(25,65,100,.10);
+border:2px solid #e6eef5;transition:.2s}
+.game:hover{transform:translateY(-7px)}
+.game-visual{height:190px;display:grid;place-items:center;position:relative;font-size:7rem}
+.v1{background:linear-gradient(135deg,#5bcaf5,#168fe9)}
+.v2{background:linear-gradient(135deg,#56cf65,#20a94d)}
+.v3{background:linear-gradient(135deg,#d87cff,#9a3be5)}
+.tag{position:absolute;top:13px;left:13px;background:#fff;color:var(--navy);
+padding:7px 12px;border-radius:999px;font-size:.85rem;font-weight:1000;box-shadow:0 3px 8px #0002}
+.game-body{padding:18px 20px 20px}
+.game h3{margin:0;color:var(--navy);font-size:1.5rem}
+.game p{margin:6px 0 15px;color:var(--muted);font-weight:700;line-height:1.35}
+.game-row{display:flex;justify-content:space-between;align-items:center}
+.stars{color:#ffb900;letter-spacing:2px}.play{background:var(--yellow);padding:10px 18px;border-radius:14px;
+font-weight:1000;color:var(--navy);box-shadow:0 4px 0 #dca900}
+.play:hover{transform:translateY(1px)}
+
+.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.subject{color:#fff;padding:20px 22px;border-radius:22px;display:flex;align-items:center;gap:15px;
+box-shadow:0 6px 0 rgba(0,0,0,.1)}
+.subject .ico{font-size:2.4rem}.subject strong{font-size:1.2rem}.subject small{display:block;margin-top:3px;font-weight:700}
+.s1{background:var(--pink)}.s2{background:#138fe7}.s3{background:#28b955}
+
+.features{margin:25px 0 38px;background:#fff;border-radius:25px;padding:22px;display:grid;
+grid-template-columns:repeat(4,1fr);gap:14px;box-shadow:0 7px 0 #dfe9e7}
+.feature{text-align:center;font-weight:900;color:var(--navy)}.feature div{font-size:2.2rem}.feature span{display:block;margin-top:5px}
+
+footer{background:var(--navy);color:#fff;padding:27px 0;margin-top:10px}
+.footer{width:min(1240px,94%);margin:auto;display:flex;justify-content:space-between;gap:20px;font-weight:700}
+.footer strong{font-size:1.2rem}
+
+@media(max-width:850px){
+ .menu a:nth-child(3),.menu a:nth-child(4){display:none}
+ .hero-inner{grid-template-columns:1fr}.hero-art{min-height:100px}.kid{font-size:5rem}.kid.two{font-size:4rem}
+ .years{grid-template-columns:repeat(3,1fr)}.games{grid-template-columns:1fr 1fr}.subjects{grid-template-columns:1fr}
+ .features{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+ body{font-size:17px}.topbar{min-height:66px}.nav{gap:10px}.brand{font-size:1.15rem}.owl{width:43px;height:43px;font-size:1.6rem}
+ .menu{display:none}.hero{padding-top:22px}.hero-title{padding:12px 18px;border-radius:28px;border-width:5px}
+ .hero-title h1{font-size:3.15rem}.hero-ribbon{font-size:1rem}.hero-copy p{font-size:1.05rem}
+ .years{grid-template-columns:1fr 1fr}.games{grid-template-columns:1fr}.game-visual{height:175px}
+ .section-title{font-size:1.7rem}.features{grid-template-columns:1fr 1fr}.footer{flex-direction:column}
+}
+
+.year{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:145px}.year strong{font-size:1.5rem}.year small{font-size:1rem}.year .emoji{font-size:2.6rem;margin-bottom:8px}
+.page-hero{padding:32px 16px;text-align:center;color:#fff;background:linear-gradient(120deg,var(--blue),var(--purple));}.page-hero h1{font-size:clamp(2.2rem,5vw,3.8rem);margin:6px}.page-hero p{font-weight:800;font-size:1.2rem}.backlinks{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:18px}.backlinks a{background:#fff;color:var(--navy);padding:12px 20px;border-radius:16px;font-weight:900;box-shadow:0 4px 0 #0002}.game-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin:24px 0 45px}.game-tile{background:#fff;border-radius:24px;padding:25px;text-align:center;border:2px solid #e3edf6;box-shadow:0 7px 0 #dce8f1}.game-tile .picture{font-size:4.5rem}.game-tile h2{color:var(--navy);font-size:1.5rem}.game-tile p{color:var(--muted);font-weight:700}.game-tile .status{display:inline-block;background:#eef3f8;padding:11px 20px;border-radius:14px;font-weight:900}.game-tile a.status{background:var(--yellow)}.notice{background:#fff9df;border-radius:18px;padding:16px 20px;margin:24px 0;color:var(--navy);font-weight:700}
+@media(max-width:560px){.page-hero{padding:25px 10px}.year{min-height:125px}.year strong{font-size:1.15rem}}
+
+/* Navegação comum em todas as páginas, preservando as cores originais */
+.portal-layout{width:min(1240px,94%);margin:22px auto 42px;display:grid;grid-template-columns:235px minmax(0,1fr);gap:24px;align-items:start}
+.portal-sidebar{background:#fff;border:2px solid #e3edf6;border-radius:25px;padding:17px;box-shadow:0 7px 0 #dce8f1;position:sticky;top:15px}
+.portal-sidebar h2{font-size:1.18rem;color:var(--navy);margin:4px 0 14px}
+.portal-sidebar a{display:block;border-radius:14px;padding:13px 12px;font-weight:900;margin:6px 0;background:#edf6ff;color:var(--navy);transition:transform .15s}
+.portal-sidebar a:hover{transform:translateX(4px);background:#d9efff}
+.portal-sidebar a.selected{background:var(--purple);color:white}
+.portal-main{min-width:0}.portal-main .content{width:100%}
+.portal-back{display:inline-block;background:var(--yellow);color:var(--navy);padding:12px 21px;border-radius:16px;font-weight:1000;box-shadow:0 4px 0 #dca900;margin:0 0 12px}
+.portal-back:hover{transform:translateY(-2px)}
+.portal-mobile-menu{display:none}
+@media(max-width:760px){.portal-layout{grid-template-columns:1fr;gap:14px}.portal-sidebar{position:static}.portal-sidebar nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.portal-sidebar a{margin:0}.portal-sidebar h2{margin-bottom:12px}}
+@media(max-width:430px){.portal-sidebar nav{grid-template-columns:1fr}}
+
+/* Renovação visual: mantém a navegação e as cores do Aprende & Brinca */
+.page-hero{position:relative;overflow:hidden;min-height:245px;display:flex;align-items:center;justify-content:center;padding:34px 18px;background:linear-gradient(120deg,var(--year-a),var(--year-b))!important}
+.page-hero::before,.page-hero::after{content:"";position:absolute;border-radius:50%;background:#ffffff20;pointer-events:none}
+.page-hero::before{width:300px;height:300px;left:-95px;top:-170px}.page-hero::after{width:230px;height:230px;right:-70px;bottom:-150px}
+.hero-stage{width:min(1100px,100%);display:grid;grid-template-columns:1fr 220px;gap:28px;align-items:center;text-align:left;position:relative;z-index:1}
+.hero-stage h1{font-size:clamp(2.5rem,5vw,4.2rem);line-height:1.08;margin:6px 0 12px;text-shadow:0 4px 0 #00000012}
+.hero-stage p{font-size:1.17rem;line-height:1.5;max-width:650px;margin:0}
+.hero-eyebrow{display:inline-block;background:#ffffff35;border:2px solid #ffffff70;border-radius:100px;padding:7px 15px;font-size:.95rem;font-weight:900}
+.hero-illustration{position:relative;height:180px;display:grid;place-items:center}
+.hero-illustration .big-art{font-size:7rem;filter:drop-shadow(0 10px 3px #0002);animation:floatArt 3s ease-in-out infinite}
+.hero-illustration .mini-art{position:absolute;font-size:2.7rem;filter:drop-shadow(0 5px 2px #0002)}
+.hero-illustration .mini-art.one{left:2px;top:4px;transform:rotate(-15deg)}.hero-illustration .mini-art.two{right:0;top:5px;transform:rotate(13deg)}.hero-illustration .mini-art.three{right:28px;bottom:0;transform:rotate(-10deg)}
+@keyframes floatArt{50%{transform:translateY(-9px) rotate(3deg)}}
+.game-grid{gap:22px}.game-tile{padding:0 0 24px;overflow:hidden;transition:transform .18s,box-shadow .18s}.game-tile:hover{transform:translateY(-6px);box-shadow:0 13px 0 #dce8f1}
+.game-tile .picture{height:165px;display:grid;place-items:center;font-size:5.3rem;background:linear-gradient(135deg,#cceeff,#e9d9ff);position:relative;margin:0 0 18px;text-shadow:0 5px 0 #ffffff88}
+.game-tile:nth-child(2) .picture{background:linear-gradient(135deg,#ffe2a0,#ffc5d7)}.game-tile:nth-child(3) .picture{background:linear-gradient(135deg,#c8f6d5,#d2e8ff)}
+.game-tile h2,.game-tile p{padding-left:16px;padding-right:16px}.game-tile h2{margin:8px 0}.game-tile p{min-height:65px;line-height:1.45}
+.game-tile .status{margin:3px 10px 0}.game-tile a.status{display:inline-block;transition:transform .15s}.game-tile a.status:hover{transform:scale(1.05)}
+.portal-sidebar a{display:flex;align-items:center;gap:9px}.portal-sidebar a.selected{background:#22b963}
+@media(max-width:700px){.hero-stage{grid-template-columns:1fr;text-align:center;gap:2px}.hero-stage p{margin:auto}.hero-illustration{height:125px}.hero-illustration .big-art{font-size:5rem}.hero-illustration .mini-art{font-size:2rem}.page-hero{padding:28px 12px}}
+@media(prefers-reduced-motion:reduce){.hero-illustration .big-art{animation:none}}
+</style></head><body>
+<header class="topbar"><div class="nav"><a class="brand" href="../index.html"><span class="owl">🦉</span><span>Aprende <span style="color:#ffd33d">&amp;</span> Brinca</span></a><nav class="menu"><a href="../index.html">🏠 Início</a><a href="#atividades" class="active">🎮 Jogos</a></nav></div></header>
+<section class="page-hero" style="--year-a:#22b963;--year-b:#1597ed"><div class="hero-stage"><div><span class="hero-eyebrow">🎮 Aprende &amp; Brinca · Descobre e diverte-te!</span><h1>2.º Ano</h1><p>Jogos e atividades para aprender a brincar! · 7–8 anos</p></div><div class="hero-illustration" aria-hidden="true"><span class="big-art">🌳</span><span class="mini-art one">🔢</span><span class="mini-art two">🦊</span><span class="mini-art three">🌟</span></div></div></section>
+<div class="portal-layout"><aside class="portal-sidebar" aria-label="Escolher ano de escolaridade"><h2>📚 Escolhe o teu ano</h2><nav><a href="../index.html">🏠 Página inicial</a><a href="../pre-escolar/index.html">🧸 Pré-escolar</a><a href="../1-ano/index.html">🚀 1.º Ano</a><a href="../2-ano/index.html" class="selected" aria-current="page">🌳 2.º Ano</a><a href="../3-ano/index.html">🪐 3.º Ano</a><a href="../4-ano/index.html">🏆 4.º Ano</a></nav></aside><div class="portal-main"><div class="backlinks"><a class="portal-back" href="../index.html">⬅ Voltar</a><a href="../index.html">🏠 Página inicial</a><a href="../index.html#anos">↩ Escolher outro ano</a></div>
+<main class="content" id="atividades"><h2 class="section-title">🎮 Escolhe um jogo</h2><p class="section-sub">Clica num jogo quando estiver disponível para começar a aventura!</p><div class="game-grid" id="lista-jogos" aria-live="polite"></div><div class="notice">✨ Novos jogos serão acrescentados aqui à medida que forem criados.</div></main></div></div>
+<footer><div class="footer"><div><strong>🦉 Aprende &amp; Brinca</strong><br>Jogos educativos para aprender brincando.</div><div>💻 Computador · 📱 Tablet · 📲 Telemóvel</div></div></footer>
+<script src="jogos.js"></script>
+<script>
+(function(){
+ const area=document.getElementById('lista-jogos');
+ const jogos=window.JOGOS_DO_ANO || [];
+ if(!jogos.length){area.innerHTML='<p style="font-weight:800;padding:24px">🎮 Estamos a preparar jogos para este ano. Volta em breve!</p>';return;}
+ for(const jogo of jogos){
+   const artigo=document.createElement('article');artigo.className='game-tile';
+   const figura=document.createElement('div');figura.className='picture';figura.textContent=jogo.icone||'🎮';
+   const titulo=document.createElement('h2');titulo.textContent=jogo.titulo;
+   const descricao=document.createElement('p');descricao.textContent=jogo.descricao||'Vamos jogar!';
+   const link=document.createElement('a');link.className='status';link.textContent='▶ Jogar agora';link.href=jogo.ficheiro;
+   artigo.append(figura,titulo,descricao,link);area.appendChild(artigo);
+ }
+})();
+</script>
+</body></html>

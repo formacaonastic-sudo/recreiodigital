@@ -1,0 +1,5 @@
+Aprende & Brinca — jogos melhorados para o Pré-escolar
+
+Copiar os 3 ficheiros HTML para a pasta pre-escolar. O jogos.js incluído é o catálogo com os 6 jogos; só substituir se ainda utilizar esse mesmo catálogo. Não é necessário alterar index.html.
+
+As instruções são faladas através da síntese de voz do navegador. Para garantir voz pt-PT, esta deve estar instalada no sistema. Em alguns navegadores a criança terá de tocar no botão «Ouvir» para iniciar a voz.

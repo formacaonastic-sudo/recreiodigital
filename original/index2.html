@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)index.html -->
+<html lang="pt-PT"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal dos Jogos Educativos</title>
+<style>
+:root{
+ --navy:#073b78;--blue:#1597ed;--green:#39c866;--orange:#ff9d1c;
+ --purple:#8050df;--pink:#ef4d75;--yellow:#ffd33d;--cream:#fffdf4;
+ --text:#17345b;--muted:#57708e;--white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(#eaf9ff 0 34%,#f8fbff 65%,#eef8f0);color:var(--text);
+font-family:"Trebuchet MS",Arial,sans-serif;font-size:18px}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+
+.topbar{background:var(--navy);color:#fff;min-height:76px;display:flex;align-items:center}
+.nav{width:min(1240px,94%);margin:auto;display:flex;align-items:center;gap:25px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:1000;font-size:1.55rem;white-space:nowrap}
+.owl{width:52px;height:52px;border-radius:50%;background:#ffcc35;display:grid;place-items:center;
+font-size:2rem;border:4px solid #fff;box-shadow:0 5px 0 #042e61}
+.menu{display:flex;gap:8px;margin-left:auto}
+.menu a{padding:13px 17px;border-radius:18px;font-weight:900}
+.menu a:hover,.menu .active{background:#1597ed}
+.sound{font-size:1.5rem;margin-left:4px}
+
+.hero{background:linear-gradient(180deg,#24b9ee,#69d7f1 58%,#a8e88d);padding:35px 0 28px;overflow:hidden}
+.hero-inner{width:min(1240px,94%);margin:auto;display:grid;grid-template-columns:1.45fr .55fr;align-items:center;gap:20px}
+.hero-copy{text-align:center;position:relative;z-index:2}
+.hero-title{display:inline-block;background:#fff;border:8px solid #fff;border-radius:42px;
+padding:15px 38px 19px;box-shadow:0 12px 0 rgba(7,59,120,.12)}
+.hero-title h1{margin:0;font-size:clamp(3rem,7vw,5.7rem);line-height:.85;letter-spacing:-3px;
+color:var(--blue);text-shadow:3px 4px 0 #dcefff}
+.hero-title h1 span{color:#f5a900}.hero-title h1 b{color:#42bd52}
+.hero-ribbon{display:inline-block;margin-top:15px;background:var(--yellow);color:var(--navy);
+padding:16px 30px;font-weight:1000;font-size:1.25rem;line-height:1.5;
+max-width:100%;border-radius:20px;overflow-wrap:break-word;box-shadow:0 5px 0 rgba(7,59,120,.10)}
+.hero-copy p{font-size:1.25rem;font-weight:800;color:#fff;margin:17px auto 0;text-shadow:0 2px 2px #247a98}
+.hero-art{display:flex;justify-content:center;align-items:end;min-height:260px}
+.kid{font-size:8rem;filter:drop-shadow(0 10px 4px rgba(0,0,0,.13));animation:bob 3s ease-in-out infinite}
+.kid.two{font-size:7rem;animation-delay:.5s}
+@keyframes bob{50%{transform:translateY(-9px) rotate(2deg)}}
+
+.content{width:min(1240px,94%);margin:auto}
+.section-title{font-size:2rem;font-weight:1000;margin:28px 0 15px;color:var(--navy)}
+.section-sub{color:var(--muted);font-weight:700;margin:-6px 0 18px}
+
+.years{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}
+.year{border:0;color:#fff;border-radius:25px;padding:18px 10px;cursor:pointer;
+font-weight:1000;box-shadow:0 7px 0 rgba(0,0,0,.10);transition:.18s;min-height:104px}
+.year:hover{transform:translateY(-5px)}
+.year strong{display:block;font-size:1.25rem}.year small{display:block;margin-top:6px;font-size:.9rem}
+.y1{background:var(--purple)}.y2{background:#148fe8}.y3{background:#32bd5d}.y4{background:#f48b19}.y5{background:#ee4e72}
+
+.games{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.game{background:#fff;border-radius:27px;overflow:hidden;box-shadow:0 9px 0 rgba(25,65,100,.10);
+border:2px solid #e6eef5;transition:.2s}
+.game:hover{transform:translateY(-7px)}
+.game-visual{height:190px;display:grid;place-items:center;position:relative;font-size:7rem}
+.v1{background:linear-gradient(135deg,#5bcaf5,#168fe9)}
+.v2{background:linear-gradient(135deg,#56cf65,#20a94d)}
+.v3{background:linear-gradient(135deg,#d87cff,#9a3be5)}
+.tag{position:absolute;top:13px;left:13px;background:#fff;color:var(--navy);
+padding:7px 12px;border-radius:999px;font-size:.85rem;font-weight:1000;box-shadow:0 3px 8px #0002}
+.game-body{padding:18px 20px 20px}
+.game h3{margin:0;color:var(--navy);font-size:1.5rem}
+.game p{margin:6px 0 15px;color:var(--muted);font-weight:700;line-height:1.35}
+.game-row{display:flex;justify-content:space-between;align-items:center}
+.stars{color:#ffb900;letter-spacing:2px}.play{background:var(--yellow);padding:10px 18px;border-radius:14px;
+font-weight:1000;color:var(--navy);box-shadow:0 4px 0 #dca900}
+.play:hover{transform:translateY(1px)}
+
+.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.subject{color:#fff;padding:20px 22px;border-radius:22px;display:flex;align-items:center;gap:15px;
+box-shadow:0 6px 0 rgba(0,0,0,.1)}
+.subject .ico{font-size:2.4rem}.subject strong{font-size:1.2rem}.subject small{display:block;margin-top:3px;font-weight:700}
+.s1{background:var(--pink)}.s2{background:#138fe7}.s3{background:#28b955}
+
+.features{margin:25px 0 38px;background:#fff;border-radius:25px;padding:22px;display:grid;
+grid-template-columns:repeat(4,1fr);gap:14px;box-shadow:0 7px 0 #dfe9e7}
+.feature{text-align:center;font-weight:900;color:var(--navy)}.feature div{font-size:2.2rem}.feature span{display:block;margin-top:5px}
+
+footer{background:var(--navy);color:#fff;padding:27px 0;margin-top:10px}
+.footer{width:min(1240px,94%);margin:auto;display:flex;justify-content:space-between;gap:20px;font-weight:700}
+.footer strong{font-size:1.2rem}
+
+@media(max-width:850px){
+ .menu a:nth-child(3),.menu a:nth-child(4){display:none}
+ .hero-inner{grid-template-columns:1fr}.hero-art{min-height:100px}.kid{font-size:5rem}.kid.two{font-size:4rem}
+ .years{grid-template-columns:repeat(3,1fr)}.games{grid-template-columns:1fr 1fr}.subjects{grid-template-columns:1fr}
+ .features{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+ body{font-size:17px}.topbar{min-height:66px}.nav{gap:10px}.brand{font-size:1.15rem}.owl{width:43px;height:43px;font-size:1.6rem}
+ .menu{display:none}.hero{padding-top:22px}.hero-title{padding:12px 18px;border-radius:28px;border-width:5px}
+ .hero-title h1{font-size:3.15rem}.hero-ribbon{font-size:1rem}.hero-copy p{font-size:1.05rem}
+ .years{grid-template-columns:1fr 1fr}.games{grid-template-columns:1fr}.game-visual{height:175px}
+ .section-title{font-size:1.7rem}.features{grid-template-columns:1fr 1fr}.footer{flex-direction:column}
+}
+#jogos-destaque .game-body{display:flex;flex-direction:column;min-height:190px}
+#jogos-destaque .game-body p{flex:1}
+#jogos-destaque .game-visual{font-size:5.5rem}
+#jogos-destaque .game-row{justify-content:flex-start}
+/* Filtros por disciplina: sem alterar o visual original dos cartões */
+.subject{border:0;text-align:left;cursor:pointer;font-family:inherit;font-size:inherit;transition:transform .18s,filter .18s}
+.subject:hover,.subject:focus-visible{transform:translateY(-4px);filter:brightness(1.05)}
+.subject[aria-expanded="true"]{outline:4px solid #ffd33d;outline-offset:3px}
+#resultados-disciplina{margin:22px 0 35px}
+#resultados-disciplina[hidden]{display:none}
+.disciplina-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.disciplina-heading h3{color:var(--navy);font-size:1.45rem;margin:8px 0 15px}
+#fechar-disciplina{background:#fff;border:2px solid #dce8f1;border-radius:14px;padding:10px 17px;color:var(--navy);font-weight:900;cursor:pointer}
+#lista-disciplina{grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr))}
+.disciplina-vazio{background:#fff;padding:22px;border-radius:18px;color:var(--navy);font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+ <div class="nav">
+  <a class="brand" href="index.html"><span class="owl">🦉</span><span>Aprende <span style="color:#ffd33d">&amp;</span> Brinca</span></a>
+  <nav class="menu">
+   <a class="active" href="index.html#">🏠 Início</a>
+   <a href="index.html#jogos">🎮 Jogos</a>
+   <a href="index.html#disciplinas">📚 Disciplinas</a>
+   <a href="index.html#conquistas">🏆 Conquistas</a>
+  </nav>
+  
+ </div>
+</header>
+
+<section class="hero">
+ <div class="hero-inner">
+  <div class="hero-copy">
+   <div class="hero-title"><h1>Aprende <span>&amp;</span><br><b>Brinca</b></h1></div>
+   <div class="hero-ribbon">Descobre jogos, desafios e atividades para aprender enquanto te divertes!</div>
+   <p>⭐ Aprende &nbsp; • &nbsp; 🎮 Joga &nbsp; • &nbsp; 🏆 Evolui</p>
+  </div>
+  <div class="hero-art" aria-hidden="true"><div class="kid">🧒</div><div class="kid two">🦉</div></div>
+ </div>
+</section>
+
+<main class="content">
+ <h2 class="section-title">📚 Escolhe o teu ano escolar</h2>
+ <p class="section-sub">Encontra atividades adequadas ao teu nível.</p>
+ <div class="years" id="anos">
+  <a class="year y1" href="pre-escolar/index.html"><strong>🧸 Pré-escolar</strong><small>3–5 anos</small></a>
+  <a class="year y2" href="1-ano/index.html"><strong>🔵 1.º Ano</strong><small>6–7 anos</small></a>
+  <a class="year y3" href="2-ano/index.html"><strong>🟢 2.º Ano</strong><small>7–8 anos</small></a>
+  <a class="year y4" href="3-ano/index.html"><strong>🟠 3.º Ano</strong><small>8–9 anos</small></a>
+  <a class="year y5" href="4-ano/index.html"><strong>🔴 4.º Ano</strong><small>9–10 anos</small></a>
+ </div>
+
+ <section id="jogos">
+  <h2 class="section-title">🎮 Jogos em destaque</h2>
+  <p class="section-sub">Escolhe um jogo e começa a aventura!</p>
+  <div class="games" id="jogos-destaque" aria-live="polite"><p>A carregar jogos…</p></div>
+ </section>
+
+ <section id="disciplinas">
+  <h2 class="section-title">📖 Aprende por disciplinas</h2>
+  <div class="subjects">
+   <button type="button" class="subject s1" data-disciplina="Português" aria-expanded="false"><span class="ico">📖</span><span><strong>Português</strong><small>Ler · Escrever · Pensar</small></span></button>
+   <button type="button" class="subject s2" data-disciplina="Matemática" aria-expanded="false"><span class="ico">🔢</span><span><strong>Matemática</strong><small>Contar · Calcular · Resolver</small></span></button>
+   <button type="button" class="subject s3" data-disciplina="Estudo do Meio" aria-expanded="false"><span class="ico">🌍</span><span><strong>Estudo do Meio</strong><small>Explorar · Descobrir · Aprender</small></span></button>
+  </div>
+  <div id="resultados-disciplina" hidden aria-live="polite">
+    <div class="disciplina-heading"><h3 id="titulo-disciplina"></h3><button type="button" id="fechar-disciplina">✕ Fechar</button></div>
+    <div class="games" id="lista-disciplina"></div>
+  </div>
+ </section>
+
+ <section id="conquistas">
+  <h2 class="section-title">🏆 O teu progresso</h2>
+  <div class="features">
+   <div class="feature"><div>⭐</div><span>Ganha estrelas</span></div>
+   <div class="feature"><div>🏅</div><span>Conquista medalhas</span></div>
+   <div class="feature"><div>🚀</div><span>Passa de nível</span></div>
+   <div class="feature"><div>❤️</div><span>Aprende brincando</span></div>
+  </div>
+ </section>
+</main>
+
+<footer>
+ <div class="footer"><div><strong>🦉 Portal dos Jogos</strong><br>Jogos educativos para aprender brincando.</div>
+ <div>💻 Computador · 📱 Tablet · 📲 Telemóvel</div></div>
+</footer>
+
+<script>
+(function(){
+ const area=document.getElementById('jogos-destaque');
+ const anos=[['pre-escolar','🧸 Pré-escolar'],['1-ano','🚀 1.º Ano'],['2-ano','🌳 2.º Ano'],['3-ano','🪐 3.º Ano'],['4-ano','🏆 4.º Ano']];
+ const jogos=[];
+ const botoesDisciplina=[...document.querySelectorAll('[data-disciplina]')];
+ const resultados=document.getElementById('resultados-disciplina');
+ const listaDisciplina=document.getElementById('lista-disciplina');
+ const tituloDisciplina=document.getElementById('titulo-disciplina');
+ let selecionada=null;
+ // Jogos anteriores sem campo "disciplina": classificação apenas quando inequívoca.
+ const disciplinasConhecidas={
+   'livrodasletras.html':'Português',
+   'vamos-contar.html':'Matemática',
+   'formas-e-cores.html':'Matemática'
+ };
+ function cartao(j,i){
+   const card=document.createElement('article');card.className='game';
+   const visual=document.createElement('div');visual.className='game-visual v'+(i%3+1);
+   const tag=document.createElement('span');tag.className='tag';tag.textContent=j.ano;
+   visual.append(tag,document.createTextNode(j.icone||'🎮'));
+   const body=document.createElement('div');body.className='game-body';
+   const h=document.createElement('h3');h.textContent=j.titulo;
+   const p=document.createElement('p');p.textContent=j.descricao||'Vamos aprender a brincar!';
+   const row=document.createElement('div');row.className='game-row';
+   const link=document.createElement('a');link.className='play';link.href=j.url;link.textContent='▶ Jogar agora';
+   row.append(link);body.append(h,p,row);card.append(visual,body);
+   return card;
+ }
+ function filtrar(disciplina){
+   selecionada=disciplina;
+   botoesDisciplina.forEach(b=>b.setAttribute('aria-expanded',String(b.dataset.disciplina===disciplina)));
+   resultados.hidden=false;
+   tituloDisciplina.textContent='🎮 Jogos de '+disciplina;
+   listaDisciplina.replaceChildren();
+   const encontrados=jogos.filter(j=>j.disciplina===disciplina);
+   if(!encontrados.length){
+     const aviso=document.createElement('p');aviso.className='disciplina-vazio';
+     aviso.textContent='Ainda não existem jogos classificados nesta disciplina. Volta em breve!';
+     listaDisciplina.append(aviso);
+   } else encontrados.forEach((j,i)=>listaDisciplina.append(cartao(j,i)));
+   resultados.scrollIntoView({behavior:'smooth',block:'nearest'});
+ }
+ botoesDisciplina.forEach(b=>b.addEventListener('click',()=>filtrar(b.dataset.disciplina)));
+ document.getElementById('fechar-disciplina').addEventListener('click',()=>{
+   resultados.hidden=true;selecionada=null;
+   botoesDisciplina.forEach(b=>b.setAttribute('aria-expanded','false'));
+ });
+ function mostrar(){
+   area.replaceChildren();
+   if(!jogos.length){area.textContent='Não foi possível carregar os jogos. Confirma se as pastas e os ficheiros jogos.js estão junto ao index.html.';return;}
+   // Baralhar todos os jogos e apresentar apenas seis em cada abertura da página.
+   const sorteados=[...jogos];
+   for(let i=sorteados.length-1;i>0;i--){
+     const k=Math.floor(Math.random()*(i+1));
+     [sorteados[i],sorteados[k]]=[sorteados[k],sorteados[i]];
+   }
+   sorteados.slice(0,6).forEach((j,i)=>area.append(cartao(j,i)));
+ }
+ function proximo(i){
+   if(i===anos.length){mostrar();if(selecionada)filtrar(selecionada);return;}
+   const [pasta,ano]=anos[i];
+   window.JOGOS_DO_ANO=undefined;
+   const s=document.createElement('script');s.src=pasta+'/jogos.js';
+   s.onload=()=>{
+     if(Array.isArray(window.JOGOS_DO_ANO)){
+       window.JOGOS_DO_ANO.forEach(j=>{
+         if(j && typeof j.ficheiro==='string' && j.ficheiro.trim()){
+           jogos.push({ano,icone:j.icone,titulo:j.titulo||'Jogo',descricao:j.descricao,url:pasta+'/'+j.ficheiro.replace(/^\.\//,''),disciplina:j.disciplina||disciplinasConhecidas[j.ficheiro.replace(/^\.\//,'')]||null});
+         }
+       });
+     }
+     s.remove();proximo(i+1);
+   };
+   s.onerror=()=>{s.remove();proximo(i+1);};
+   document.body.append(s);
+ }
+ proximo(0);
+})();
+</script>
+</body></html>
