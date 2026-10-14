@@ -156,4 +156,43 @@ footer{background:var(--navy);color:#fff;padding:27px 0;margin-top:10px}
  }
 })();
 </script>
+
+<!-- Firebase: contabilização dos jogos iniciados. Não altera os jogos nem os menus. -->
+<script type="module">
+import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB1vAd842sLUXN7-L6aiDk67IyBaawOC-s",
+  authDomain: "recreio-digital-a8f2b.firebaseapp.com",
+  projectId: "recreio-digital-a8f2b",
+  storageBucket: "recreio-digital-a8f2b.firebasestorage.app",
+  messagingSenderId: "569236216149",
+  appId: "1:569236216149:web:9548ec12f40cd11bc437dc",
+  measurementId: "G-DV79DRN4WJ"
+};
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+const contador = doc(getFirestore(app), "estatisticas", "contadores");
+let aAbrir = false;
+
+document.addEventListener("click", async (evento) => {
+  const link = evento.target.closest?.("#lista-jogos .game-tile a.status[href]");
+  if (!link || evento.defaultPrevented || evento.button !== 0 || evento.ctrlKey || evento.metaKey || evento.shiftKey || evento.altKey || link.target === "_blank" || link.hasAttribute("download")) return;
+  evento.preventDefault();
+  if (aAbrir) return;
+  aAbrir = true;
+  const destino = link.href;
+  // Esperar pela confirmação da escrita (até 8 segundos) antes de abrir o jogo.
+  try {
+    await Promise.race([
+      updateDoc(contador, { jogosIniciados: increment(1) }),
+      new Promise((_, reject) => setTimeout(() => reject(new Error("Tempo de espera excedido")), 8000))
+    ]);
+  } catch (erro) {
+    console.warn("Não foi possível confirmar a contagem do jogo:", erro);
+  } finally {
+    window.location.assign(destino);
+  }
+}, true);
+</script>
 </body></html>
