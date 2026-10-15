@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Livro Digital desenvolvido por Professor Mário Menezes Interativo</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.livro {
+    position: relative;
+    width: 800px;
+    padding: 40px;
+    margin-top: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+.icone-livro {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: 200px;
+    height: auto;
+    z-index: 100;
+}
+.topo-titulo {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px; 
+    color: #000000;
+    z-index: 100;
+    position: relative;
+}
+.topo-letra {
+    text-align: center;
+    margin-bottom: 50px; 
+    font-weight: bold;
+    color: #1e90ff;
+}
+.topo-instrucoes {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #000;
+    font-weight: bold;
+}
+.pagina {
+    display: none;
+    flex-direction: column;
+    padding: 40px;
+    border-radius: 15px;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+    position: relative;
+    z-index: 1;
+}
+.ativa { display: flex; opacity: 1; }
+.linha {
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+    gap: 15px;
+}
+img.pictograma {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #fff;
+}
+.palavra {
+    font-size: 36px;
+    cursor: pointer;
+    min-width: 200px;
+    font-weight: bold;
+}
+input {
+    flex: 1;
+    font-size: 28px;
+    padding: 8px;
+    border: 3px solid #ccc;
+    border-radius: 6px;
+}
+.certo { border-color: green; background: #e6ffe6; }
+.errado { border-color: red; background: #ffe6e6; }
+.menu {
+    text-align: center;
+    margin-top: 20px;
+}
+button {
+    font-size: 20px;
+    padding: 10px 30px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+.button-anterior { background-color: #ff7f50; }
+.button-seguinte { background-color: #3cb44b; }
+.pagina-num { text-align: center; font-size: 24px; margin-top: 10px; font-weight: bold; }
+.contador { text-align: center; font-size: 24px; margin-top: 10px; font-weight: bold; color: #333; }
+.mensagem {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #4CAF50;
+    color: white;
+    font-size: 40px;
+    padding: 30px 50px;
+    border-radius: 15px;
+    display: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    z-index: 200;
+}
+.developers {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+    color: #555;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<div class="livro">
+<img src="https://png.pngtree.com/png-clipart/20240617/original/pngtree-kids-holding-open-books-and-reading-png-image_15348941.png" alt="Livro Infantil" class="icone-livro">
+<div class="topo-titulo">LIVRO DIGITAL DESENVOLVIDO POR PROFESSOR MÁRIO MENEZES</div>
+</div>
+
+<div class="menu">
+    <button class="button-anterior" onclick="mudar(-1)">← Anterior</button>
+    <button class="button-seguinte" onclick="mudar(1)">Seguinte →</button>
+</div>
+
+<div id="mensagem" class="mensagem">🎉 Parabéns! 🎉</div>
+
+<script>
+// Letras normais + casos especiais
+const ordemPaginas = ['rr','r','ar/er/ir/or/ur','ss','ch','nh','lh','ce/ci','an/en/in/on/un','al/el/il/ol/ul','vr/dr/fr/gr/pr','am/em/im/om/um','ça/ço/çu','az/ez/iz/uz','bl/gl/fl/pl/cl','ge/gi','gue/gui','em/im/om/um','x'];
+];
+
+// Palavras do livro
+const livroPalavras = {
+'rr': ['burro','ferro','jarra','garrafa','carro','serra'],
+'r': ['lírio','tubarão','peru','pera','pirata','marujo','muro'],
+'ar/er/ir/or/ur': ['cadeira','gorila','porco','Maria','urso','erva'],
+'ss': ['passa','massa','pessoa','festa','essa','bossa'],
+'ch': ['chave','chocolate','chuva','chapéu','chefe','choque'],
+'nh': ['ninho','manhã','banho','coelho','senhor','manha'],
+'lh': ['galho','olho','milho','trabalho','colher','filho'],
+'ce/ci': ['cinema','cenoura','cena','cicatriz','celular','ciclope'],
+'an/en/in/on/un': ['banana','trem','dinheiro','longo','funil','pneu'],
+'al/el/il/ol/ul': ['palha','mel','milho','sol','lula','balde'],
+'vr/dr/fr/gr/pr': ['verde','dreno','fruta','grande','prato','preto'],
+'am/em/im/om/um': ['amigo','elemento','imã','olmo','lume','rumo'],
+'ça/ço/çu': ['coração','canção','laço','laço','lanço','chuva'],
+'az/ez/iz/uz': ['lazanha','fez','pizza','luz','fuzil','jazz'],
+'bl/gl/fl/pl/cl': ['blusa','globo','flor','plano','clube','clara'],
+'ge/gi': ['gelo','girar','gesto','gira','gemido','gilete'],
+'gue/gui': ['guerra','guia','guelra','guino','guelra','guizo'],
+'em/im/om/um': ['em','im','om','um','sem','fim'],
+'x': ['xaile','xícara','xarope','xuxa','tórax','fixo']
+};
+
+const fundos = ['#ffe6e6','#e6f2ff','#e6ffe6','#fff0e6','#f2e6ff','#ffffe6','#e6ffff','#ffe6f2','#f9f9f9','#f0fff0','#f0f0ff','#fff0f0','#e6e6f9','#f9ffe6','#fff0cc','#ccffe6','#ffe6cc','#e6ccff','#fce6ff','#ccfff9','#f2f0e6','#e6f9ff','#ffe6f0','#f0ffe6','#fff6e6','#f0f6ff'];
+
+const paginas = [];
+
+function criarPagina(letraTopo, palavras, corFundo, numeroPagina){
+    let pagina = document.createElement('div');
+    pagina.classList.add('pagina');
+    pagina.style.background = corFundo;
+
+    let topo = document.createElement('div');
+    topo.classList.add('topo-letra');
+
+    const casosEspeciais = ['rr','r','ar/er/ir/or/ur','ss','ch','nh','lh','ce/ci','an/en/in/on/un','al/el/il/ol/ul','vr/dr/fr/gr/pr','am/em/im/om/um','ça/ço/çu','az/ez/iz/uz','bl/gl/fl/pl/cl','ge/gi','gue/gui','em/im/om/um','x'];
+
+    if(casosEspeciais.includes(letraTopo)){
+        topo.textContent = 'Caso de leitura: ' + letraTopo;
+        if(topo.textContent.length > 20){ 
+            topo.style.fontSize = '28px';
+        } else if(topo.textContent.length > 15){
+            topo.style.fontSize = '32px';
+        } else {
+            topo.style.fontSize = '40px';
+        }
+    } else {
+        topo.textContent = letraTopo;
+        topo.style.fontSize = '70px';
+    }
+
+    pagina.appendChild(topo);
+
+    let instr = document.createElement('div');
+    instr.classList.add('topo-instrucoes');
+    instr.textContent = 'Copia as palavras:';
+    pagina.appendChild(instr);
+
+    palavras.forEach((palavra,i) => {
+        let linha = document.createElement('div');
+        linha.classList.add('linha');
+
+        let img = document.createElement('img');
+        img.className = 'pictograma';
+        img.src = palavra + '.png';
+        linha.appendChild(img);
+
+        let divPal = document.createElement('div');
+        divPal.classList.add('palavra');
+        divPal.style.color = ['#e6194b','#3cb44b','#000000','#4363d8','#f58231','#911eb4'][i%6];
+        divPal.textContent = palavra + ' 🔊';
+        divPal.onclick = () => falar(palavra);
+        linha.appendChild(divPal);
+
+        let input = document.createElement('input');
+        input.setAttribute('data-resposta', palavra);
+        linha.appendChild(input);
+
+        pagina.appendChild(linha);
+    });
+
+    let contador = document.createElement('div');
+    contador.classList.add('contador');
+    contador.textContent = `Palavras corretas: 0 / ${palavras.length}`;
+    pagina.appendChild(contador);
+
+    let numPag = document.createElement('div');
+    numPag.classList.add('pagina-num');
+    numPag.textContent = 'Página ' + numeroPagina + ' de ' + ordemPaginas.length;
+    pagina.appendChild(numPag);
+
+    document.querySelector('.livro').appendChild(pagina);
+    paginas.push(pagina);
+}
+
+let idx = 0;
+ordemPaginas.forEach((letra,i) => {
+    criarPagina(letra, livroPalavras[letra], fundos[idx%fundos.length], i+1);
+    idx++;
+});
+
+paginas[0].classList.add('ativa');
+
+let atual = 0;
+function mostrar(){ paginas.forEach((p,i)=>{ if(i===atual){ p.classList.add('ativa'); } else { p.classList.remove('ativa'); } }); }
+function mudar(d){
+    let proximo = atual + d;
+    if(proximo<0) proximo=0;
+    if(proximo>=paginas.length) proximo=paginas.length-1;
+    if(proximo!==atual){
+        paginas[atual].classList.remove('ativa');
+        atual=proximo;
+        paginas[atual].classList.add('ativa');
+    }
+}
+function falar(texto){ const fala = new SpeechSynthesisUtterance(texto); fala.lang='pt-PT'; speechSynthesis.speak(fala); }
+
+document.addEventListener('input', e => {
+    if(e.target.tagName !== 'INPUT') return;
+    const input = e.target;
+    const resposta = input.dataset.resposta;
+    const texto = input.value.trim();
+    input.classList.remove('certo','errado');
+    if(texto.length===0) return;
+    if(texto===resposta) input.classList.add('certo'); else input.classList.add('errado');
+    atualizarContador();
+    verificarPagina();
+});
+
+function atualizarContador(){
+    const inputs = paginas[atual].querySelectorAll('input');
+    let contador = paginas[atual].querySelector('.contador');
+    let corretas = Array.from(inputs).filter(i => i.classList.contains('certo')).length;
+    contador.textContent = `Palavras corretas: ${corretas} / ${inputs.length}`;
+}
+
+function verificarPagina(){
+    const inputs = paginas[atual].querySelectorAll('input');
+    let tudoCerto = Array.from(inputs).every(i => i.classList.contains('certo'));
+    if(tudoCerto) mostrarParabens();
+}
+
+function mostrarParabens(){
+    const msg = document.getElementById('mensagem');
+    msg.style.display='block';
+    setTimeout(()=>{ msg.style.display='none'; mudar(1); },2000);
+}
+</script>
+
+<div class="developers">EMAIL: mario_menezes2009@edu.madeira.gov.pt</div>
+
+</body>
+</html>
