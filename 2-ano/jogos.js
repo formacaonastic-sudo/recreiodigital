@@ -99,5 +99,12 @@ window.JOGOS_DO_ANO = [
     icone: "🚂",
     ficheiro: "../jogos/comboio-dos-numeros.html?ano=2",
     disciplina: "Matemática"
-  }
+  },
+  {
+  titulo: "Leitura no Recreio",
+  descricao: "Observa a imagem, lê as palavras e descobre a resposta certa!",
+  icone: "📖",
+  ficheiro: "../jogos/leitura-no-recreio.html?ano=2",
+  disciplina: "Português"
+    }
 ];
