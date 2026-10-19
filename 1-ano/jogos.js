@@ -98,4 +98,3 @@ window.JOGOS_DO_ANO = [
   disciplina: "Matemática"
 }
 ];
-];
