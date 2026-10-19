@@ -98,5 +98,4 @@ window.JOGOS_DO_ANO = [
   icone: "🚂",
   ficheiro: "../jogos/comboio-dos-numeros.html?ano=2",
   disciplina: "Matemática"
-}
 ];
