@@ -84,5 +84,12 @@ window.JOGOS_DO_ANO = [
   icone: "✂️",
   ficheiro: "../jogos/divisao-silabica-recreio-digital.html?ano=2",
   disciplina: "Português"
+},
+  {
+  titulo: "Jogo do Galo",
+  descricao: "Joga contra o computador ou desafia um amigo!",
+  icone: "🐓",
+  ficheiro: "../jogos/jogo-do-galo-recreio-digital.html?ano=2",
+  disciplina: "Matemática"
 }
 ];
