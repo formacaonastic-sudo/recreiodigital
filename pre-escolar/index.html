@@ -174,6 +174,7 @@ const firebaseConfig = {
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const contador = doc(getFirestore(app), "estatisticas", "contadores");
 let aAbrir = false;
+window.addEventListener("pageshow", () => { aAbrir = false; });
 
 document.addEventListener("click", async (evento) => {
   const link = evento.target.closest?.("#lista-jogos .game-tile a.status[href]");
@@ -182,15 +183,19 @@ document.addEventListener("click", async (evento) => {
   if (aAbrir) return;
   aAbrir = true;
   const destino = link.href;
-  // Esperar pela confirmação da escrita (até 8 segundos) antes de abrir o jogo.
+  // Aguardar no máximo 1,8 segundos pela contagem antes de abrir o jogo.
+  let limite;
   try {
     await Promise.race([
       updateDoc(contador, { jogosIniciados: increment(1) }),
-      new Promise((_, reject) => setTimeout(() => reject(new Error("Tempo de espera excedido")), 8000))
+      new Promise((_, rejeitar) => {
+        limite = setTimeout(() => rejeitar(new Error("Tempo de espera da contagem excedido")), 1800);
+      })
     ]);
   } catch (erro) {
     console.warn("Não foi possível confirmar a contagem do jogo:", erro);
   } finally {
+    clearTimeout(limite);
     window.location.assign(destino);
   }
 }, true);
