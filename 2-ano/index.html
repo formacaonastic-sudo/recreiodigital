@@ -175,6 +175,10 @@ const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const contador = doc(getFirestore(app), "estatisticas", "contadores");
 let aAbrir = false;
 
+// Ao regressar a esta página (incluindo a cache de navegação),
+// permitir que o aluno escolha outro jogo.
+window.addEventListener("pageshow", () => { aAbrir = false; });
+
 document.addEventListener("click", async (evento) => {
   const link = evento.target.closest?.("#lista-jogos .game-tile a.status[href]");
   if (!link || evento.defaultPrevented || evento.button !== 0 || evento.ctrlKey || evento.metaKey || evento.shiftKey || evento.altKey || link.target === "_blank" || link.hasAttribute("download")) return;
@@ -182,15 +186,21 @@ document.addEventListener("click", async (evento) => {
   if (aAbrir) return;
   aAbrir = true;
   const destino = link.href;
-  // Esperar pela confirmação da escrita (até 8 segundos) antes de abrir o jogo.
+
+  // Esperar brevemente pela confirmação do Firebase para evitar perder
+  // a contagem ao mudar de página. Nunca bloquear o aluno indefinidamente.
+  let limite;
   try {
     await Promise.race([
       updateDoc(contador, { jogosIniciados: increment(1) }),
-      new Promise((_, reject) => setTimeout(() => reject(new Error("Tempo de espera excedido")), 8000))
+      new Promise((_, rejeitar) => {
+        limite = setTimeout(() => rejeitar(new Error("Tempo de espera da contagem excedido")), 1800);
+      })
     ]);
   } catch (erro) {
-    console.warn("Não foi possível confirmar a contagem do jogo:", erro);
+    console.warn("Contagem não confirmada; a abrir o jogo:", erro);
   } finally {
+    clearTimeout(limite);
     window.location.assign(destino);
   }
 }, true);
