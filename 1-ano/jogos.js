@@ -82,5 +82,12 @@ window.JOGOS_DO_ANO = [
   icone: "💻",
   ficheiro: "../jogos/teclado-digital-do-recreio.html?ano=1",
   disciplina: "Português"
+},
+  {
+  titulo: "Jogo do Galo",
+  descricao: "Joga contra o computador ou desafia um amigo!",
+  icone: "🐓",
+  ficheiro: "../jogos/jogo-do-galo-recreio-digital.html?ano=1",
+  disciplina: "Matemática"
 }
 ];
