@@ -89,5 +89,13 @@ window.JOGOS_DO_ANO = [
   icone: "🐓",
   ficheiro: "../jogos/jogo-do-galo-recreio-digital.html?ano=1",
   disciplina: "Matemática"
+},
+  {
+  titulo: "Comboio dos Números",
+  descricao: "Descobre o número que falta e ajuda o comboio a seguir viagem!",
+  icone: "🚂",
+  ficheiro: "../jogos/comboio-dos-numeros.html?ano=1",
+  disciplina: "Matemática"
 }
+];
 ];
