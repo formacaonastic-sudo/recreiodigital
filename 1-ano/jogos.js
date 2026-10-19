@@ -75,5 +75,12 @@ window.JOGOS_DO_ANO = [
   icone: "🐞",
   ficheiro: "../jogos/labirintos-para-miudos-60-labirintos.html?ano=1",
   disciplina: "Matemática"
+},
+{
+  titulo: "Teclado Digital do Recreio",
+  descricao: "Descobre as letras maiúsculas e aprende a utilizar o teclado do computador!",
+  icone: "💻",
+  ficheiro: "../jogos/teclado-digital-do-recreio.html?ano=1",
+  disciplina: "Português"
 }
 ];
