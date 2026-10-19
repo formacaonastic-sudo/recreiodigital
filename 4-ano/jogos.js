@@ -54,5 +54,12 @@ window.JOGOS_DO_ANO = [
   icone: "🧍",
   ficheiro: "../jogos/missao-corpo-humano-no-recreio.html?ano=4",
   disciplina: "Estudo do Meio"
+},
+  {
+  titulo: "Jogo do Galo",
+  descricao: "Joga contra o computador ou desafia um amigo!",
+  icone: "🐓",
+  ficheiro: "../jogos/jogo-do-galo-recreio-digital.html?ano=4",
+  disciplina: "Matemática"
 }
 ];
