@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Ábaco Digital do Recreio",
+  descricao: "Representa números no ábaco, até um milhão!",
+  icone: "🧮",
+  ficheiro: "../jogos/abaco-digital-do-recreio.html?ano=3",
+  disciplina: "Matemática"
+},
+  {
   titulo: "Robot Aspirador do Recreio",
   descricao: "Programa o robot, evita obstáculos e limpa todas as sujidades em 30 desafios!",
   icone: "🤖",
