@@ -17,6 +17,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Estudo do Meio"
   },
   {
+  titulo: "Robot Aspirador do Recreio",
+  descricao: "Programa o robot, evita obstáculos e limpa todas as sujidades em 30 desafios!",
+  icone: "🤖",
+  ficheiro: "../jogos/robot-aspirador-do-recreio.html?ano=2",
+  disciplina: "Matemática"
+},
+  {
     titulo: "Digit@Kids",
     descricao: "Treina a digitação e melhora a rapidez no teclado!",
     icone: "⌨️",
