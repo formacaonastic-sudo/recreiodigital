@@ -6,6 +6,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "../jogos/pensa-rapido.html?ano=3",
     disciplina: "Matemática"
   },
+  {
+  titulo: "Robot Aspirador do Recreio",
+  descricao: "Programa o robot, evita obstáculos e limpa todas as sujidades em 30 desafios!",
+  icone: "🤖",
+  ficheiro: "../jogos/robot-aspirador-do-recreio.html?ano=3",
+  disciplina: "Matemática"
+},
 {
   titulo: "Missão Segurança — Sismos e Incêndios",
   descricao: "Aprende a proteger-te em situações de sismo e incêndio!",
