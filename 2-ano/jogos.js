@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Comboio das Sílabas",
+  descricao: "Conta as sílabas, escolhe a carruagem certa e faz avançar o comboio!",
+  icone: "🚂",
+  ficheiro: "../jogos/comboio-das-silabas.html?ano=2",
+  disciplina: "Português"
+},
+  {
   titulo: "Ábaco Digital do Recreio",
   descricao: "Representa números no ábaco, até um milhão!",
   icone: "🧮",
