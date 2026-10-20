@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Ábaco Digital do Recreio",
+  descricao: "Representa números no ábaco, até um milhão!",
+  icone: "🧮",
+  ficheiro: "../jogos/abaco-digital-do-recreio.html?ano=1",
+  disciplina: "Matemática"
+},
+  {
     titulo: "Arte com Pixels",
     descricao: "Pinta os quadradinhos e descobre os desenhos!",
     icone: "🎨",
