@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Comboio das Sílabas",
+  descricao: "Conta as sílabas, escolhe a carruagem certa e faz avançar o comboio!",
+  icone: "🚂",
+  ficheiro: "../jogos/comboio-das-silabas.html?ano=4",
+  disciplina: "Português"
+},
+  {
   titulo: "Robot Aspirador do Recreio",
   descricao: "Programa o robot, evita obstáculos e limpa todas as sujidades em 30 desafios!",
   icone: "🤖",
