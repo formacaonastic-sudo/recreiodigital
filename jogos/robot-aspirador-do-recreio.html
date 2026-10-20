@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-PT"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Robot Aspirador do Recreio | Recreio Digital</title>
+<style>
+:root{--navy:#123a78;--blue:#168be9;--ink:#17365c;--yellow:#ffd44f;--sky:#eaf8ff}*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:'Trebuchet MS',Arial,sans-serif;background:radial-gradient(circle at 10% 15%,#fff9 0 60px,transparent 62px),linear-gradient(135deg,#a5e9ff,#eafaff 55%,#fff3c9);min-height:100vh}header{background:var(--navy);border-bottom:5px solid var(--yellow);color:white;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px max(16px,calc((100vw - 1120px)/2));flex-wrap:wrap}header strong{font-size:1.35rem}.nav{display:flex;gap:9px;flex-wrap:wrap}.nav a{color:var(--navy);text-decoration:none;background:white;border-radius:13px;padding:9px 14px;font-weight:900;box-shadow:0 4px 0 #092754}main{max-width:1450px;margin:12px auto;padding:0 14px}.intro{background:linear-gradient(120deg,#0970c8,#159ce7);border-radius:22px;color:white;text-align:center;padding:14px 20px;box-shadow:0 6px 0 #9dd4ee}.intro h1{font-size:clamp(1.65rem,3.6vw,2.4rem);margin:0 0 5px}.intro p{margin:0;font-weight:800}.stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:14px 0}.chip{background:white;border:2px solid #b6e4ff;border-radius:15px;padding:9px 15px;font-weight:900}.layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,.7fr);gap:15px;align-items:stretch}.panel{background:white;border:4px solid white;border-radius:26px;box-shadow:0 8px 0 #aed9eb,0 13px 25px #2755771c;padding:12px}.panel h2{margin:0 0 11px;font-size:1.15rem}.board{display:grid;gap:5px;background:#58c8e4;padding:8px;border-radius:19px;width:100%;max-width:850px;aspect-ratio:1.3;margin:auto;box-shadow:inset 0 0 0 3px #16a5d0}.cell{min-width:0;min-height:0;display:grid;place-items:center;border-radius:11px;background:linear-gradient(145deg,#fff,#eafaff);box-shadow:inset 0 -3px #d0ecf4;position:relative;font-size:clamp(1.4rem,3.8vw,2.7rem)}.cell.wall{background:repeating-linear-gradient(45deg,#a8b4c6 0 9px,#c9d3e1 9px 18px);box-shadow:inset 0 0 0 2px #8e9db0}.cell.robot{background:#d5f8ff;box-shadow:inset 0 0 0 3px #31bfe6}.cell.dirt{background:#fff1d5}.cell .bot{width:78%;height:78%;max-height:72px;max-width:72px;border-radius:50%;background:linear-gradient(145deg,#f7ffff,#a9e9fb);border:4px solid #1ba6d2;box-shadow:0 4px 0 #1383a6;display:grid;place-items:center;font-size:clamp(1.2rem,3vw,2.1rem)}.help{font-size:.9rem;font-weight:700;color:#52708a;margin:12px 0 0;text-align:center}.control-title{text-align:center;margin-bottom:9px!important}.arrows{display:grid;grid-template-columns:repeat(3,minmax(0,92px));grid-template-rows:repeat(3,82px);gap:10px;justify-content:center;margin:4px auto 10px}.arrow{font-size:2.8rem;color:white;border:0;border-radius:17px;font-weight:900;cursor:pointer;box-shadow:0 5px 0 #0d7eaa;transition:transform .1s}.arrow:hover,.action:hover{filter:brightness(1.06);transform:translateY(-2px)}.arrow:active,.action:active{transform:translateY(3px);box-shadow:none}.up{grid-column:2;grid-row:1;background:#1cb3ed}.left{grid-column:1;grid-row:2;background:#9a79e6;box-shadow:0 5px 0 #7653c2}.center{grid-column:2;grid-row:2;display:grid;place-items:center;font-size:2.6rem}.right{grid-column:3;grid-row:2;background:#f2747b;box-shadow:0 5px 0 #c54c54}.down{grid-column:2;grid-row:3;background:#21b9c9;box-shadow:0 5px 0 #168994}.program-label{font-size:.94rem;font-weight:900;margin:12px 0 7px}.queue{min-height:63px;display:flex;flex-wrap:wrap;align-content:center;gap:5px;padding:9px;background:#eff8ff;border:2px dashed #a9d6f3;border-radius:14px}.step{display:grid;place-items:center;background:#fff;border:2px solid #a6d8f8;border-radius:10px;min-width:36px;height:38px;font-size:1.3rem;font-weight:900}.step.active{background:#ffda57;border-color:#e8b42d}.queue-empty{color:#65859d;font-size:.89rem}.actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}.action{border:0;border-radius:13px;padding:11px 13px;font:900 .95rem 'Trebuchet MS',Arial;cursor:pointer;color:#123a78;background:#e5f2fc;box-shadow:0 4px 0 #b6d1e4}.action.primary{background:linear-gradient(180deg,#3be77c,#12b957);color:#073f25;box-shadow:0 7px 0 #09863b;font-size:1.4rem;padding:16px 24px;flex:1 1 100%;border:3px solid #a6f9c0;letter-spacing:.03em}.action.primary:hover{background:linear-gradient(180deg,#66f69a,#21cf69)}.action:disabled,.arrow:disabled{opacity:.5;cursor:default;transform:none}.message{margin-top:13px;padding:12px;border-radius:14px;text-align:center;background:#e8f6ff;min-height:49px;font-weight:900}.message.success{background:#d9f9e4;color:#16743c}.message.error{background:#ffe1e4;color:#aa2c41}.level-actions{display:flex;justify-content:center;gap:9px;margin-top:13px}.next{background:#27c875;color:white;border:0;border-radius:14px;padding:11px 20px;font-weight:900;cursor:pointer;box-shadow:0 4px 0 #139454}.next:disabled{opacity:.4;cursor:default}.small{font-size:.85rem;color:#55738a;text-align:center;margin-top:10px}footer{max-width:860px;margin:22px auto 28px;padding:18px 24px;text-align:center;font-weight:900;color:#123a78;font-size:clamp(1rem,2.2vw,1.2rem);background:linear-gradient(110deg,#fff6ca,#ffffff,#d9f5ff);border:3px solid #ffcf42;border-radius:22px;box-shadow:0 6px 0 #a9d7ea,0 12px 25px #22558020;letter-spacing:.015em}footer .heart{font-size:1.4em;display:inline-block;vertical-align:middle}footer .brand{color:#087bd2;font-weight:1000}@media(max-width:760px){.layout{grid-template-columns:1fr}.board{aspect-ratio:1.35;max-width:680px}.panel{padding:12px}.arrows{grid-template-columns:repeat(3,minmax(0,85px));grid-template-rows:repeat(3,74px)}.stats{margin:10px 0}.chip{padding:7px 10px;font-size:.9rem}}
+.arrow.up{background:#1cb3ed!important;color:#fff!important}.arrow.left{background:#9a79e6!important;color:#fff!important}.arrow.right{background:#f2747b!important;color:#fff!important}.arrow.down{background:#21b9c9!important;color:#fff!important}.arrow:disabled{opacity:.75} 
+/* Área de programação maior, com comandos bem legíveis */
+.queue{min-height:145px;align-content:flex-start;align-items:flex-start;gap:9px;padding:14px;border:3px dashed #81c6f2;background:#f1faff}
+.step{min-width:53px;height:53px;border-radius:13px;font-size:2rem;border-width:3px;box-shadow:0 3px 0 #c4dbea}
+.step.active{box-shadow:0 3px 0 #c99816}
+.program-label{font-size:1.12rem;margin-top:17px}
+.queue-empty{font-size:1rem;line-height:1.4}
+.action.primary{font-size:1.05rem;padding:12px 19px;flex:0 1 auto;min-width:220px;max-width:100%;border-width:2px;box-shadow:0 5px 0 #09863b;letter-spacing:0}
+@media(max-width:420px){.queue{min-height:125px;padding:10px;gap:6px}.step{min-width:43px;height:45px;font-size:1.6rem}.action.primary{min-width:0;width:100%}}
+
+/* Mensagens de resultado em janela modal */
+.result-overlay{position:fixed;inset:0;z-index:1000;background:rgba(10,34,65,.68);display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px)}
+.result-overlay[hidden]{display:none!important}
+.result-dialog{width:min(430px,100%);padding:32px 26px;text-align:center;background:white;border-radius:28px;border:5px solid #fff;box-shadow:0 20px 75px #061a3880;animation:popIn .2s ease-out}
+.result-dialog.ok{background:#e2ffeb;border-color:#42d57c}.result-dialog.bad{background:#fff0f1;border-color:#fa8491}
+.result-icon{font-size:4rem;line-height:1.2}.result-title{font-size:clamp(2rem,6vw,2.7rem);font-weight:900;margin:10px 0;color:#153a69}.result-detail{font-size:1.1rem;font-weight:800;color:#496680;margin:0 0 20px}.result-close{border:0;background:#ed6371;color:white;font:900 1.2rem 'Trebuchet MS',Arial;padding:13px 30px;border-radius:16px;cursor:pointer;box-shadow:0 5px 0 #c73e4e}.result-close[hidden]{display:none}
+@keyframes popIn{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:scale(1)}}
+</style></head><body>
+<header><strong>🦉 Recreio Digital</strong><nav class="nav"><a id="back" href="../1-ano/index.html">⬅ Voltar aos jogos</a><a href="../index.html">🏠 Página inicial</a></nav></header>
+<main><section class="intro"><h1>🤖 Robot Aspirador do Recreio</h1><p>Programa o robô com as setas e ajuda-o a limpar toda a sujidade!</p></section>
+<div class="stats"><span class="chip" id="mission">🎯 Missão 1/30</span><span class="chip" id="dirtCount">🧹 Sujidade: 0/0</span><span class="chip" id="stepCount">🧩 Comandos: 0/16</span></div>
+<div class="layout"><section class="panel"><h2>🏠 Tabuleiro da missão</h2><div class="board" id="board" aria-label="Tabuleiro do robô aspirador"></div><p class="help">🤖 Robô &nbsp; 💩 Sujidade &nbsp; ▧ Obstáculo. O robô aspira automaticamente ao passar pela sujidade.</p></section>
+<section class="panel"><h2 class="control-title">🎮 Programa o teu robô</h2><div class="arrows"><button class="arrow up" data-dir="U" title="Frente / Cima" aria-label="Frente / Cima">↑</button><button class="arrow left" data-dir="L" title="Esquerda" aria-label="Esquerda">←</button><div class="center">🤖</div><button class="arrow right" data-dir="R" title="Direita" aria-label="Direita">→</button><button class="arrow down" data-dir="D" title="Baixo" aria-label="Baixo">↓</button></div><div class="program-label">🧩 O teu programa <span id="countInline">(0/16)</span></div><div class="queue" id="queue" aria-live="polite"><span class="queue-empty">Clica nas setas para criar o percurso.</span></div><div class="actions"><button class="action" id="undo">↶ Apagar último</button><button class="action" id="clear">🗑️ Limpar</button><button class="action primary" id="run">▶ EXECUTAR PROGRAMA</button><button class="action" id="retry">🔄 Recomeçar</button></div><div id="message" class="message" aria-live="polite">Escolhe as setas e carrega em Executar Programa!</div><div class="level-actions"><button class="action" id="prev">◀ Anterior</button><button class="next" id="next" disabled>Próxima missão ▶</button></div><p class="small">30 missões progressivas · Sem Internet · Pensamento computacional</p></section></div></main><footer>✨ Feito com <span class="heart">❤️</span> para aprender e brincar · <span class="brand">🦉 Recreio Digital</span> ✨</footer>
+<div class="result-overlay" id="resultOverlay" role="dialog" aria-modal="true" aria-labelledby="resultTitle" hidden><div class="result-dialog" id="resultDialog"><div class="result-icon" id="resultIcon"></div><div class="result-title" id="resultTitle"></div><p class="result-detail" id="resultDetail"></p><button class="result-close" id="resultClose" type="button">🔄 Tentar outra vez</button></div></div>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id), arrows={U:'↑',D:'↓',L:'←',R:'→'},delta={U:[0,-1],D:[0,1],L:[-1,0],R:[1,0]},MAX=16;
+const params=new URLSearchParams(location.search),year=params.get('ano');$('back').href=year==='pre'||year==='pre-escolar'?'../pre-escolar/index.html':/^[1-4]$/.test(year||'')?`../${year}-ano/index.html`:'../1-ano/index.html';
+// Percursos garantidamente possíveis: cada missão nasce de um caminho válido.
+const paths=[
+'RR','DD','RDR','RRD','DRRD','RURR','DDRR','RRDD','DRRUR','RRDDLL','DDRRU','RDRDR','RRRDD','DDDRR','RRDDRU','DRRRDD','RRRDDDL','DDRRRU','RRRDDDRR','DDDRRRRU','RRRDRDDL','DDRRRURR','RRDDRRDD','DDDRRRRUU','RRRRDDLLD','DDRRUURRR','RRRDDDRRU','DDRRRURDD','RRRRDDDLL','DDDRRRRUUR'];
+const startPositions=[[0,1],[1,0],[0,0],[0,0],[0,0],[0,1],[0,0],[0,0],[0,1],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+let advanceTimer=null;
+function closePopup(){ $('resultOverlay').hidden=true }
+function showPopup(ok){
+  $('resultDialog').className='result-dialog '+(ok?'ok':'bad');
+  $('resultIcon').textContent=ok?'✨🧹✨':'🤖💡';
+  $('resultTitle').textContent=ok?'Limpo!':'Tenta outra vez!';
+  $('resultDetail').textContent=ok?'Muito bem! A avançar para o próximo nível…':'Revê a sequência de setas e volta a executar.';
+  $('resultClose').hidden=ok;
+  $('resultOverlay').hidden=false;
+  if(!ok)$('resultClose').focus();
+}
+$('resultClose').addEventListener('click',closePopup);
+let level=0,board=[],w=5,h=4,start=[0,0],robot=[0,0],dirty=new Set(),initialDirt=new Set(),walls=new Set(),commands=[],running=false,won=false;
+const key=(x,y)=>`${x},${y}`;
+function makeLevel(n){closePopup();clearTimeout(advanceTimer);advanceTimer=null;w=n<6?4:n<12?5:6;h=n<6?3:n<12?4:5;start=[...startPositions[n]];let x=start[0],y=start[1];const path=paths[n];const visited=[[x,y]];for(const d of path){const [dx,dy]=delta[d];x+=dx;y+=dy;if(x<0||y<0||x>=w||y>=h){throw Error('Percurso inválido na missão '+(n+1))}visited.push([x,y])}
+const unique=[...new Map(visited.slice(1).map(p=>[key(...p),p])).values()];
+// Progressão: 1 sujidade (1–4), 2 (5–12), 3 (13–22) e 4 (23–30).
+const target=n<4?1:n<12?2:n<22?3:4;
+const count=Math.min(unique.length,target);
+// Distribuir a sujidade ao longo do percurso, incluindo o destino final.
+const selected=[];
+for(let i=0;i<count;i++){
+  const idx=count===1?unique.length-1:Math.round(i*(unique.length-1)/(count-1));
+  selected.push(unique[idx]);
+}
+initialDirt=new Set(selected.map(p=>key(...p)));
+// Obstáculos apenas fora do percurso que garante a solução.
+walls=new Set();
+const free=[];
+for(let yy=0;yy<h;yy++)for(let xx=0;xx<w;xx++){
+  const k=key(xx,yy);
+  if(!visited.some(p=>key(...p)===k))free.push(k);
+}
+const obstacleCount=n<4?0:n<9?1:n<17?2:n<24?3:4;
+// Escolha determinística para que cada missão seja igual quando recomeçada.
+free.sort((a,b)=>{
+  const score=k=>{const [xx,yy]=k.split(',').map(Number);return (xx*37+yy*19+n*23)%101};
+  return score(a)-score(b);
+});
+free.slice(0,obstacleCount).forEach(k=>walls.add(k));
+commands=[];won=false;running=false;resetRobot();$('mission').textContent=`🎯 Missão ${n+1}/30`;$('prev').disabled=n===0;$('next').disabled=true;setMessage('Escolhe as setas e carrega em Executar Programa!');lock(false);document.querySelectorAll('[data-dir]').forEach(b=>b.disabled=false);render()}
+function resetRobot(){robot=[...start];dirty=new Set(initialDirt)}
+function render(){const b=$('board');b.style.gridTemplateColumns=`repeat(${w},minmax(0,1fr))`;b.style.gridTemplateRows=`repeat(${h},minmax(0,1fr))`;b.replaceChildren();for(let y=0;y<h;y++)for(let x=0;x<w;x++){const c=document.createElement('div');c.className='cell';const k=key(x,y);if(walls.has(k)){c.classList.add('wall');c.textContent='🧱'}else if(robot[0]===x&&robot[1]===y){c.classList.add('robot');const bot=document.createElement('div');bot.className='bot';bot.textContent='🤖';c.append(bot)}else if(dirty.has(k)){c.classList.add('dirt');c.textContent='💩'}b.append(c)}$('dirtCount').textContent=`🧹 Sujidade: ${initialDirt.size-dirty.size}/${initialDirt.size}`;$('stepCount').textContent=`🧩 Comandos: ${commands.length}/${MAX}`;$('countInline').textContent=`(${commands.length}/${MAX})`;const q=$('queue');q.replaceChildren();if(!commands.length){const e=document.createElement('span');e.className='queue-empty';e.textContent='Clica nas setas para criar o percurso.';q.append(e)}else commands.forEach(d=>{const el=document.createElement('span');el.className='step';el.textContent=arrows[d];q.append(el)})}
+function setMessage(s,type=''){const m=$('message');m.textContent=s;m.className='message '+type}
+function lock(flag){running=flag;document.querySelectorAll('[data-dir]').forEach(b=>b.disabled=flag||won);['undo','clear','run','retry','prev'].forEach(id=>$(id).disabled=flag);$('next').disabled=flag||!won}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function execute(){if(running||won)return;if(!commands.length){setMessage('Primeiro, escolhe alguns comandos!','error');return}resetRobot();lock(true);render();let blocked=false;for(let i=0;i<commands.length;i++){const d=commands[i],[dx,dy]=delta[d],nx=robot[0]+dx,ny=robot[1]+dy;const steps=document.querySelectorAll('.step');steps.forEach((s,j)=>s.classList.toggle('active',j===i));await sleep(420);if(nx<0||ny<0||nx>=w||ny>=h||walls.has(key(nx,ny))){blocked=true;setMessage('❌ Tenta outra vez!','error');break}robot=[nx,ny];dirty.delete(key(nx,ny));render();const now=document.querySelectorAll('.step');if(now[i])now[i].classList.add('active');await sleep(210);if(dirty.size===0){won=true;setMessage('✅ Limpo!','success');break}}
+if(!won&&!blocked)setMessage('❌ Tenta outra vez!','error');lock(false);$('next').disabled=!won;render();if(won){lock(true);showPopup(true);advanceTimer=setTimeout(()=>{level=level<29?level+1:0;makeLevel(level)},1800)}else{showPopup(false)}}
+document.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()=>{if(running||won)return;if(commands.length>=MAX){setMessage('O programa já tem 16 comandos.','error');return}commands.push(b.dataset.dir);setMessage('Muito bem! Continua ou carrega em Executar Programa.');render()}));$('undo').onclick=()=>{if(!running&&!won){commands.pop();render()}};$('clear').onclick=()=>{if(!running&&!won){commands=[];render();setMessage('Programa limpo. Escolhe novas setas.')}};$('retry').onclick=()=>{if(!running){won=false;resetRobot();commands=[];setMessage('Vamos tentar outra vez!');lock(false);render()}};$('run').onclick=execute;$('next').onclick=()=>{if(won&&level<29){level++;makeLevel(level)}else if(won){level=0;makeLevel(level)}};$('prev').onclick=()=>{if(!running&&level>0){level--;makeLevel(level)}};
+makeLevel(0);
+})();
+</script></body></html>
