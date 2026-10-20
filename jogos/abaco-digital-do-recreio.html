@@ -97,7 +97,7 @@ const places=[{key:'UMi',name:'Unidades de milhão',color:'#db2777',light:'#fce7
 const $=id=>document.getElementById(id);let max=10,target=7,values=Array(7).fill(0),hits=0,challenge=1,correct=false;const fmt=n=>n.toLocaleString('pt-PT');
 const levelCount=()=>String(max).length; // até 10: 2 barras; até 100: 3 barras
 function render(){const start=7-levelCount();$('abacus').innerHTML='';for(let i=start;i<7;i++){const p=places[i],v=values[i],cap=i===0?1:9;const el=document.createElement('div');el.className='column';el.style.setProperty('--bead',p.color);el.style.setProperty('--light',p.light);el.innerHTML=`<div class="col-label"><b>${p.key}</b><small>${p.name}</small></div><button class="rod" aria-label="Adicionar conta em ${p.name}" title="Adicionar uma conta"></button><div class="controls"><button class="minus" aria-label="Retirar conta em ${p.name}" ${v===0?'disabled':''}>−</button><button class="plus" aria-label="Adicionar conta em ${p.name}" ${v===cap?'disabled':''}>+</button></div>`;const rod=el.querySelector('.rod');for(let j=0;j<v;j++){const b=document.createElement('span');b.className='bead';rod.appendChild(b)}const edit=delta=>{values[i]=Math.max(0,Math.min(cap,values[i]+delta));render()};rod.onclick=()=>edit(1);el.querySelector('.minus').onclick=()=>edit(-1);el.querySelector('.plus').onclick=()=>edit(1);$('abacus').appendChild(el)}$('number').textContent=fmt(target);$('score').textContent=`⭐ Acertos: ${hits} · Desafio: ${challenge}`}
-function pick(){correct=false;target=Math.floor(Math.random()*max)+1;values.fill(0);render()}
+function pick(){correct=false;const previous=target;target=Math.floor(Math.random()*max)+1;if(max>1&&target===previous)target=(target%max)+1;values.fill(0);render()}
 function represented(){return values.reduce((sum,n,i)=>sum+n*10**(6-i),0)}
 function show(ok){correct=ok;$('result-emoji').textContent=ok?'🎉':'🤔';$('result-title').textContent=ok?'Muito bem!':'Tenta outra vez!';$('result-text').textContent=ok?`Representaste corretamente o número ${fmt(target)}. Continua assim!`:'Verifica as contas em cada barra e tenta novamente.';$('result-action').textContent=ok?'Próximo desafio →':'Voltar ao ábaco';$('modal').hidden=false;$('result-action').focus()}
 $('check').onclick=()=>{const ok=represented()===target;if(ok&&!correct)hits++;show(ok)};
@@ -105,7 +105,7 @@ $('result-action').onclick=()=>{$('modal').hidden=true;if(correct){challenge++;p
 $('clear').onclick=()=>{values.fill(0);render()};$('new').onclick=()=>{challenge++;pick()};$('level').onchange=e=>{max=Number(e.target.value);hits=0;challenge=1;pick()};
 const year=new URLSearchParams(location.search).get('ano');if(['1','2','3','4'].includes(year))$('back').href=`../${year}-ano/index.html`;
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('modal').hidden){$('modal').hidden=true}});
-render();
+pick();
 })();
 </script>
 </body></html>
