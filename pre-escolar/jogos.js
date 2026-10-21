@@ -10,7 +10,7 @@ window.JOGOS_DO_ANO = [
   titulo: "Gelo no Recreio",
   descricao: "Move o pinguim, derrete o gelo e descobre as imagens escondidas!",
   icone: "🧊",
-  ficheiro: "gelo-no-recreio.html"
+  ficheiro: "../jogos/gelo-no-recreio.html"
 },
   {
     "titulo": "Colorir Online",
