@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Brincadeiras com o Crocodilo",
+  descricao: "Compara números e ajuda o crocodilo a escolher o sinal correto!",
+  icone: "🐊",
+  ficheiro: "../jogos/brincadeiras-com-o-crocodilo.html?ano=1",
+  disciplina: "Matemática"
+},
+  {
   titulo: "Comboio das Sílabas",
   descricao: "Conta as sílabas, escolhe a carruagem certa e faz avançar o comboio!",
   icone: "🚂",
