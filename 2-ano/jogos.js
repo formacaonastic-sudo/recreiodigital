@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "A Viagem Espacial dos Números",
+  descricao: "Descobre os números antes, entre e depois numa aventura pelo espaço!",
+  icone: "🪐",
+  ficheiro: "../jogos/a-viagem-espacial-dos-numeros.html?ano=2",
+  disciplina: "Matemática"
+},
+  {
   titulo: "Brincadeiras com o Crocodilo",
   descricao: "Compara números e ajuda o crocodilo a escolher o sinal correto!",
   icone: "🐊",
