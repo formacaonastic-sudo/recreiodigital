@@ -7,6 +7,12 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "Gelo no Recreio",
+  descricao: "Move o pinguim, derrete o gelo e descobre as imagens escondidas!",
+  icone: "🧊",
+  ficheiro: "gelo-no-recreio.html"
+},
+  {
     "titulo": "Colorir Online",
     "descricao": "Escolhe cores, pinta e guarda os teus desenhos!",
     "icone": "🎨",
