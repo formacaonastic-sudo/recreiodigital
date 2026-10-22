@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Missão Ambiental",
+  descricao: "Aprende a separar o lixo e a proteger o planeta!",
+  icone: "🌍",
+  ficheiro: "../jogos/missao-ambiental.html?ano=4",
+  disciplina: "Estudo do Meio"
+},
+  {
   titulo: "Missão Internet Segura",
   descricao: "Aprende a navegar na Internet em segurança com perguntas divertidas!",
   icone: "🌐",
