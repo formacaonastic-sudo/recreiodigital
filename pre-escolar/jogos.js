@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "Gelo no Recreio — Aprende a Clicar",
+  descricao: "Aprende a clicar com o rato e descobre as imagens escondidas no gelo!",
+  icone: "🖱️",
+  ficheiro: "../jogos/gelo-no-recreio-aprende-a-clicar.html",
+  disciplina: "TIC"
+},
+  {
   titulo: "Gelo no Recreio",
   descricao: "Move o pinguim, derrete o gelo e descobre as imagens escondidas!",
   icone: "🧊",
