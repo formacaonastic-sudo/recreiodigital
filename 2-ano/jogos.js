@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "A Corrida dos Ordinais",
+  descricao: "Aprende os números ordinais até ao 20.º e conquista o primeiro lugar!",
+  icone: "🏃‍♂️🥇",
+  ficheiro: "../jogos/corrida-dos-ordinais.html?ano=2",
+  disciplina: "Matemática"
+},
+  {
   titulo: "Missão Ambiental",
   descricao: "Aprende a separar o lixo e a proteger o planeta!",
   icone: "🌍",
