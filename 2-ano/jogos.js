@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Mosaicos no Recreio Digital",
+  descricao: "Reproduz mosaicos coloridos e desenvolve a orientação espacial!",
+  icone: "🟦🟨🟥🟩",
+  ficheiro: "../jogos/mosaicos-no-recreio-digital.html?ano=2",
+  disciplina: "Matemática"
+},
+  {
   titulo: "A Corrida dos Ordinais",
   descricao: "Aprende os números ordinais até ao 20.º e conquista o primeiro lugar!",
   icone: "🏃‍♂️🥇",
