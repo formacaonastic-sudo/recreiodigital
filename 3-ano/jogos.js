@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Mosaicos no Recreio Digital",
+  descricao: "Reproduz mosaicos coloridos e desenvolve a orientação espacial!",
+  icone: "🟦🟨🟥🟩",
+  ficheiro: "../jogos/mosaicos-no-recreio-digital.html?ano=3",
+  disciplina: "Matemática"
+},
+  {
   titulo: "Missão 100 — Viagem ao Espaço",
   descricao: "Explora cinco planetas e supera 30 desafios numa aventura espacial!",
   icone: "💯",
