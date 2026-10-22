@@ -10,7 +10,7 @@ window.JOGOS_DO_ANO = [
   titulo: "Gelo no Recreio — Aprende a Clicar",
   descricao: "Aprende a clicar com o rato e descobre as imagens escondidas no gelo!",
   icone: "🖱️",
-  ficheiro: "../jogos/gelo-no-recreio-aprende-a-clicar.html",
+  ficheiro: "../jogos/gelo-no-recreio-aprende-a-clicar.html?ano=pre",
   disciplina: "TIC"
 },
   {
