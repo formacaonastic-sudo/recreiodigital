@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Missão 100 — Viagem ao Espaço",
+  descricao: "Explora cinco planetas e supera 30 desafios numa aventura espacial!",
+  icone: "💯",
+  ficheiro: "../jogos/missao-100.html?ano=4",
+  disciplina: "Matemática"
+},
+  {
   titulo: "A Corrida dos Ordinais",
   descricao: "Aprende os números ordinais até ao 20.º e conquista o primeiro lugar!",
   icone: "🏃‍♂️🥇",
