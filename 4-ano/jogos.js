@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Missão Internet Segura",
+  descricao: "Aprende a navegar na Internet em segurança com perguntas divertidas!",
+  icone: "🌐",
+  ficheiro: "../jogos/missao-internet-segura.html?ano=4",
+  disciplina: "Estudo do Meio"
+},
+  {
   titulo: "A Viagem Espacial dos Números",
   descricao: "Descobre os números antes, entre e depois numa aventura pelo espaço!",
   icone: "🪐",
