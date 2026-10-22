@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Gelo no Recreio — Aprende a Clicar",
+  descricao: "Treina o clique do rato, retira os blocos de gelo e descobre as imagens escondidas!",
+  icone: "🖱️",
+  ficheiro: "../jogos/gelo-no-recreio-aprende-a-clicar.html",
+  disciplina: "Matemática"
+},
+  {
   titulo: "A Viagem Espacial dos Números",
   descricao: "Descobre os números antes, entre e depois numa aventura pelo espaço!",
   icone: "🪐",
