@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Arrasta as Cores",
+  descricao: "Treina o rato, arrasta os objetos e coloca-os nas caixas das cores certas!",
+  icone: "🧺",
+  ficheiro: "../jogos/arrasta-as-cores.html?ano=1",
+  disciplina: "Matemática"
+},
+  {
   titulo: "Gelo no Recreio — Aprende a Clicar",
   descricao: "Treina o clique do rato, retira os blocos de gelo e descobre as imagens escondidas!",
   icone: "🖱️",
