@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "A Corrida dos Ordinais",
+  descricao: "Aprende os números ordinais até ao 20.º e conquista o primeiro lugar!",
+  icone: "🏃‍♂️🥇",
+  ficheiro: "../jogos/corrida-dos-ordinais.html?ano=4",
+  disciplina: "Matemática"
+},
+  {
   titulo: "Missão Roma — Numeração Romana",
   descricao: "Descobre os números romanos e conquista os desafios de Roma!",
   icone: "🏛️",
