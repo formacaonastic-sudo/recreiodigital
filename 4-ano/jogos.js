@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Futebol Matemático do Recreio",
+  descricao: "Resolve adições até 20, remata à baliza e marca golos!",
+  icone: "⚽",
+  ficheiro: "../jogos/futebol-matematico-do-recreio.html?ano=4",
+  disciplina: "Matemática"
+},
+  {
   titulo: "A Forca do Recreio Digital",
   descricao: "Descobre palavras com pistas e constrói um boneco divertido!",
   icone: "🪢",
