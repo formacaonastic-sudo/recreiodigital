@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "A Forca do Recreio Digital",
+  descricao: "Descobre palavras com pistas e constrói um boneco divertido!",
+  icone: "🪢",
+  ficheiro: "../jogos/a-forca-do-recreio-digital.html?ano=2",
+  disciplina: "Português"
+},
+  {
   titulo: "Mosaicos no Recreio Digital",
   descricao: "Reproduz mosaicos coloridos e desenvolve a orientação espacial!",
   icone: "🟦🟥",
