@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "A Abelhinha dos Números",
+  descricao: "Ajuda a abelhinha a contar as gotinhas e a encontrar a flor certa!",
+  icone: "🐝",
+  ficheiro: "../jogos/abelhinha-dos-numeros.html?ano=pre",
+  disciplina: "Matemática"
+},
+  {
   titulo: "Arrasta as Cores",
   descricao: "Arrasta os objetos para as caixas da cor certa e diverte-te a aprender!",
   icone: "🧺",
