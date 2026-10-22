@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Mosaicos no Recreio Digital",
+  descricao: "Reproduz mosaicos coloridos e desenvolve a orientação espacial!",
+  icone: "🟦🟨🟥🟩",
+  ficheiro: "../jogos/mosaicos-no-recreio-digital.html?ano=1",
+  disciplina: "Matemática"
+},
+  {
   titulo: "A Abelhinha dos Números",
   descricao: "Conta as gotinhas e descobre os números com a abelhinha!",
   icone: "🐝",
