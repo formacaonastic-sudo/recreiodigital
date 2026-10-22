@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "Arrasta as Cores",
+  descricao: "Arrasta os objetos para as caixas da cor certa e diverte-te a aprender!",
+  icone: "🧺",
+  ficheiro: "../jogos/arrasta-as-cores.html?ano=pre",
+  disciplina: "TIC"
+},
+  {
   titulo: "Gelo no Recreio — Aprende a Clicar",
   descricao: "Aprende a clicar com o rato e descobre as imagens escondidas no gelo!",
   icone: "🖱️",
