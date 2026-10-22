@@ -23,7 +23,7 @@ window.JOGOS_DO_ANO = [
   {
   titulo: "Mosaicos no Recreio Digital",
   descricao: "Reproduz mosaicos coloridos e desenvolve a orientação espacial!",
-  icone: "🟦🟥",
+  icone: "🟥",
   ficheiro: "../jogos/mosaicos-no-recreio-digital.html?ano=3",
   disciplina: "Matemática"
 },
