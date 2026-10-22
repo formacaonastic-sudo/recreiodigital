@@ -9,7 +9,7 @@ window.JOGOS_DO_ANO = [
   {
   titulo: "Mosaicos no Recreio Digital",
   descricao: "Pinta quadradinhos, reproduz desenhos e cria os teus próprios mosaicos!",
-  icone: "🟦🟨🟥🟩",
+  icone: "🟨🟥",
   ficheiro: "../jogos/mosaicos-no-recreio-digital.html?ano=pre",
   disciplina: "Matemática"
 },
