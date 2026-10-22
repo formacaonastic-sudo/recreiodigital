@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "A Ilha do Tesouro do Recreio",
+  descricao: "Monta puzzles, explora a ilha e descobre o tesouro escondido!",
+  icone: "🏴‍☠️",
+  ficheiro: "../jogos/ilha-do-tesouro-do-recreio.html",
+  disciplina: "Matemática"
+},
+  {
   titulo: "A Abelhinha dos Números",
   descricao: "Ajuda a abelhinha a contar as gotinhas e a encontrar a flor certa!",
   icone: "🐝",
