@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Missão Roma — Numeração Romana",
+  descricao: "Descobre os números romanos e conquista os desafios de Roma!",
+  icone: "🏛️",
+  ficheiro: "../jogos/numeracao-romana.html?ano=4",
+  disciplina: "Matemática"
+},
+  {
   titulo: "Missão Ambiental",
   descricao: "Aprende a separar o lixo e a proteger o planeta!",
   icone: "🌍",
