@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "Mosaicos no Recreio Digital",
+  descricao: "Pinta quadradinhos, reproduz desenhos e cria os teus próprios mosaicos!",
+  icone: "🟦🟨🟥🟩",
+  ficheiro: "../jogos/mosaicos-no-recreio-digital.html?ano=pre",
+  disciplina: "Matemática"
+},
+  {
   titulo: "A Ilha do Tesouro do Recreio",
   descricao: "Monta puzzles, explora a ilha e descobre o tesouro escondido!",
   icone: "🏴‍☠️",
