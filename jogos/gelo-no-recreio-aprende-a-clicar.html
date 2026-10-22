@@ -12,5 +12,13 @@ function next(){let idx;do{idx=Math.floor(Math.random()*items.length)}while(idx=
 function update(){bar.style.width=(cleared/total*100)+'%';remaining.textContent=(total-cleared)+' blocos por descobrir'}
 function melt(t){if(finished||!t||t.dataset.ice!=='1')return;t.dataset.ice='0';t.classList.add('gone');cleared++;if(cleared%5===0)sound(500+cleared*4,.04);update();if(cleared===total){finished=true;score++;scoreEl.textContent=score;status.textContent='🎉 Descoberta completa!';celebrate.classList.add('show');sound(700,.18);setTimeout(()=>sound(900,.2),160);setTimeout(next,2000)}}
 // Cada bloco desaparece apenas com um clique ou toque; mover o ponteiro não o remove.
+// Regressa ao nível que abriu o jogo (parâmetro ano ou página de origem).
+(function(){
+  const params=new URLSearchParams(window.location.search);
+  const ano=(params.get('ano')||'').toLowerCase();
+  const origem=document.referrer.toLowerCase();
+  const pre=['pre','pre-escolar','pré-escolar','0'].includes(ano)||(!ano&&origem.includes('/pre-escolar/'));
+  document.getElementById('back').href=pre?'../pre-escolar/index.html':'../1-ano/index.html';
+})();
 document.getElementById('sound').addEventListener('click',()=>{soundOn=!soundOn;document.getElementById('sound').textContent=soundOn?'🔊 Som ligado':'🔇 Som desligado'});next();
 </script></body></html>
