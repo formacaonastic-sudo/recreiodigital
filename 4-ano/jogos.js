@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Desafio dos Labirintos",
+  descricao: "Explora labirintos, encontra a saída e desenvolve a tua orientação espacial!",
+  icone: "🧭",
+  ficheiro: "../jogos/desafio-dos-labirintos.html?ano=4",
+  disciplina: "TIC"
+},
+  {
   titulo: "Fábrica dos Robôs",
   descricao: "Programa o teu robô com blocos, recolhe peças e supera 30 missões!",
   icone: "⚙️",
