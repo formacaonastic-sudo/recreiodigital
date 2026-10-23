@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "À Descoberta da História de Portugal",
+  descricao: "Viaja pela História de Portugal, supera desafios e conquista o teu certificado!",
+  icone: "🤴",
+  ficheiro: "../jogos/historia-de-portugal.html?ano=3",
+  disciplina: "Estudo do Meio"
+},
+  {
   titulo: "Desafio dos Labirintos",
   descricao: "Explora labirintos, encontra a saída e desenvolve a tua orientação espacial!",
   icone: "🧭",
