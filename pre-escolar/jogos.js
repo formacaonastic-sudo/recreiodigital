@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "Fábrica dos Robôs",
+  descricao: "Programa o teu robô com blocos, recolhe peças e supera 30 missões!",
+  icone: "⚙️",
+  ficheiro: "../jogos/fabrica-dos-robos.html?ano=pre",
+  disciplina: "TIC"
+},
+  {
   titulo: "Mosaicos no Recreio Digital",
   descricao: "Pinta quadradinhos, reproduz desenhos e cria os teus próprios mosaicos!",
   icone: "🟥",
