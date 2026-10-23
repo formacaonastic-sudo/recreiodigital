@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Fábrica dos Robôs",
+  descricao: "Programa o teu robô com blocos, recolhe peças e supera 30 missões!",
+  icone: "⚙️",
+  ficheiro: "../jogos/fabrica-dos-robos.html?ano=2",
+  disciplina: "TIC"
+},
+  {
   titulo: "Futebol Matemático do Recreio",
   descricao: "Resolve adições até 20, remata à baliza e marca golos!",
   icone: "⚽",
