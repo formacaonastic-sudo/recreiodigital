@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Sistema Solar no Recreio",
+  descricao: "Explora os planetas, descobre curiosidades e embarca numa missão espacial cheia de desafios!",
+  icone: "👨‍🚀",
+  ficheiro: "../jogos/sistema-solar-no-recreio.html?ano=4",
+  disciplina: "Estudo do Meio"
+},
+  {
   titulo: "À Descoberta da História de Portugal",
   descricao: "Viaja pela História de Portugal, supera desafios e conquista o teu certificado!",
   icone: "🤴",
