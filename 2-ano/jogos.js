@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Sistema Solar no Recreio",
+  descricao: "Explora os planetas, descobre curiosidades e embarca numa missão espacial cheia de desafios!",
+  icone: "👨‍🚀",
+  ficheiro: "../jogos/sistema-solar-no-recreio.html?ano=2",
+  disciplina: "Estudo do Meio"
+},
+  {
   titulo: "Fábrica dos Robôs",
   descricao: "Programa o teu robô com blocos, recolhe peças e supera 30 missões!",
   icone: "⚙️",
