@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Máquina de Escrita no Recreio",
+  descricao: "Treina a escrita de palavras numa divertida máquina de escrever!",
+  icone: "👧🔤",
+  ficheiro: "../jogos/maquina-de-escrita-no-recreio.html?ano=2",
+  disciplina: "Português"
+},
+  {
   titulo: "Sistema Solar no Recreio",
   descricao: "Explora os planetas, descobre curiosidades e embarca numa missão espacial cheia de desafios!",
   icone: "👨‍🚀",
