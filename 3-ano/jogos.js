@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Reis de Portugal",
+  descricao: "Descobre os reis e as rainhas de Portugal e conquista a coroa!",
+  icone: "👑👑",
+  ficheiro: "../jogos/reis-de-portugal.html?ano=3",
+  disciplina: "Estudo do Meio"
+},
+  {
   titulo: "Sistema Solar no Recreio",
   descricao: "Explora os planetas, descobre curiosidades e embarca numa missão espacial cheia de desafios!",
   icone: "👨‍🚀",
