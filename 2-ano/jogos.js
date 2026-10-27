@@ -9,6 +9,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "../jogos/pensa-rapido.html?ano=2",
     disciplina: "Matemática"
   },
+  {
+  titulo: "Aprende a Reciclar no Recreio",
+  descricao: "Arrasta os resíduos para os ecopontos corretos e conquista estrelas!",
+  icone: "♻️",
+  ficheiro: "../jogos/aprende-a-reciclar-no-recreio.html?ano=2",
+  disciplina: "Estudo do Meio"
+},
     {
   titulo: "Máquina de Escrita no Recreio",
   descricao: "Treina a escrita de palavras numa divertida máquina de escrever!",
