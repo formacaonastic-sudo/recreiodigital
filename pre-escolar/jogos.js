@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "Aprende a Reciclar no Recreio",
+  descricao: "Aprende a separar os resíduos e ajuda a proteger o planeta!",
+  icone: "♻️",
+  ficheiro: "../jogos/aprende-a-reciclar-no-recreio.html?ano=pre",
+  disciplina: "Estudo do Meio"
+},
+  {
   titulo: "Fábrica dos Robôs",
   descricao: "Programa o teu robô com blocos, recolhe peças e supera 30 missões!",
   icone: "⚙️",
