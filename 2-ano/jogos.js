@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "A Lagartinha EGA",
+  descricao: "Descobre a sílaba tónica e aprende a classificar palavras com a lagartinha!",
+  icone: "🐛",
+  ficheiro: "../jogos/lagartinha-ega.html?ano=2",
+  disciplina: "Português"
+},
+  {
   titulo: "Aprende a Reciclar no Recreio",
   descricao: "Arrasta os resíduos para os ecopontos corretos e conquista estrelas!",
   icone: "♻️",
