@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Sopa de Letras dos Sistemas",
+  descricao: "Descobre as palavras escondidas dos sistemas do corpo humano!",
+  icone: "🫀",
+  ficheiro: "../jogos/sopa-de-letras-dos-sistemas.html?ano=4",
+  disciplina: "Estudo do Meio"
+},
+  {
   titulo: "A Lagartinha EGA",
   descricao: "Descobre a sílaba tónica e aprende a classificar palavras com a lagartinha!",
   icone: "🐛",
