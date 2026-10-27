@@ -11,6 +11,13 @@ window.JOGOS_DO_ANO = [
   },
   {
   titulo: "Máquina de Escrita no Recreio",
+  descricao: "Observa a palavra manuscrita e escreve-a corretamente no teclado.",
+  icone: "⌨️",
+  ano: "1",
+  ficheiro: "maquina-de-escrita-no-recreio.html?ano=2"
+},
+  {
+  titulo: "Máquina de Escrita no Recreio",
   descricao: "Treina a escrita de palavras numa divertida máquina de escrever!",
   icone: "👧🔤",
   ficheiro: "../jogos/maquina-de-escrita-no-recreio.html?ano=2",
