@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Aprende a Reciclar no Recreio",
+  descricao: "Arrasta os resíduos para os ecopontos corretos e conquista estrelas!",
+  icone: "♻️",
+  ficheiro: "../jogos/aprende-a-reciclar-no-recreio.html?ano=3",
+  disciplina: "Estudo do Meio"
+},
+  {
   titulo: "Reis de Portugal",
   descricao: "Descobre os reis e as rainhas de Portugal e conquista a coroa!",
   icone: "👑👑",
