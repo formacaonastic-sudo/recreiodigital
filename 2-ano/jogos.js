@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Missão – Riscos Naturais na Ilha da Madeira",
+  descricao: "Aprende a proteger-te dos riscos naturais da Madeira!",
+  icone: "🌪️",
+  ficheiro: "../jogos/missao-riscos-naturais-madeira.html?ano=2",
+  disciplina: "Estudo do Meio"
+},
+  {
   titulo: "A Lagartinha EGA",
   descricao: "Descobre a sílaba tónica e aprende a classificar palavras com a lagartinha!",
   icone: "🐛",
