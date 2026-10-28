@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Missão – Riscos Naturais na Ilha da Madeira",
+  descricao: "Aprende a proteger-te dos riscos naturais da Madeira!",
+  icone: "🌪️",
+  ficheiro: "../jogos/missao-riscos-naturais-madeira.html?ano=4",
+  disciplina: "Estudo do Meio"
+},
+  {
   titulo: "Sopa de Letras dos Sistemas",
   descricao: "Descobre as palavras escondidas dos sistemas do corpo humano!",
   icone: "🫀",
