@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Contando no Recreio",
+  descricao: "Conta as bolinhas do ábaco e descobre os números até 100!",
+  icone: "🦉",
+  ficheiro: "../jogos/contando-no-recreio.html?ano=2",
+  disciplina: "Matemática"
+},
+  {
   titulo: "Viagem das Sílabas",
   descricao: "Viaja, classifica palavras e descobre as suas sílabas!",
   icone: "🎟️",
