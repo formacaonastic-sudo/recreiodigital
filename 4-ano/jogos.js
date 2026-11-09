@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Viagem das Sílabas",
+  descricao: "Viaja, classifica palavras e descobre as suas sílabas!",
+  icone: "🎟️",
+  ficheiro: "../jogos/viagem-das-silabas.html?ano=4",
+  disciplina: "Português"
+},
+  {
   titulo: "Missão – Riscos Naturais na Ilha da Madeira",
   descricao: "Aprende a proteger-te dos riscos naturais da Madeira!",
   icone: "🌪️",
