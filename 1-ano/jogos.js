@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Contando no Recreio",
+  descricao: "Conta as bolinhas do ábaco e descobre os números até 100!",
+  icone: "🦉",
+  ficheiro: "../jogos/contando-no-recreio.html?ano=1",
+  disciplina: "Matemática"
+},
+  {
   titulo: "Aprende a Reciclar no Recreio",
   descricao: "Arrasta os resíduos para os ecopontos corretos e conquista estrelas!",
   icone: "♻️",
