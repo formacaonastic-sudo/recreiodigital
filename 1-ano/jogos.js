@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Contagens Divertidas no Recreio",
+  descricao: "Conta os pontos dos dados e associa os números corretos!",
+  icone: "🎲",
+  ficheiro: "../jogos/contagens-divertidas-no-recreio.html?ano=1",
+  disciplina: "Matemática"
+},
+  {
   titulo: "Contando no Recreio",
   descricao: "Conta as bolinhas do ábaco e descobre os números até 100!",
   icone: "🦉",
