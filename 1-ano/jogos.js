@@ -6,10 +6,11 @@ window.JOGOS_DO_ANO = [
     icone: "📖",
     ficheiro: "livrodasletras.html"
   },
-  {
-  nome: "Formas Mágicas no Recreio",
-  ficheiro: "formas-magicas-no-recreio.html?ano=1",
-  icone: "🔺"
+ {
+  "titulo": "Formas Mágicas no Recreio",
+  "descricao": "Arrasta as formas e constrói 28 desenhos coloridos!",
+  "icone": "🔺",
+  "ficheiro": "../jogos/formas-magicas-no-recreio.html?ano=1"
 },
   {
   titulo: "Contagens Divertidas no Recreio",
