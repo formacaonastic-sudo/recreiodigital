@@ -7,6 +7,12 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Palavras Mágicas no Recreio",
+  descricao: "Ordena as letras e descobre palavras mágicas!",
+  icone: "🪅",
+  ficheiro: "../jogos/palavras-magicas-no-recreio-revisto-pt-pt.html?ano=4"
+},
+  {
   titulo: "Viagem das Sílabas",
   descricao: "Viaja, classifica palavras e descobre as suas sílabas!",
   icone: "🎟️",
