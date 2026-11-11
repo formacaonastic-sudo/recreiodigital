@@ -6,6 +6,12 @@ window.JOGOS_DO_ANO = [
     icone: "📖",
     ficheiro: "livrodasletras.html"
   },
+  {
+  titulo: "Palavras Mágicas no Recreio",
+  descricao: "Ordena as letras e descobre palavras mágicas!",
+  icone: "🪅",
+  ficheiro: "../jogos/palavras-magicas-no-recreio-revisto-pt-pt.html?ano=1"
+},
  {
   "titulo": "Formas Mágicas no Recreio",
   "descricao": "Arrasta as formas e constrói 28 desenhos coloridos!",
