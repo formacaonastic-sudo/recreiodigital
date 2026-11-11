@@ -6,10 +6,11 @@ window.JOGOS_DO_ANO = [
     "icone": "🧩",
     "ficheiro": "jogo-sombras.html"
   },
-  {
-  nome: "Formas Mágicas no Recreio",
-  ficheiro: "formas-magicas-no-recreio.html?ano=pre",
-  icone: "🔺"
+{
+  "titulo": "Formas Mágicas no Recreio",
+  "descricao": "Constrói 28 desenhos com formas geométricas!",
+  "icone": "🔺",
+  "ficheiro": "../jogos/formas-magicas-no-recreio.html?ano=pre"
 },
   {
   titulo: "Contagens Divertidas no Recreio",
