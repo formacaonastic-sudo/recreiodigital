@@ -7,6 +7,12 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Missão Segurança Rodoviária",
+  descricao: "Aprende os sinais de trânsito e atravessa a estrada em segurança!",
+  icone: "🚦",
+  ficheiro: "../jogos/missao-seguranca-rodoviaria-premium-animacoes.html?ano=4"
+},
+  {
   titulo: "Palavras Mágicas no Recreio",
   descricao: "Ordena as letras e descobre palavras mágicas!",
   icone: "🪅",
