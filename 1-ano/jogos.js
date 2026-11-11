@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Escadas Mágicas",
+  descricao: "Sobe e desce escadas, ordenando números até 20!",
+  disciplina: "Matemática",
+  icone: "🪜",
+  ficheiro: "../jogos/escadas-magicas.html?ano=1"
+},
+  {
   titulo: "Missão Segurança Rodoviária",
   descricao: "Aprende os sinais de trânsito e atravessa a estrada em segurança!",
   icone: "🚦",
