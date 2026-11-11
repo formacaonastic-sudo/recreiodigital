@@ -7,6 +7,11 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  nome: "Formas Mágicas no Recreio",
+  ficheiro: "formas-magicas-no-recreio.html?ano=1",
+  icone: "🔺"
+},
+  {
   titulo: "Contagens Divertidas no Recreio",
   descricao: "Conta os pontos dos dados e associa os números corretos!",
   icone: "🎲",
