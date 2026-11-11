@@ -10,6 +10,12 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Palavras Mágicas no Recreio",
+  descricao: "Ordena as letras e descobre palavras mágicas!",
+  icone: "🪅",
+  ficheiro: "../jogos/palavras-magicas-no-recreio-revisto-pt-pt.html?ano=2"
+},
+  {
   titulo: "Contando no Recreio",
   descricao: "Conta as bolinhas do ábaco e descobre os números até 100!",
   icone: "🦉",
