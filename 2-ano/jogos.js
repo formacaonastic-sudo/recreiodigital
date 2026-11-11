@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Escadas Mágicas",
+  descricao: "Descobre a ordem crescente e decrescente até 1 000!",
+  disciplina: "Matemática",
+  icone: "🪜",
+  ficheiro: "../jogos/escadas-magicas.html?ano=2"
+},
+  {
   titulo: "Missão Segurança Rodoviária",
   descricao: "Aprende os sinais de trânsito e atravessa a estrada em segurança!",
   icone: "🚦",
