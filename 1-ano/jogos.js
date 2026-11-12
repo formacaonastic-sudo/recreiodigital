@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "A Fábrica das Frases",
+  descricao: "Constrói frases e ajuda a fábrica a crescer!",
+  disciplina: "Português",
+  icone: "🏭",
+  ficheiro: "../jogos/fabrica-das-frases.html?ano=1"
+},
+  {
   titulo: "Escadas Mágicas",
   descricao: "Sobe e desce escadas, ordenando números até 20!",
   disciplina: "Matemática",
