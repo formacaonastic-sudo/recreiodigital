@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "A Fábrica das Frases",
+  descricao: "Constrói frases e ajuda a fábrica a crescer!",
+  disciplina: "Português",
+  icone: "🏭",
+  ficheiro: "../jogos/fabrica-das-frases.html?ano=4"
+},
+  {
   titulo: "Escadas Mágicas",
   descricao: "Descobre a ordem crescente e decrescente!",
   disciplina: "Matemática",
