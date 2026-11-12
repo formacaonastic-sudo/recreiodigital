@@ -10,7 +10,7 @@ window.JOGOS_DO_ANO = [
   titulo: "Escadas Mágicas",
   descricao: "Sobe e desce escadas, ordenando números até 20!",
   disciplina: "Matemática",
-  icone: "🪜",
+  icone: "🪜🪜",
   ficheiro: "../jogos/escadas-magicas.html?ano=1"
 },
   {
