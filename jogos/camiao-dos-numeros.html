@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>O Camião dos Números 🚛 · Recreio Digital</title>
+<style>
+:root{--navy:#153663;--blue:#2777d7;--sky:#9bdcfa;--gold:#ffd34f;--grass:#54b76a;--card:#ffffffed}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:system-ui,'Segoe UI',Arial,sans-serif;color:var(--navy)}
+body{background:linear-gradient(180deg,#9edfff 0%,#d7f5ff 50%,#fff0bd 100%);overflow-x:hidden}
+button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible,select:focus-visible{outline:4px solid #ffbd32;outline-offset:3px}
+.shell{max-width:1250px;margin:auto;padding:10px 15px 24px}.top{background:linear-gradient(110deg,#143e87,#5d49c3);border:3px solid #ffffffba;border-radius:20px;padding:10px 15px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#fff;box-shadow:0 7px 20px #234c8d3d}.brand{font-size:clamp(18px,2.1vw,26px);font-weight:950}.nav{display:flex;flex-wrap:wrap;gap:8px}.nav a{background:#fff;color:#2457a0;text-decoration:none;border-radius:12px;padding:9px 13px;font-weight:850;box-shadow:0 3px 0 #bfd3e8}.title{text-align:center;margin:12px auto 8px}.title h1{font-size:clamp(29px,4vw,48px);margin:0;color:#1d418a;text-shadow:2px 3px #fff}.title p{font-size:clamp(15px,1.7vw,19px);font-weight:800;margin:4px 0 10px}
+.hud{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}.pill{background:white;border:2px solid #c7e0ff;border-radius:16px;padding:8px 13px;font-size:clamp(13px,1.4vw,17px);font-weight:900;box-shadow:0 3px 0 #b7d0ed}.pill b{color:#1761bf}.pill select{background:#e9f4ff;border:0;color:#204f96;font-weight:900;font-size:inherit;border-radius:8px;padding:2px 5px}
+.game{background:var(--card);border:4px solid white;border-radius:28px;box-shadow:0 16px 35px #28629d40;overflow:hidden;padding:12px}.mission{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;background:linear-gradient(110deg,#254eaa,#6945bd);color:#fff;border-radius:19px;padding:10px 16px;text-align:center}.mission small{display:block;color:#dbe9ff;font-weight:850;font-size:14px}.mission strong{display:block;font-size:clamp(33px,4.6vw,55px);line-height:1.1;font-weight:1000;letter-spacing:1px}.mission .flag{font-size:42px}.mission .caption{font-weight:900;font-size:clamp(16px,2vw,23px)}
+.landscape{position:relative;overflow:hidden;height:clamp(240px,27vw,325px);border-radius:22px;margin-top:10px;background:linear-gradient(180deg,#8fd9ff 0%,#d9f4ff 63%,#b4e9a1 63%,#6cbe73 100%);border:3px solid #d6e9fa}.sun{position:absolute;top:13px;right:8%;width:62px;height:62px;background:#ffe16b;border-radius:50%;box-shadow:0 0 0 10px #fff2a058,0 0 35px #fff8b2}.cloud{position:absolute;top:38px;left:7%;font-size:56px;opacity:.75;animation:float 7s ease-in-out infinite}.cloud.two{left:66%;top:62px;font-size:38px;animation-delay:-2s}.hill{position:absolute;bottom:76px;width:55%;height:130px;border-radius:60% 60% 0 0;background:#8ccf83;left:-5%}.hill.two{left:45%;height:90px;background:#a1da8a}.tree{position:absolute;bottom:85px;font-size:64px;left:7%}.tree.two{left:85%;font-size:49px;bottom:82px}.road{position:absolute;bottom:0;left:0;right:0;height:91px;background:linear-gradient(#4c617c,#35445e);border-top:9px solid #e5e5d7}.road:after{content:"";position:absolute;left:0;right:0;top:38px;height:8px;background:repeating-linear-gradient(90deg,#fff5bc 0 70px,transparent 70px 120px)}
+.truck-area{position:absolute;bottom:48px;left:50%;width:min(710px,91%);height:235px;transform:translateX(-50%);z-index:3;transition:none}.truck-area.drive{animation:driveaway 1.8s ease-in forwards}.truck-area.arrive{animation:drivein .9s ease-out both}@keyframes driveaway{0%{transform:translateX(-50%)}20%{transform:translateX(-56%)}100%{transform:translateX(150vw)}}@keyframes drivein{0%{transform:translateX(-140vw)}100%{transform:translateX(-50%)}}
+.truck-svg{position:absolute;bottom:0;width:100%;height:190px;filter:drop-shadow(0 8px 2px #1b385a55);overflow:visible}.truck-area.drive .wheel{transform-box:fill-box;transform-origin:center;animation:spin .24s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.truck-area.loaded .truck-svg{animation:weight .4s ease-in-out}@keyframes weight{50%{transform:translateY(7px)}}
+.cargo{position:absolute;bottom:105px;left:9.5%;width:59%;height:108px;border:3px dashed #fff9d7;border-radius:15px 15px 4px 4px;background:#ffffff17;display:flex;align-content:end;align-items:end;justify-content:center;flex-wrap:wrap;gap:5px;padding:6px 9px;overflow:hidden;z-index:2}.cargo.dragover{background:#fff4a26b;border-color:#fff}.cargo.empty:after{content:"⬇️ Arrasta os blocos para aqui";color:white;font-weight:950;font-size:clamp(12px,1.7vw,20px);text-shadow:1px 2px 3px #254b79;align-self:center;text-align:center}.cargo-block{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:44px;padding:4px 6px;border-radius:9px;color:#15325a;font-weight:1000;box-shadow:0 4px 0 #23426b33;border:2px solid #ffffffa9;font-size:12px;animation:drop .28s ease-out}.cargo-block b{font-size:clamp(14px,1.8vw,22px)}@keyframes drop{from{transform:translateY(-60px) scale(.7);opacity:.4}to{transform:translateY(0) scale(1);opacity:1}}
+.station{background:linear-gradient(180deg,#f7fbff,#eef5ff);border:2px solid #c9ddf9;border-radius:20px;margin-top:12px;padding:13px}.station h2{text-align:center;font-size:clamp(19px,2.3vw,26px);margin:0 0 5px}.station .help{text-align:center;color:#506b94;font-size:14px;font-weight:750;margin:0 0 12px}.blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:9px}.block-choice{position:relative;min-height:100px;border:3px solid #fff;border-radius:17px;box-shadow:0 5px 0 #afc9e6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;touch-action:manipulation;transition:transform .13s,filter .13s}.block-choice:hover{transform:translateY(-3px);filter:saturate(1.15)}.block-choice .shape{font-size:clamp(24px,3vw,36px);line-height:1}.block-choice .name{font-size:13px;font-weight:950}.block-choice .value{font-size:clamp(19px,2.3vw,27px);font-weight:1000}.block-choice .qty{font-size:12px;font-weight:900;color:#3d597c}.block-choice:disabled{opacity:.5;cursor:not-allowed}.b0{background:#fff0bf}.b1{background:#c8f5d3}.b2{background:#cce7ff}.b3{background:#ead7ff}.b4{background:#ffe0df}.b5{background:#d6f5f0}.b6{background:#ffe9c9}
+.summary{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:12px auto 6px}.sum{background:#e9f2ff;border:2px solid #c5dcfc;border-radius:15px;padding:9px 15px;font-weight:950;font-size:clamp(16px,2vw,21px)}.sum b{color:#1b65c6}.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:10px auto}.action{border:0;border-radius:15px;padding:12px 18px;font-weight:950;font-size:clamp(15px,1.8vw,19px);box-shadow:0 5px 0 #0002;transition:transform .12s}.action:hover:not(:disabled){transform:translateY(-3px)}.action:disabled{opacity:.5;cursor:default}.green{background:#19aa78;color:white}.yellow{background:#ffcf58;color:#664200}.blue{background:#3e83dc;color:white}.message{min-height:32px;text-align:center;font-weight:950;font-size:clamp(17px,2vw,22px);margin:9px 0 2px}.message.good{color:#0b8a5b}.message.bad{color:#c04450}.footer{margin:14px auto 0;padding:15px;border:4px solid white;border-radius:20px;background:linear-gradient(110deg,#1c56a7,#6846b9);color:#fff;font-size:clamp(15px,1.9vw,21px);font-weight:1000;text-align:center;box-shadow:0 7px 0 #2a3d82,0 12px 22px #23478555}
+.overlay{position:fixed;inset:0;background:#112b57aa;display:grid;place-items:center;padding:20px;z-index:20}.overlay[hidden]{display:none}.win{background:linear-gradient(150deg,#fffbe5,#e6f8ff);border:6px solid #fff;border-radius:28px;padding:22px;max-width:510px;width:100%;text-align:center;box-shadow:0 18px 60px #0006}.win h2{font-size:clamp(25px,3vw,34px);margin:4px;color:#2256a6}.win p{font-weight:800;font-size:19px}.win .emoji{font-size:70px}.particle{position:fixed;z-index:30;pointer-events:none;font-size:25px;animation:fall 2s linear forwards}@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(720deg);opacity:0}}@keyframes float{50%{transform:translateX(28px)}}
+@media(max-width:700px){.shell{padding:7px}.top{justify-content:center}.game{padding:7px;border-radius:19px}.landscape{height:245px}.truck-area{bottom:44px;height:195px;width:96%}.truck-svg{height:152px}.cargo{bottom:89px;height:90px}.cargo-block{min-width:32px;font-size:10px;padding:3px}.cargo-block b{font-size:14px}.road{height:72px}.tree{bottom:65px}.blocks{grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:6px}.block-choice{min-height:85px}.station{padding:8px}.mission strong{font-size:33px}.mission .flag{font-size:30px}.action{padding:11px}.cloud{font-size:38px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* V2: a zona de carga acompanha exatamente a caixa azul do camião.
+   O desenho SVG usa viewBox 720 × 205: caixa x=35..475, y=28..158. */
+.truck-area{height:auto;aspect-ratio:720/205;bottom:48px}
+.truck-svg{height:100%;width:100%;bottom:0;left:0;display:block}
+.cargo{left:5.4%;width:59.8%;bottom:23.5%;height:61%;border:3px dashed #ffe7a1;border-radius:11px;background:#173d8020;padding:5px;gap:4px;z-index:4;align-content:end;align-items:end}
+.cargo.empty:after{content:"📦 Arrasta os blocos para aqui";display:block;align-self:center;width:100%;font-size:clamp(12px,1.8vw,19px);line-height:1.3;padding:5px;border-radius:9px;background:#184d92a6;text-shadow:0 2px 3px #173c77}
+.cargo.dragover{background:#ffe98e55;border-color:white;box-shadow:inset 0 0 0 3px #ffffff66}
+@media(max-width:700px){.truck-area{height:auto;bottom:44px}.truck-svg{height:100%}.cargo{left:5.4%;width:59.8%;bottom:23.5%;height:61%;padding:3px;gap:2px;border-width:2px}.cargo.empty:after{font-size:clamp(10px,2.6vw,15px);padding:3px}.cargo-block{min-width:28px;padding:2px 3px}}
+
+/* V3 — missão sempre visível, mesmo quando a criança desce até aos blocos */
+.floating-target{position:fixed;top:12px;left:50%;transform:translateX(-50%) translateY(-140%);z-index:19;display:flex;align-items:center;justify-content:center;gap:14px;min-width:min(390px,92vw);max-width:96vw;padding:9px 18px;background:linear-gradient(110deg,#184ba4,#6840b9);color:#fff;border:3px solid #fff6c5;border-radius:19px;box-shadow:0 9px 28px #172b6399;opacity:0;pointer-events:none;transition:transform .22s ease,opacity .22s ease}
+.floating-target.visible{transform:translateX(-50%) translateY(0);opacity:1}
+.floating-target .mini-label{font-size:13px;font-weight:950;line-height:1.15}.floating-target .mini-number{font-size:clamp(29px,4.5vw,45px);font-weight:1000;line-height:1.05;color:#ffe47c;white-space:nowrap;font-variant-numeric:tabular-nums}
+.mission{border:3px solid #ffffff70;box-shadow:0 6px 0 #283b8b;background:linear-gradient(115deg,#164ca8,#6543b6)}
+.mission strong{color:#ffe682;text-shadow:0 3px 0 #122e6a;font-variant-numeric:tabular-nums}
+.game{background:linear-gradient(170deg,#ffffffed,#edf6ffef)}
+.landscape{box-shadow:inset 0 0 0 3px #ffffff70;background:linear-gradient(180deg,#82d6ff 0%,#d7f6ff 63%,#b5e89d 63%,#6fc77b 100%)}
+.station{background:linear-gradient(145deg,#fffdf1,#edf7ff);box-shadow:0 5px 0 #bdd8ee}
+.station h2{color:#2452a4}
+.block-choice{box-shadow:0 5px 0 #9db8d6,0 9px 15px #3a65a522;border:3px solid #fff;transition:transform .14s,box-shadow .14s}
+.block-choice:hover:not(:disabled){transform:translateY(-4px);box-shadow:0 8px 0 #9db8d6,0 12px 18px #3a65a533}
+.block-choice:active:not(:disabled){transform:translateY(2px)}
+.sum{box-shadow:0 4px 0 #b8d4f0}
+.message.good{background:#e1f9e9;border-radius:13px;padding:7px}.message.bad{background:#ffebed;border-radius:13px;padding:7px}
+.footer{letter-spacing:.2px}
+@media(max-width:700px){.floating-target{top:6px;gap:9px;padding:7px 11px}.floating-target .mini-label{font-size:11px}.title{margin:8px auto 5px}.title h1{font-size:27px}.title p{margin:2px}.hud{margin-bottom:7px}.pill{padding:6px 9px}.game{padding:7px}.landscape{height:225px;margin-top:7px}.station{margin-top:8px}.block-choice{min-height:80px}.station .help{margin-bottom:7px}.blocks{gap:6px}.summary{margin:8px auto 4px}.action{padding:10px 12px}}
+@media(prefers-reduced-motion:reduce){.floating-target{transition:none}}
+
+/* V4 — painel compacto, sem deslocação vertical em ecrãs de computador comuns */
+html,body{height:100%;}body{background:linear-gradient(155deg,#d6efff 0%,#f1f8ff 55%,#d8f5e5 100%)}
+.shell{max-width:1260px;padding:6px 12px 7px;display:flex;flex-direction:column;gap:5px;min-height:100dvh}
+.top{min-height:40px;border-radius:13px;padding:4px 11px;gap:7px;border-width:2px;box-shadow:0 3px 12px #173f7b25}
+.brand{font-size:clamp(16px,1.7vw,21px)}.nav a{padding:5px 10px;font-size:13px;border-radius:9px;box-shadow:0 2px 0 #bdd0e5}
+.title{display:flex;align-items:center;justify-content:center;gap:15px;margin:0}.title h1{font-size:clamp(22px,2.7vw,31px);text-shadow:1px 2px white}.title p{font-size:13px;margin:0;color:#527298}
+.hud{gap:5px;margin:0}.pill{font-size:12px;padding:4px 9px;border-radius:10px;border-width:1px;box-shadow:none}
+.game{display:flex;flex-direction:column;gap:7px;padding:8px;border-radius:20px;border-width:2px;box-shadow:0 7px 20px #2768a42a;flex:1;min-height:0}
+.mission{padding:5px 12px;border-radius:12px;gap:12px;min-height:59px;box-shadow:none;border-width:1px}.mission small{font-size:11px;letter-spacing:.7px}.mission strong{font-size:clamp(27px,3.8vw,41px)}.mission .flag{font-size:25px}.mission .caption{font-size:14px}
+.landscape{flex:1 1 auto;min-height:170px;height:auto;max-height:265px;margin:0;border-radius:15px;border-width:2px;background:linear-gradient(#7dd0fb 0%,#e0f7ff 65%,#a4d98b 65%,#5ab96d 100%)}
+.sun{width:45px;height:45px;top:10px}.cloud{font-size:37px;top:13px}.cloud.two{font-size:29px;top:27px}.tree{font-size:41px;bottom:60px}.tree.two{font-size:37px;bottom:57px}.hill{bottom:57px;height:80px}.hill.two{height:60px}.road{height:66px;border-top-width:6px}.road:after{top:27px;height:5px}
+.truck-area{width:min(700px,86%);bottom:30px}.cargo{left:5.4%;width:59.8%;bottom:23.5%;height:61%;border-radius:9px;z-index:4}.cargo.empty:after{font-size:clamp(11px,1.5vw,17px);padding:5px;background:#123f85b8}
+.station{margin:0;padding:7px 10px;border-radius:14px;box-shadow:none;flex:none}.station h2{font-size:17px;margin:0 0 2px}.station .help{font-size:12px;margin:0 0 6px}
+.blocks{grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:6px}.block-choice{min-height:65px;border-radius:11px;border-width:2px;gap:1px;box-shadow:0 3px 0 #9db8d6}.block-choice .shape{font-size:22px}.block-choice .name{font-size:11px}.block-choice .value{font-size:20px}.block-choice .qty{display:none}
+.summary{gap:6px;margin:7px auto 2px}.sum{font-size:14px;padding:5px 10px;border-radius:10px;box-shadow:none}.actions{gap:6px;margin:5px auto}.action{font-size:13px;padding:8px 11px;border-radius:10px;box-shadow:0 3px 0 #0002}.message{min-height:21px;font-size:14px;margin:4px 0 0}.message.good,.message.bad{padding:3px}
+.footer{margin:0;padding:7px;border-radius:11px;border-width:2px;font-size:13px;box-shadow:0 3px 0 #273b78}
+.floating-target{display:none!important}
+@media(min-width:800px) and (min-height:690px){.shell{height:100dvh;overflow:hidden}.landscape{max-height:none}.game{overflow:hidden}}
+@media(max-height:760px) and (min-width:800px){.landscape{min-height:135px}.truck-area{width:min(570px,75%);bottom:21px}.mission{min-height:49px}.block-choice{min-height:58px}.block-choice .shape{font-size:18px}.station .help{margin-bottom:3px}.station h2{font-size:15px}.summary{margin:4px auto 1px}.actions{margin:3px auto}.message{margin:2px 0 0}}
+@media(max-width:799px){.shell{padding:5px;gap:4px}.top{justify-content:space-between}.nav a{font-size:11px;padding:4px 7px}.title{flex-direction:column;gap:0}.title h1{font-size:23px}.title p{font-size:11px}.hud{gap:4px}.pill{font-size:11px;padding:3px 6px}.game{padding:5px;gap:5px}.landscape{height:200px;min-height:200px;flex:none}.truck-area{width:95%;bottom:28px}.mission{min-height:49px}.mission .caption{display:none}.station{padding:5px}.station .help{font-size:11px}.blocks{grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:4px}.block-choice{min-height:62px}.block-choice .name{font-size:10px}.block-choice .value{font-size:16px}.action{font-size:12px;padding:7px 9px}.footer{font-size:12px}}
+@media(max-width:420px){.brand{font-size:14px}.nav{gap:3px}.nav a{font-size:10px}.landscape{height:155px;min-height:155px}.truck-area{bottom:21px}.cargo.empty:after{font-size:10px}.block-choice{min-height:56px}.block-choice .shape{font-size:17px}.station .help{display:none}.title h1{font-size:20px}.mission{min-height:44px}.mission strong{font-size:26px}.sum{font-size:12px}}
+
+/* V5 · linguagem visual premium e armazém compacto */
+:root{--navy:#193354;--blue:#2068b6}
+body{background:radial-gradient(ellipse at 50% 0%,#e9f7ff,#d7eafa 64%,#d9f1e4)}
+.shell{max-width:1200px;gap:5px}
+.top{background:linear-gradient(110deg,#123e78,#246db1);border:1px solid #ffffffb0;border-radius:12px;box-shadow:0 4px 13px #153f6c25}
+.nav a{background:#f5faff;color:#1b548e;border:1px solid #cfe4f9}
+.title h1{font-size:clamp(21px,2.5vw,29px);letter-spacing:-.6px;text-shadow:none;color:#193e72}
+.game{background:linear-gradient(180deg,#fff,#f8fbff);border:1px solid #c6dbf0;box-shadow:0 10px 32px #173d6a18;border-radius:18px;gap:6px}
+.mission{background:linear-gradient(100deg,#163d7a,#256bb0);border:1px solid #7fb3ec;box-shadow:inset 0 1px #ffffff40;border-radius:11px;min-height:52px;padding:3px 12px}
+.mission strong{font-size:clamp(28px,3.5vw,38px)}
+.landscape{border:1px solid #c6e4f2;box-shadow:inset 0 2px 8px #72b9dc35;background:linear-gradient(180deg,#84d3fa,#c8edfa 65%,#9bd99c 65%,#65bb75)}
+.truck-area{width:min(760px,91%);bottom:30px}
+.truck-svg{filter:drop-shadow(0 8px 3px #1b385a40)}
+.cargo{left:5.1%;width:60.5%;bottom:24.5%;height:59%;border:2px dashed #f8d889;border-radius:8px;background:#d9edff15;gap:3px}
+.cargo.empty:after{content:'⬇ COLOCA A CARGA AQUI';font-size:clamp(10px,1.45vw,15px);letter-spacing:.4px;background:#113d73a8;padding:5px 8px}
+.cargo-block{min-width:34px;padding:2px 4px;border-radius:6px;gap:0;box-shadow:0 2px 0 #1b35503d}
+.cargo-block b{font-size:clamp(11px,1.4vw,17px)}
+.station{padding:6px 9px 7px;background:linear-gradient(180deg,#f3f8ff,#eaf3ff);border:1px solid #cfdef0;border-radius:12px}
+.station h2{font-size:15px;margin:0 0 4px;text-align:left;color:#234c79}
+.station .help{display:none}
+.blocks{display:flex;justify-content:center;gap:7px;flex-wrap:nowrap}
+.block-choice{flex:1 1 0;min-width:0;min-height:57px;padding:4px 3px;border:1px solid #ffffff;box-shadow:0 2px 0 #b1c7da,0 2px 7px #2d4c7110;border-radius:10px;display:grid;grid-template-columns:30px minmax(0,1fr);grid-template-rows:1fr 1fr;column-gap:4px;row-gap:0;text-align:left;align-items:center;justify-items:start}
+.block-choice .shape{grid-row:1/3;grid-column:1;font-size:24px;line-height:1;justify-self:center}
+.block-choice .name{grid-row:1;grid-column:2;font-size:clamp(9px,.85vw,11px);line-height:1.12;overflow-wrap:anywhere;color:#385273}
+.block-choice .value{grid-row:2;grid-column:2;font-size:clamp(14px,1.5vw,19px);line-height:1.05;color:#153f72}
+.block-choice:hover{transform:translateY(-2px);box-shadow:0 4px 0 #a5bdd4,0 5px 12px #1d50832b}
+.summary{margin:5px auto 1px}.sum{background:#fff;border:1px solid #cfdeed;font-size:13px;padding:4px 9px}
+.actions{margin:3px auto;gap:6px}.action{border-radius:9px;font-size:12px;padding:7px 11px;box-shadow:0 2px 0 #0002}
+.message{font-size:13px;margin:2px 0 0;min-height:18px}
+.footer{background:linear-gradient(100deg,#174d91,#296ba6);border:1px solid #fff;font-size:13px;padding:7px}
+@media(min-width:800px) and (min-height:690px){.landscape{min-height:175px}}
+@media(max-height:760px) and (min-width:800px){.block-choice{min-height:49px}.block-choice .shape{font-size:20px}.station{padding:4px 8px}.truck-area{width:min(650px,86%)}.landscape{min-height:145px}}
+@media(max-width:799px){.blocks{flex-wrap:wrap}.block-choice{flex:1 1 calc(25% - 7px);min-width:85px;min-height:52px}.block-choice .name{font-size:10px}.block-choice .value{font-size:15px}.truck-area{width:96%}.station h2{font-size:14px}}
+@media(max-width:420px){.block-choice{flex-basis:calc(33.33% - 7px);min-width:84px}.block-choice .shape{font-size:20px}.block-choice .name{font-size:9px}.block-choice .value{font-size:14px}.truck-area{bottom:20px}.cargo.empty:after{font-size:9px}.station h2{font-size:13px}}
+
+/* V6 — acabamento visual mais sóbrio e compacto */
+:root{--navy:#17365b;--blue:#2476cf;--card:#fff}
+body{background:linear-gradient(180deg,#d7edfc 0%,#eef7ff 55%,#e7f3ed 100%)}
+.shell{max-width:1200px;padding:8px 12px 14px}
+.top{border:1px solid #b6d2ed;border-radius:14px;padding:7px 12px;background:linear-gradient(110deg,#123c77,#2864a6);box-shadow:0 3px 12px #173b6425}
+.brand{font-size:clamp(17px,1.7vw,22px)}
+.nav a{padding:7px 11px;border-radius:9px;box-shadow:none}
+.title{margin:7px auto 5px}.title h1{font-size:clamp(25px,3vw,36px);text-shadow:none}.title p{margin:2px 0 5px;font-size:14px;color:#4b6787}
+.hud{margin-bottom:6px;gap:6px}.pill{padding:5px 10px;border-radius:10px;font-size:13px;box-shadow:none;border:1px solid #d0e2f4}
+.game{padding:8px;border:1px solid #d7e7f7;border-radius:18px;box-shadow:0 9px 28px #1c528b1c}
+.mission{padding:6px 12px;border-radius:12px;background:linear-gradient(110deg,#164b92,#326fb7)}.mission strong{font-size:clamp(30px,3.4vw,43px)}.mission .flag{font-size:28px}.mission .caption{font-size:16px}
+.landscape{margin-top:7px;border:1px solid #b8d7e9;border-radius:15px;height:clamp(230px,24vw,285px)}
+.station{margin-top:7px;padding:9px 11px;border-radius:13px;border:1px solid #d4e2f0;background:#f8fbff}
+.station h2{font-size:18px;margin-bottom:2px}.station .help{margin-bottom:7px;font-size:12px}
+.blocks{grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:7px}
+.block-choice{min-height:68px;border:1px solid #ffffffd9;border-radius:12px;box-shadow:0 3px 0 #b2c8df;gap:1px;display:grid;grid-template-columns:35px 1fr;grid-template-rows:1fr 1fr;align-items:center;justify-items:start;padding:7px 9px}
+.block-choice .shape{grid-row:1/3;font-size:24px}.block-choice .name{font-size:11px;line-height:1.1}.block-choice .value{font-size:20px;line-height:1.1}.block-choice .qty{display:none}
+.summary{margin:7px auto 3px;gap:7px}.sum{padding:6px 10px;border-radius:9px;font-size:15px;border-width:1px}
+.actions{margin:7px auto;gap:6px}.action{padding:8px 11px;font-size:14px;border-radius:10px;box-shadow:0 2px 0 #0002}
+.message{margin:4px 0 0;min-height:23px;font-size:16px}.footer{margin-top:8px;padding:9px;border:1px solid #a9c9e8;border-radius:12px;background:linear-gradient(110deg,#174c8e,#3066a6);box-shadow:none;font-size:15px}
+.truck-svg{filter:drop-shadow(0 7px 3px #193a5b45)}
+.cargo{border:2px dashed #f3fbffcc;background:#e5f3ff12}
+@media(max-width:700px){.shell{padding:5px}.title h1{font-size:25px}.landscape{height:235px}.blocks{grid-template-columns:repeat(auto-fit,minmax(105px,1fr))}.block-choice{min-height:62px;padding:5px}.station{padding:7px}.top{padding:6px}.nav a{padding:6px 8px}.mission{padding:5px}}
+
+/* V7 — cenário exterior vivo e colorido, sem aumentar a altura do jogo */
+body{
+ background:
+ radial-gradient(circle at 8% 16%,#fff5a9 0 1.6%,transparent 1.8%),
+ radial-gradient(circle at 92% 21%,#ffc1db 0 2.1%,transparent 2.3%),
+ radial-gradient(circle at 6% 73%,#a9f4db 0 2%,transparent 2.2%),
+ radial-gradient(circle at 94% 79%,#ffe59e 0 2.4%,transparent 2.6%),
+ radial-gradient(ellipse at 0% 0%,#b1e6ff 0%,transparent 47%),
+ radial-gradient(ellipse at 100% 6%,#d5c5ff 0%,transparent 47%),
+ linear-gradient(135deg,#d4f2ff 0%,#f4ecff 49%,#d7f8e8 100%);
+ background-attachment:fixed;
+}
+body::before,body::after{content:"";position:fixed;pointer-events:none;z-index:0;opacity:.68;filter:drop-shadow(0 5px 9px #2d6a9c1c)}
+body::before{left:max(0px,calc((100vw - 1300px)/2 - 130px));top:16%;width:115px;height:190px;background:
+ radial-gradient(circle at 34% 22%,#ffcf57 0 9px,transparent 10px),
+ radial-gradient(circle at 80% 55%,#7cdbf5 0 12px,transparent 13px),
+ radial-gradient(circle at 27% 80%,#f8a4c4 0 8px,transparent 9px),
+ linear-gradient(135deg,transparent 43%,#8cc9ed 44% 47%,transparent 48%) center/65px 65px no-repeat}
+body::after{right:max(0px,calc((100vw - 1300px)/2 - 130px));top:43%;width:115px;height:200px;background:
+ radial-gradient(circle at 76% 18%,#9b86ff 0 11px,transparent 12px),
+ radial-gradient(circle at 15% 50%,#ffd269 0 9px,transparent 10px),
+ radial-gradient(circle at 68% 85%,#7fe2ad 0 13px,transparent 14px),
+ linear-gradient(35deg,transparent 42%,#9dc8ee 43% 46%,transparent 47%) center/65px 65px no-repeat}
+.shell{position:relative;z-index:1}
+.top{background:linear-gradient(115deg,#164eaa 0%,#326bc7 58%,#6651bb 100%);border:1px solid #ffffffbd;box-shadow:0 6px 19px #3354a52a}
+.title h1{color:#1c4c9b;text-shadow:0 2px 0 #fff,0 4px 12px #5b7bc022}
+.game{background:linear-gradient(155deg,#fff 0%,#f5fbff 100%);border:2px solid #fff;box-shadow:0 12px 32px #4169b52e,0 0 0 1px #bcd8f1}
+.mission{background:linear-gradient(110deg,#1555ac,#316ed0 64%,#6650c3);box-shadow:inset 0 1px #ffffff55}
+.landscape{background:linear-gradient(180deg,#75caff 0%,#b8eaff 57%,#b1e59c 58%,#63bd74 100%);border:2px solid #e4f5ff;box-shadow:inset 0 2px 12px #fff7,0 4px 10px #367ba020}
+.landscape::before{content:"";position:absolute;inset:0 0 32% 0;pointer-events:none;opacity:.5;background:radial-gradient(ellipse at 35% 95%,#e3f7aa 0 16%,transparent 17%),radial-gradient(ellipse at 72% 105%,#80c97e 0 24%,transparent 25%)}
+.landscape::after{content:"✿  ✦  ✿";position:absolute;bottom:24%;right:4%;font-size:clamp(12px,2vw,23px);letter-spacing:10px;color:#fff0a2;text-shadow:0 2px 1px #468b4e;pointer-events:none}
+.sun{background:#ffe077;box-shadow:0 0 0 9px #fff5a45c,0 0 32px #fff3a6}
+.station{background:linear-gradient(180deg,#f9fdff,#eaf5ff);border-color:#c4e0f8;box-shadow:inset 0 1px #fff}
+.block-choice{box-shadow:0 3px 0 #8bb5da,0 4px 8px #497eaa15;transition:transform .15s,box-shadow .15s}
+.block-choice:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 5px 0 #8bb5da,0 7px 10px #497eaa22}
+.footer{background:linear-gradient(110deg,#1654a7,#5b50bb);border:1px solid #ffffffcc;box-shadow:0 4px 14px #254f9d2c}
+@media(max-width:1300px){body::before,body::after{opacity:.25}}
+@media(max-width:700px){body::before,body::after{display:none}.landscape::after{letter-spacing:3px}}
+
+/* V8 — cenário de jogo e interface de qualidade, sem scroll no desktop */
+body{background:radial-gradient(circle at 12% 18%,#fff6c5 0 6%,transparent 25%),radial-gradient(circle at 88% 12%,#b8eaff 0 7%,transparent 28%),linear-gradient(140deg,#8fd8ff 0%,#c9efff 43%,#8ad5ad 100%);position:relative}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:repeating-linear-gradient(135deg,transparent 0 52px,#ffffff12 52px 54px),radial-gradient(ellipse at 50% 115%,#3ea87888,transparent 65%)}
+.shell{max-width:1300px}.top{background:linear-gradient(110deg,#102f64,#1766b2);border:1px solid #a9e9ff;box-shadow:0 4px 0 #0c3b7080,0 8px 24px #16477c30}.brand{letter-spacing:.2px}.nav a{background:#fff;border:1px solid #d6eaff;box-shadow:0 2px 0 #a4c9e7}.nav a:hover{background:#e3f5ff}
+.title h1{color:#103e77;font-weight:1000;letter-spacing:-.9px}.title p{color:#225a88}.pill{background:#ffffffdf;border:1px solid #b5d8ee;box-shadow:0 2px 0 #88badb55}
+.game{background:#f8fcffed;border:2px solid #ffffff;box-shadow:0 8px 0 #1d6f9d38,0 17px 32px #12477329}.mission{background:linear-gradient(100deg,#123f82,#236cc0 64%,#5c50ba);border:1px solid #a9d7ff;box-shadow:inset 0 2px 0 #ffffff40}.mission strong{color:#fff3a6;text-shadow:0 2px 0 #153a76}
+.landscape{background:linear-gradient(180deg,#53bbf5 0%,#a7e5ff 53%,#e2f9ff 64%,#8bdb8a 64%,#3ca968 100%);border:2px solid #fff;box-shadow:inset 0 0 0 2px #53adcf77,0 3px 12px #1d669c22}
+.landscape:before{content:"";position:absolute;inset:0 0 33%;background:repeating-linear-gradient(115deg,#ffffff18 0 2px,transparent 2px 80px);pointer-events:none}.landscape:after{content:"";position:absolute;left:0;right:0;bottom:64px;height:12px;background:linear-gradient(90deg,#7cd47c,#43aa67);opacity:.9}
+.sun{box-shadow:0 0 0 8px #fff4a05c,0 0 0 19px #fff4a01c,0 0 35px #fff3a6}.road{background:linear-gradient(#526780,#34445e);border-top:6px solid #edf0e2;box-shadow:inset 0 7px 0 #8794a566}
+.truck-svg{filter:drop-shadow(0 8px 4px #102f4c70)}.cargo{background:#0a488725;border:2px dashed #fff0ac;box-shadow:inset 0 0 14px #10345a22}.cargo.empty:after{background:#103f80aa;border:1px solid #ffffff70;box-shadow:0 3px 8px #0a2c5440}
+.station{background:linear-gradient(180deg,#f0f8ff,#e6f3ff);border:1px solid #b8d8ed;box-shadow:inset 0 1px #fff}.station h2{color:#164b80;font-weight:950}.block-choice{border:1px solid #ffffff;box-shadow:0 3px 0 #8bb0cb,0 5px 10px #286a9e20}.block-choice:hover:not(:disabled){transform:translateY(-3px) scale(1.025);box-shadow:0 5px 0 #8bb0cb,0 8px 15px #286a9e38}.block-choice:active:not(:disabled){transform:translateY(1px) scale(.98)}
+.sum{background:#ffffff;border:1px solid #b8d5e9}.sum b{color:#0d5ca7}.action{font-weight:900}.action:hover:not(:disabled){filter:brightness(1.08)}.action:active:not(:disabled){transform:translateY(2px)}.green{background:linear-gradient(#22c78d,#0c9c6d)}.yellow{background:linear-gradient(#ffe081,#ffc34b)}.blue{background:linear-gradient(#4e9be8,#2376c8)}
+.footer{background:linear-gradient(100deg,#103f82,#236bb3);border:2px solid #fff;box-shadow:0 3px 0 #174d80a0}
+.progress-track{height:9px;border-radius:12px;background:#d3e8f7;overflow:hidden;border:1px solid #b2d0e5;margin:2px 1px 0}.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#26b7a4,#6be48d,#e6df58);border-radius:12px;transition:width .3s ease}
+.cargo-block{animation:drop .25s ease-out;box-shadow:0 2px 0 #1b35503d}.cargo-block small{font-size:9px;opacity:.85}.win{border:5px solid #fff;box-shadow:0 18px 65px #071e4c88}.win .emoji{animation:float 2s ease-in-out infinite}
+@media(min-width:800px) and (min-height:690px){.shell{height:100dvh;overflow:hidden}.game{min-height:0}.landscape{min-height:135px}}
+@media(max-height:760px) and (min-width:800px){.title p{display:none}.mission{min-height:44px}.landscape{min-height:120px}.station{padding:4px 8px}.block-choice{min-height:46px}.progress-track{height:6px}}
+@media(max-width:799px){.landscape{height:205px}.shell{min-height:100dvh}.progress-track{height:7px}}
+
+
+/* V9 — composição central equilibrada: elimina a zona de jogo demasiado esticada */
+.shell{max-width:1040px!important;margin-inline:auto!important}
+.game{width:100%;max-width:1000px;margin-inline:auto;box-sizing:border-box}
+.landscape{width:100%;max-width:960px;margin-inline:auto;box-sizing:border-box;flex:0 1 auto!important;height:clamp(205px,27vh,265px)!important;min-height:205px!important;max-height:265px!important}
+.truck-area{width:min(675px,83%)!important;bottom:27px}
+.mission,.station,.summary,.actions,.message,.progress-track{max-width:960px;margin-left:auto;margin-right:auto;box-sizing:border-box}
+@media(min-width:800px) and (min-height:690px){.shell{height:100dvh}.game{justify-content:space-between}.landscape{flex:1 1 auto!important;height:auto!important;min-height:175px!important;max-height:265px!important}}
+@media(max-height:760px) and (min-width:800px){.landscape{min-height:145px!important;max-height:210px!important}.truck-area{width:min(585px,77%)!important;bottom:21px}}
+@media(max-width:799px){.shell{max-width:100%}.landscape{height:205px!important;min-height:205px!important}.truck-area{width:94%!important}}
+@media(max-width:420px){.landscape{height:165px!important;min-height:165px!important}.truck-area{bottom:20px}}
+
+
+/* V10 — palco mais alto, camião em destaque e composição editorial */
+@media (min-width:800px){
+  .shell{max-width:1120px!important;padding:7px 12px 10px;gap:4px}
+  .top{padding:6px 12px;border-radius:13px}
+  .nav a{padding:6px 10px}
+  .title{margin:3px auto 2px}
+  .title h1{font-size:clamp(24px,2.4vw,31px)}
+  .title p{display:none}
+  .hud{margin:2px auto 5px;gap:5px}
+  .pill{padding:4px 9px;font-size:12px}
+  .game{max-width:1080px;padding:8px 10px;border-radius:18px;gap:5px}
+  .mission{min-height:48px;padding:3px 10px;border-radius:12px}
+  .mission .flag{font-size:24px}
+  .mission small{font-size:10px}
+  .mission strong{font-size:34px;line-height:1}
+  .mission .caption{font-size:14px}
+  .landscape{max-width:1050px!important;height:clamp(270px,38vh,385px)!important;min-height:270px!important;max-height:385px!important;flex:1 1 auto!important;margin-top:5px;border-radius:18px}
+  .truck-area{width:min(800px,88%)!important;bottom:45px!important}
+  .road{height:105px}
+  .tree{bottom:99px}.tree.two{bottom:98px}
+  .hill{bottom:100px}.hill.two{bottom:101px}
+  .station{margin-top:5px;padding:6px 9px;border-radius:12px}
+  .station h2{font-size:16px;margin-bottom:2px}
+  .station .help{font-size:11px;margin-bottom:4px}
+  .blocks{gap:5px}
+  .block-choice{min-height:52px;padding:4px 7px}
+  .block-choice .shape{font-size:20px}
+  .block-choice .name{font-size:10px}
+  .block-choice .value{font-size:16px}
+  .summary{margin:5px auto 2px;gap:6px}
+  .sum{padding:4px 9px;font-size:13px}
+  .actions{margin:5px auto 3px;gap:6px}
+  .action{padding:7px 11px;font-size:13px;border-radius:10px}
+  .message{min-height:18px;font-size:13px;margin:2px 0 0}
+  .footer{margin-top:5px;padding:7px;font-size:13px}
+  .progress-track{height:6px}
+}
+@media (min-width:800px) and (max-height:850px){
+  .landscape{height:clamp(230px,35vh,315px)!important;min-height:230px!important;max-height:315px!important}
+  .truck-area{width:min(710px,85%)!important;bottom:36px!important}
+  .road{height:88px}.tree{bottom:83px}.tree.two{bottom:82px}.hill,.hill.two{bottom:83px}
+}
+@media (min-width:800px) and (max-height:700px){
+  .landscape{height:clamp(190px,31vh,235px)!important;min-height:190px!important;max-height:235px!important}
+  .truck-area{width:min(620px,78%)!important;bottom:26px!important}
+  .road{height:70px}.tree{bottom:65px}.tree.two{bottom:65px}.hill,.hill.two{bottom:65px}
+  .station .help{display:none}
+  .block-choice{min-height:43px}
+  .mission{min-height:41px}
+  .footer{padding:5px}
+}
+@media (max-width:799px){
+  .landscape{height:clamp(215px,34vh,290px)!important;min-height:215px!important;max-height:290px!important}
+  .truck-area{width:95%!important;bottom:32px!important}
+}
+@media (max-width:420px){.landscape{height:210px!important;min-height:210px!important}.truck-area{bottom:25px!important}}
+
+
+/* V11: palco central com blocos nas laterais e peças individuais na carroçaria */
+html,body{min-height:100%;background:radial-gradient(ellipse at 15% 15%,#b9edff 0,transparent 35%),radial-gradient(ellipse at 85% 85%,#d7f3cb 0,transparent 40%),linear-gradient(140deg,#e8f8ff,#f5faff 55%,#e9f6ff)}
+.shell{max-width:1340px!important;margin:auto!important}
+.game{max-width:1320px!important;padding:9px!important;background:linear-gradient(160deg,#fff,#eff8ff)!important;border:1px solid #cde8fa;box-shadow:0 12px 35px #1b588021!important}
+.play-layout{display:grid;grid-template-columns:minmax(160px,205px) minmax(0,1fr) minmax(145px,180px);align-items:stretch;gap:10px;width:100%}
+.center-stage{min-width:0;display:flex;flex-direction:column;gap:7px}
+.side-panel{border-radius:17px;background:linear-gradient(165deg,#ffffff,#edf7ff);border:1px solid #c9e4f5;box-shadow:0 5px 16px #2c60871c;padding:12px 9px;display:flex;flex-direction:column;gap:7px;min-width:0}
+.side-heading{text-align:center;font-size:15px;font-weight:950;color:#15446c;padding-bottom:6px;border-bottom:1px solid #cfe6f5}
+.side-hint{font-size:11px;line-height:1.4;text-align:center;color:#52728a;margin-top:auto}
+.side-panel .blocks{display:grid!important;grid-template-columns:1fr!important;gap:6px!important;flex-wrap:nowrap!important}
+.side-panel .block-choice{display:grid!important;grid-template-columns:34px minmax(0,1fr) auto!important;align-items:center!important;min-height:51px!important;padding:5px 7px!important;gap:5px!important;width:100%;border-radius:12px!important;box-shadow:0 3px 0 #12345625!important;transform:none}
+.side-panel .block-choice:hover{transform:translateY(-2px)}
+.side-panel .block-choice .shape{font-size:24px!important;grid-row:1}
+.side-panel .block-choice .name{font-size:10px!important;text-align:left;line-height:1.1;grid-row:1;overflow-wrap:anywhere}
+.side-panel .block-choice .value{font-size:16px!important;grid-row:1;white-space:nowrap}
+.side-panel .block-choice .qty{display:none!important}
+.right-panel{justify-content:center;gap:12px;background:linear-gradient(160deg,#fff,#e9f8ff)}
+.panel-label{font-size:13px;font-weight:800;color:#42637e;text-align:center}
+.panel-number{font-size:clamp(25px,2.5vw,36px);font-weight:1000;text-align:center;color:#1362b2;line-height:1;overflow-wrap:anywhere}
+.remaining-number{color:#d26b16}
+.panel-note{border-radius:12px;background:#e0f4ff;padding:12px 7px;text-align:center;color:#17537a;font-weight:750;font-size:12px;line-height:1.5}
+.center-stage .landscape{width:100%!important;height:clamp(285px,43vh,390px)!important;min-height:285px!important;max-height:390px!important;margin:0!important;flex:none!important;border:3px solid #fff;box-shadow:inset 0 0 25px #fff8,0 6px 18px #13577a28}
+.center-stage .truck-area{width:min(720px,96%)!important;bottom:42px!important}
+.center-stage .mission{margin:0!important}
+.cargo{display:flex!important;align-content:flex-end!important;align-items:flex-end!important;justify-content:flex-start!important;gap:3px!important;padding:5px!important;overflow:hidden!important}
+.cargo-piece{width:clamp(17px,2.2vw,28px);height:clamp(17px,2.2vw,28px);border:1px solid #fff8;border-radius:5px;box-shadow:inset 0 -3px 0 #12345625,0 2px 3px #12345635;font-size:clamp(11px,1.5vw,19px);line-height:1;display:grid;place-items:center;cursor:pointer;flex:none;animation:drop .25s ease-out}
+.cargo-piece:hover{filter:brightness(1.15);transform:translateY(-2px)}
+.cargo-piece:disabled{cursor:default}
+.cargo.empty:after{content:'📦 COLOCA AQUI OS BLOCOS'!important;font-size:clamp(10px,1.4vw,15px)!important}
+.station{margin-top:7px!important}
+.station h2{font-size:13px!important;margin:0 0 3px!important}
+.station .summary{margin:3px auto!important}
+.station .actions{margin:4px auto!important}
+.station .action{padding:7px 10px!important}
+@media(min-width:800px) and (max-height:760px){.center-stage .landscape{height:clamp(235px,36vh,305px)!important;min-height:235px!important}.center-stage .truck-area{width:min(630px,94%)!important;bottom:29px!important}.side-panel .block-choice{min-height:42px!important}.side-panel{padding:8px}.right-panel{gap:7px}.panel-note{padding:7px}}
+@media(max-width:900px){.play-layout{grid-template-columns:minmax(135px,175px) minmax(0,1fr)}.right-panel{display:none}.center-stage .landscape{height:clamp(250px,38vh,335px)!important;min-height:250px!important}}
+@media(max-width:620px){.play-layout{grid-template-columns:1fr;gap:6px}.center-stage{grid-row:1}.side-panel{grid-row:2;padding:7px}.side-panel .blocks{grid-template-columns:repeat(auto-fit,minmax(112px,1fr))!important}.side-panel .block-choice{min-height:45px!important;grid-template-columns:24px minmax(0,1fr) auto!important}.side-panel .block-choice .shape{font-size:19px!important}.side-panel .block-choice .value{font-size:13px!important}.side-heading{font-size:12px;padding-bottom:2px}.side-hint{display:none}.center-stage .landscape{height:220px!important;min-height:220px!important}.center-stage .truck-area{bottom:25px!important;width:96%!important}.right-panel{display:none}.cargo-piece{width:19px;height:19px;font-size:12px}}
+
+/* V12 — comandos legíveis e blocos alinhados em toda a coluna */
+@media (min-width:901px){
+ .play-layout{grid-template-columns:minmax(225px,255px) minmax(0,1fr) minmax(165px,190px)!important;gap:12px}
+}
+.side-panel{padding:13px!important;gap:10px!important}
+.side-heading{font-size:17px!important;letter-spacing:.1px;padding-bottom:9px!important}
+.side-panel .blocks{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:9px!important;align-content:start}
+.side-panel .block-choice{display:grid!important;grid-template-columns:42px minmax(0,1fr) auto!important;grid-template-rows:1fr!important;min-height:67px!important;padding:9px 10px!important;gap:9px!important;align-items:center!important;justify-items:stretch!important;border:2px solid #ffffff!important;border-radius:14px!important;box-sizing:border-box!important;text-align:left!important}
+.side-panel .block-choice .shape{grid-column:1!important;grid-row:1!important;font-size:30px!important;line-height:1!important;text-align:center!important}
+.side-panel .block-choice .name{grid-column:2!important;grid-row:1!important;font-size:13px!important;line-height:1.15!important;overflow-wrap:normal!important;hyphens:auto}
+.side-panel .block-choice .value{grid-column:3!important;grid-row:1!important;font-size:21px!important;font-variant-numeric:tabular-nums!important;text-align:right!important;white-space:nowrap!important}
+.side-hint{font-size:12px!important}
+.station{padding:13px 15px!important;border:2px solid #b5d8f4!important;border-radius:18px!important;background:linear-gradient(135deg,#ffffff,#e8f4ff)!important;box-shadow:0 5px 16px #2157851c!important}
+.station h2{font-size:21px!important;margin:0 0 10px!important;color:#13466e!important;letter-spacing:.1px}
+.station .summary{margin:9px auto!important;gap:9px!important}
+.station .sum{font-size:15px!important;padding:8px 12px!important}
+.station .actions{margin:10px auto!important;gap:9px!important;display:flex!important;flex-wrap:wrap!important;justify-content:center!important}
+.station .action{font-size:14px!important;font-weight:900!important;padding:12px 16px!important;min-height:44px!important;border-radius:12px!important;white-space:normal!important}
+.station .message{font-size:15px!important;margin:8px 0 2px!important}
+@media (min-width:800px) and (max-height:760px){
+ .side-panel .block-choice{min-height:55px!important;padding:6px 9px!important}
+ .side-panel .block-choice .shape{font-size:26px!important}
+ .station{padding:8px 12px!important}
+ .station h2{font-size:18px!important;margin-bottom:5px!important}
+ .station .actions{margin:5px auto!important}
+ .station .action{padding:8px 12px!important;min-height:38px!important;font-size:13px!important}
+ .station .summary{margin:5px auto!important}
+}
+@media (min-width:621px) and (max-width:900px){
+ .play-layout{grid-template-columns:minmax(190px,220px) minmax(0,1fr)!important}
+}
+@media (max-width:620px){
+ .side-panel .blocks{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .side-panel .block-choice{min-height:59px!important;padding:6px!important;grid-template-columns:25px minmax(0,1fr) auto!important;gap:4px!important}
+ .side-panel .block-choice .shape{font-size:21px!important}
+ .side-panel .block-choice .name{font-size:10px!important}
+ .side-panel .block-choice .value{font-size:15px!important}
+ .station h2{font-size:18px!important}
+ .station .action{font-size:12px!important;padding:9px 10px!important}
+}
+
+/* V13 — hierarquia visual dos três painéis, sem aumentar a altura */
+.play-layout{gap:13px!important}
+.side-panel{position:relative;overflow:hidden;border:2px solid #b7d6f1!important;box-shadow:0 5px 0 #9ac2e44d,0 10px 22px #1b54851c!important;background:linear-gradient(175deg,#ffffff 0%,#edf6ff 100%)!important}
+.side-panel::before{content:"";position:absolute;inset:0 0 auto;height:7px;background:linear-gradient(90deg,#2b78dc,#56c4f4)}
+.side-panel .side-heading{display:flex;align-items:center;justify-content:center;min-height:42px;margin:-1px -1px 3px;padding:9px 7px 10px!important;border:0!important;border-radius:11px;background:linear-gradient(105deg,#1e62b2,#3788d7);color:#fff!important;font-size:18px!important;letter-spacing:.2px;text-shadow:0 1px 2px #103c6e7a;box-shadow:0 3px 0 #12509130}
+.side-panel .block-choice{border:2px solid #c5def4!important;box-shadow:0 3px 0 #9fbfdc,0 5px 11px #234f7620!important;background:linear-gradient(135deg,#fff,#f1f8ff)!important;transition:transform .14s,filter .14s!important}
+.side-panel .block-choice:hover:not(:disabled){transform:translateY(-2px)!important;filter:saturate(1.12)}
+.side-panel .block-choice:focus-visible,.station .action:focus-visible{outline:3px solid #ffbd3b!important;outline-offset:2px}
+.side-panel .block-choice .value{color:#1356a2!important}
+.right-panel{background:linear-gradient(170deg,#fff,#eaf8f5)!important;border-color:#a7dcd1!important}
+.right-panel::before{background:linear-gradient(90deg,#0c9a85,#5ed5ae)}
+.right-panel .side-heading{background:linear-gradient(105deg,#087f7a,#18aa94);box-shadow:0 3px 0 #066b6230}
+.right-panel .panel-label{font-size:14px!important;color:#3e5c6e!important;letter-spacing:.1px}
+.right-panel .panel-number{font-size:clamp(29px,2.8vw,41px)!important;padding:7px 5px;border-radius:12px;background:#fff;border:1px solid #cdebe4;box-shadow:inset 0 -3px #e2f6ef}
+.right-panel .remaining-number{color:#c76a19!important;background:#fff8ec;border-color:#f4ddb8;box-shadow:inset 0 -3px #ffebcc}
+.right-panel .panel-note{background:#d9f6ed!important;border:1px solid #b0e8d7;color:#126d5f!important}
+.station{position:relative;overflow:hidden;border:2px solid #d8c6fa!important;background:linear-gradient(115deg,#ffffff,#f5efff)!important;box-shadow:0 5px 0 #bda7ed52,0 9px 19px #4b388520!important}
+.station::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#6b58c8,#ad7cf0)}
+.station h2{display:inline-flex;align-items:center;gap:7px;color:#4e399a!important;font-size:21px!important;margin-bottom:8px!important}
+.station .sum{border:1px solid #ddd1f4!important;background:#fff!important;box-shadow:0 2px 0 #e8def9!important}
+.station .action{box-shadow:0 3px 0 #322d6255,0 5px 11px #483e7a20!important}
+@media (min-width:800px) and (max-height:760px){
+ .side-panel .side-heading{min-height:34px;padding:6px!important;font-size:16px!important}
+ .side-panel{gap:6px!important;padding:9px!important}
+ .right-panel .panel-number{padding:4px!important;font-size:28px!important}
+ .station h2{font-size:18px!important;margin-bottom:4px!important}
+}
+@media (max-width:620px){
+ .side-panel .side-heading{font-size:15px!important;min-height:34px;padding:7px!important}
+ .station h2{font-size:18px!important}
+}
+/* Menu de escolha do ano: apresentado apenas quando não existe ?ano= */
+.year-menu{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:18px;background:linear-gradient(145deg,#0b367dd9,#45318bdc);backdrop-filter:blur(8px)}
+.year-menu[hidden]{display:none}.year-card{width:min(590px,100%);border:5px solid white;border-radius:28px;padding:clamp(18px,4vw,30px);background:linear-gradient(155deg,#f6fcff,#fff7da);box-shadow:0 22px 65px #061a526b;text-align:center}
+.year-card .mascot{font-size:clamp(44px,7vw,68px);line-height:1.1}.year-card h2{font-size:clamp(26px,4vw,37px);color:#17468f;margin:10px 0 4px}.year-card p{font-size:clamp(16px,2vw,19px);font-weight:800;color:#4b6181;margin:4px 0 18px}.year-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.year-btn{min-height:100px;border:3px solid #fff;border-radius:19px;color:#fff;font-size:clamp(20px,3vw,27px);font-weight:1000;box-shadow:0 6px 0 #153a7e50;transition:transform .15s}.year-btn:hover{transform:translateY(-3px)}.year-btn:active{transform:translateY(2px)}.year-btn small{display:block;font-size:13px;margin-top:4px}.year-btn:nth-child(1){background:linear-gradient(145deg,#247fdc,#1358ac)}.year-btn:nth-child(2){background:linear-gradient(145deg,#24b86f,#0b8c60)}.year-btn:nth-child(3){background:linear-gradient(145deg,#f3a62b,#d27418)}.year-btn:nth-child(4){background:linear-gradient(145deg,#9863e7,#6841b8)}
+#changeYear{background:#fff1d0;color:#64468d;border-color:#e7d4ff}
+@media(max-width:420px){.year-grid{gap:8px}.year-btn{min-height:83px}.year-card{padding:14px}}
+
+/* Rodapé V15: azul profundo, contraste forte e acabamento elegante */
+.footer{
+  background:linear-gradient(115deg,#102d62 0%,#174e9a 48%,#243d83 100%)!important;
+  color:#ffffff!important;
+  border:2px solid #b9ddff!important;
+  border-radius:14px!important;
+  padding:11px 18px!important;
+  font-size:clamp(15px,1.55vw,19px)!important;
+  font-weight:900!important;
+  letter-spacing:.2px!important;
+  line-height:1.4!important;
+  text-align:center!important;
+  text-shadow:0 1px 2px rgba(0,0,0,.38)!important;
+  box-shadow:0 5px 0 #0b2857,0 9px 20px rgba(12,43,94,.25)!important;
+}
+@media(max-width:620px){.footer{font-size:14px!important;padding:9px 8px!important}}
+
+/* V14 — central de controlo imediatamente abaixo do camião,
+   independentemente da altura dos blocos laterais. */
+.center-stage>.station{margin:2px 0 0!important;width:100%;box-sizing:border-box}
+.center-stage>.station .actions{gap:6px!important;margin:7px auto!important}
+.center-stage>.station .action{padding:9px 10px!important;font-size:13px!important;min-height:40px!important}
+.center-stage>.station .summary{margin:6px auto!important;gap:6px!important}
+.center-stage>.station .sum{font-size:13px!important;padding:6px 9px!important}
+.center-stage>.station h2{font-size:19px!important;margin-bottom:6px!important}
+body[data-year="3"] .side-panel .blocks,body[data-year="4"] .side-panel .blocks{gap:6px!important}
+body[data-year="3"] .side-panel .block-choice,body[data-year="4"] .side-panel .block-choice{min-height:55px!important;padding:6px 8px!important}
+@media(max-width:620px){.center-stage>.station{padding:8px!important}.center-stage>.station .actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))}.center-stage>.station .action{white-space:normal!important}}
+
+/* V16 — cabeçalho profissional, legível e compacto */
+.top{position:relative;isolation:isolate;overflow:hidden;min-height:62px;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:12px;padding:8px 13px!important;border:2px solid #d7eaff!important;border-radius:17px!important;background:linear-gradient(112deg,#103b7b 0%,#1a60b1 56%,#364eaa 100%)!important;box-shadow:0 5px 0 #153b73,0 10px 22px #143e7733!important}
+.top::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 18% -70%,#ffffff47,transparent 60%);z-index:-1;pointer-events:none}
+.top .brand{display:flex;align-items:center;gap:10px;min-width:0;font-size:clamp(17px,1.9vw,23px)!important;line-height:1.05;font-weight:950;letter-spacing:-.4px;color:white;white-space:nowrap}
+.top .brand-icon{display:grid;place-items:center;flex:none;width:43px;height:43px;border-radius:13px;background:linear-gradient(150deg,#fff9d8,#ffe5a0);border:2px solid #fff;box-shadow:0 3px 0 #0d3570;font-size:26px}
+.top .brand-label{display:flex;flex-direction:column;gap:2px}.top .brand-label strong{color:#ffdd70}.top .brand-label small{font-size:10px;font-weight:750;letter-spacing:1.1px;text-transform:uppercase;color:#d4e9ff}
+.top .nav{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-wrap:nowrap}
+.top .nav a{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:41px;padding:8px 13px!important;border-radius:11px!important;font-size:clamp(12px,1.15vw,15px);font-weight:900;text-decoration:none;white-space:nowrap;transition:transform .15s,box-shadow .15s,filter .15s;box-shadow:0 3px 0 #0c2f65!important}
+.top .nav a:hover{transform:translateY(-2px);filter:brightness(1.05);box-shadow:0 5px 0 #0c2f65!important}.top .nav a:active{transform:translateY(1px);box-shadow:0 1px 0 #0c2f65!important}
+.top .nav-back{background:linear-gradient(180deg,#fffdf2,#ffe8a7)!important;color:#174276!important;border:2px solid #fff6cf!important}
+.top .nav-home{background:linear-gradient(180deg,#ffffff,#e5f4ff)!important;color:#174276!important;border:2px solid #d6edff!important}
+.top .nav a span{font-size:21px;font-weight:950;line-height:.7}
+@media(max-width:620px){.top{gap:7px;padding:7px!important;min-height:55px}.top .brand{gap:5px;font-size:14px!important}.top .brand-icon{width:33px;height:33px;font-size:20px;border-radius:9px}.top .brand-label small{font-size:8px;letter-spacing:.3px}.top .nav{gap:4px}.top .nav a{font-size:10px;padding:7px 6px!important;min-height:34px;gap:3px}.top .nav a span{font-size:15px}}
+@media(max-width:390px){.top .brand-label small{display:none}.top .nav a{font-size:9px;padding:6px 4px!important}}
+</style>
+</head>
+<body><div class="shell">
+<header class="top"><span class="brand"><span class="brand-icon" aria-hidden="true">🦉</span><span class="brand-label">Recreio <strong>Digital</strong><small>Aprender e brincar</small></span></span><nav class="nav" aria-label="Navegação"><a class="nav-back" id="back" href="../1-ano/"><span aria-hidden="true">←</span> Voltar aos jogos</a><a class="nav-home" href="../index.html"><span aria-hidden="true">⌂</span> Página inicial</a></nav></header>
+<section class="title"><h1>🚛 O Camião dos Números</h1><p>Carrega os blocos e segue viagem!</p></section>
+<div class="hud"><button class="pill" id="changeYear" title="Escolher outro ano">📚 <span id="grade">1.º ano</span> ▾</button><span class="pill">🏆 Entregas: <b id="wins">0</b></span><span class="pill">💡 Tentativas: <b id="errors">0</b></span><span class="pill">🚚 Viagem: <b id="round">1</b></span><button class="pill" id="sound" aria-pressed="true">🔊 Som ligado</button></div>
+<div class="floating-target" id="floatingTarget" aria-label="Número pedido para carregar"><span style="font-size:30px">🎯</span><span class="mini-label">NÚMERO A<br>CARREGAR</span><strong class="mini-number" id="stickyNumber">—</strong><span style="font-size:29px">🚛</span></div>
+<main class="game"><div class="play-layout"><aside class="side-panel"><div class="side-heading">🧱 Blocos de carga</div><div class="blocks" id="blocks"></div><div class="side-hint">Toca num bloco para o colocar no camião.</div></aside><div class="center-stage"><div class="mission"><span class="flag">📦</span><div><small>NÚMERO A CARREGAR</small><strong id="target">—</strong></div><span class="caption">🎯 Missão</span></div>
+<div class="landscape"><div class="sun"></div><div class="cloud">☁️</div><div class="cloud two">☁️</div><div class="hill"></div><div class="hill two"></div><div class="tree">🌳</div><div class="tree two">🌲</div><div class="road"></div>
+<div class="truck-area" id="truck"><div class="cargo empty" id="cargo" aria-label="Caixa de carga do camião"></div><svg class="truck-svg" viewBox="0 0 720 205" role="img" aria-label="Camião de entregas azul e amarelo" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="boxPaint" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#318bdf"/><stop offset="1" stop-color="#15549f"/></linearGradient><linearGradient id="cabPaint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffdb58"/><stop offset=".65" stop-color="#ffab32"/><stop offset="1" stop-color="#f47a25"/></linearGradient><linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e5fbff"/><stop offset="1" stop-color="#65bde7"/></linearGradient></defs>
+<ellipse cx="359" cy="193" rx="335" ry="10" fill="#1a3355" opacity=".24"/>
+<rect x="31" y="24" width="446" height="136" rx="14" fill="url(#boxPaint)" stroke="#103c78" stroke-width="6"/><rect x="43" y="35" width="422" height="110" rx="8" fill="none" stroke="#a6dfff" stroke-width="3" opacity=".6"/><path d="M48 47h411" stroke="#b9eaff" stroke-width="4" opacity=".45"/>
+<path d="M475 77h105c18 0 33 9 42 25l37 49v25H474z" fill="url(#cabPaint)" stroke="#bd5b1b" stroke-width="6" stroke-linejoin="round"/><path d="M503 89h73c14 0 25 8 32 21l15 22H503z" fill="url(#glass)" stroke="#386f96" stroke-width="5" stroke-linejoin="round"/><path d="M509 94l18 0-18 34" stroke="#fff" stroke-width="5" opacity=".65"/><path d="M582 91v43" stroke="#b95e24" stroke-width="4"/><rect x="490" y="142" width="10" height="21" rx="4" fill="#ffeb93"/><rect x="609" y="142" width="24" height="7" rx="3" fill="#a9501e"/><rect x="628" y="154" width="32" height="11" rx="5" fill="#fff2a4"/><path d="M40 157h626v19H40z" fill="#273b59"/><path d="M48 159h608" stroke="#7089a4" stroke-width="3"/><rect x="27" y="153" width="16" height="20" rx="5" fill="#dce9f5"/><rect x="660" y="153" width="16" height="18" rx="4" fill="#fff7b6"/>
+<g class="wheel"><circle cx="162" cy="177" r="27" fill="#18283c" stroke="#0c192a" stroke-width="5"/><circle cx="162" cy="177" r="15" fill="#cbd9e9"/><circle cx="162" cy="177" r="7" fill="#748da9"/><path d="M162 162v30M147 177h30" stroke="#8fa7c2" stroke-width="3"/></g><g class="wheel"><circle cx="548" cy="177" r="27" fill="#18283c" stroke="#0c192a" stroke-width="5"/><circle cx="548" cy="177" r="15" fill="#cbd9e9"/><circle cx="548" cy="177" r="7" fill="#748da9"/><path d="M548 162v30M533 177h30" stroke="#8fa7c2" stroke-width="3"/></g>
+<path d="M482 80h98q30 0 43 26l34 46" fill="none" stroke="#fff1ab" stroke-width="3" opacity=".65"/>
+<path d="M481 82v69" stroke="#a84d1d" stroke-width="3" opacity=".65"/>
+<rect x="503" y="139" width="49" height="5" rx="2" fill="#e99531" opacity=".85"/>
+<rect x="568" y="141" width="30" height="4" rx="2" fill="#f9e0a1" opacity=".9"/>
+<rect x="586" y="149" width="20" height="6" rx="3" fill="#ba5b1b"/>
+<path d="M607 135h14" stroke="#7e4d27" stroke-width="4" stroke-linecap="round"/>
+<path d="M645 151l14 3v11h-14z" fill="#fbe6a6" stroke="#b66c22" stroke-width="2"/>
+<rect x="39" y="152" width="430" height="5" rx="2" fill="#92c9ef" opacity=".55"/>
+<g fill="#eaf5ff" opacity=".9"><circle cx="162" cy="177" r="3"/><circle cx="548" cy="177" r="3"/></g>
+<path d="M503 151h99" stroke="#ffe5a1" stroke-width="2"/><circle cx="613" cy="147" r="3" fill="#f8f1da"/><rect x="510" y="148" width="24" height="3" rx="1" fill="#fff4c4" opacity=".8"/><path d="M42 30h420" stroke="#c4eaff" stroke-width="2" opacity=".8"/>
+<rect x="45" y="142" width="420" height="4" rx="2" fill="#073d82" opacity=".45"/>
+<rect x="483" y="155" width="30" height="6" rx="2" fill="#e8ac60"/>
+<rect x="485" y="152" width="28" height="7" rx="3" fill="#c66d25"/><text x="457" y="61" text-anchor="end" font-size="18" font-weight="900" letter-spacing="1" fill="#e9f6ff">RECREIO DIGITAL</text>
+</svg></div></div>
+<section class="station"><h2>🚛 Central de controlo</h2>
+<div class="progress-track" aria-label="Progresso da carga"><div class="progress-fill" id="progressFill"></div></div><div class="summary"><div class="sum">📦 Carga atual: <b id="total">0</b></div><div class="sum">🎯 Falta carregar: <b id="remaining">0</b></div></div>
+<div class="actions"><button class="action yellow" id="undo">↶ Retirar último bloco</button><button class="action blue" id="clear">🧹 Descarregar</button><button class="action green" id="check">✅ Verificar carga</button><button class="action blue" id="skip">🔄 Outro camião</button></div><p class="message" id="message" aria-live="polite">Vamos carregar o camião!</p></section></div><aside class="side-panel right-panel"><div class="side-heading">📋 Painel de carga</div><div class="panel-label">Já carregaste</div><div class="panel-number" id="panelTotal">0</div><div class="panel-label">Ainda faltam</div><div class="panel-number remaining-number" id="panelRemaining">0</div><div class="panel-note">🚛 Completa a carga para partir!</div></aside></div>
+</main><footer class="footer">Feito com ❤️ para aprender e brincar · Recreio Digital</footer></div>
+<div class="overlay" id="overlay" hidden><div class="win"><div class="emoji">🏆🚛✨</div><h2>Entrega concluída!</h2><p id="wintext">Excelente trabalho!</p><button class="action green" id="continue">🚛 Próxima viagem!</button></div></div>
+<section class="year-menu" id="yearMenu" hidden role="dialog" aria-modal="true" aria-labelledby="yearTitle"><div class="year-card"><div class="mascot">🦉🚛</div><h2 id="yearTitle">O Camião dos Números</h2><p>Escolhe o teu ano e começa a carregar!</p><div class="year-grid"><button class="year-btn" data-year="1">1.º ano<small>Até 20</small></button><button class="year-btn" data-year="2">2.º ano<small>Até 1 000</small></button><button class="year-btn" data-year="3">3.º ano<small>Até 10 000</small></button><button class="year-btn" data-year="4">4.º ano<small>Até 1 000 000</small></button></div></div></section>
+<script>
+'use strict';
+const $=id=>document.getElementById(id),q=new URLSearchParams(location.search),hasYear=['1','2','3','4'].includes(q.get('ano'));let year=hasYear?Number(q.get('ano')):1;
+const MAX={1:20,2:1000,3:10000,4:1000000};
+const PLACES=[{v:1,name:'Unidade',icon:'🟨',cls:0},{v:10,name:'Dezena',icon:'🟩',cls:1},{v:100,name:'Centena',icon:'🟦',cls:2},{v:1000,name:'Unidade de milhar',icon:'🟪',cls:3},{v:10000,name:'Dezena de milhar',icon:'🟥',cls:4},{v:100000,name:'Centena de milhar',icon:'🟫',cls:5},{v:1000000,name:'Unidade de milhão',icon:'💎',cls:6}];
+let target=0,load=[],wins=0,errors=0,round=0,used=new Set(),busy=false,soundOn=true,timer=null,ctx=null,celebrated=false;
+const fmt=n=>n.toLocaleString('pt-PT');
+function updateFloatingTarget(){}
+window.addEventListener('scroll',updateFloatingTarget,{passive:true});window.addEventListener('resize',updateFloatingTarget,{passive:true});
+function updateYearUI(){$('grade').textContent=year+'.º ano';$('back').href='../'+year+'-ano/'}updateYearUI();
+function tone(freq,dur=.15){if(!soundOn)return;try{ctx=ctx||new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(freq,ctx.currentTime);g.gain.setValueAtTime(.055,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+dur);o.connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+dur)}catch(e){}}
+function say(msg,kind=''){$('message').textContent=msg;$('message').className='message '+kind}
+function chooseTarget(){let t,attempts=0;do{if(year===1)t=1+Math.floor(Math.random()*20);else if(year===2)t=10+Math.floor(Math.random()*991);else if(year===3)t=100+Math.floor(Math.random()*9901);else t=1000+Math.floor(Math.random()*999001);attempts++}while((used.has(t)||digitSum(t)>32)&&attempts<300);used.add(t);return t}
+function digitSum(n){return String(n).split('').reduce((a,c)=>a+Number(c),0)}
+function availablePlaces(){return PLACES.filter(p=>p.v<=MAX[year]&&(year!==1||p.v<=10))}
+function total(){return load.reduce((s,v)=>s+v,0)}
+function newRound(){clearTimeout(timer);busy=false;celebrated=false;load=[];round++;target=chooseTarget();$('round').textContent=round;$('target').textContent=fmt(target);$('stickyNumber').textContent=fmt(target);updateFloatingTarget();$('overlay').hidden=true;$('truck').classList.remove('drive','loaded','arrive');void $('truck').offsetWidth;$('truck').classList.add('arrive');render();say('🦉 Escolhe os blocos certos para formar o número '+fmt(target)+'!')}
+function addBlock(v){if(busy)return;const n=total()+v;if(n>target){errors++;$('errors').textContent=errors;say('💡 Esse bloco é demasiado grande para a carga que falta. Tenta outro!','bad');tone(190,.2);return}if(load.length>=48){say('💡 Usa blocos de maior valor para simplificar a carga.','bad');return}load.push(v);$('truck').classList.remove('loaded');void $('truck').offsetWidth;$('truck').classList.add('loaded');tone(420+Math.min(load.length*25,300),.08);render();const phrases=['✨ Muito bem! Continua a carregar!','🦉 Boa escolha! A carga está a crescer!','🌟 Excelente! Estás no bom caminho!','🚛 Mais um bloco no camião!','💛 Continua, pequeno motorista!'];say(phrases[(load.length-1)%phrases.length],'good');if(total()===target){say('🎯 Carga completa! Vamos confirmar e partir!','good');timer=setTimeout(check,550)}}
+function render(){const box=$('blocks');box.replaceChildren();availablePlaces().slice().reverse().forEach(p=>{const b=document.createElement('button');b.className='block-choice b'+p.cls;b.draggable=!busy;b.setAttribute('aria-label','Adicionar '+p.name+' com valor '+fmt(p.v));b.innerHTML='<span class="shape">'+p.icon+'</span><span class="name">'+p.name+'</span><span class="value">'+fmt(p.v)+'</span>';b.disabled=busy;b.onclick=()=>addBlock(p.v);b.ondragstart=e=>{e.dataTransfer.setData('text/plain',String(p.v));e.dataTransfer.effectAllowed='copy'};box.append(b)});
+const cargo=$('cargo');cargo.replaceChildren();cargo.classList.toggle('empty',load.length===0);
+// Cada toque coloca uma peça física, não uma etiqueta com × quantidade.
+// A ordem acompanha os blocos carregados, permitindo retirar uma peça individual.
+load.forEach((v,i)=>{const p=PLACES.find(item=>item.v===v);const el=document.createElement('button');el.type='button';el.className='cargo-piece b'+p.cls;el.title='Retirar '+p.name+' ('+fmt(v)+')';el.setAttribute('aria-label','Retirar bloco '+fmt(v));el.textContent=p.icon;el.disabled=busy;el.onclick=()=>{if(busy)return;load.splice(i,1);render();say('↶ Retiraste um bloco. Continua a carregar!')};cargo.append(el)});
+$('progressFill').style.width=Math.min(100,Math.round(total()/target*100))+'%';$('total').textContent=fmt(total());$('remaining').textContent=fmt(Math.max(0,target-total()));$('panelTotal').textContent=fmt(total());$('panelRemaining').textContent=fmt(Math.max(0,target-total()));$('undo').disabled=busy||load.length===0;$('clear').disabled=busy||load.length===0;$('check').disabled=busy||load.length===0;$('skip').disabled=busy}
+function confetti(){const chars=['⭐','✨','🎉','💛','🚛'];for(let i=0;i<40;i++){const el=document.createElement('span');el.className='particle';el.textContent=chars[i%chars.length];el.style.left=Math.random()*100+'vw';el.style.top='-30px';el.style.setProperty('--dx',(Math.random()*220-110)+'px');el.style.animationDelay=Math.random()*.5+'s';document.body.append(el);setTimeout(()=>el.remove(),2800)}}
+function check(){if(busy)return;clearTimeout(timer);if(total()!==target){errors++;$('errors').textContent=errors;say('💡 Ainda faltam '+fmt(target-total())+'! Continua a carregar os blocos.','bad');tone(190,.19);return}busy=true;wins++;$('wins').textContent=wins;render();say('🎉 Carga certa! O camião vai partir!','good');tone(650,.16);setTimeout(()=>tone(850,.18),190);confetti();$('truck').classList.remove('arrive');void $('truck').offsetWidth;$('truck').classList.add('drive');timer=setTimeout(()=>{if(!busy)return;$('wintext').textContent='Transportaste '+fmt(target)+' com os blocos certos. Fantástico! '+(wins%5===0?'🏅 Já fizeste '+wins+' entregas!':'');$('overlay').hidden=false},1850)}
+$('cargo').addEventListener('dragover',e=>{if(!busy){e.preventDefault();$('cargo').classList.add('dragover')}});
+$('cargo').addEventListener('dragleave',()=>$('cargo').classList.remove('dragover'));
+$('cargo').addEventListener('drop',e=>{e.preventDefault();$('cargo').classList.remove('dragover');const v=Number(e.dataTransfer.getData('text/plain'));if(availablePlaces().some(p=>p.v===v))addBlock(v)});
+$('undo').onclick=()=>{if(!busy&&load.length){load.pop();render();say('↶ Retiraste o último bloco.')}};
+$('clear').onclick=()=>{if(!busy){load=[];render();say('🧹 Camião descarregado! Vamos tentar novamente.')}};
+$('check').onclick=check;$('skip').onclick=newRound;$('continue').onclick=newRound;
+$('sound').onclick=()=>{soundOn=!soundOn;$('sound').textContent=soundOn?'🔊 Som ligado':'🔇 Som desligado';$('sound').setAttribute('aria-pressed',String(soundOn));if(soundOn)tone(500,.1)};
+function setYear(y){year=y;document.body.dataset.year=String(year);wins=0;errors=0;round=0;used.clear();$('wins').textContent='0';$('errors').textContent='0';updateYearUI();$('yearMenu').hidden=true;try{const url=new URL(location.href);url.searchParams.set('ano',String(year));history.replaceState(null,'',url)}catch(e){}newRound()}
+document.querySelectorAll('.year-btn[data-year]').forEach(btn=>btn.addEventListener('click',()=>setYear(Number(btn.dataset.year))));
+$('changeYear').onclick=()=>{clearTimeout(timer);$('overlay').hidden=true;$('yearMenu').hidden=false;document.querySelector('[data-year="'+year+'"]').focus()};
+document.body.dataset.year=String(year);if(hasYear){newRound()}else{$('yearMenu').hidden=false;document.querySelector('[data-year="1"]').focus()}
+</script></body></html>
