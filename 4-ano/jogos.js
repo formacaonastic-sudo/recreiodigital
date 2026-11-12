@@ -10,7 +10,7 @@ window.JOGOS_DO_ANO = [
   titulo: "Escadas Mágicas",
   descricao: "Descobre a ordem crescente e decrescente até 1 000!",
   disciplina: "Matemática",
-  icone: "🪜",
+  icone: "🪜🪜",
   ficheiro: "../jogos/escadas-magicas.html?ano=4"
 },
   {
