@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "O Camião dos Números",
+  descricao: "Carrega o camião com os blocos certos e parte para uma nova aventura!",
+  disciplina: "Matemática",
+  icone: "🚛",
+  ficheiro: "../jogos/camiao-dos-numeros.html?ano=4"
+},
+  {
   titulo: "A Fábrica das Frases",
   descricao: "Constrói frases e ajuda a fábrica a crescer!",
   disciplina: "Português",
