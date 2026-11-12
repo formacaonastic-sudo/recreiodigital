@@ -8,7 +8,7 @@ window.JOGOS_DO_ANO = [
   },
   {
   titulo: "Escadas Mágicas",
-  descricao: "Descobre a ordem crescente e decrescente até 1 000!",
+  descricao: "Descobre a ordem crescente e decrescente!",
   disciplina: "Matemática",
   icone: "🪜🪜",
   ficheiro: "../jogos/escadas-magicas.html?ano=4"
