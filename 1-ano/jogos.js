@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Letras Mágicas no Recreio",
+  descricao: "Treina as letras minúsculas e maiúsculas, com imagens, áudio e avanço automático!",
+  disciplina: "Português",
+  icone: "✍️",
+  ficheiro: "../jogos/letras-magicas-no-recreio.html?ano=1"
+},
+  {
   titulo: "O Camião dos Números",
   descricao: "Carrega o camião com os blocos certos e parte para uma nova aventura!",
   disciplina: "Matemática",
