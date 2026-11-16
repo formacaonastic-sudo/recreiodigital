@@ -116,18 +116,33 @@ function finishPattern(){
 }
 function advance(e){
  if(!dragging||done||demoActive||e.pointerId!==activePointer)return;
- const b=position(e),a=lastPointer||b,movement=distance(a,b);if(movement<.08)return;lastPointer=b;
- const p=pattern,tolerance=assisted?20:12;let lastU=-1,next=progress;
- // Each sample must be passed in order, including every loop and reversal.
- for(let i=Math.floor(progress/3)+1;i<p.samples.length;i++){
-  const sample=p.samples[i],hit=segmentProjection(sample.point,a,b);
-  if(hit.distance>tolerance||hit.u+.0001<lastU)break;
-  const previous=p.at(Math.max(0,sample.length-2)),tx=sample.point.x-previous.x,ty=sample.point.y-previous.y;
-  const alignment=((b.x-a.x)*tx+(b.y-a.y)*ty)/(movement*(Math.hypot(tx,ty)||1));
-  if(alignment<-.05)break;
-  lastU=hit.u;next=sample.length;
+ const b=position(e),a=lastPointer||b,movement=distance(a,b);
+ if(movement<.08)return;
+ lastPointer=b;
+ const p=pattern,tolerance=assisted?25:17;
+ // Percorre o movimento em passos pequenos para não perder curvas apertadas,
+ // cruzamentos ou mudanças de direção nos grafismos ligados.
+ const steps=Math.max(1,Math.ceil(movement/5));
+ let next=progress;
+ for(let step=1;step<=steps;step++){
+  const q={x:a.x+(b.x-a.x)*step/steps,y:a.y+(b.y-a.y)*step/steps};
+  // Só se pode avançar no segmento seguinte do percurso (até 30 unidades).
+  // A procura local evita saltos para outro ramo nos pontos de cruzamento.
+  const limit=Math.min(p.length,next+30);
+  let best=next,bestDist=distance(q,p.at(next));
+  for(let l=next+2;l<=limit;l+=2){
+   const d=distance(q,p.at(l));
+   if(d<bestDist){bestDist=d;best=l}
+  }
+  if(bestDist<=tolerance&&best>next)next=best;
  }
- if(next>progress){progress=next;draw();if(progress>=p.length-.01)finishPattern()}
+ if(next>progress){
+  progress=Math.min(p.length,next);
+  // A extremidade final pode ficar entre amostras de 2 unidades.
+  if(p.length-progress<=3&&distance(b,p.at(p.length))<=tolerance)progress=p.length;
+  draw();
+  if(progress>=p.length-.01)finishPattern();
+ }
 }
 svg.addEventListener('pointerdown',e=>{if(done||demoActive||dragging||(e.pointerType==='mouse'&&e.button!==0))return;const p=position(e),target=pattern.at(progress);if(distance(p,target)>(assisted?37:27))return;dragging=true;activePointer=e.pointerId;lastPointer=p;svg.classList.add('is-dragging');try{svg.setPointerCapture(e.pointerId)}catch{}e.preventDefault()});
 svg.addEventListener('pointermove',e=>{if(!dragging)return;const samples=typeof e.getCoalescedEvents==='function'?e.getCoalescedEvents():[];for(const sample of samples.length?samples:[e]){if(dragging)advance(sample)}e.preventDefault()});
