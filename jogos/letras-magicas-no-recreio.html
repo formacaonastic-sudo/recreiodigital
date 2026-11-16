@@ -1,0 +1,825 @@
+<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"><title>Letras Mágicas no Recreio — Grafia Guiada</title><style>
+:root{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#17395a}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{background:radial-gradient(ellipse at 25% 20%,#8fe6c0 0%,transparent 40%),linear-gradient(135deg,#147b63,#075b79 65%,#103b70);display:flex;flex-direction:column}.top{height:62px;flex:none;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px clamp(10px,3vw,28px);background:#f9fdffed;box-shadow:0 3px 16px #082c4b22}.brand{font-weight:900;font-size:clamp(15px,2.5vw,22px);white-space:nowrap}.actions{display:flex;gap:7px}.btn{border:0;border-radius:13px;padding:10px 14px;font-weight:900;font-size:clamp(13px,1.7vw,17px);cursor:pointer;color:white;background:#1679be;box-shadow:0 3px 0 #0d5484}.btn:active{transform:translateY(2px);box-shadow:0 1px 0 #0d5484}.btn.secondary{background:#e77828;box-shadow:0 3px 0 #ad5114}.stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;padding:8px}.stars{position:absolute;inset:0;pointer-events:none;overflow:hidden}.star{position:absolute;width:3px;height:3px;background:#fff;border-radius:50%;animation:twinkle var(--dur) ease-in-out infinite alternate;animation-delay:var(--delay);box-shadow:0 0 9px 2px #ffffff90}@keyframes twinkle{from{opacity:.16;transform:scale(.6)}to{opacity:1;transform:scale(1.8)}}.panel{position:relative;width:min(96vw,900px);height:100%;max-height:720px;border-radius:24px;background:linear-gradient(145deg,#ffffff,#f2faff);border:2px solid #ffffff50;box-shadow:0 12px 35px #002f5070;display:flex;justify-content:center;align-items:center;overflow:hidden}.writing{width:100%;height:100%;max-height:100%;touch-action:none;user-select:none;overflow:visible}.letter-outline{fill:none;stroke:#143d57;stroke-width:63;stroke-linecap:round;stroke-linejoin:round}.letter-fill{fill:none;stroke:#ffffff;stroke-width:56;stroke-linecap:round;stroke-linejoin:round}.letter-inner{fill:none;stroke:#ffffff;stroke-opacity:1;stroke-width:46;stroke-linecap:round;stroke-linejoin:round}.guide{fill:none;stroke:#111111;stroke-width:6.5;stroke-linecap:round;stroke-dasharray:8 12;pointer-events:none}.written{fill:none;stroke:#20bf70;stroke-width:52;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}.arrow{fill:#d85870;stroke:#fff;stroke-width:1;pointer-events:none}.start{fill:#f34e79;stroke:#fff;stroke-width:5;filter:url(#softglow)}.tip{fill:#ff5683;stroke:white;stroke-width:5;filter:url(#softglow);pointer-events:none}.hint{position:absolute;bottom:13px;left:50%;transform:translateX(-50%);color:#fff;font-weight:800;font-size:clamp(12px,2.3vw,17px);background:#073f6bbd;padding:8px 15px;border-radius:99px;text-align:center;pointer-events:none}.footer{height:43px;flex:none;display:flex;align-items:center;justify-content:center;background:#063d73;color:#fff;font-weight:900;text-align:center;font-size:clamp(11px,2.5vw,17px);letter-spacing:.1px;padding:3px}.heart{display:inline-block;animation:beat 1.2s infinite}@keyframes beat{50%{transform:scale(1.25)}}.celebrate{position:absolute;inset:0;pointer-events:none;display:grid;place-items:center;opacity:0;transition:opacity .25s}.celebrate.show{opacity:1}.spark{position:absolute;font-size:clamp(18px,4vw,35px);animation:fly 1.2s ease-out forwards}@keyframes fly{from{opacity:1;transform:translate(0,0) scale(.5)}to{opacity:0;transform:translate(var(--x),var(--y)) rotate(180deg) scale(1.3)}}@media(max-width:550px){.top{height:57px}.btn{padding:9px}.panel{border-radius:15px}.stage{padding:5px}.hint{bottom:8px}.footer{height:46px}}
+ .choice{display:flex;gap:6px;align-items:center}.choice button{font-size:20px;min-width:43px;padding:7px 12px}.choice button[aria-pressed="true"]{background:#198b61;box-shadow:0 3px 0 #0a6141}.dot-outline{fill:#143d57}.dot-white{fill:white}.dot-green{fill:#20bf70}.dot-guide{fill:none;stroke:#111;stroke-width:5;stroke-dasharray:5 7}.dot-hit{fill:transparent;cursor:pointer} @media(max-width:550px){.choice button{min-width:35px;padding:7px 8px;font-size:17px}.brand{font-size:13px}.actions{gap:4px}.btn{padding:8px}} 
+/* The p follows the reference: a slender stem, a low entry and an open exit. */
+.writing .letter-outline{stroke-width:58}
+.writing .letter-fill{stroke-width:52}
+.writing .written{stroke-width:48}
+.writing .guide{stroke-width:4.6;stroke-dasharray:6 9}
+.writing .start{r:16}
+.writing .tip{r:15}
+.panel.is-guided .hint{max-width:calc(100% - 24px);white-space:normal;width:max-content;font-size:clamp(12px,2.1vw,17px)}
+.top{min-height:62px;height:auto;flex-wrap:wrap}
+.actions{align-items:center}
+.choice button:focus-visible,.btn:focus-visible{outline:3px solid #ffb53d;outline-offset:3px}
+@media(max-width:550px){.top{padding:6px 9px;gap:5px}.brand{width:100%;text-align:center}.actions{width:100%;justify-content:center}.choice{gap:4px}.choice button{min-width:34px;padding:6px 8px}.actions>.btn{padding:8px 9px}.panel.is-guided .hint{bottom:8px;padding:7px 10px}}
+
+@media(max-width:550px){.actions{flex-wrap:wrap;row-gap:6px}.choice{justify-content:center;flex-wrap:wrap}}
+
+.btn.demo{min-width:183px;background:#6853b9;box-shadow:0 3px 0 #43347e}
+.btn.assist{background:#18794e;box-shadow:0 3px 0 #09552f}
+.btn{min-height:44px}.choice button{min-height:44px;min-width:44px}
+.actions{flex-wrap:wrap;justify-content:flex-end}.choice{flex-wrap:wrap}
+.star{animation:none;opacity:.25}.heart{animation:none;margin:0 .22em}
+.start{animation:ready 1.6s ease-in-out infinite}
+@keyframes ready{50%{stroke-width:8}}
+.celebrate{transition:none}
+.panel.is-guided .hint{border-radius:16px;line-height:1.3;max-width:calc(100% - 24px)}
+@media(max-width:700px){.top{padding:5px 8px}.brand{width:100%;text-align:center}.actions{width:100%;justify-content:center;gap:6px}.choice{justify-content:center;gap:4px}.btn.demo,.btn.assist{font-size:13px;padding:8px 10px}.choice button{min-width:40px;padding:6px 9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* Compact Recreio Digital header and large navigation targets. */
+.portal-header{flex:none;min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px clamp(12px,2.4vw,28px);background:linear-gradient(115deg,#073b80,#0861b9);color:#fff;box-shadow:0 3px 16px #052c5b35;z-index:2}
+.portal-brand{display:flex;align-items:center;gap:11px;color:#fff;text-decoration:none;min-width:0}
+.portal-owl{font-size:36px;line-height:1;filter:drop-shadow(0 2px 2px #002d6060)}
+.portal-wordmark{font-size:clamp(20px,2.6vw,27px);font-weight:900;line-height:1.1;white-space:nowrap}
+.portal-wordmark strong{color:#ffd33d}
+.portal-game-title{display:block;margin-top:4px;font-size:13px;font-weight:750;line-height:1.2}
+.portal-nav{display:flex;align-items:center;gap:10px}
+.portal-link{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:9px 16px;border:2px solid transparent;border-radius:13px;font-weight:900;font-size:17px;line-height:1.2;text-decoration:none;white-space:nowrap;box-shadow:0 4px 0 #002c65;transition:transform .12s,box-shadow .12s}
+.portal-back{background:#ffd447;border-color:#ffeaa2;color:#153859}
+.portal-home{background:#fff;border-color:#aee0ff;color:#08447c}
+.portal-link:active{transform:translateY(2px);box-shadow:0 2px 0 #002c65}
+.portal-link:focus-visible,.portal-brand:focus-visible{outline:3px solid #ffdd56;outline-offset:4px}
+.top{min-height:0;justify-content:center;padding:7px clamp(10px,2vw,24px)}
+.top .actions{width:100%;justify-content:center}
+@media(max-width:700px){.portal-header{gap:9px;padding:8px 10px}.portal-brand{gap:8px}.portal-owl{font-size:31px}.portal-wordmark{font-size:22px}.portal-game-title{font-size:12px}.portal-nav{gap:7px}.portal-link{font-size:14px;min-height:44px;padding:9px 11px}.top{padding:6px 8px}}
+@media(max-width:560px){.portal-header{flex-direction:column;gap:8px}.portal-nav{width:100%;justify-content:center}.portal-brand{justify-content:center}.portal-owl{font-size:30px}.portal-game-title{text-align:center}.portal-link{flex:1;max-width:210px;padding:9px 7px}}
+
+.letter-bank{display:flex;gap:6px;flex:none}.bank-button{padding:8px 12px;border:2px solid #85bde6;background:#e7f4ff;color:#164f80;box-shadow:0 3px 0 #a1c9e7}
+.bank-button[aria-pressed="true"]{background:#075caa;border-color:#075caa;color:white;box-shadow:0 3px 0 #063d73}
+.choice button[hidden]{display:none}.choice{justify-content:center}
+@media(max-width:700px){.letter-bank{gap:5px}.bank-button{font-size:14px;padding:8px 10px}}
+
+/* Instructions occupy their own space, entirely below the writing panel. */
+.stage{flex-direction:column;gap:8px}
+.panel{flex:1;min-height:0;height:auto}
+.instruction-area{flex:none;display:flex;align-items:center;justify-content:center;min-height:62px;width:min(96vw,900px);padding:2px 0 4px}
+.instruction-area .hint{position:static;inset:auto;transform:none;width:100%;max-width:100%;min-height:46px;margin:0;padding:10px 16px;display:flex;align-items:center;justify-content:center;white-space:normal;line-height:1.3;font-size:clamp(14px,2.1vw,17px);background:#07508d;border:2px solid #a8d8f8;border-radius:16px;box-shadow:0 3px 0 #053665;text-align:center}
+/* A friendly owl and three stars celebrate the completed letter. */
+.celebrate{padding:18px;isolation:isolate}
+.success-card{position:relative;z-index:1;width:min(88%,360px);padding:17px 25px 22px;text-align:center;background:linear-gradient(145deg,#fffdf0,#e4f7ff);border:5px solid #ffd65c;border-radius:30px;box-shadow:0 12px 30px #063b6d55;transform:scale(.88);transition:transform .35s ease-out}
+.celebrate.show .success-card{transform:scale(1)}
+.success-stars{color:#ffbb24;font-size:clamp(28px,4vw,43px);font-weight:900;line-height:1.2;letter-spacing:4px;text-shadow:0 2px 0 #e29b12}
+.success-stars span{display:inline-block;font-size:1.25em;transform:translateY(-3px)}
+.success-owl{font-size:clamp(62px,10vw,94px);line-height:1.15;margin:6px 0;filter:drop-shadow(0 5px 4px #0e5d8e22)}
+.success-title{font-size:clamp(24px,3.8vw,34px);font-weight:950;color:#07549c;line-height:1.15}
+.success-message{font-size:clamp(16px,2.2vw,20px);font-weight:800;color:#147747;margin-top:8px;line-height:1.3}
+.spark{z-index:2;animation-duration:1.6s}
+@media(max-width:550px){.stage{gap:6px}.instruction-area{min-height:60px;padding:0 0 3px}.instruction-area .hint{padding:8px 11px;border-radius:13px}.success-card{padding:13px 16px 17px;border-width:4px;border-radius:24px}}
+
+/* Give the letter more room while keeping the instruction in its own row. */
+.stage{padding:5px 8px;gap:5px}
+.panel{width:min(98vw,1040px);max-height:none}
+.instruction-area{width:min(98vw,1040px);min-height:52px;padding:0 0 3px}
+.instruction-area .hint{min-height:44px;padding:7px 13px}
+.top{padding-top:5px;padding-bottom:5px}
+@media(max-width:550px){.stage{padding:4px 5px;gap:5px}.instruction-area{min-height:54px;padding:0 0 3px}.instruction-area .hint{padding:7px 10px}}
+
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+.instruction-area{gap:8px}.instruction-area .hint{flex:1;min-width:0;width:auto}
+.hint-listen,.feedback-replay{display:inline-grid;place-items:center;flex:none;min-width:52px;min-height:48px;padding:7px;border:2px solid #bde8ff;border-radius:15px;background:#07539c;color:white;font-size:28px;line-height:1;cursor:pointer;box-shadow:0 3px 0 #04366d;touch-action:manipulation}
+.feedback-replay{width:66px;height:60px;margin-top:11px;border:3px solid #ffd65c;border-radius:19px;background:#075aaa;font-size:33px}
+.hint-listen:focus-visible,.feedback-replay:focus-visible{outline:3px solid #ffca38;outline-offset:4px}
+.hint-listen:disabled,.feedback-replay:disabled{opacity:.5;cursor:default}
+
+/* Keep the writing area generous as the full alphabet grows. */
+.celebrate:not(.show){visibility:hidden}.celebrate.show{visibility:visible}.celebrate.show .feedback-replay{pointer-events:auto}
+.top{padding:6px 10px 8px}.top .actions{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;max-width:1100px;margin:auto;align-items:center}
+.letter-bank{gap:5px;flex-wrap:wrap;justify-content:center}.bank-button{font-size:14px;padding:7px 10px;min-height:44px}
+.letter-pager{display:flex;align-items:center;justify-content:center;gap:5px;min-width:0;position:relative}.choice{display:flex;flex-wrap:nowrap;gap:5px}.choice button{width:46px;min-width:46px;font-size:23px;padding:5px}.page-arrow{min-width:44px;min-height:44px;padding:5px 8px;background:#e1effa;color:#174f7f;box-shadow:0 3px 0 #a1c9e7;font-size:20px}.page-arrow:disabled{opacity:.3;cursor:default}.page-count{position:absolute;right:0;bottom:-14px;font-size:10px;font-weight:800;color:#31577a}
+.tool-row{grid-column:1/-1;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:7px}.tool-row .btn{min-height:44px;padding:7px 12px;font-size:15px}.tool-row .demo{min-width:174px}
+@media(max-width:820px){.top .actions{grid-template-columns:1fr;gap:7px}.letter-bank{grid-column:1}.letter-pager{grid-column:1}.tool-row{grid-column:1}.page-count{right:calc(50% - 190px)}}
+@media(max-width:550px){.choice button{min-width:44px;width:44px}.tool-row{gap:5px}.tool-row .btn{font-size:12px;min-height:40px;padding:6px 8px}.tool-row .demo{min-width:140px}.bank-button{min-height:40px;font-size:12px;padding:6px 8px}.top{padding:4px 5px 6px}.top .actions{gap:6px}.page-count{right:5px}}
+@media(max-height:600px) and (min-width:701px){.portal-header{min-height:54px;padding-top:4px;padding-bottom:4px}.portal-owl{font-size:29px}.portal-wordmark{font-size:23px}.portal-game-title{font-size:11px}.portal-link{min-height:40px;font-size:14px;padding:7px 12px}.top .actions{grid-template-columns:auto minmax(0,1fr);gap:6px}.letter-bank{grid-column:1}.letter-pager{grid-column:2}.tool-row{grid-column:1/-1}.letter-bank .bank-button{font-size:12px;padding:5px 7px}.choice button{width:42px;min-width:42px;min-height:40px}.tool-row .btn{min-height:38px;font-size:13px;padding:5px 9px}.instruction-area{min-height:48px}.footer{height:35px;font-size:13px}}
+
+/* A separate small rail keeps each picture clear of the handwriting. */
+.panel{--picture-rail:clamp(116px,13.5vw,152px);padding-left:var(--picture-rail)}
+.picture-cue{position:absolute;left:8px;top:10px;z-index:1;width:calc(var(--picture-rail) - 18px);padding:9px 6px 8px;border:3px solid #68b4df;border-radius:20px;background:linear-gradient(155deg,#fff7d8,#e6f5ff);color:#15548a;box-shadow:0 4px 0 #86bedf,0 8px 16px #15548a20;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;touch-action:manipulation;font-family:inherit}
+.picture-cue img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;pointer-events:none;user-select:none;background:#ffffff;border-radius:13px;filter:drop-shadow(0 2px 1px #15548a12)}.picture-pair{font-size:25px;font-weight:900;line-height:1.1;letter-spacing:2px} .picture-word{font-size:clamp(12px,1.25vw,15px);font-weight:800;line-height:1.25;max-width:100%;overflow-wrap:anywhere}.picture-audio{font-size:16px;line-height:1;position:absolute;right:4px;top:4px;padding:3px;background:#fff7d8;border-radius:50%}.picture-cue:focus-visible{outline:3px solid #ffcc45;outline-offset:3px}.picture-cue:disabled{cursor:default}.picture-cue:disabled .picture-audio{opacity:.35}
+.top .actions{grid-template-columns:auto minmax(0,1fr)}.letter-bank{grid-column:1}.letter-pager{grid-column:2}.tool-row{grid-column:1/-1}
+@media(max-width:700px){.top .actions{grid-template-columns:1fr}.letter-bank{grid-column:1}.letter-pager{grid-column:1}.tool-row{grid-column:1}}
+@media(max-width:550px){.panel{--picture-rail:102px}.picture-cue{left:6px;top:7px;width:calc(var(--picture-rail) - 13px);padding:8px 4px 6px;border-radius:16px}.picture-pair{font-size:22px}.picture-word{font-size:12px}}
+@media(max-height:480px) and (min-width:701px){.panel{--picture-rail:106px}.picture-cue{top:6px;padding:6px 4px}.picture-cue img{max-height:76px}.picture-pair{font-size:21px}.picture-word{font-size:12px}}
+
+/* Portal owls live in the blue margins, beside the white writing panel. */
+.stage{--mascot-gutter:clamp(54px,6.6vw,116px);background:radial-gradient(ellipse at 0% 45%,#3bafd3a0,transparent 30%),radial-gradient(ellipse at 100% 55%,#5088cd80,transparent 32%),linear-gradient(120deg,#096da5,#0a518d 65%,#163c77)}
+.stage>.panel,.stage>.instruction-area{width:min(calc(100% - var(--mascot-gutter) - var(--mascot-gutter)),1040px)}
+.side-owl{position:absolute;top:calc(50% - 28px);width:var(--mascot-gutter);padding:5px 2px;transform:translateY(-50%);pointer-events:none;user-select:none;z-index:0;text-align:center;isolation:isolate}
+.side-owl-left{left:max(0px,calc((100% - 1040px)/2 - var(--mascot-gutter)))}.side-owl-right{right:max(0px,calc((100% - 1040px)/2 - var(--mascot-gutter)))}
+.owl-aura{position:absolute;inset:-6px 4px -12px;background:linear-gradient(150deg,#56c5e655,#3364a688);border:2px solid #ffffff6b;border-radius:46% 54% 47% 53%;box-shadow:0 5px 0 #003b7140,0 0 22px #7dd9f333;z-index:-1;transform:rotate(-8deg)}
+.side-owl-right .owl-aura{transform:rotate(8deg)}.owl-character{display:block;font-size:clamp(44px,5.9vw,100px);line-height:1.12;filter:drop-shadow(0 5px 2px #00355a55);transform:rotate(-6deg)}.side-owl-right .owl-character{transform:rotate(6deg)}
+.owl-badge{position:absolute;right:2%;bottom:-14px;padding:4px;border:2px solid #fff4cf;border-radius:50%;background:#ffdc72;box-shadow:0 3px 0 #003b7155;font-size:clamp(16px,2.2vw,31px);line-height:1}
+.side-owl-right .owl-badge{left:2%;right:auto}.owl-spark{position:absolute;top:-28px;left:12%;font-size:clamp(16px,2vw,25px);filter:drop-shadow(0 2px 1px #00355a33)}.side-owl-right .owl-spark{left:auto;right:12%}
+@media(max-width:560px){.stage{--mascot-gutter:0px}.side-owl{display:none}.stage>.panel,.stage>.instruction-area{width:100%}}
+</style></head><body><header class="portal-header">
+<a class="portal-brand" href="https://www.recreiodigital.pt/">
+  <span class="portal-owl" aria-hidden="true">🦉</span>
+  <span><span class="portal-wordmark">Recreio <strong>Digital</strong></span><span class="portal-game-title">✏️ Letras Mágicas</span></span>
+</a>
+<nav class="portal-nav" aria-label="Navegação do Recreio Digital">
+  <a class="portal-link portal-back" id="backToGames" href="https://www.recreiodigital.pt/#jogos">← Voltar aos jogos</a>
+  <a class="portal-link portal-home" href="https://www.recreiodigital.pt/">⌂ Página inicial</a>
+</nav>
+</header><div class="top" role="group" aria-label="Letras e ferramentas do jogo"><div class="actions">
+<div class="letter-bank" role="group" aria-label="Grupo de letras"><button class="btn bank-button" id="vowelsBank" data-group="vowels" aria-pressed="true" aria-label="Mostrar vogais">Vogais</button><button class="btn bank-button" id="consonantsBank" data-group="consonants" aria-pressed="false" aria-label="Mostrar consoantes">Consoantes</button></div>
+<div class="letter-pager"><button class="btn page-arrow" id="letterPrev" aria-label="Mostrar letras anteriores">◀</button><div class="choice" role="group" aria-label="Escolher letra"><button class="btn" id="chooseA" aria-pressed="true" aria-label="Letra a minúscula">a</button><button class="btn" id="chooseCapitalA" aria-pressed="false" aria-label="Letra A maiúscula">A</button><button class="btn" id="chooseE" aria-pressed="false" aria-label="Letra e minúscula">e</button><button class="btn" id="chooseCapitalE" aria-pressed="false" aria-label="Letra E maiúscula">E</button><button class="btn" id="chooseI" aria-pressed="false" aria-label="Letra i minúscula">i</button><button class="btn" id="chooseCapitalI" aria-pressed="false" aria-label="Letra I maiúscula">I</button><button class="btn" id="chooseO" aria-pressed="false" aria-label="Letra o minúscula">o</button><button class="btn" id="chooseCapitalO" aria-pressed="false" aria-label="Letra O maiúscula">O</button><button class="btn" id="chooseU" aria-pressed="false" aria-label="Letra u minúscula">u</button><button class="btn" id="chooseCapitalU" aria-pressed="false" aria-label="Letra U maiúscula">U</button><button class="btn" id="chooseP" aria-pressed="false" aria-label="Letra p minúscula">p</button><button class="btn" id="chooseCapitalP" aria-pressed="false" aria-label="Letra P maiúscula">P</button><button class="btn" id="chooseT" aria-pressed="false" aria-label="Letra t minúscula">t</button><button class="btn" id="chooseCapitalT" aria-pressed="false" aria-label="Letra T maiúscula">T</button><button class="btn" id="chooseL" aria-pressed="false" aria-label="Letra l minúscula">l</button><button class="btn" id="chooseCapitalL" aria-pressed="false" aria-label="Letra L maiúscula">L</button><button class="btn" id="chooseD" aria-pressed="false" aria-label="Letra d minúscula">d</button><button class="btn" id="chooseCapitalD" aria-pressed="false" aria-label="Letra D maiúscula">D</button><button class="btn" id="chooseM" aria-pressed="false" aria-label="Letra m minúscula">m</button><button class="btn" id="chooseCapitalM" aria-pressed="false" aria-label="Letra M maiúscula">M</button><button class="btn" id="chooseV" aria-pressed="false" aria-label="Letra v minúscula">v</button><button class="btn" id="chooseCapitalV" aria-pressed="false" aria-label="Letra V maiúscula">V</button><button class="btn" id="chooseC" aria-pressed="false" aria-label="Letra c minúscula">c</button><button class="btn" id="chooseCapitalC" aria-pressed="false" aria-label="Letra C maiúscula">C</button><button class="btn" id="chooseN" aria-pressed="false" aria-label="Letra n minúscula">n</button><button class="btn" id="chooseCapitalN" aria-pressed="false" aria-label="Letra N maiúscula">N</button><button class="btn" id="chooseR" aria-pressed="false" aria-label="Letra r minúscula">r</button><button class="btn" id="chooseCapitalR" aria-pressed="false" aria-label="Letra R maiúscula">R</button><button class="btn" id="chooseB" aria-pressed="false" aria-label="Letra b minúscula">b</button><button class="btn" id="chooseCapitalB" aria-pressed="false" aria-label="Letra B maiúscula">B</button><button class="btn" id="chooseG" aria-pressed="false" aria-label="Letra g minúscula">g</button><button class="btn" id="chooseCapitalG" aria-pressed="false" aria-label="Letra G maiúscula">G</button><button class="btn" id="chooseS" aria-pressed="false" aria-label="Letra s minúscula">s</button><button class="btn" id="chooseCapitalS" aria-pressed="false" aria-label="Letra S maiúscula">S</button><button class="btn" id="chooseJ" aria-pressed="false" aria-label="Letra j minúscula">j</button><button class="btn" id="chooseCapitalJ" aria-pressed="false" aria-label="Letra J maiúscula">J</button><button class="btn" id="chooseF" aria-pressed="false" aria-label="Letra f minúscula">f</button><button class="btn" id="chooseCapitalF" aria-pressed="false" aria-label="Letra F maiúscula">F</button><button class="btn" id="chooseZ" aria-pressed="false" aria-label="Letra z minúscula">z</button><button class="btn" id="chooseCapitalZ" aria-pressed="false" aria-label="Letra Z maiúscula">Z</button><button class="btn" id="chooseH" aria-pressed="false" aria-label="Letra h minúscula">h</button><button class="btn" id="chooseCapitalH" aria-pressed="false" aria-label="Letra H maiúscula">H</button><button class="btn" id="chooseX" aria-pressed="false" aria-label="Letra x minúscula">x</button><button class="btn" id="chooseCapitalX" aria-pressed="false" aria-label="Letra X maiúscula">X</button><button class="btn" id="chooseQ" aria-pressed="false" aria-label="Letra q minúscula">q</button><button class="btn" id="chooseCapitalQ" aria-pressed="false" aria-label="Letra Q maiúscula">Q</button><button class="btn" id="chooseK" aria-pressed="false" aria-label="Letra k minúscula">k</button><button class="btn" id="chooseCapitalK" aria-pressed="false" aria-label="Letra K maiúscula">K</button><button class="btn" id="chooseW" aria-pressed="false" aria-label="Letra w minúscula">w</button><button class="btn" id="chooseCapitalW" aria-pressed="false" aria-label="Letra W maiúscula">W</button><button class="btn" id="chooseY" aria-pressed="false" aria-label="Letra y minúscula">y</button><button class="btn" id="chooseCapitalY" aria-pressed="false" aria-label="Letra Y maiúscula">Y</button></div><button class="btn page-arrow" id="letterNext" aria-label="Mostrar letras seguintes">▶</button><span class="page-count" id="pageStatus" aria-live="polite"></span></div>
+<div class="tool-row"><button class="btn demo" id="demo" aria-label="Ver como se faz">▶ Ver como se faz</button><button class="btn assist" id="assist" aria-label="Mais ajuda no traçado" aria-pressed="true">🖐️ Com ajuda</button><button class="btn secondary" id="restart" aria-label="Recomeçar letra">↻ Repetir</button><button class="btn" id="sound" aria-label="Ativar ou desativar som">🔊</button></div>
+</div></div><main class="stage"><div class="stars" id="stars"></div><div class="side-owl side-owl-left" aria-hidden="true"><span class="owl-aura"></span><span class="owl-spark">⭐</span><span class="owl-character">🦉</span><span class="owl-badge">✏️</span></div><div class="side-owl side-owl-right" aria-hidden="true"><span class="owl-aura"></span><span class="owl-spark">✨</span><span class="owl-character">🦉</span><span class="owl-badge">📚</span></div><section class="panel"><button class="picture-cue" id="pictureCue" type="button" aria-label="Ouvir a palavra abelha" title="Ouvir a palavra"><img id="pictureImage" alt="Abelha" width="128" height="128" draggable="false"><span class="picture-pair" id="picturePair" aria-hidden="true">a A</span><span class="picture-word" id="pictureWord" aria-hidden="true">abelha</span><span class="picture-audio" aria-hidden="true">🔊</span></button><svg id="svg" class="writing" viewBox="0 0 520 460" preserveAspectRatio="xMidYMid meet" aria-label="Letra manuscrita com tracejado preto e preenchimento verde"><defs><linearGradient id="rainbow" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff487b"/><stop offset="25%" stop-color="#ffb53d"/><stop offset="50%" stop-color="#50d77c"/><stop offset="75%" stop-color="#3ba4f5"/><stop offset="100%" stop-color="#a16aff"/></linearGradient><filter id="softglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g id="notebook" pointer-events="none"><line x1="24" y1="88" x2="496" y2="88" stroke="#a9d9f7" stroke-width="2"/><line x1="24" y1="183" x2="496" y2="183" stroke="#a9d9f7" stroke-width="2"/><line x1="24" y1="278" x2="496" y2="278" stroke="#f6a5cb" stroke-width="2" stroke-dasharray="9 7"/><line x1="24" y1="373" x2="496" y2="373" stroke="#77bfea" stroke-width="2.6"/></g><g id="letter"><path id="shape" class="letter-outline" d="M 91 372 C 156 360 214 326 256 251 C 297 176 313 89 275 70 C 228 42 185 77 181 146 C 172 224 190 314 246 349 C 311 391 393 337 401 238"/><path class="letter-fill" d="M 91 372 C 156 360 214 326 256 251 C 297 176 313 89 275 70 C 228 42 185 77 181 146 C 172 224 190 314 246 349 C 311 391 393 337 401 238"/><path id="paint" class="written" d="M 91 372 C 156 360 214 326 256 251 C 297 176 313 89 275 70 C 228 42 185 77 181 146 C 172 224 190 314 246 349 C 311 391 393 337 401 238"/><path class="guide" d="M 91 372 C 156 360 214 326 256 251 C 297 176 313 89 275 70 C 228 42 185 77 181 146 C 172 224 190 314 246 349 C 311 391 393 337 401 238"/><g id="dot" style="display:none" pointer-events="none"><circle class="dot-outline" cx="244" cy="77" r="29"/><circle class="dot-white" cx="244" cy="77" r="25"/><circle id="dotPaint" class="dot-green" cx="244" cy="77" r="24" style="display:none"/><circle id="dotGuide" class="dot-guide" cx="244" cy="77" r="13"/></g><g id="arrows"></g><circle id="start" class="start" r="14" cx="91" cy="372"/><circle id="tip" class="tip" r="13" cx="91" cy="372"/></g></svg><div class="celebrate" id="celebrate" aria-hidden="true">
+  <div class="success-card">
+    <div class="success-stars" aria-hidden="true">★ <span>★</span> ★</div>
+    <div class="success-owl" aria-hidden="true">🦉</div>
+    <div class="success-title sr-only">Conseguiste!</div>
+    <div class="success-message sr-only" id="successMessage">Que bela letra!</div><button class="feedback-replay" id="feedbackReplay" aria-label="Ouvir novamente o incentivo" title="Ouvir novamente">🔊</button>
+  </div>
+</div></section><div class="instruction-area"><div class="hint" id="hint" role="status" aria-live="polite">👆 Começa na bolinha rosa e segue os pontos!</div><button class="hint-listen" id="listenHint" aria-label="Ouvir a indicação" title="Ouvir a indicação">🔊</button></div></main><footer class="footer">Feito com <span class="heart">❤️</span> para aprender e brincar · Recreio Digital</footer><script>
+
+'use strict';
+
+// Keep the school-year return route when this game is opened with ?ano=...
+function configurePortalNavigation(){
+  const base='https://www.recreiodigital.pt/';
+  const routes={pre:'pre-escolar','pre-escolar':'pre-escolar','1':'1-ano','2':'2-ano','3':'3-ano','4':'4-ano','1-ano':'1-ano','2-ano':'2-ano','3-ano':'3-ano','4-ano':'4-ano'};
+  const requested=new URLSearchParams(location.search).get('ano');
+  let route=Object.prototype.hasOwnProperty.call(routes,requested)?routes[requested]:null;
+  if(!route&&document.referrer){
+    try{
+      const source=new URL(document.referrer);
+      if(['recreiodigital.pt','www.recreiodigital.pt'].includes(source.hostname)){
+        const match=source.pathname.match(/^\/(pre-escolar|[1-4]-ano)(?:\/|$)/);
+        if(match)route=match[1];
+      }
+    }catch{}
+  }
+  document.getElementById('backToGames').href=route?base+route+'/index.html':base+'#jogos';
+}
+configurePortalNavigation();
+
+const svg=document.getElementById('svg');
+const shape=document.getElementById('shape');
+const paint=document.getElementById('paint');
+const tip=document.getElementById('tip');
+const arrows=document.getElementById('arrows');
+const start=document.getElementById('start');
+const hint=document.getElementById('hint');
+const celebrate=document.getElementById('celebrate');
+const guide=document.querySelector('.guide');
+const dot=document.getElementById('dot');
+const dotPaint=document.getElementById('dotPaint');
+const dotGuide=document.getElementById('dotGuide');
+const panel=document.querySelector('.panel');
+const NS='http://www.w3.org/2000/svg';
+const notebookLines=Array.from(document.querySelectorAll('#notebook line'));
+const defaultRows=notebookLines.map(line=>({
+  y:line.getAttribute('y1'),stroke:line.getAttribute('stroke'),
+  dash:line.getAttribute('stroke-dasharray'),width:line.getAttribute('stroke-width')
+}));
+
+// Lowercase e, copied from the model with a tall loop and a low right exit.
+const E_RISE='M 53 419 C 190 421 326 374 326 133 C 326 74 296 48 259 48';
+const E_RETURN='M 259 48 C 203 44 181 93 181 154 C 181 293 226 419 340 419 C 422 420 491 364 492 261';
+const E_PATH=E_RISE+' C 203 44 181 93 181 154 C 181 293 226 419 340 419 C 422 420 491 364 492 261';
+// Lowercase i: enter from the left, rise, descend, curve out, then add the dot.
+const I_ENTRY='M 85 537 C 170 509 214 464 214 346 L 214 181';
+const I_EXIT='M 214 181 L 214 459 C 214 511 235 540 273 540 C 315 541 341 492 361 446';
+const I_PATH=I_ENTRY+' L 214 459 C 214 511 235 540 273 540 C 315 541 341 492 361 446';
+const I_GUIDE='M 85 537 C 170 509 214 464 214 346 '+I_EXIT;
+
+// Capital E has its own button and is separate from the lowercase e.
+const CAPITAL_E_TOP='M 135 69 C 88 74 59 109 59 151 C 59 207 86 233 141 231 C 241 231 362 203 364 119 C 366 65 303 57 243 93 C 192 125 152 190 151 235';
+const CAPITAL_E_MIDDLE='M 151 235 C 147 283 213 350 267 349 C 295 349 306 338 306 315 C 306 283 283 282 256 288 C 230 294 201 303 178 318';
+const CAPITAL_E_BOTTOM='M 178 318 C 137 346 107 386 96 431 C 72 525 127 616 216 618 C 306 622 363 590 376 517 C 393 453 348 423 311 426 C 281 430 264 449 250 463';
+const CAPITAL_E_PATH=CAPITAL_E_TOP+' C 147 283 213 350 267 349 C 295 349 306 338 306 315 C 306 283 283 282 256 288 C 230 294 201 303 178 318 C 137 346 107 386 96 431 C 72 525 127 616 216 618 C 306 622 363 590 376 517 C 393 453 348 423 311 426 C 281 430 264 449 250 463';
+// Lowercase u follows the two tall stems and the final small right curve.
+const U_ENTRY='M 123 481 C 189 411 241 310 241 236 L 241 92';
+const U_BOWL='M 241 92 L 241 395 C 241 454 270 485 316 485 C 385 485 436 434 436 350 L 436 92';
+const U_EXIT='M 436 92 L 436 400 C 436 450 459 476 493 476 C 539 476 552 435 547 374';
+const U_PATH=U_ENTRY+' L 241 395 C 241 454 270 485 316 485 C 385 485 436 434 436 350 L 436 92 L 436 400 C 436 450 459 476 493 476 C 539 476 552 435 547 374';
+const U_GUIDE='M 123 481 C 189 411 241 310 241 236 M 241 92 L 241 395 C 241 454 270 485 316 485 C 385 485 436 434 436 350 L 436 92 M 436 350 L 436 400 C 436 450 459 476 493 476 C 539 476 552 435 547 374';
+
+// Capital U has an entrance curl, a large bowl, and a separate right curl.
+const CAPITAL_U_START='M 95 166 C 64 166 41 143 41 104 C 41 66 61 50 90 46 C 128 45 164 81 164 119 L 164 461 C 164 525 197 568 247 568';
+const CAPITAL_U_RISE='M 247 568 C 329 568 368 500 368 371 L 368 42';
+const CAPITAL_U_EXIT='M 368 42 L 368 501 C 368 547 394 567 429 565 C 472 566 498 543 498 497 C 498 467 483 449 456 449';
+const CAPITAL_U_PATH=CAPITAL_U_START+' C 329 568 368 500 368 371 L 368 42 L 368 501 C 368 547 394 567 429 565 C 472 566 498 543 498 497 C 498 467 483 449 456 449';
+const CAPITAL_U_GUIDE=CAPITAL_U_START+' C 329 568 368 500 368 371 L 368 42 M 368 371 L 368 501 C 368 547 394 567 429 565 C 472 566 498 543 498 497 C 498 467 483 449 456 449';
+// The o follows the supplied school handwriting model: one counterclockwise
+// oval, then the inward turn and the rising exit to the right.
+const O_OVAL='M 308 85 C 286 62 257 54 228 54 C 149 54 85 134 85 242 C 85 360 135 439 220 439 C 308 441 365 381 365 265 C 365 183 347 119 308 85';
+const O_LOOP='M 308 85 C 282 65 244 71 228 103 C 209 142 226 193 281 193 C 343 193 405 148 432 105';
+const O_PATH=O_OVAL+' C 282 65 244 71 228 103 C 209 142 226 193 281 193 C 343 193 405 148 432 105';
+
+// Centreline traced from the supplied model. The stem is intentionally
+// retraced: entrance, downstroke, return up the stem, then the open arch.
+const P_ENTRY='M 121 298 C 150 307 170 255 194 187 C 207 149 215 124 216 100 L 216 52';
+const P_DOWN='M 216 52 L 216 477';
+const P_UP='M 216 477 L 216 170';
+const P_CURVE='M 216 170 C 216 137 231 116 257 116 C 287 112 301 138 301 174 L 301 260 C 300 286 315 301 338 301 C 379 301 405 271 405 221';
+const P_PATH=P_ENTRY+' L 216 477 L 216 170 C 216 137 231 116 257 116 C 287 112 301 138 301 174 L 301 260 C 300 286 315 301 338 301 C 379 301 405 271 405 221';
+// Draw each visible guide once so the retraced stem has clear black dashes.
+const P_GUIDE='M 121 298 C 150 307 170 255 194 187 C 207 149 215 124 216 100 M 216 52 L 216 477 '+P_CURVE;
+// Lowercase a: complete the oval, rise to the top, then descend and exit.
+const A_OVAL='M 391 171 C 370 115 324 95 272 95 C 186 95 137 173 137 274 C 137 390 182 470 261 470 C 343 470 391 405 391 310 L 391 87';
+const A_EXIT='M 391 87 L 391 418 C 391 454 406 470 439 470 C 485 470 500 420 511 378';
+const A_PATH=A_OVAL+' L 391 418 C 391 454 406 470 439 470 C 485 470 500 420 511 378';
+const A_GUIDE='M 391 171 C 370 115 324 95 272 95 C 186 95 137 173 137 274 C 137 390 182 470 261 470 C 343 470 391 405 391 310 '+A_EXIT;
+
+// Capital A is two physical strokes, as shown by its two starting dots.
+const CAPITAL_A_MAIN='M 108 458 C 71 453 65 536 93 577 C 106 599 138 601 167 579 C 222 548 243 405 267 238 C 283 128 294 30 313 30 C 341 26 343 146 354 277 C 365 390 351 509 407 566 C 446 615 506 588 522 541 C 547 479 519 422 493 418';
+const CAPITAL_A_BAR='M 197 348 C 231 302 287 362 338 361 C 373 364 395 337 409 311';
+const CAPITAL_A_PATH=CAPITAL_A_MAIN+' '+CAPITAL_A_BAR;
+
+// Capital P follows the separate stem and upper-loop strokes in the model.
+const CAPITAL_P_STEM='M 258 82 C 211 128 207 175 216 246 C 226 323 260 397 260 445 C 260 502 237 539 185 547 C 133 555 81 524 85 476 C 85 449 98 433 114 419';
+const CAPITAL_P_TOP='M 177 249 C 118 287 82 232 82 177 C 82 92 164 36 269 36 C 363 36 419 79 420 151 C 421 208 389 244 339 251 C 305 259 282 236 270 208';
+const CAPITAL_P_PATH=CAPITAL_P_STEM+' '+CAPITAL_P_TOP;
+
+// Capital I follows the model's wavy top and curved lower finish.
+const CAPITAL_I_TOP='M 126 166 C 92 123 126 70 155 70 C 206 65 238 126 312 94';
+const CAPITAL_I_STEM='M 312 94 C 302 220 301 357 311 478 C 321 561 286 619 216 619 C 151 620 107 582 107 518 C 107 465 151 424 185 424 C 201 423 213 430 220 439';
+const CAPITAL_I_PATH=CAPITAL_I_TOP+' C 302 220 301 357 311 478 C 321 561 286 619 216 619 C 151 620 107 582 107 518 C 107 465 151 424 185 424 C 201 423 213 430 220 439';
+
+// Capital O is open at the top and finishes with the inward curl shown.
+const CAPITAL_O_OVAL='M 223 46 C 125 60 54 166 54 291 C 54 435 106 555 244 555 C 374 555 435 469 435 315';
+const CAPITAL_O_TURN='M 435 315 C 435 184 382 70 303 70 C 234 67 191 141 228 224';
+const CAPITAL_O_PATH=CAPITAL_O_OVAL+' C 435 184 382 70 303 70 C 234 67 191 141 228 224';
+
+const LETTERS={
+"b":{"path":"M 107 553 C 158 475 228 363 270 274 C 304 202 319 116 295 62 C 286 42 278 34 267 35 C 239 40 226 117 230 232 L 241 432 C 245 507 281 550 328 550 C 374 550 393 494 394 432 C 397 375 365 338 339 341 C 313 344 298 377 318 398 C 340 428 406 425 455 407","viewBox":"0 0 650 700","phases":["M 107 553 C 158 475 228 363 270 274 C 304 202 319 116 295 62 C 286 42 278 34 267 35","M 267 35 C 239 40 226 117 230 232 L 241 432 C 245 507 281 550 328 550 C 374 550 393 494 394 432","M 394 432 C 397 375 365 338 339 341 C 313 344 298 377 318 398 C 340 428 406 425 455 407"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.22,0.64]],"hints":["1 · Sobe pelo laço até ao cimo.","2 · Desce pela haste e faz a curva de baixo.","3 · Faz a voltinha e termina à direita."],"rows":[{"y":35,"stroke":"#a9d9f7","width":2},{"y":340,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":550,"stroke":"#77bfea","width":2.6},{"y":600,"stroke":"#a9d9f7","width":2}]},
+"B":{"path":"M 174 452 C 133 490 139 548 176 573 C 210 597 253 579 269 531 C 302 442 271 296 275 209 C 276 155 292 121 322 96 M 228 291 C 147 316 110 279 107 225 C 101 142 158 81 241 57 C 320 35 400 43 441 96 C 478 142 481 208 456 254 C 434 297 386 327 354 319 C 328 312 323 273 345 261 C 379 244 425 271 461 305 C 508 348 554 407 554 463 C 554 538 501 585 439 586 C 378 586 339 541 341 494 C 342 449 366 425 390 428 C 404 430 414 440 420 448","viewBox":"0 0 650 700","phases":["M 174 452 C 133 490 139 548 176 573 C 210 597 253 579 269 531 C 302 442 271 296 275 209 C 276 155 292 121 322 96","M 228 291 C 147 316 110 279 107 225 C 101 142 158 81 241 57 C 320 35 400 43 441 96 C 478 142 481 208 456 254 C 434 297 386 327 354 319 C 328 312 323 273 345 261 C 379 244 425 271 461 305","M 461 305 C 508 348 554 407 554 463 C 554 538 501 585 439 586 C 378 586 339 541 341 494 C 342 449 366 425 390 428 C 404 430 414 440 420 448"],"arrowRatios":[[0.22,0.64],[0.14,0.48,0.79],[0.22,0.64]],"hints":["1 · Faz a curva de baixo e sobe pela haste.","2 · Levanta o dedo. Começa na nova bolinha e faz a volta de cima.","3 · Continua pela volta grande e termina na curva."],"rows":[{"y":49,"stroke":"#a9d9f7","width":2},{"y":292,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":586,"stroke":"#77bfea","width":2.6},{"y":635,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalB","strokes":["M 174 452 C 133 490 139 548 176 573 C 210 597 253 579 269 531 C 302 442 271 296 275 209 C 276 155 292 121 322 96","M 228 291 C 147 316 110 279 107 225 C 101 142 158 81 241 57 C 320 35 400 43 441 96 C 478 142 481 208 456 254 C 434 297 386 327 354 319 C 328 312 323 273 345 261 C 379 244 425 271 461 305 C 508 348 554 407 554 463 C 554 538 501 585 439 586 C 378 586 339 541 341 494 C 342 449 366 425 390 428 C 404 430 414 440 420 448"],"liftBefore":[1]},
+"c":{"path":"M 281 204 C 331 229 371 196 374 157 C 379 111 329 74 281 75 C 204 75 151 151 135 239 C 117 339 154 432 232 451 C 318 476 386 422 417 347","viewBox":"0 0 650 700","phases":["M 281 204 C 331 229 371 196 374 157 C 379 111 329 74 281 75 C 204 75 151 151 135 239","M 135 239 C 117 339 154 432 232 451 C 318 476 386 422 417 347"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a curva de cima para a esquerda.","2 · Desce, dá a volta e sobe para a direita."],"rows":[{"y":75,"stroke":"#a9d9f7","width":2},{"y":240,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":454,"stroke":"#77bfea","width":2.6},{"y":510,"stroke":"#a9d9f7","width":2}]},
+"C":{"path":"M 137 35 C 79 58 35 105 35 158 C 35 225 85 276 145 287 C 214 300 302 247 342 185 C 378 130 370 87 332 75 C 283 56 226 85 176 132 C 118 186 89 235 78 292 C 55 392 72 500 127 561 C 171 610 238 608 284 571 C 322 541 332 492 311 456 C 295 425 264 415 226 432","viewBox":"0 0 650 700","phases":["M 137 35 C 79 58 35 105 35 158 C 35 225 85 276 145 287 C 214 300 302 247 342 185 C 378 130 370 87 332 75 C 283 56 226 85 176 132 C 118 186 89 235 78 292","M 78 292 C 55 392 72 500 127 561 C 171 610 238 608 284 571 C 322 541 332 492 311 456 C 295 425 264 415 226 432"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a primeira volta e sobe pelo laço.","2 · Desce, faz a volta de baixo e termina na curva."],"rows":[{"y":35,"stroke":"#a9d9f7","width":2},{"y":280,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":595,"stroke":"#77bfea","width":2.6},{"y":640,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalC"},
+"f":{"path":"M 109 411 C 155 350 214 256 238 185 C 257 132 255 83 230 55 C 216 39 200 36 189 40 C 162 48 167 127 170 214 L 176 517 C 177 576 183 604 204 605 C 230 606 244 584 243 538 L 240 417 C 238 343 221 296 184 278 C 150 261 114 276 112 303 C 109 335 155 357 199 352 C 234 348 261 321 277 285","viewBox":"0 0 650 700","phases":["M 109 411 C 155 350 214 256 238 185 C 257 132 255 83 230 55 C 216 39 200 36 189 40","M 189 40 C 162 48 167 127 170 214 L 176 517 C 177 576 183 604 204 605","M 204 605 C 230 606 244 584 243 538 L 240 417 C 238 343 221 296 184 278 C 150 261 114 276 112 303 C 109 335 155 357 199 352 C 234 348 261 321 277 285"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.22,0.64]],"hints":["1 · Sobe pelo laço até ao cimo.","2 · Desce pela haste até à volta de baixo.","3 · Sobe, faz a voltinha do meio e termina à direita."],"rows":[{"y":40,"stroke":"#a9d9f7","width":2},{"y":303,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":411,"stroke":"#77bfea","width":2.6},{"y":605,"stroke":"#a9d9f7","width":2}]},
+"F":{"path":"M 369 47 C 313 102 298 188 299 281 C 298 363 308 442 307 496 C 308 545 288 577 253 580 C 211 584 179 558 177 523 C 175 492 188 465 201 451 M 237 260 C 184 278 134 246 125 201 C 114 152 130 110 166 91 C 210 67 268 86 328 95 C 412 109 473 108 528 66 M 217 331 C 254 359 284 335 320 333 C 338 331 353 332 365 339","viewBox":"0 0 650 700","phases":["M 369 47 C 313 102 298 188 299 281 C 298 363 308 442 307 496 C 308 545 288 577 253 580 C 211 584 179 558 177 523 C 175 492 188 465 201 451","M 237 260 C 184 278 134 246 125 201 C 114 152 130 110 166 91 C 210 67 268 86 328 95 C 412 109 473 108 528 66","M 217 331 C 254 359 284 335 320 333 C 338 331 353 332 365 339"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.22,0.64]],"hints":["1 · Desce pela haste e faz a curva de baixo.","2 · Levanta o dedo. Faz a volta de cima a partir da nova bolinha.","3 · Levanta o dedo. Faz a barra do meio para a direita."],"rows":[{"y":47,"stroke":"#a9d9f7","width":2},{"y":331,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":580,"stroke":"#77bfea","width":2.6},{"y":625,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalF","strokes":["M 369 47 C 313 102 298 188 299 281 C 298 363 308 442 307 496 C 308 545 288 577 253 580 C 211 584 179 558 177 523 C 175 492 188 465 201 451","M 237 260 C 184 278 134 246 125 201 C 114 152 130 110 166 91 C 210 67 268 86 328 95 C 412 109 473 108 528 66","M 217 331 C 254 359 284 335 320 333 C 338 331 353 332 365 339"],"liftBefore":[1,2]},
+"g":{"path":"M 278 84 C 247 49 200 37 162 51 C 108 72 88 130 91 184 C 94 237 129 268 175 267 C 231 268 278 225 278 171 L 278 45 L 278 465 C 280 520 259 555 216 558 C 173 561 139 532 139 490 C 138 436 201 363 258 308 L 377 204","viewBox":"0 0 650 700","phases":["M 278 84 C 247 49 200 37 162 51 C 108 72 88 130 91 184 C 94 237 129 268 175 267 C 231 268 278 225 278 171 L 278 45","M 278 45 L 278 465 C 280 520 259 555 216 558 C 173 561 139 532 139 490 C 138 436 201 363 258 308 L 377 204"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Dá a volta ao oval e sobe pela haste.","2 · Desce, faz o laço de baixo e sobe para a direita."],"rows":[{"y":45,"stroke":"#a9d9f7","width":2},{"y":184,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":278,"stroke":"#77bfea","width":2.6},{"y":558,"stroke":"#a9d9f7","width":2}]},
+"G":{"path":"M 160 162 C 118 185 110 215 130 241 C 154 273 208 272 258 253 C 316 232 351 178 369 135 C 384 99 361 94 337 104 C 286 119 244 159 221 206 C 194 255 194 335 209 389 C 222 440 240 466 269 464 C 314 463 359 413 359 340 L 359 632 C 359 665 349 687 330 680 C 300 671 300 616 319 576 C 342 523 396 465 458 411","viewBox":"0 0 650 700","phases":["M 160 162 C 118 185 110 215 130 241 C 154 273 208 272 258 253 C 316 232 351 178 369 135 C 384 99 361 94 337 104 C 286 119 244 159 221 206","M 221 206 C 194 255 194 335 209 389 C 222 440 240 466 269 464 C 314 463 359 413 359 340","M 359 340 L 359 632 C 359 665 349 687 330 680 C 300 671 300 616 319 576 C 342 523 396 465 458 411"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a primeira volta e sobe pelo laço.","2 · Desce e faz a curva até à haste da direita.","3 · Desce, faz o laço de baixo e termina à direita."],"rows":[{"y":100,"stroke":"#a9d9f7","width":2},{"y":340,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":464,"stroke":"#77bfea","width":2.6},{"y":680,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalG"},
+"h":{"path":"M 107 531 C 157 436 212 323 245 227 C 268 160 278 97 256 72 C 246 59 235 56 226 63 C 199 77 198 126 198 189 L 198 548 L 198 395 C 198 333 222 302 269 299 C 318 295 348 326 348 385 L 348 480 C 348 514 363 531 383 520 C 403 509 418 484 425 467","viewBox":"0 0 650 700","phases":["M 107 531 C 157 436 212 323 245 227 C 268 160 278 97 256 72 C 246 59 235 56 226 63","M 226 63 C 199 77 198 126 198 189 L 198 548","M 198 548 L 198 395 C 198 333 222 302 269 299 C 318 295 348 326 348 385 L 348 480 C 348 514 363 531 383 520 C 403 509 418 484 425 467"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.22,0.64]],"hints":["1 · Sobe pelo laço até ao cimo.","2 · Desce pela haste até ao fundo.","3 · Volta a subir, faz o arco e termina à direita."],"rows":[{"y":63,"stroke":"#a9d9f7","width":2},{"y":299,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":548,"stroke":"#77bfea","width":2.6},{"y":600,"stroke":"#a9d9f7","width":2}]},
+"H":{"path":"M 98 179 C 64 155 50 112 67 82 C 79 58 101 47 120 57 C 145 69 143 106 175 113 C 209 121 233 87 243 36 L 243 471 C 244 537 224 574 185 575 C 149 576 131 547 142 514 C 159 463 218 411 285 359 C 373 292 462 204 462 118 C 463 61 428 47 385 49 C 365 49 347 50 334 55 L 334 442 C 333 523 350 572 395 575 C 441 578 474 528 462 455","viewBox":"0 0 650 700","phases":["M 98 179 C 64 155 50 112 67 82 C 79 58 101 47 120 57 C 145 69 143 106 175 113 C 209 121 233 87 243 36","M 243 36 L 243 471 C 244 537 224 574 185 575 C 149 576 131 547 142 514 C 159 463 218 411 285 359 C 373 292 462 204 462 118 C 463 61 428 47 385 49 C 365 49 347 50 334 55","M 334 55 L 334 442 C 333 523 350 572 395 575 C 441 578 474 528 462 455"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a pequena volta de cima.","2 · Desce, faz o laço de baixo e sobe pela curva da direita.","3 · Desce pela segunda haste e termina com a curva."],"rows":[{"y":49,"stroke":"#a9d9f7","width":2},{"y":310,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":575,"stroke":"#77bfea","width":2.6},{"y":615,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalH"},
+"j":{"path":"M 112 319 C 166 277 211 205 211 126 L 211 477 C 211 526 182 563 156 551 C 125 536 136 470 159 427 C 184 382 244 317 307 209","viewBox":"0 0 650 700","phases":["M 112 319 C 166 277 211 205 211 126","M 211 126 L 211 477 C 211 526 182 563 156 551 C 125 536 136 470 159 427 C 184 382 244 317 307 209"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Sobe pela haste até ao cimo.","2 · Desce, faz o laço de baixo e termina à direita."],"rows":[{"y":126,"stroke":"#a9d9f7","width":2},{"y":319,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":355,"stroke":"#77bfea","width":2.6},{"y":551,"stroke":"#a9d9f7","width":2}],"dot":{"x":213,"y":54,"r":29},"dotSpokenName":"jota"},
+"J":{"path":"M 138 146 C 102 144 89 112 102 85 C 119 52 145 64 175 81 C 212 101 251 96 278 71 C 259 177 250 280 251 382 L 251 571 C 251 610 242 637 223 632 C 189 623 160 583 160 534 C 160 469 188 422 238 382 L 326 313","viewBox":"0 0 650 700","phases":["M 138 146 C 102 144 89 112 102 85 C 119 52 145 64 175 81 C 212 101 251 96 278 71","M 278 71 C 259 177 250 280 251 382 L 251 571 C 251 610 242 637 223 632 C 189 623 160 583 160 534 C 160 469 188 422 238 382 L 326 313"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a pequena volta de cima.","2 · Desce, faz o laço de baixo e termina à direita."],"rows":[{"y":71,"stroke":"#a9d9f7","width":2},{"y":313,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":382,"stroke":"#77bfea","width":2.6},{"y":632,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalJ"},
+"k":{"path":"M 83 574 C 137 461 197 300 226 182 C 244 109 248 67 220 53 C 207 47 195 52 185 63 C 154 91 142 140 142 209 L 142 576 L 142 412 C 143 352 175 295 217 291 C 262 287 298 315 287 351 C 278 381 244 408 213 407 C 188 407 171 388 184 371 C 200 352 243 362 266 391 C 287 416 281 465 284 511 C 286 550 282 569 304 570","viewBox":"0 0 650 700","phases":["M 83 574 C 137 461 197 300 226 182 C 244 109 248 67 220 53 C 207 47 195 52 185 63","M 185 63 C 154 91 142 140 142 209 L 142 576","M 142 576 L 142 412 C 143 352 175 295 217 291 C 262 287 298 315 287 351 C 278 381 244 408 213 407 C 188 407 171 388 184 371 C 200 352 243 362 266 391 C 287 416 281 465 284 511 C 286 550 282 569 304 570"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.14,0.48,0.79]],"hints":["1 · Sobe pelo laço até ao cimo.","2 · Desce pela haste até ao fundo.","3 · Volta a subir, faz a volta do meio e desce para terminar."],"rows":[{"y":53,"stroke":"#a9d9f7","width":2},{"y":291,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":576,"stroke":"#77bfea","width":2.6},{"y":615,"stroke":"#a9d9f7","width":2}]},
+"K":{"path":"M 78 90 C 72 63 98 54 121 67 C 146 83 164 110 191 94 C 213 82 226 68 237 61 L 237 469 C 237 540 214 573 177 574 C 140 577 111 555 113 530 C 115 517 122 510 130 508 M 417 140 C 447 114 449 73 419 64 C 384 50 360 77 352 117 C 340 173 345 229 315 269 C 295 295 267 303 237 303 C 300 309 316 353 321 433 C 326 519 335 575 389 578 C 438 580 480 540 478 489 C 477 445 448 417 418 417 C 393 416 378 434 383 462","viewBox":"0 0 650 700","phases":["M 78 90 C 72 63 98 54 121 67 C 146 83 164 110 191 94 C 213 82 226 68 237 61","M 237 61 L 237 469 C 237 540 214 573 177 574 C 140 577 111 555 113 530 C 115 517 122 510 130 508","M 417 140 C 447 114 449 73 419 64 C 384 50 360 77 352 117 C 340 173 345 229 315 269 C 295 295 267 303 237 303","M 237 303 C 300 309 316 353 321 433 C 326 519 335 575 389 578 C 438 580 480 540 478 489 C 477 445 448 417 418 417 C 393 416 378 434 383 462"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a pequena volta de cima.","2 · Desce pela haste e termina na curva de baixo.","3 · Levanta o dedo. Faz a volta da direita a partir da nova bolinha.","4 · Continua para baixo e termina com a curva da direita."],"rows":[{"y":61,"stroke":"#a9d9f7","width":2},{"y":303,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":578,"stroke":"#77bfea","width":2.6},{"y":625,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalK","strokes":["M 78 90 C 72 63 98 54 121 67 C 146 83 164 110 191 94 C 213 82 226 68 237 61 L 237 469 C 237 540 214 573 177 574 C 140 577 111 555 113 530 C 115 517 122 510 130 508","M 417 140 C 447 114 449 73 419 64 C 384 50 360 77 352 117 C 340 173 345 229 315 269 C 295 295 267 303 237 303 C 300 309 316 353 321 433 C 326 519 335 575 389 578 C 438 580 480 540 478 489 C 477 445 448 417 418 417 C 393 416 378 434 383 462"],"liftBefore":[2]},
+"n":{"path":"M 93 466 L 93 208 C 93 131 129 76 184 75 C 236 74 274 142 274 208 L 274 466 L 274 209 C 274 130 308 77 354 76 C 402 75 453 138 453 211 L 453 374 C 453 430 468 474 494 471 C 528 467 547 399 548 364","viewBox":"0 0 650 700","phases":["M 93 466 L 93 208 C 93 131 129 76 184 75 C 236 74 274 142 274 208 L 274 466","M 274 466 L 274 209 C 274 130 308 77 354 76 C 402 75 453 138 453 211 L 453 374 C 453 430 468 474 494 471 C 528 467 547 399 548 364"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Sobe, faz o primeiro arco e desce.","2 · Volta a subir, faz o segundo arco e termina à direita."],"rows":[{"y":75,"stroke":"#a9d9f7","width":2},{"y":270,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":471,"stroke":"#77bfea","width":2.6},{"y":520,"stroke":"#a9d9f7","width":2}]},
+"N":{"path":"M 118 439 C 70 424 46 475 52 520 C 58 564 83 581 111 574 C 160 563 179 465 177 364 L 174 73 L 361 590 C 340 473 325 349 338 241 C 345 165 367 105 415 98 C 461 91 491 126 489 168 C 486 216 455 241 421 223","viewBox":"0 0 650 700","phases":["M 118 439 C 70 424 46 475 52 520 C 58 564 83 581 111 574 C 160 563 179 465 177 364 L 174 73","M 174 73 L 361 590","M 361 590 C 340 473 325 349 338 241 C 345 165 367 105 415 98 C 461 91 491 126 489 168 C 486 216 455 241 421 223"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a curva de baixo e sobe pela haste.","2 · Desce pela diagonal até à ponta.","3 · Sobe pela haste da direita e termina com a curva."],"rows":[{"y":73,"stroke":"#a9d9f7","width":2},{"y":310,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":574,"stroke":"#77bfea","width":2.6},{"y":625,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalN"},
+"q":{"path":"M 248 110 C 230 60 188 35 143 46 C 96 57 75 104 76 169 C 75 231 111 269 165 267 C 215 265 248 231 248 183 L 248 51 L 248 558","viewBox":"0 0 650 700","phases":["M 248 110 C 230 60 188 35 143 46 C 96 57 75 104 76 169 C 75 231 111 269 165 267 C 215 265 248 231 248 183 L 248 51","M 248 51 L 248 558"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Dá a volta ao oval e sobe pela haste.","2 · Desce pela haste até ao fundo."],"rows":[{"y":45,"stroke":"#a9d9f7","width":2},{"y":169,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":277,"stroke":"#77bfea","width":2.6},{"y":558,"stroke":"#a9d9f7","width":2}]},
+"Q":{"path":"M 147 42 C 90 68 70 123 85 163 C 104 213 158 228 211 214 C 267 199 301 155 303 103 C 305 59 282 36 257 44 C 217 57 180 124 181 182 C 179 242 203 291 242 292 C 291 294 329 267 348 234 C 338 348 295 460 232 530 C 192 573 146 597 105 578 C 77 566 64 542 69 516 C 75 476 115 466 160 480 C 231 500 352 580 436 580 C 493 580 535 541 530 490 C 527 453 507 428 474 425 C 441 422 417 437 391 448","viewBox":"0 0 650 700","phases":["M 147 42 C 90 68 70 123 85 163 C 104 213 158 228 211 214 C 267 199 301 155 303 103 C 305 59 282 36 257 44 C 217 57 180 124 181 182 C 179 242 203 291 242 292 C 291 294 329 267 348 234","M 348 234 C 338 348 295 460 232 530 C 192 573 146 597 105 578 C 77 566 64 542 69 516 C 75 476 115 466 160 480","M 160 480 C 231 500 352 580 436 580 C 493 580 535 541 530 490 C 527 453 507 428 474 425 C 441 422 417 437 391 448"],"arrowRatios":[[0.14,0.48,0.79],[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a primeira volta e sobe pelo laço.","2 · Desce e faz o laço de baixo.","3 · Continua para a direita e termina com a volta."],"rows":[{"y":44,"stroke":"#a9d9f7","width":2},{"y":292,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":580,"stroke":"#77bfea","width":2.6},{"y":625,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalQ"},
+"r":{"path":"M 153 521 C 196 419 224 304 243 179 C 252 122 248 78 213 61 C 184 46 157 61 151 83 C 143 108 166 140 201 150 C 239 162 295 149 337 152 C 380 151 392 198 392 256 L 392 425 C 392 478 405 505 432 505 C 461 505 484 471 493 447","viewBox":"0 0 650 700","phases":["M 153 521 C 196 419 224 304 243 179 C 252 122 248 78 213 61 C 184 46 157 61 151 83 C 143 108 166 140 201 150 C 239 162 295 149 337 152","M 337 152 C 380 151 392 198 392 256 L 392 425 C 392 478 405 505 432 505 C 461 505 484 471 493 447"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Sobe, faz o pequeno laço e segue para a direita.","2 · Desce e termina com a curva para a direita."],"rows":[{"y":61,"stroke":"#a9d9f7","width":2},{"y":152,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":521,"stroke":"#77bfea","width":2.6},{"y":580,"stroke":"#a9d9f7","width":2}]},
+"R":{"path":"M 118 487 C 87 510 87 544 107 564 C 131 589 172 581 199 554 C 231 522 235 475 235 410 C 235 284 229 148 276 37 M 153 269 C 103 268 78 237 80 194 C 81 121 137 67 215 45 C 285 24 370 44 414 88 C 459 132 454 194 423 238 C 397 277 352 305 314 306 C 285 307 267 291 273 279 C 284 258 328 278 349 309 C 377 349 373 406 367 459 C 360 522 375 568 420 575 C 465 583 509 549 511 513 C 514 478 490 456 464 461 C 456 461 450 462 447 464","viewBox":"0 0 650 700","phases":["M 118 487 C 87 510 87 544 107 564 C 131 589 172 581 199 554 C 231 522 235 475 235 410 C 235 284 229 148 276 37","M 153 269 C 103 268 78 237 80 194 C 81 121 137 67 215 45 C 285 24 370 44 414 88 C 459 132 454 194 423 238 C 397 277 352 305 314 306 C 285 307 267 291 273 279 C 284 258 328 278 349 309","M 349 309 C 377 349 373 406 367 459 C 360 522 375 568 420 575 C 465 583 509 549 511 513 C 514 478 490 456 464 461 C 456 461 450 462 447 464"],"arrowRatios":[[0.22,0.64],[0.14,0.48,0.79],[0.22,0.64]],"hints":["1 · Faz a curva de baixo e sobe pela haste.","2 · Levanta o dedo. Faz a volta de cima a partir da nova bolinha.","3 · Desce e termina com a curva da direita."],"rows":[{"y":37,"stroke":"#a9d9f7","width":2},{"y":290,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":575,"stroke":"#77bfea","width":2.6},{"y":625,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalR","strokes":["M 118 487 C 87 510 87 544 107 564 C 131 589 172 581 199 554 C 231 522 235 475 235 410 C 235 284 229 148 276 37","M 153 269 C 103 268 78 237 80 194 C 81 121 137 67 215 45 C 285 24 370 44 414 88 C 459 132 454 194 423 238 C 397 277 352 305 314 306 C 285 307 267 291 273 279 C 284 258 328 278 349 309 C 377 349 373 406 367 459 C 360 522 375 568 420 575 C 465 583 509 549 511 513 C 514 478 490 456 464 461 C 456 461 450 462 447 464"],"liftBefore":[1]},
+"s":{"path":"M 121 498 C 181 426 254 296 300 196 C 322 147 336 109 344 82 C 354 172 389 247 424 307 C 458 365 496 426 483 464 C 472 503 413 520 367 509 C 320 498 304 461 305 425 C 304 395 310 377 315 367","viewBox":"0 0 650 700","phases":["M 121 498 C 181 426 254 296 300 196 C 322 147 336 109 344 82","M 344 82 C 354 172 389 247 424 307 C 458 365 496 426 483 464 C 472 503 413 520 367 509 C 320 498 304 461 305 425 C 304 395 310 377 315 367"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Sobe pelo lado esquerdo até ao cimo.","2 · Desce pelo outro lado e termina na curva de baixo."],"rows":[{"y":82,"stroke":"#a9d9f7","width":2},{"y":300,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":510,"stroke":"#77bfea","width":2.6},{"y":560,"stroke":"#a9d9f7","width":2}]},
+"S":{"path":"M 195 124 C 126 127 86 167 89 222 C 92 273 135 298 193 298 C 271 299 347 261 381 190 C 409 133 403 91 370 71 C 338 49 305 67 294 105 C 270 181 306 280 334 363 C 364 451 391 530 356 572 C 325 610 267 623 224 603 C 189 588 179 550 197 518 C 207 499 225 487 239 481","viewBox":"0 0 650 700","phases":["M 195 124 C 126 127 86 167 89 222 C 92 273 135 298 193 298 C 271 299 347 261 381 190 C 409 133 403 91 370 71 C 338 49 305 67 294 105","M 294 105 C 270 181 306 280 334 363 C 364 451 391 530 356 572 C 325 610 267 623 224 603 C 189 588 179 550 197 518 C 207 499 225 487 239 481"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a primeira volta e sobe pelo laço.","2 · Desce, faz a volta de baixo e termina na curva."],"rows":[{"y":70,"stroke":"#a9d9f7","width":2},{"y":298,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":615,"stroke":"#77bfea","width":2.6},{"y":655,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalS"},
+"w":{"path":"M 100 367 L 100 159 C 100 97 118 65 157 65 C 195 65 207 104 207 159 L 207 277 C 207 338 234 364 278 364 C 326 364 363 319 363 266 L 363 65 L 363 276 C 363 336 386 365 424 365 C 474 365 510 297 510 192 C 510 123 505 72 473 69 C 448 65 433 92 444 120 C 455 153 500 169 559 161","viewBox":"0 0 650 700","phases":["M 100 367 L 100 159 C 100 97 118 65 157 65 C 195 65 207 104 207 159 L 207 277 C 207 338 234 364 278 364 C 326 364 363 319 363 266 L 363 65","M 363 65 L 363 276 C 363 336 386 365 424 365 C 474 365 510 297 510 192 C 510 123 505 72 473 69","M 473 69 C 448 65 433 92 444 120 C 455 153 500 169 559 161"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.22,0.64]],"hints":["1 · Sobe, faz o primeiro arco e volta a subir pela segunda haste.","2 · Desce, faz a curva e sobe pelo último laço.","3 · Faz a voltinha e termina à direita."],"rows":[{"y":65,"stroke":"#a9d9f7","width":2},{"y":210,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":365,"stroke":"#77bfea","width":2.6},{"y":410,"stroke":"#a9d9f7","width":2}]},
+"W":{"path":"M 35 67 C 30 39 48 29 67 34 C 89 40 85 68 107 74 C 128 81 143 63 151 39 L 227 557 L 259 40 L 354 558 L 354 192 C 354 87 390 39 445 39 C 480 39 494 60 494 91","viewBox":"0 0 650 700","phases":["M 35 67 C 30 39 48 29 67 34 C 89 40 85 68 107 74 C 128 81 143 63 151 39","M 151 39 L 227 557 L 259 40","M 259 40 L 354 558 L 354 192 C 354 87 390 39 445 39 C 480 39 494 60 494 91"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a pequena volta de cima.","2 · Desce até à ponta e sobe à segunda ponta.","3 · Desce, volta a subir e termina na curva de cima."],"rows":[{"y":39,"stroke":"#a9d9f7","width":2},{"y":300,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":558,"stroke":"#77bfea","width":2.6},{"y":610,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalW"},
+"x":{"path":"M 104 190 C 73 155 72 109 99 79 C 127 47 169 47 199 69 C 250 105 261 186 261 282 C 261 380 241 454 191 459 C 145 464 115 438 117 400 C 119 374 130 357 139 344 M 435 188 C 461 151 464 109 436 80 C 406 48 364 49 333 68 C 279 104 261 189 261 282 C 261 381 281 453 331 459 C 375 464 402 438 395 405 C 390 378 378 361 369 348","viewBox":"0 0 650 700","phases":["M 104 190 C 73 155 72 109 99 79 C 127 47 169 47 199 69 C 250 105 261 186 261 282 C 261 380 241 454 191 459 C 145 464 115 438 117 400 C 119 374 130 357 139 344","M 435 188 C 461 151 464 109 436 80 C 406 48 364 49 333 68 C 279 104 261 189 261 282 C 261 381 281 453 331 459 C 375 464 402 438 395 405 C 390 378 378 361 369 348"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a volta de cima, desce e termina na curva da esquerda.","2 · Levanta o dedo. Começa na nova bolinha e faz o outro lado."],"rows":[{"y":58,"stroke":"#a9d9f7","width":2},{"y":282,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":459,"stroke":"#77bfea","width":2.6},{"y":510,"stroke":"#a9d9f7","width":2}],"strokes":["M 104 190 C 73 155 72 109 99 79 C 127 47 169 47 199 69 C 250 105 261 186 261 282 C 261 380 241 454 191 459 C 145 464 115 438 117 400 C 119 374 130 357 139 344","M 435 188 C 461 151 464 109 436 80 C 406 48 364 49 333 68 C 279 104 261 189 261 282 C 261 381 281 453 331 459 C 375 464 402 438 395 405 C 390 378 378 361 369 348"],"liftBefore":[1]},
+"X":{"path":"M 73 209 C 43 166 39 111 67 72 C 96 29 142 25 184 43 C 259 76 284 197 284 356 C 284 479 246 568 182 569 C 133 571 97 544 82 509 C 69 478 82 435 100 404 M 476 204 C 506 161 512 106 489 71 C 460 28 414 23 375 45 C 310 84 283 209 283 357 C 283 473 318 569 383 571 C 432 573 469 540 473 499 C 477 466 467 438 457 414 M 198 326 C 229 303 254 297 286 300 C 321 304 343 303 359 290","viewBox":"0 0 650 700","phases":["M 73 209 C 43 166 39 111 67 72 C 96 29 142 25 184 43 C 259 76 284 197 284 356 C 284 479 246 568 182 569 C 133 571 97 544 82 509 C 69 478 82 435 100 404","M 476 204 C 506 161 512 106 489 71 C 460 28 414 23 375 45 C 310 84 283 209 283 357 C 283 473 318 569 383 571 C 432 573 469 540 473 499 C 477 466 467 438 457 414","M 198 326 C 229 303 254 297 286 300 C 321 304 343 303 359 290"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a volta de cima e desce pelo lado esquerdo.","2 · Levanta o dedo. Faz o outro lado a partir da nova bolinha.","3 · Levanta o dedo. Faz a barra do meio para a direita."],"rows":[{"y":35,"stroke":"#a9d9f7","width":2},{"y":300,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":571,"stroke":"#77bfea","width":2.6},{"y":620,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalX","strokes":["M 73 209 C 43 166 39 111 67 72 C 96 29 142 25 184 43 C 259 76 284 197 284 356 C 284 479 246 568 182 569 C 133 571 97 544 82 509 C 69 478 82 435 100 404","M 476 204 C 506 161 512 106 489 71 C 460 28 414 23 375 45 C 310 84 283 209 283 357 C 283 473 318 569 383 571 C 432 573 469 540 473 499 C 477 466 467 438 457 414","M 198 326 C 229 303 254 297 286 300 C 321 304 343 303 359 290"],"liftBefore":[1,2]},
+"y":{"path":"M 136 62 L 136 142 C 136 201 158 229 193 229 C 232 230 248 194 248 151 L 248 63 L 248 421 C 248 469 226 497 202 493 C 171 490 167 452 178 413 C 191 367 234 304 275 268 L 324 247","viewBox":"0 0 650 700","phases":["M 136 62 L 136 142 C 136 201 158 229 193 229 C 232 230 248 194 248 151 L 248 63","M 248 63 L 248 421 C 248 469 226 497 202 493 C 171 490 167 452 178 413 C 191 367 234 304 275 268 L 324 247"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Desce, faz a curva e sobe pela segunda haste.","2 · Desce, faz o laço de baixo e termina à direita."],"rows":[{"y":62,"stroke":"#a9d9f7","width":2},{"y":229,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":268,"stroke":"#77bfea","width":2.6},{"y":493,"stroke":"#a9d9f7","width":2}]},
+"Y":{"path":"M 116 125 C 86 121 91 83 112 68 C 133 50 157 62 166 82 C 181 113 175 199 178 273 L 178 323 C 178 383 195 410 236 408 C 280 407 324 361 324 310 L 324 59 L 324 558 C 325 593 308 619 288 615 C 257 610 256 570 274 529 C 297 474 348 425 389 404","viewBox":"0 0 650 700","phases":["M 116 125 C 86 121 91 83 112 68 C 133 50 157 62 166 82 C 181 113 175 199 178 273 L 178 323 C 178 383 195 410 236 408 C 280 407 324 361 324 310 L 324 59","M 324 59 L 324 558 C 325 593 308 619 288 615 C 257 610 256 570 274 529 C 297 474 348 425 389 404"],"arrowRatios":[[0.22,0.64],[0.22,0.64]],"hints":["1 · Faz a volta de cima, desce e sobe pela haste da direita.","2 · Desce, faz o laço de baixo e termina à direita."],"rows":[{"y":59,"stroke":"#a9d9f7","width":2},{"y":310,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":408,"stroke":"#77bfea","width":2.6},{"y":615,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalY"},
+"z":{"path":"M 78 238 L 159 139 C 184 105 185 73 166 49 C 150 30 125 42 112 58 C 89 104 133 130 194 124 C 245 121 300 113 331 94 L 175 263 C 218 244 272 269 283 311 C 297 357 289 431 284 463 C 276 516 254 551 229 553 C 194 557 166 526 169 486 C 172 407 242 335 368 255","viewBox":"0 0 650 700","phases":["M 78 238 L 159 139 C 184 105 185 73 166 49 C 150 30 125 42 112 58 C 89 104 133 130 194 124 C 245 121 300 113 331 94","M 331 94 L 175 263 C 218 244 272 269 283 311 C 297 357 289 431 284 463 C 276 516 254 551 229 553","M 229 553 C 194 557 166 526 169 486 C 172 407 242 335 368 255"],"arrowRatios":[[0.22,0.64],[0.22,0.64],[0.22,0.64]],"hints":["1 · Sobe, faz o pequeno laço e segue para a direita.","2 · Desce pela diagonal e continua até ao laço de baixo.","3 · Faz a volta de baixo e sobe para a direita."],"rows":[{"y":49,"stroke":"#a9d9f7","width":2},{"y":263,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":311,"stroke":"#77bfea","width":2.6},{"y":553,"stroke":"#a9d9f7","width":2}]},
+"Z":{"path":"M 179 164 C 157 204 119 215 88 195 C 53 174 39 132 52 96 C 71 39 117 30 159 48 C 206 67 250 117 304 135 C 351 151 401 143 412 112 C 423 85 413 49 391 47 C 362 43 342 69 332 110 C 312 182 314 290 307 386 C 304 469 288 520 244 551 C 208 578 165 581 149 556 C 133 535 146 509 171 504 C 200 496 234 520 279 544 C 325 569 361 581 398 578 C 438 577 461 556 460 528 C 458 494 438 469 410 468 C 394 467 382 472 371 477 M 230 323 C 263 297 287 309 321 305 C 348 302 364 288 380 277","viewBox":"0 0 650 700","phases":["M 179 164 C 157 204 119 215 88 195 C 53 174 39 132 52 96 C 71 39 117 30 159 48 C 206 67 250 117 304 135 C 351 151 401 143 412 112 C 423 85 413 49 391 47 C 362 43 342 69 332 110","M 332 110 C 312 182 314 290 307 386 C 304 469 288 520 244 551 C 208 578 165 581 149 556 C 133 535 146 509 171 504 C 200 496 234 520 279 544 C 325 569 361 581 398 578 C 438 577 461 556 460 528 C 458 494 438 469 410 468 C 394 467 382 472 371 477","M 230 323 C 263 297 287 309 321 305 C 348 302 364 288 380 277"],"arrowRatios":[[0.14,0.48,0.79],[0.14,0.48,0.79],[0.22,0.64]],"hints":["1 · Faz a primeira volta e sobe pelo pequeno laço.","2 · Desce, faz o laço de baixo e termina à direita.","3 · Levanta o dedo. Faz a barra do meio para a direita."],"rows":[{"y":47,"stroke":"#a9d9f7","width":2},{"y":310,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":578,"stroke":"#77bfea","width":2.6},{"y":625,"stroke":"#a9d9f7","width":2}],"buttonId":"chooseCapitalZ","strokes":["M 179 164 C 157 204 119 215 88 195 C 53 174 39 132 52 96 C 71 39 117 30 159 48 C 206 67 250 117 304 135 C 351 151 401 143 412 112 C 423 85 413 49 391 47 C 362 43 342 69 332 110 C 312 182 314 290 307 386 C 304 469 288 520 244 551 C 208 578 165 581 149 556 C 133 535 146 509 171 504 C 200 496 234 520 279 544 C 325 569 361 581 398 578 C 438 577 461 556 460 528 C 458 494 438 469 410 468 C 394 467 382 472 371 477","M 230 323 C 263 297 287 309 321 305 C 348 302 364 288 380 277"],"liftBefore":[2]},
+
+"d":{"path":"M 275 326 C 253 294 225 282 190 282 C 131 282 88 340 88 414 C 88 480 128 533 184 533 C 236 533 276 485 276 433 L 276 57 L 276 487 C 276 516 291 526 316 526 C 353 526 376 497 376 458","guide":"M 275 326 C 253 294 225 282 190 282 C 131 282 88 340 88 414 C 88 480 128 533 184 533 C 236 533 276 485 276 433 M 276 57 L 276 487 C 276 516 291 526 316 526 C 353 526 376 497 376 458","viewBox":"20 0 440 620","phases":["M 275 326 C 253 294 225 282 190 282 C 131 282 88 340 88 414 C 88 480 128 533 184 533 C 236 533 276 485 276 433 L 276 57","M 276 57 L 276 487 C 276 516 291 526 316 526 C 353 526 376 497 376 458"],"arrowRatios":[[0.12,0.44,0.72,0.91],[0.23,0.8]],"hints":["1 · Dá a volta ao oval e sobe pela haste.","2 · Desce e faz a curva para a direita."],"rows":[{"y":57,"stroke":"#a9d9f7","width":2},{"y":282,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":533,"stroke":"#77bfea","width":2.6},{"y":590,"stroke":"#a9d9f7","width":2}]},
+"D":{"path":"M 366 51 C 296 80 221 169 220 296 L 220 393 C 220 501 202 568 127 570 C 82 574 46 551 46 519 C 46 483 69 465 100 466 C 168 467 262 580 331 580 C 425 580 479 457 479 333 C 479 168 408 57 252 57 C 135 57 64 119 64 200 C 64 248 81 280 113 280 C 141 281 159 269 164 243","buttonId":"chooseCapitalD","viewBox":"0 0 550 660","phases":["M 366 51 C 296 80 221 169 220 296 L 220 393 C 220 501 202 568 127 570 C 82 574 46 551 46 519 C 46 483 69 465 100 466","M 100 466 C 168 467 262 580 331 580 C 425 580 479 457 479 333 C 479 168 408 57 252 57 C 135 57 64 119 64 200 C 64 248 81 280 113 280 C 141 281 159 269 164 243"],"arrowRatios":[[0.1,0.4,0.78],[0.23,0.5,0.83]],"hints":["1 · Desce pela haste e faz o laço de baixo.","2 · Continua pela volta grande até ao fim."],"rows":[{"y":57,"stroke":"#a9d9f7","width":2},{"y":320,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":580,"stroke":"#77bfea","width":2.6},{"y":630,"stroke":"#a9d9f7","width":2}]},
+"t":{"path":"M 102 578 C 138 526 166 479 166 407 L 166 78 L 166 454 C 166 516 187 569 225 569 C 257 569 281 547 297 521 M 97 186 L 254 186","guide":"M 102 578 C 138 526 166 479 166 407 M 166 78 L 166 454 C 166 516 187 569 225 569 C 257 569 281 547 297 521 M 97 186 L 254 186","viewBox":"10 0 380 650","phases":["M 102 578 C 138 526 166 479 166 407 L 166 78","M 166 78 L 166 454 C 166 516 187 569 225 569 C 257 569 281 547 297 521","M 97 186 L 254 186"],"strokes":["M 102 578 C 138 526 166 479 166 407 L 166 78 L 166 454 C 166 516 187 569 225 569 C 257 569 281 547 297 521","M 97 186 L 254 186"],"liftBefore":[2],"arrowRatios":[[0.25,0.7],[0.25,0.8],[0.45]],"hints":["1 · Começa em baixo e sobe pela haste.","2 · Desce e termina com a curva.","3 · Levanta o dedo ou o rato. Começa na nova bolinha e faz a barra."],"rows":[{"y":78,"stroke":"#a9d9f7","width":2},{"y":186,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":569,"stroke":"#77bfea","width":2.6},{"y":620,"stroke":"#a9d9f7","width":2}]},
+"T":{"path":"M 342 102 C 313 145 296 181 296 226 C 296 312 307 417 307 458 C 307 520 284 561 238 562 C 183 566 143 535 143 489 C 143 462 160 442 185 435 M 246 214 C 223 245 181 249 148 232 C 96 214 100 165 120 120 C 141 77 176 56 230 56 C 296 56 330 94 376 92 C 456 105 516 98 552 63","buttonId":"chooseCapitalT","viewBox":"0 0 610 640","phases":["M 342 102 C 313 145 296 181 296 226 C 296 312 307 417 307 458 C 307 520 284 561 238 562 C 183 566 143 535 143 489 C 143 462 160 442 185 435","M 246 214 C 223 245 181 249 148 232 C 96 214 100 165 120 120 C 141 77 176 56 230 56 C 296 56 330 94 376 92 C 456 105 516 98 552 63"],"strokes":["M 342 102 C 313 145 296 181 296 226 C 296 312 307 417 307 458 C 307 520 284 561 238 562 C 183 566 143 535 143 489 C 143 462 160 442 185 435","M 246 214 C 223 245 181 249 148 232 C 96 214 100 165 120 120 C 141 77 176 56 230 56 C 296 56 330 94 376 92 C 456 105 516 98 552 63"],"liftBefore":[1],"arrowRatios":[[0.2,0.57,0.84],[0.16,0.49,0.82]],"hints":["1 · Desce pela haste e faz a volta de baixo.","2 · Levanta o dedo ou o rato. Faz a volta de cima a partir da nova bolinha."],"rows":[{"y":56,"stroke":"#a9d9f7","width":2},{"y":310,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":562,"stroke":"#77bfea","width":2.6},{"y":610,"stroke":"#a9d9f7","width":2}]},
+"l":{"path":"M 96 563 C 151 446 231 259 230 139 C 230 94 213 74 184 74 C 157 74 145 100 145 135 L 156 474 C 157 525 172 551 209 551 C 254 551 284 511 286 462","viewBox":"20 0 360 650","phases":["M 96 563 C 151 446 231 259 230 139 C 230 94 213 74 184 74","M 184 74 C 157 74 145 100 145 135 L 156 474 C 157 525 172 551 209 551 C 254 551 284 511 286 462"],"arrowRatios":[[0.25,0.69],[0.28,0.75]],"hints":["1 · Sobe pelo laço até ao cimo.","2 · Desce pela haste e faz a curva para a direita."],"rows":[{"y":74,"stroke":"#a9d9f7","width":2},{"y":326,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":551,"stroke":"#77bfea","width":2.6},{"y":610,"stroke":"#a9d9f7","width":2}]},
+"L":{"path":"M 181 97 C 128 123 96 166 96 197 C 96 255 146 275 226 264 C 305 253 350 205 373 141 C 393 83 366 50 340 51 C 286 51 258 134 258 206 C 258 307 275 433 250 510 C 239 554 215 576 158 576 C 115 576 99 556 99 533 C 99 500 120 481 152 481 C 218 481 336 576 416 576 C 477 576 514 533 514 477 C 514 426 477 385 419 385 C 386 385 365 405 347 430","buttonId":"chooseCapitalL","viewBox":"20 0 550 650","phases":["M 181 97 C 128 123 96 166 96 197 C 96 255 146 275 226 264 C 305 253 350 205 373 141 C 393 83 366 50 340 51","M 340 51 C 286 51 258 134 258 206 C 258 307 275 433 250 510 C 239 554 215 576 158 576 C 115 576 99 556 99 533 C 99 500 120 481 152 481","M 152 481 C 218 481 336 576 416 576 C 477 576 514 533 514 477 C 514 426 477 385 419 385 C 386 385 365 405 347 430"],"arrowRatios":[[0.2,0.72],[0.32,0.79],[0.2,0.69]],"hints":["1 · Faz a primeira volta e sobe pelo laço.","2 · Desce pela haste e faz o laço de baixo.","3 · Continua para a direita e termina com a volta."],"rows":[{"y":51,"stroke":"#a9d9f7","width":2},{"y":310,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":576,"stroke":"#77bfea","width":2.6},{"y":625,"stroke":"#a9d9f7","width":2}]},
+"m":{"path":"M 126 420 L 126 209 C 126 133 151 78 191 78 C 231 78 260 135 260 209 L 260 420 L 260 210 C 260 133 287 78 326 78 C 366 78 394 135 394 210 L 394 420 L 394 210 C 394 133 422 78 460 78 C 500 78 528 135 528 210 L 528 337 C 528 390 535 420 555 420 C 580 420 594 374 595 339","guide":"M 126 420 L 126 209 C 126 133 151 78 191 78 C 231 78 260 135 260 209 L 260 420 M 260 210 C 260 133 287 78 326 78 C 366 78 394 135 394 210 L 394 420 M 394 210 C 394 133 422 78 460 78 C 500 78 528 135 528 210 L 528 337 C 528 390 535 420 555 420 C 580 420 594 374 595 339","viewBox":"60 0 610 510","phases":["M 126 420 L 126 209 C 126 133 151 78 191 78 C 231 78 260 135 260 209 L 260 420","M 260 420 L 260 210 C 260 133 287 78 326 78 C 366 78 394 135 394 210 L 394 420","M 394 420 L 394 210 C 394 133 422 78 460 78 C 500 78 528 135 528 210 L 528 337 C 528 390 535 420 555 420 C 580 420 594 374 595 339"],"arrowRatios":[[0.17,0.47,0.82],[0.17,0.47,0.82],[0.15,0.43,0.77]],"hints":["1 · Sobe, faz o primeiro arco e desce.","2 · Volta a subir, faz o segundo arco e desce.","3 · Sobe, faz o último arco e termina à direita."],"rows":[{"y":78,"stroke":"#a9d9f7","width":2},{"y":250,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":420,"stroke":"#77bfea","width":2.6},{"y":480,"stroke":"#a9d9f7","width":2}]},
+"M":{"path":"M 95 429 C 54 420 35 473 39 521 C 42 570 60 595 87 595 C 131 595 149 555 158 474 C 171 362 188 170 203 68 L 264 573 L 341 60 L 374 495 C 379 569 399 596 431 596 C 459 596 479 563 479 529 C 479 506 467 489 456 487","buttonId":"chooseCapitalM","viewBox":"0 0 550 690","phases":["M 95 429 C 54 420 35 473 39 521 C 42 570 60 595 87 595 C 131 595 149 555 158 474 C 171 362 188 170 203 68","M 203 68 L 264 573 L 341 60","M 341 60 L 374 495 C 379 569 399 596 431 596 C 459 596 479 563 479 529 C 479 506 467 489 456 487"],"arrowRatios":[[0.15,0.6],[0.28,0.78],[0.3,0.85]],"hints":["1 · Faz a primeira curva e sobe até ao cimo.","2 · Desce até ao fundo e sobe à segunda ponta.","3 · Desce e termina com a curva da direita."],"rows":[{"y":60,"stroke":"#a9d9f7","width":2},{"y":330,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":595,"stroke":"#77bfea","width":2.6},{"y":655,"stroke":"#a9d9f7","width":2}]},
+"v":{"path":"M 101 466 L 101 178 C 101 116 125 85 164 85 C 202 85 222 124 222 178 L 222 406 C 222 442 233 462 260 462 C 354 462 425 351 454 192 C 467 142 454 93 416 87 C 374 82 331 126 331 174 C 331 216 350 236 390 236 C 445 236 499 212 532 186","viewBox":"30 0 570 550","phases":["M 101 466 L 101 178 C 101 116 125 85 164 85 C 202 85 222 124 222 178 L 222 406 C 222 442 233 462 260 462","M 260 462 C 354 462 425 351 454 192 C 467 142 454 93 416 87","M 416 87 C 374 82 331 126 331 174 C 331 216 350 236 390 236 C 445 236 499 212 532 186"],"arrowRatios":[[0.19,0.55,0.83],[0.3,0.75],[0.3,0.76]],"hints":["1 · Sobe, faz o primeiro arco e desce.","2 · Faz a curva de baixo e sobe pelo outro lado.","3 · Faz o pequeno laço e termina à direita."],"rows":[{"y":85,"stroke":"#a9d9f7","width":2},{"y":270,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":462,"stroke":"#77bfea","width":2.6},{"y":515,"stroke":"#a9d9f7","width":2}]},
+"V":{"path":"M 54 143 C 28 78 62 49 92 64 C 127 78 112 111 147 113 C 173 116 188 87 200 59 L 265 538 C 281 420 313 234 372 126 C 405 65 431 62 450 62 C 500 62 524 113 498 161","buttonId":"chooseCapitalV","viewBox":"0 0 600 640","phases":["M 54 143 C 28 78 62 49 92 64 C 127 78 112 111 147 113 C 173 116 188 87 200 59","M 200 59 L 265 538 C 281 420 313 234 372 126 C 405 65 431 62 450 62","M 450 62 C 500 62 524 113 498 161"],"arrowRatios":[[0.28,0.72],[0.25,0.72],[0.6]],"hints":["1 · Faz a pequena volta de cima.","2 · Desce até à ponta e sobe pelo outro lado.","3 · Termina com a curva de cima."],"rows":[{"y":59,"stroke":"#a9d9f7","width":2},{"y":300,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":538,"stroke":"#77bfea","width":2.6},{"y":600,"stroke":"#a9d9f7","width":2}]},
+
+  I:{path:CAPITAL_I_PATH,buttonId:'chooseCapitalI',viewBox:'40 0 360 690',
+    phases:[CAPITAL_I_TOP,CAPITAL_I_STEM],arrowRatios:[[.28,.78],[.20,.58,.84]],
+    hints:['1 · Faz a volta e segue pela parte de cima.',
+           '2 · Desce pela haste e faz a volta de baixo.'],
+    rows:[{y:70,stroke:'#a9d9f7',width:2},{y:344,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:619,stroke:'#77bfea',width:2.6},{y:660,stroke:'#a9d9f7',width:2}]},
+  O:{path:CAPITAL_O_PATH,buttonId:'chooseCapitalO',viewBox:'0 0 520 640',
+    phases:[CAPITAL_O_OVAL,CAPITAL_O_TURN],arrowRatios:[[.22,.62,.87],[.30,.75]],
+    hints:['1 · Desce pela esquerda e dá a volta ao oval.',
+           '2 · Continua a subir e termina com a volta para dentro.'],
+    rows:[{y:46,stroke:'#a9d9f7',width:2},{y:300,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:555,stroke:'#77bfea',width:2.6},{y:600,stroke:'#a9d9f7',width:2}]},
+  P:{path:CAPITAL_P_PATH,buttonId:'chooseCapitalP',viewBox:'0 0 500 640',
+    phases:[CAPITAL_P_STEM,CAPITAL_P_TOP],strokes:[CAPITAL_P_STEM,CAPITAL_P_TOP],liftBefore:[1],
+    arrowRatios:[[.20,.50,.82],[.16,.49,.80]],
+    hints:['1 · Desce pela haste e faz a volta de baixo.',
+           '2 · Levanta o dedo ou o rato. Começa na nova bolinha e faz a volta de cima.'],
+    rows:[{y:36,stroke:'#a9d9f7',width:2},{y:290,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:548,stroke:'#77bfea',width:2.6},{y:600,stroke:'#a9d9f7',width:2}]},
+  a:{path:A_PATH,guide:A_GUIDE,viewBox:'50 0 540 570',phases:[A_OVAL,A_EXIT],
+    arrowRatios:[[.10,.35,.65,.88],[.23,.80]],
+    hints:['1 · Dá a volta ao oval e sobe até ao cimo.',
+           '2 · Desce pela haste e termina à direita.'],
+    rows:[{y:87,stroke:'#a9d9f7',width:2},{y:278,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:470,stroke:'#77bfea',width:2.6},{y:530,stroke:'#a9d9f7',width:2}]},
+  A:{path:CAPITAL_A_PATH,buttonId:'chooseCapitalA',viewBox:'0 -15 600 695',
+    phases:[CAPITAL_A_MAIN,CAPITAL_A_BAR],strokes:[CAPITAL_A_MAIN,CAPITAL_A_BAR],liftBefore:[1],
+    arrowRatios:[[.15,.40,.65,.88],[.35,.80]],
+    hints:['1 · Segue o traçado principal até ao fim.',
+           '2 · Levanta o dedo ou o rato. Começa na nova bolinha e faz a barra.'],
+    rows:[{y:30,stroke:'#a9d9f7',width:2},{y:340,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:589,stroke:'#77bfea',width:2.6},{y:640,stroke:'#a9d9f7',width:2}]},
+  e:{path:E_PATH,viewBox:'0 0 560 540',phases:[E_RISE,E_RETURN],
+    arrowRatios:[[.38,.78],[.28,.72]],
+    hints:['1 · Sobe pelo laço até ao cimo.',
+           '2 · Desce pelo laço e termina à direita.'],
+    rows:[{y:48,stroke:'#a9d9f7',width:2},{y:233,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:419,stroke:'#77bfea',width:2.6},{y:490,stroke:'#a9d9f7',width:2}]},
+  i:{path:I_PATH,guide:I_GUIDE,viewBox:'0 0 440 660',phases:[I_ENTRY,I_EXIT],
+    dot:{x:211,y:102,r:34},arrowRatios:[[.30,.72],[.26,.75]],
+    hints:['1 · Começa à esquerda e sobe pela haste.',
+           '2 · Desce e faz a curva para a direita.'],
+    rows:[{y:181,stroke:'#a9d9f7',width:2},{y:360,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:540,stroke:'#77bfea',width:2.6},{y:610,stroke:'#a9d9f7',width:2}]},
+  E:{path:CAPITAL_E_PATH,buttonId:'chooseCapitalE',viewBox:'0 0 440 700',
+    phases:[CAPITAL_E_TOP,CAPITAL_E_MIDDLE,CAPITAL_E_BOTTOM],
+    arrowRatios:[[.15,.49,.85],[.35,.74],[.19,.48,.80]],
+    hints:['1 · Segue a primeira volta e faz o laço de cima.',
+           '2 · Faz a pequena volta do meio.',
+           '3 · Continua pela volta de baixo até ao fim.'],
+    rows:[{y:69,stroke:'#a9d9f7',width:2},{y:320,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:618,stroke:'#77bfea',width:2.6},{y:660,stroke:'#a9d9f7',width:2}]},
+  u:{path:U_PATH,guide:U_GUIDE,viewBox:'0 0 620 590',phases:[U_ENTRY,U_BOWL,U_EXIT],
+    arrowRatios:[[.30,.75],[.22,.70],[.25,.80]],
+    hints:['1 · Começa à esquerda e sobe até ao cimo.',
+           '2 · Desce, faz a curva e sobe pela segunda haste.',
+           '3 · Desce e faz a última curva para a direita.'],
+    rows:[{y:92,stroke:'#a9d9f7',width:2},{y:285,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:485,stroke:'#77bfea',width:2.6},{y:545,stroke:'#a9d9f7',width:2}]},
+  U:{path:CAPITAL_U_PATH,guide:CAPITAL_U_GUIDE,buttonId:'chooseCapitalU',viewBox:'0 0 560 660',
+    phases:[CAPITAL_U_START,CAPITAL_U_RISE,CAPITAL_U_EXIT],
+    arrowRatios:[[.18,.55,.88],[.25,.72],[.20,.70,.89]],
+    hints:['1 · Faz a primeira volta e desce até à curva.',
+           '2 · Sobe pela segunda haste até ao cimo.',
+           '3 · Desce e termina com a volta da direita.'],
+    rows:[{y:42,stroke:'#a9d9f7',width:2},{y:300,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:568,stroke:'#77bfea',width:2.6},{y:620,stroke:'#a9d9f7',width:2}]},
+  o:{path:O_PATH,viewBox:'0 0 520 550',phases:[O_OVAL,O_LOOP],
+    arrowRatios:[[.085,.34,.72],[.25,.74]],
+    hints:['1 · Dá a volta ao oval, seguindo as setas.',
+           '2 · Faz a voltinha e sai para a direita.'],
+    rows:[{y:54,stroke:'#a9d9f7',width:2},
+          {y:246,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:439,stroke:'#77bfea',width:2.6},
+          {y:500,stroke:'#a9d9f7',width:2}]},
+  p:{path:P_PATH,guide:P_GUIDE,viewBox:'0 0 520 550',
+    phases:[P_ENTRY,P_DOWN,P_UP,P_CURVE],
+    hints:['1 · Começa na bolinha e sobe até ao cimo.',
+           '2 · Desce pela haste até ao fundo.',
+           '3 · Sobe pela mesma haste até à curva.',
+           '4 · Faz a curva e termina à direita.']}
+};
+
+let letter='a',len=0,progress=0,phaseIndex=0,phases=[];
+let dragging=false,done=false,awaitDot=false,sound=true,audioCtx=null;
+let activePointer=null,lastPointer=null;
+let assisted=true,demoActive=false,demoFrame=0,demoTimer=0;
+let pendingSpeech='',lastEncouragement='Muito bem! Conseguiste!',encouragementIndex=0;
+let autoLetterTimer=0,completionRun=0,successStartedAt=0;
+let strokePaints=[],tracePoints=[],geometryPoints=[];
+const multiPaint=document.createElementNS(NS,'g');
+guide.before(multiPaint);
+const measure=document.createElementNS(NS,'path');
+svg.querySelector('defs').appendChild(measure);
+
+// Cache smooth centreline samples without repeatedly asking the SVG renderer
+// to recalculate a long, self-crossing curve during a pupil's pointer movement.
+function buildTraceGeometry(path){
+  const tokens=path.match(/[MLC]|-?\d+(?:\.\d+)?/g)||[];
+  const points=[];let i=0,position={x:0,y:0},distance=0;
+  const add=(p,move=false)=>{
+    if(points.length&&!move)distance+=Math.hypot(p.x-position.x,p.y-position.y);
+    points.push({length:distance,point:p});position=p;
+  };
+  while(i<tokens.length){
+    const command=tokens[i++];
+    if(command==='M')add({x:Number(tokens[i++]),y:Number(tokens[i++])},true);
+    else if(command==='L')add({x:Number(tokens[i++]),y:Number(tokens[i++])});
+    else if(command==='C'){
+      const a=position,b={x:Number(tokens[i++]),y:Number(tokens[i++])},
+        c={x:Number(tokens[i++]),y:Number(tokens[i++])},d={x:Number(tokens[i++]),y:Number(tokens[i++])};
+      for(let k=1;k<=64;k++){
+        const t=k/64,v=1-t;
+        add({x:v*v*v*a.x+3*v*v*t*b.x+3*v*t*t*c.x+t*t*t*d.x,
+             y:v*v*v*a.y+3*v*v*t*b.y+3*v*t*t*c.y+t*t*t*d.y});
+      }
+    }else throw Error('Traçado desconhecido');
+  }
+  const scale=len/distance;
+  geometryPoints=points.map(p=>({length:p.length*scale,point:p.point}));
+}
+
+// Fit the complete letter, including its wide outline and any dot, to the
+// writing area instead of reserving the empty margins of the source model.
+function fitLetterToWritingArea(config){
+  let left=Infinity,top=Infinity,right=-Infinity,bottom=-Infinity;
+  for(const sample of geometryPoints){
+    const p=sample.point;
+    left=Math.min(left,p.x);right=Math.max(right,p.x);
+    top=Math.min(top,p.y);bottom=Math.max(bottom,p.y);
+  }
+  const halfStroke=29;
+  left-=halfStroke;right+=halfStroke;top-=halfStroke;bottom+=halfStroke;
+  if(config.dot){
+    const d=config.dot;
+    left=Math.min(left,d.x-d.r);right=Math.max(right,d.x+d.r);
+    top=Math.min(top,d.y-d.r);bottom=Math.max(bottom,d.y+d.r);
+  }
+  const margin=16;
+  svg.setAttribute('viewBox',`${left-margin} ${top-margin} ${right-left+margin*2} ${bottom-top+margin*2}`);
+}
+
+function at(length){
+  length=Math.max(0,Math.min(len,length));
+  let low=0,high=geometryPoints.length-1;
+  while(low<high){const mid=Math.ceil((low+high)/2);if(geometryPoints[mid].length<=length)low=mid;else high=mid-1}
+  const a=geometryPoints[low],b=geometryPoints[Math.min(low+1,geometryPoints.length-1)];
+  const ratio=b.length>a.length?(length-a.length)/(b.length-a.length):0;
+  return {x:a.point.x+(b.point.x-a.point.x)*ratio,y:a.point.y+(b.point.y-a.point.y)*ratio};
+}
+function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
+function pos(e){
+  const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;
+  const m=svg.getScreenCTM();return m?p.matrixTransform(m.inverse()):{x:-999,y:-999};
+}
+function tone(freq=650){
+  if(!sound)return;
+  try{
+    audioCtx??=new(window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==='suspended')audioCtx.resume();
+    const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+    o.type='sine';o.frequency.value=freq;
+    g.gain.setValueAtTime(.0001,audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.10,audioCtx.currentTime+.015);
+    g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.16);
+    o.connect(g).connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.17);
+  }catch{}
+}
+
+// Speak in European Portuguese, using the available device voice.
+function speakText(text,onFinished){
+  if(!sound||!text)return false;
+  const synth=window.speechSynthesis;
+  if(!synth||typeof window.SpeechSynthesisUtterance!=='function')return false;
+  try{
+    synth.cancel();
+    const message=new window.SpeechSynthesisUtterance(text);
+    message.lang='pt-PT';message.rate=.9;message.pitch=1.08;message.volume=1;
+    const voices=synth.getVoices();
+    const portuguese=voices.filter(v=>String(v.lang).replace('_','-').toLowerCase()==='pt-pt');
+    const voice=portuguese.find(v=>v.localService)||portuguese[0];
+    if(voice)message.voice=voice;
+    let notified=false;
+    const finishSpeaking=()=>{if(notified)return;notified=true;if(typeof onFinished==='function')onFinished()};
+    message.onend=finishSpeaking;message.onerror=finishSpeaking;
+    synth.speak(message);
+    return true;
+  }catch{return false}
+}
+function stopSpeech(){
+  pendingSpeech='';
+  try{window.speechSynthesis?.cancel()}catch{}
+}
+function instructionForSpeech(){
+  if(done)return lastEncouragement;
+  return hint.textContent.replace(/^[\s\d·👆👀⭐🌟✨]+/u,'').trim();
+}
+function queueSpeech(text){pendingSpeech=sound?text:''}
+function flushSpeech(){
+  const text=pendingSpeech;pendingSpeech='';
+  if(!text)return;
+  if(done&&text===lastEncouragement){playCompletionAudio();return}
+  if(!speakText(text))tone(784);
+}
+
+const LETTER_PRACTICE_ORDER=["a","A","e","E","i","I","o","O","u","U","p","P","t","T","l","L","d","D","m","M","v","V","c","C","n","N","r","R","b","B","g","G","s","S","j","J","f","F","z","Z","h","H","x","X","q","Q","k","K","w","W","y","Y"];
+function cancelAutoAdvance(){clearTimeout(autoLetterTimer);autoLetterTimer=0}
+function scheduleAutoAdvance(delay){
+  cancelAutoAdvance();if(!done)return;
+  const run=completionRun;
+  autoLetterTimer=setTimeout(()=>{
+    autoLetterTimer=0;
+    if(done&&completionRun===run)advanceToNextLetter();
+  },delay);
+}
+function advanceToNextLetter(){
+  if(!done)return;
+  const index=LETTER_PRACTICE_ORDER.indexOf(letter);
+  const next=LETTER_PRACTICE_ORDER[(index+1)%LETTER_PRACTICE_ORDER.length];
+  selectLetter(next,true);
+}
+function playCompletionAudio(){
+  if(!done){speakText(lastEncouragement);return}
+  const run=++completionRun;
+  // Always continue, including when a device does not report speech ending.
+  scheduleAutoAdvance(11000);
+  const started=speakText(lastEncouragement,()=>{
+    if(done&&completionRun===run){
+      scheduleAutoAdvance(Math.max(800,2400-(Date.now()-successStartedAt)));
+    }
+  });
+  if(!started){
+    tone(784);
+    scheduleAutoAdvance(Math.max(800,2800-(Date.now()-successStartedAt)));
+  }
+}
+
+function updateSoundButtons(){
+  const soundButton=document.getElementById('sound');
+  soundButton.textContent=sound?'🔊':'🔇';
+  soundButton.setAttribute('aria-label',sound?'Desativar som':'Ativar som');
+  for(const id of ['feedbackReplay','listenHint','pictureCue']){
+    const button=document.getElementById(id);button.disabled=!sound;
+    if(id!=='pictureCue')button.textContent=sound?'🔊':'🔇';
+  }
+}
+document.getElementById('feedbackReplay').addEventListener('click',playCompletionAudio);
+document.getElementById('listenHint').addEventListener('click',()=>{if(done)playCompletionAudio();else speakText(instructionForSpeech())});
+// Releasing the finger or mouse is a direct user action on touch devices.
+svg.addEventListener('pointerup',flushSpeech);
+try{window.speechSynthesis?.getVoices()}catch{}
+
+function setHint(){
+  hint.removeAttribute('aria-label');
+  hint.textContent=LETTERS[letter].hints?.[phaseIndex]||'👆 Começa na bolinha rosa e segue o tracejado!';
+}
+function makeArrows(){
+  arrows.replaceChildren();
+  const phase=phases[phaseIndex]||{start:0,end:len};
+  const ratios=LETTERS[letter].arrowRatios?.[phaseIndex]||(letter==='p'?[.24,.58,.85]:[.19,.39,.61,.84]);
+  for(const ratio of ratios){
+    const length=phase.start+(phase.end-phase.start)*ratio;
+    const p=at(length),q=at(Math.min(phase.end,length+3));
+    const a=Math.atan2(q.y-p.y,q.x-p.x)*180/Math.PI;
+    const el=document.createElementNS(NS,'path');
+    el.setAttribute('d',LETTERS[letter].hints?'M -8 -5 L 2 0 L -8 5 Z':'M -10 -6 L 2 0 L -10 6 Z');
+    el.setAttribute('transform',`translate(${p.x} ${p.y}) rotate(${a})`);
+    el.setAttribute('class','arrow');arrows.appendChild(el);
+  }
+}
+function draw(){
+  paint.style.strokeDashoffset=Math.max(0,len-progress);
+  for(const stroke of strokePaints){
+    const local=Math.max(0,Math.min(stroke.length,progress-stroke.offset));
+    stroke.el.style.strokeDashoffset=stroke.length-local;
+  }
+  const p=at(progress);tip.setAttribute('cx',p.x);tip.setAttribute('cy',p.y);
+  const showPhaseStart=LETTERS[letter].liftBefore?.includes(phaseIndex)&&progress<phases[phaseIndex].start+20;
+  start.style.opacity=progress<20||showPhaseStart?1:0;
+  hint.style.opacity=LETTERS[letter].hints||progress<30?1:0;
+}
+function stop(){dragging=false;activePointer=null;lastPointer=null}
+function finish(){
+  if(LETTERS[letter].dot&&!awaitDot){
+    awaitDot=true;stop();tip.style.opacity=0;arrows.style.opacity=0;
+    hint.textContent=`👆 Toca no ponto do ${letter} para terminar!`;hint.style.opacity=1;
+    dotGuide.style.opacity=1;queueSpeech(`Agora toca no ponto do ${LETTERS[letter].dotSpokenName||letter}.`);return;
+  }
+  done=true;stop();successStartedAt=Date.now();completionRun++;scheduleAutoAdvance(3200);tip.style.opacity=0;arrows.style.opacity=0;guide.style.opacity=0;
+  const encouragements=['Muito bem! Conseguiste!','Fantástico! Continua assim!','Excelente! Muito bem!'];
+  lastEncouragement=encouragements[encouragementIndex++%encouragements.length];
+  hint.textContent='⭐ ⭐ ⭐';hint.setAttribute('aria-label',lastEncouragement);hint.style.opacity=1;
+  document.getElementById('successMessage').textContent=lastEncouragement;
+  celebrate.setAttribute('aria-hidden','false');celebrate.classList.add('show');
+  for(let i=0;i<12;i++){
+    const s=document.createElement('span');s.className='spark';s.textContent=['⭐','✨','💛','🌟'][i%4];
+    s.style.setProperty('--x',`${(i%2?-1:1)*(40+(i*37)%320)}px`);
+    s.style.setProperty('--y',`${(i%3?-1:1)*(30+(i*43)%220)}px`);
+    celebrate.appendChild(s);setTimeout(()=>s.remove(),1700);
+  }
+  queueSpeech(lastEncouragement);
+}
+function nextPhase(){
+  if(phaseIndex+1<phases.length){
+    phaseIndex++;
+    if(LETTERS[letter].liftBefore?.includes(phaseIndex)){
+      stop();progress=phases[phaseIndex].start+.05;
+      const first=at(progress);start.setAttribute('cx',first.x);start.setAttribute('cy',first.y);
+      draw();
+    }
+    setHint();makeArrows();
+    if(LETTERS[letter].liftBefore?.includes(phaseIndex))queueSpeech(instructionForSpeech());
+    else tone(660+phaseIndex*50);
+  }
+  else{progress=len;draw();finish()}
+}
+function advance(e){
+  if(!dragging||done||e.pointerId!==activePointer)return;
+  const p=pos(e),movement=lastPointer?dist(p,lastPointer):0;
+  if(movement<.05)return;
+  lastPointer=p;
+  const phase=phases[phaseIndex];
+  // Never jump over a reversal of direction, even at a crossing of the stem.
+  const max=Math.min(phase.end,progress+Math.min(90,Math.max(28,movement*1.7+8)));
+  let best=progress,bestDist=dist(p,at(progress));
+  for(let index=Math.ceil((progress+1)/2);index<tracePoints.length&&tracePoints[index].length<=max;index++){
+    const sample=tracePoints[index];
+    const distance=dist(p,sample.point);
+    if(distance<bestDist){bestDist=distance;best=sample.length}
+  }
+  const endDistance=dist(p,at(max));
+  if(endDistance<bestDist){bestDist=endDistance;best=max}
+  const tolerance=assisted?42:29;
+  if(bestDist<tolerance&&best>progress){
+    progress=best;draw();
+    if(phase.end-progress<6&&dist(p,phase.endPoint)<tolerance){
+      progress=phase.end;draw();nextPhase();
+    }
+  }
+}
+svg.addEventListener('pointerdown',e=>{
+  if(done||dragging||demoActive)return;
+  const p=pos(e);
+  if(awaitDot){
+    const targetDot=LETTERS[letter].dot||{x:244,y:77,r:29};
+    if(LETTERS[letter].dot&&dist(p,targetDot)<targetDot.r+11){
+      dotPaint.style.display='';dotGuide.style.opacity=0;finish();e.preventDefault();
+    }
+    return;
+  }
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  if(dist(p,at(progress))<(assisted?56:35)){
+    dragging=true;activePointer=e.pointerId;lastPointer=p;
+    svg.setPointerCapture(e.pointerId);e.preventDefault();
+  }
+});
+svg.addEventListener('pointermove',e=>{if(dragging){
+  const samples=typeof e.getCoalescedEvents==='function'?e.getCoalescedEvents():[];
+  for(const sample of samples.length?samples:[e]){if(dragging)advance(sample)}
+  e.preventDefault();
+}});
+for(const type of ['pointerup','pointercancel','lostpointercapture']){
+  svg.addEventListener(type,e=>{if(e.pointerId===activePointer)stop()});
+}
+function reset(){
+  cancelAutoAdvance();completionRun++;stopSpeech();stopDemo();stop();progress=0;phaseIndex=0;done=false;awaitDot=false;
+  tip.style.opacity=1;arrows.style.opacity=1;guide.style.opacity=1;
+  dotPaint.style.display='none';dotGuide.style.opacity=1;
+  celebrate.classList.remove('show');celebrate.setAttribute('aria-hidden','true');celebrate.querySelectorAll('.spark').forEach(s=>s.remove());
+  const first=at(0);start.setAttribute('cx',first.x);start.setAttribute('cy',first.y);
+  setHint();makeArrows();draw();
+}
+function selectLetter(next,readInitial=false){
+  if(!LETTERS[next])return;
+  letter=next;revealLetterInSelector(next);updateLetterPicture(next);const config=LETTERS[letter];
+  svg.dataset.letter=letter;svg.setAttribute('viewBox',config.viewBox||'0 0 520 460');
+  svg.setAttribute('aria-label',`Letra ${letter} manuscrita: segue o tracejado preto dentro do contorno.`);
+  panel.classList.toggle('is-guided',Boolean(config.hints));
+  const rows=config.rows||(letter==='p'?[
+    {y:52,stroke:'#a9d9f7',width:2},
+    {y:116,stroke:'#f6a5cb',width:2,dash:'9 7'},
+    {y:301,stroke:'#77bfea',width:2.6},
+    {y:477,stroke:'#a9d9f7',width:2}
+  ]:defaultRows);
+  notebookLines.forEach((line,i)=>{
+    const row=rows[i];line.setAttribute('y1',row.y);line.setAttribute('y2',row.y);
+    line.setAttribute('stroke',row.stroke);line.setAttribute('stroke-width',row.width);
+    if(row.dash)line.setAttribute('stroke-dasharray',row.dash);else line.removeAttribute('stroke-dasharray');
+  });
+  for(const el of document.querySelectorAll('#letter > path')){
+    el.setAttribute('d',el===guide?config.guide||config.path:config.path);
+  }
+  len=shape.getTotalLength();paint.style.strokeDasharray=`${len} ${len}`;
+  buildTraceGeometry(config.path);
+  fitLetterToWritingArea(config);
+  tracePoints=[];for(let length=0;length<=len;length+=2){tracePoints.push({length,point:at(length)})}
+  multiPaint.replaceChildren();strokePaints=[];
+  paint.style.display=config.strokes?'none':'';
+  let strokeOffset=0;
+  for(const path of config.strokes||[]){
+    const el=document.createElementNS(NS,'path');el.setAttribute('d',path);el.setAttribute('class','written');
+    multiPaint.appendChild(el);const length=el.getTotalLength();
+    el.style.strokeDasharray=`${length} ${length}`;el.style.strokeDashoffset=length;
+    strokePaints.push({el,length,offset:strokeOffset});strokeOffset+=length;
+  }
+  let offset=0;
+  phases=(config.phases||[config.path]).map(path=>{
+    measure.setAttribute('d',path);const length=measure.getTotalLength();
+    const coordinates=path.match(/-?\d+(?:\.\d+)?/g).map(Number);
+    const phase={start:offset,end:offset+length,endPoint:{x:coordinates.at(-2),y:coordinates.at(-1)}};offset+=length;return phase;
+  });
+  // SVG curve length estimates differ slightly for split and joined paths.
+  const scale=len/offset;phases=phases.map(p=>({...p,start:p.start*scale,end:p.end*scale}));
+  phases[phases.length-1].end=len;
+  dot.style.display=config.dot?'':'none';
+  if(config.dot){
+    const d=config.dot;
+    for(const circle of dot.querySelectorAll('circle')){
+      circle.setAttribute('cx',d.x);circle.setAttribute('cy',d.y);
+      circle.setAttribute('r',circle.classList.contains('dot-outline')?d.r:
+        circle.classList.contains('dot-white')?d.r-4:
+        circle.classList.contains('dot-green')?d.r-5:d.r*.46);
+    }
+  }
+  for(const key of Object.keys(LETTERS)){
+    document.getElementById(LETTERS[key].buttonId||'choose'+key.toUpperCase()).setAttribute('aria-pressed',key===letter);
+  }
+  reset();
+  if(readInitial)speakText(instructionForSpeech());
+}
+
+function stopDemo(){
+  demoActive=false;cancelAnimationFrame(demoFrame);clearTimeout(demoTimer);
+  document.getElementById('demo').textContent='▶ Ver como se faz';
+  document.getElementById('demo').setAttribute('aria-label','Ver como se faz');
+}
+function playDemo(){
+  if(demoActive){reset();return}
+  reset();demoActive=true;
+  const demoButton=document.getElementById('demo');
+  demoButton.textContent='■ Parar';demoButton.setAttribute('aria-label','Parar demonstração');
+  const runPhase=index=>{
+    if(!demoActive)return;
+    phaseIndex=index;progress=phases[index].start+(index&&LETTERS[letter].liftBefore?.includes(index)?0.05:0);
+    const first=at(progress);start.setAttribute('cx',first.x);start.setAttribute('cy',first.y);
+    setHint();hint.textContent='👀 '+hint.textContent;makeArrows();draw();
+    const phase=phases[index],duration=Math.max(1800,(phase.end-phase.start)*8);
+    let begin=null;
+    const tick=now=>{
+      if(!demoActive)return;
+      begin??=now;const ratio=Math.min(1,(now-begin)/duration);
+      progress=phase.start+(phase.end-phase.start)*ratio;draw();
+      if(ratio<1){demoFrame=requestAnimationFrame(tick);return}
+      if(index+1<phases.length){demoTimer=setTimeout(()=>runPhase(index+1),LETTERS[letter].liftBefore?.includes(index+1)?800:350)}
+      else{
+        if(LETTERS[letter].dot){dotPaint.style.display='';dotGuide.style.opacity=0}
+        hint.textContent='⭐ Agora é a tua vez!';hint.style.opacity=1;
+        demoTimer=setTimeout(()=>{if(demoActive){reset();hint.textContent='👆 Agora faz tu! Começa na bolinha rosa.';speakText('Agora é a tua vez. Começa na bolinha rosa.')}},1800);
+      }
+    };
+    demoFrame=requestAnimationFrame(tick);
+  };
+  runPhase(0);
+}
+document.getElementById('demo').addEventListener('click',playDemo);
+document.getElementById('assist').addEventListener('click',e=>{
+  assisted=!assisted;e.currentTarget.setAttribute('aria-pressed',assisted);
+  e.currentTarget.textContent=assisted?'🖐️ Com ajuda':'✏️ Mais precisão';
+  e.currentTarget.setAttribute('aria-label',assisted?'Mais ajuda no traçado':'Traçado com mais precisão');
+});
+
+document.getElementById('restart').addEventListener('click',reset);
+for(const key of Object.keys(LETTERS)){
+  document.getElementById(LETTERS[key].buttonId||'choose'+key.toUpperCase()).addEventListener('click',()=>selectLetter(key,true));
+}
+document.getElementById('sound').addEventListener('click',()=>{
+  sound=!sound;if(!sound){stopSpeech();if(done)scheduleAutoAdvance(Math.max(800,2400-(Date.now()-successStartedAt)))}updateSoundButtons();
+});
+for(let i=0;i<48;i++){
+  const s=document.createElement('i');s.className='star';
+  s.style.left=((i*37+11)%97)+'%';s.style.top=((i*59+7)%94)+'%';
+  s.style.setProperty('--dur',(1.2+(i%7)*.4)+'s');s.style.setProperty('--delay',(-i*.27)+'s');
+  document.getElementById('stars').appendChild(s);
+}
+
+const LETTER_PICTURES={"a":{"word":"abelha","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cellipse%20cx%3D%2248%22%20cy%3D%2241%22%20rx%3D%2216%22%20ry%3D%2223%22%20fill%3D%22%23e2f8ff%22%20transform%3D%22rotate%28-28%2048%2041%29%22%2F%3E%3Cellipse%20cx%3D%2278%22%20cy%3D%2241%22%20rx%3D%2216%22%20ry%3D%2223%22%20fill%3D%22%23e2f8ff%22%20transform%3D%22rotate%2828%2078%2041%29%22%2F%3E%3Cpath%20d%3D%22M24%2072L12%2066L24%2060%22%20fill%3D%22%23344f64%22%2F%3E%3Cellipse%20cx%3D%2261%22%20cy%3D%2272%22%20rx%3D%2239%22%20ry%3D%2227%22%20fill%3D%22%23ffd65c%22%2F%3E%3Cpath%20d%3D%22M43%2049Q35%2072%2043%2094M61%2046Q54%2072%2061%2098%22%20fill%3D%22none%22%20stroke-width%3D%2210%22%2F%3E%3Ccircle%20cx%3D%2291%22%20cy%3D%2265%22%20r%3D%2223%22%20fill%3D%22%23ffd65c%22%2F%3E%3Cpath%20d%3D%22M84%2043L80%2029M98%2043L104%2029%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2286%22%20cy%3D%2262%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Ccircle%20cx%3D%22101%22%20cy%3D%2262%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M88%2073Q94%2080%20101%2072%22%20fill%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"e":{"word":"elefante","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M26%2095V112H42V92M75%2094V112H91V87%22%20fill%3D%22%239bb1d9%22%2F%3E%3Cellipse%20cx%3D%2253%22%20cy%3D%2272%22%20rx%3D%2237%22%20ry%3D%2229%22%20fill%3D%22%23a8bce2%22%2F%3E%3Cpath%20d%3D%22M18%2066Q7%2061%2010%2048%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2286%22%20cy%3D%2260%22%20r%3D%2229%22%20fill%3D%22%23a8bce2%22%2F%3E%3Cellipse%20cx%3D%2263%22%20cy%3D%2264%22%20rx%3D%2220%22%20ry%3D%2225%22%20fill%3D%22%23c6d7ed%22%2F%3E%3Cpath%20d%3D%22M99%2065V91Q100%20112%20114%20104L113%2088Q109%2094%20109%2083V62%22%20fill%3D%22%23a8bce2%22%2F%3E%3Ccircle%20cx%3D%2291%22%20cy%3D%2253%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M95%2072L87%2082L100%2078%22%20fill%3D%22%23fff9df%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"i":{"word":"ilha","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M7%2096Q30%2083%2046%2094T87%2094T121%2095V116H7Z%22%20fill%3D%22%237bd9ee%22%20stroke%3D%22none%22%2F%3E%3Cellipse%20cx%3D%2265%22%20cy%3D%2292%22%20rx%3D%2246%22%20ry%3D%2215%22%20fill%3D%22%23ffdc82%22%2F%3E%3Cpath%20d%3D%22M63%2085Q70%2059%2064%2040L74%2039Q83%2065%2073%2085Z%22%20fill%3D%22%23bc8657%22%2F%3E%3Cpath%20d%3D%22M69%2040Q44%2013%2023%2030Q48%2029%2060%2048Q28%2039%2019%2056Q43%2054%2064%2053Q56%2032%2043%2016Q64%2017%2072%2037Q90%2011%20111%2024Q88%2027%2080%2042Q112%2034%20118%2053Q96%2047%2077%2052Z%22%20fill%3D%22%2355bd88%22%2F%3E%3Ccircle%20cx%3D%2285%22%20cy%3D%2249%22%20r%3D%226%22%20fill%3D%22%23bb8355%22%2F%3E%3Ccircle%20cx%3D%2271%22%20cy%3D%2251%22%20r%3D%226%22%20fill%3D%22%23bb8355%22%2F%3E%3Cpath%20d%3D%22M17%20111Q29%20104%2042%20111M86%20111Q99%20105%20111%20111%22%20fill%3D%22none%22%20stroke%3D%22%2336acc9%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"o":{"word":"ovelha","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M35%2091V110M53%2093V112M80%2092V111M96%2088V108%22%20stroke%3D%22%2375636e%22%20stroke-width%3D%2211%22%2F%3E%3Cpath%20d%3D%22M16%2070Q7%2057%2018%2049Q15%2034%2032%2034Q39%2018%2054%2029Q68%2016%2080%2030Q98%2026%20102%2044Q119%2045%20116%2061Q123%2077%20108%2085Q103%20102%2085%2094Q70%20108%2056%2097Q38%20106%2030%2091Q11%2091%2016%2070Z%22%20fill%3D%22%23fffef6%22%2F%3E%3Cpath%20d%3D%22M87%2048Q70%2046%2074%2062L84%2068M106%2048Q123%2043%20121%2058L108%2067%22%20fill%3D%22%23b6a0ac%22%2F%3E%3Cellipse%20cx%3D%2297%22%20cy%3D%2273%22%20rx%3D%2221%22%20ry%3D%2227%22%20fill%3D%22%23c5afbb%22%2F%3E%3Ccircle%20cx%3D%2290%22%20cy%3D%2269%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Ccircle%20cx%3D%22104%22%20cy%3D%2269%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M94%2080L100%2080M97%2081V87%22%20fill%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"u":{"word":"uvas","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M65%2031Q60%2014%2076%209%22%20fill%3D%22none%22%20stroke%3D%22%2373954a%22%20stroke-width%3D%227%22%2F%3E%3Cpath%20d%3D%22M66%2029Q91%207%20111%2029Q92%2047%2066%2029Z%22%20fill%3D%22%2373c68d%22%2F%3E%3Ccircle%20cx%3D%2243%22%20cy%3D%2245%22%20r%3D%2217%22%20fill%3D%22%23a184dc%22%2F%3E%3Ccircle%20cx%3D%2277%22%20cy%3D%2245%22%20r%3D%2217%22%20fill%3D%22%239874cf%22%2F%3E%3Ccircle%20cx%3D%2228%22%20cy%3D%2271%22%20r%3D%2217%22%20fill%3D%22%23ad8ce3%22%2F%3E%3Ccircle%20cx%3D%2261%22%20cy%3D%2272%22%20r%3D%2218%22%20fill%3D%22%239468cb%22%2F%3E%3Ccircle%20cx%3D%2294%22%20cy%3D%2271%22%20r%3D%2217%22%20fill%3D%22%239e7ad6%22%2F%3E%3Ccircle%20cx%3D%2244%22%20cy%3D%2298%22%20r%3D%2217%22%20fill%3D%22%23a985df%22%2F%3E%3Ccircle%20cx%3D%2277%22%20cy%3D%2298%22%20r%3D%2217%22%20fill%3D%22%239468cb%22%2F%3E%3Ccircle%20cx%3D%2261%22%20cy%3D%22116%22%20r%3D%2212%22%20fill%3D%22%238e60c2%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"p":{"word":"pato","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M32%20102L27%20114H47M69%20103L76%20114H92%22%20fill%3D%22none%22%20stroke%3D%22%23ed953d%22%20stroke-width%3D%227%22%2F%3E%3Cpath%20d%3D%22M16%2076L7%2060L32%2067Q48%2048%2069%2058Q94%2048%20101%2070Q110%2099%2074%20105H46Q21%20103%2016%2076Z%22%20fill%3D%22%23ffe078%22%2F%3E%3Ccircle%20cx%3D%2288%22%20cy%3D%2243%22%20r%3D%2225%22%20fill%3D%22%23ffe078%22%2F%3E%3Cpath%20d%3D%22M106%2044L124%2051L106%2058Z%22%20fill%3D%22%23f2a04a%22%2F%3E%3Ccircle%20cx%3D%2295%22%20cy%3D%2238%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M43%2073Q60%2056%2080%2074Q67%2093%2047%2083%22%20fill%3D%22%23f4c955%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"t":{"word":"tartaruga","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cellipse%20cx%3D%2233%22%20cy%3D%2295%22%20rx%3D%2213%22%20ry%3D%2211%22%20fill%3D%22%238bcaa0%22%2F%3E%3Cellipse%20cx%3D%2280%22%20cy%3D%2295%22%20rx%3D%2213%22%20ry%3D%2211%22%20fill%3D%22%238bcaa0%22%2F%3E%3Cpath%20d%3D%22M18%2076L6%2069L9%2084Z%22%20fill%3D%22%238bcaa0%22%2F%3E%3Cellipse%20cx%3D%2258%22%20cy%3D%2271%22%20rx%3D%2240%22%20ry%3D%2232%22%20fill%3D%22%2371b777%22%2F%3E%3Cpath%20d%3D%22M31%2049L47%2067L40%2091M76%2046L64%2067L77%2093M47%2067H64%22%20fill%3D%22none%22%20stroke%3D%22%23428866%22%2F%3E%3Cpath%20d%3D%22M88%2071Q91%2047%20107%2051Q122%2054%20121%2072Q120%2091%20101%2086L89%2082%22%20fill%3D%22%23a3d6aa%22%2F%3E%3Ccircle%20cx%3D%22111%22%20cy%3D%2264%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M107%2077Q114%2082%20119%2075%22%20fill%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"l":{"word":"lua","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M86%2015C35%207%208%2052%2025%2089C42%20124%2089%20124%20109%2092C76%2099%2053%2076%2055%2049C56%2032%2067%2021%2086%2015Z%22%20fill%3D%22%23ffdc75%22%2F%3E%3Cpath%20d%3D%22M100%2028L104%2038L115%2042L105%2047L102%2058L97%2048L87%2043L97%2039Z%22%20fill%3D%22%239ecce9%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2223%22%20cy%3D%2223%22%20r%3D%225%22%20fill%3D%22%23c2e7f7%22%20stroke%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2281%22%20cy%3D%2271%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M74%2082Q80%2088%2087%2080%22%20fill%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"d":{"word":"dado","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%2221%22%20y%3D%2219%22%20width%3D%2287%22%20height%3D%2290%22%20rx%3D%2219%22%20fill%3D%22%23f5a59b%22%2F%3E%3Cpath%20d%3D%22M32%2030H91%22%20fill%3D%22none%22%20stroke%3D%22%23ffd0c9%22%20stroke-width%3D%226%22%2F%3E%3Cg%20fill%3D%22%23fff9f2%22%20stroke%3D%22none%22%3E%3Ccircle%20cx%3D%2242%22%20cy%3D%2241%22%20r%3D%229%22%2F%3E%3Ccircle%20cx%3D%2287%22%20cy%3D%2241%22%20r%3D%229%22%2F%3E%3Ccircle%20cx%3D%2242%22%20cy%3D%2265%22%20r%3D%229%22%2F%3E%3Ccircle%20cx%3D%2287%22%20cy%3D%2265%22%20r%3D%229%22%2F%3E%3Ccircle%20cx%3D%2242%22%20cy%3D%2289%22%20r%3D%229%22%2F%3E%3Ccircle%20cx%3D%2287%22%20cy%3D%2289%22%20r%3D%229%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"m":{"word":"maçã","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M64%2034Q60%2018%2072%2010%22%20fill%3D%22none%22%20stroke%3D%22%238a694f%22%20stroke-width%3D%227%22%2F%3E%3Cpath%20d%3D%22M68%2025Q82%202%20102%2017Q95%2037%2068%2025Z%22%20fill%3D%22%2377c98a%22%2F%3E%3Cpath%20d%3D%22M64%2038C98%2019%20119%2047%20110%2077C102%20106%2082%20123%2064%20112C45%20124%2026%20108%2018%2079C7%2045%2029%2021%2064%2038Z%22%20fill%3D%22%23ed7c7c%22%2F%3E%3Cpath%20d%3D%22M32%2053Q24%2065%2032%2080%22%20fill%3D%22none%22%20stroke%3D%22%23ffd1c4%22%20stroke-width%3D%227%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"v":{"word":"vaca","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M30%2038L18%2019Q41%2015%2043%2035M87%2035Q96%2012%20111%2019L100%2041%22%20fill%3D%22%23ffe1b3%22%2F%3E%3Cpath%20d%3D%22M32%2048Q9%2030%207%2048Q6%2065%2029%2065M96%2047Q121%2029%20122%2048Q123%2065%20100%2065%22%20fill%3D%22%23e6dce0%22%2F%3E%3Cpath%20d%3D%22M31%2036Q62%2023%2097%2037L106%2086Q103%20113%2065%20116Q26%20112%2023%2087Z%22%20fill%3D%22%23fffdf5%22%2F%3E%3Cpath%20d%3D%22M31%2038Q55%2026%2061%2042Q61%2062%2034%2063Z%22%20fill%3D%22%23596473%22%20stroke%3D%22none%22%2F%3E%3Cellipse%20cx%3D%2265%22%20cy%3D%2291%22%20rx%3D%2236%22%20ry%3D%2223%22%20fill%3D%22%23f3bbc5%22%2F%3E%3Ccircle%20cx%3D%2243%22%20cy%3D%2260%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Ccircle%20cx%3D%2286%22%20cy%3D%2260%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Cellipse%20cx%3D%2249%22%20cy%3D%2290%22%20rx%3D%224%22%20ry%3D%226%22%20fill%3D%22%23ba7f94%22%20stroke%3D%22none%22%2F%3E%3Cellipse%20cx%3D%2279%22%20cy%3D%2290%22%20rx%3D%224%22%20ry%3D%226%22%20fill%3D%22%23ba7f94%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"c":{"word":"casa","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M25%2056H103V114H25Z%22%20fill%3D%22%23ffe1a2%22%2F%3E%3Cpath%20d%3D%22M12%2056L64%2012L116%2056Z%22%20fill%3D%22%23f09486%22%2F%3E%3Crect%20x%3D%2252%22%20y%3D%2275%22%20width%3D%2225%22%20height%3D%2239%22%20rx%3D%223%22%20fill%3D%22%2386b8d7%22%2F%3E%3Crect%20x%3D%2232%22%20y%3D%2268%22%20width%3D%2215%22%20height%3D%2219%22%20rx%3D%223%22%20fill%3D%22%23d1f2ff%22%2F%3E%3Crect%20x%3D%2285%22%20y%3D%2268%22%20width%3D%2213%22%20height%3D%2219%22%20rx%3D%223%22%20fill%3D%22%23d1f2ff%22%2F%3E%3Ccircle%20cx%3D%2271%22%20cy%3D%2295%22%20r%3D%222%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M94%2031V13H107V43%22%20fill%3D%22%23d88e79%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"n":{"word":"nuvem","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M25%2092C6%2091%205%2062%2024%2058C18%2029%2054%2015%2070%2038C91%2021%20114%2042%20108%2060C132%2068%20120%2095%20101%2094Z%22%20fill%3D%22%23e1f3fc%22%2F%3E%3Cpath%20d%3D%22M28%2077Q23%2067%2031%2062%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%2F%3E%3Ccircle%20cx%3D%2251%22%20cy%3D%2269%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Ccircle%20cx%3D%2279%22%20cy%3D%2269%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M57%2080Q65%2088%2074%2080%22%20fill%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"r":{"word":"rato","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M40%2098Q5%20113%209%2080Q9%2065%2022%2066%22%20fill%3D%22none%22%20stroke%3D%22%23ebaeba%22%20stroke-width%3D%227%22%2F%3E%3Cellipse%20cx%3D%2265%22%20cy%3D%2287%22%20rx%3D%2232%22%20ry%3D%2226%22%20fill%3D%22%23b9c4d8%22%2F%3E%3Ccircle%20cx%3D%2247%22%20cy%3D%2242%22%20r%3D%2221%22%20fill%3D%22%23b9c4d8%22%2F%3E%3Ccircle%20cx%3D%2291%22%20cy%3D%2242%22%20r%3D%2221%22%20fill%3D%22%23b9c4d8%22%2F%3E%3Ccircle%20cx%3D%2247%22%20cy%3D%2242%22%20r%3D%2212%22%20fill%3D%22%23efbcca%22%20stroke%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2291%22%20cy%3D%2242%22%20r%3D%2212%22%20fill%3D%22%23efbcca%22%20stroke%3D%22none%22%2F%3E%3Cpath%20d%3D%22M42%2055Q69%2038%2097%2056L86%2090Q71%20108%2056%2090Z%22%20fill%3D%22%23ccd6e5%22%2F%3E%3Ccircle%20cx%3D%2257%22%20cy%3D%2265%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Ccircle%20cx%3D%2282%22%20cy%3D%2265%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M62%2082Q69%2075%2076%2082L69%2089Z%22%20fill%3D%22%23ecb0bf%22%2F%3E%3Cpath%20d%3D%22M47%2081L28%2077M47%2087L28%2090M91%2081L109%2077M91%2087L109%2090%22%20fill%3D%22none%22%20stroke-width%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"b":{"word":"bola","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2264%22%20cy%3D%2265%22%20r%3D%2249%22%20fill%3D%22%23fdf6db%22%2F%3E%3Cpath%20d%3D%22M64%2016Q86%2030%2090%2055L76%2072L51%2066L40%2045Q44%2026%2064%2016Z%22%20fill%3D%22%2387bddf%22%2F%3E%3Cpath%20d%3D%22M15%2064Q30%2050%2040%2045L51%2066L44%2090Q25%2094%2018%2083Z%22%20fill%3D%22%23f29d91%22%2F%3E%3Cpath%20d%3D%22M44%2090L63%20113Q96%20112%20108%2086L91%2074L76%2072Z%22%20fill%3D%22%238acdb3%22%2F%3E%3Cpath%20d%3D%22M90%2055L112%2049M91%2074L108%2086M44%2090L63%20113%22%20fill%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"g":{"word":"gato","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M27%2050L25%2015L55%2036M73%2035L104%2016L102%2056%22%20fill%3D%22%23f4c28d%22%2F%3E%3Cpath%20d%3D%22M31%2042L31%2025L47%2039M82%2039L99%2026L98%2047%22%20fill%3D%22%23e99b9b%22%20stroke%3D%22none%22%2F%3E%3Cpath%20d%3D%22M27%2047Q64%2026%20101%2048Q122%2093%2091%20108Q63%20122%2035%20108Q10%2095%2027%2047Z%22%20fill%3D%22%23f4c28d%22%2F%3E%3Cpath%20d%3D%22M54%2039L59%2051M72%2039L68%2051%22%20fill%3D%22none%22%20stroke%3D%22%23d58e65%22%20stroke-width%3D%226%22%2F%3E%3Ccircle%20cx%3D%2245%22%20cy%3D%2270%22%20r%3D%224%22%20fill%3D%22%23244c67%22%2F%3E%3Ccircle%20cx%3D%2283%22%20cy%3D%2270%22%20r%3D%224%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M58%2084L70%2084L64%2091Z%22%20fill%3D%22%23df8f96%22%2F%3E%3Cpath%20d%3D%22M64%2092Q57%20102%2051%2094M64%2092Q71%20102%2077%2094M40%2085L15%2081M40%2093L15%2097M88%2085L113%2081M88%2093L113%2097%22%20fill%3D%22none%22%20stroke-width%3D%222.5%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"s":{"word":"sol","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M64%208V20M64%20108V120M8%2064H20M108%2064H120M24%2024L33%2033M95%2095L104%20104M24%20104L33%2095M95%2033L104%2024%22%20fill%3D%22none%22%20stroke%3D%22%23e8b650%22%20stroke-width%3D%228%22%2F%3E%3Ccircle%20cx%3D%2264%22%20cy%3D%2264%22%20r%3D%2235%22%20fill%3D%22%23ffdb76%22%2F%3E%3Ccircle%20cx%3D%2252%22%20cy%3D%2258%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Ccircle%20cx%3D%2277%22%20cy%3D%2258%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M52%2075Q64%2086%2078%2073%22%20fill%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"j":{"word":"janela","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%2220%22%20y%3D%2216%22%20width%3D%2288%22%20height%3D%2296%22%20rx%3D%225%22%20fill%3D%22%23f3c890%22%2F%3E%3Crect%20x%3D%2229%22%20y%3D%2225%22%20width%3D%2270%22%20height%3D%2273%22%20rx%3D%223%22%20fill%3D%22%23b9e4f6%22%2F%3E%3Cpath%20d%3D%22M35%2089L90%2034M33%2059L53%2035%22%20fill%3D%22none%22%20stroke%3D%22%23e8faff%22%20stroke-width%3D%227%22%2F%3E%3Cpath%20d%3D%22M64%2025V98M29%2061H99%22%20fill%3D%22none%22%20stroke%3D%22%23a77c59%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M14%20113H114%22%20fill%3D%22none%22%20stroke%3D%22%23be8c60%22%20stroke-width%3D%228%22%2F%3E%3Cpath%20d%3D%22M23%2025H45L36%2057L25%2069M83%2025H105L103%2070L91%2057Z%22%20fill%3D%22%23f1a1a9%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"f":{"word":"flor","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M64%2070V119%22%20fill%3D%22none%22%20stroke%3D%22%236da67c%22%20stroke-width%3D%228%22%2F%3E%3Cpath%20d%3D%22M62%20104Q34%20108%2024%2086Q49%2080%2062%20104M67%2095Q79%2072%20103%2080Q98%20105%2067%20105%22%20fill%3D%22%238dc99a%22%2F%3E%3Cg%20fill%3D%22%23efa2bd%22%3E%3Ccircle%20cx%3D%2264%22%20cy%3D%2225%22%20r%3D%2218%22%2F%3E%3Ccircle%20cx%3D%2290%22%20cy%3D%2244%22%20r%3D%2218%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2272%22%20r%3D%2218%22%2F%3E%3Ccircle%20cx%3D%2248%22%20cy%3D%2272%22%20r%3D%2218%22%2F%3E%3Ccircle%20cx%3D%2237%22%20cy%3D%2244%22%20r%3D%2218%22%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2264%22%20cy%3D%2248%22%20r%3D%2220%22%20fill%3D%22%23ffda75%22%2F%3E%3Ccircle%20cx%3D%2258%22%20cy%3D%2246%22%20r%3D%222.5%22%20fill%3D%22%23244c67%22%2F%3E%3Ccircle%20cx%3D%2271%22%20cy%3D%2246%22%20r%3D%222.5%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M59%2056Q64%2060%2070%2055%22%20fill%3D%22none%22%20stroke-width%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"z":{"word":"zebra","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M28%2043L24%2014Q45%2017%2048%2036M79%2035Q84%2015%20104%2014L99%2048%22%20fill%3D%22%23fffdf4%22%2F%3E%3Cpath%20d%3D%22M55%2030L59%2014L66%2025L74%2014L79%2034%22%20fill%3D%22%2356616c%22%2F%3E%3Cpath%20d%3D%22M29%2041Q64%2022%20100%2043L101%2087Q96%20115%2065%20116Q30%20113%2027%2087Z%22%20fill%3D%22%23fffdf5%22%2F%3E%3Cpath%20d%3D%22M34%2043L52%2052L31%2056M96%2045L78%2054L100%2059M61%2035L65%2059M34%2068L48%2074M95%2069L83%2076%22%20fill%3D%22none%22%20stroke%3D%22%23596575%22%20stroke-width%3D%227%22%2F%3E%3Cellipse%20cx%3D%2264%22%20cy%3D%2294%22%20rx%3D%2230%22%20ry%3D%2220%22%20fill%3D%22%23b8c7d2%22%2F%3E%3Ccircle%20cx%3D%2245%22%20cy%3D%2264%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Ccircle%20cx%3D%2285%22%20cy%3D%2264%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Ccircle%20cx%3D%2252%22%20cy%3D%2294%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3Ccircle%20cx%3D%2277%22%20cy%3D%2294%22%20r%3D%223%22%20fill%3D%22%23244c67%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"h":{"word":"helicóptero","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M10%2050L39%2061L40%2076L10%2068Z%22%20fill%3D%22%23f1b45e%22%2F%3E%3Cpath%20d%3D%22M11%2051L7%2032L20%2032L26%2057%22%20fill%3D%22%23f3c77e%22%2F%3E%3Cpath%20d%3D%22M40%2080L35%20101M94%2080L100%20101M24%20104H111%22%20fill%3D%22none%22%20stroke%3D%22%2370899e%22%20stroke-width%3D%226%22%2F%3E%3Cpath%20d%3D%22M39%2052Q52%2037%2081%2041Q109%2043%20115%2067Q121%2085%2096%2089H57Q28%2089%2029%2072Q28%2060%2039%2052Z%22%20fill%3D%22%23ec9d92%22%2F%3E%3Cpath%20d%3D%22M78%2043V69H114Q108%2045%2078%2043Z%22%20fill%3D%22%23b9e5f4%22%2F%3E%3Cpath%20d%3D%22M64%2041V22M21%2021H111%22%20fill%3D%22none%22%20stroke%3D%22%23657f94%22%20stroke-width%3D%226%22%2F%3E%3Ccircle%20cx%3D%2251%22%20cy%3D%2269%22%20r%3D%228%22%20fill%3D%22%23fff4c9%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"x":{"word":"xilofone","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M28%2099L103%2083M38%20107L111%2090%22%20fill%3D%22none%22%20stroke%3D%22%23b58b69%22%20stroke-width%3D%227%22%2F%3E%3Cg%20transform%3D%22rotate%28-12%2064%2073%29%22%3E%3Crect%20x%3D%2215%22%20y%3D%2248%22%20width%3D%2218%22%20height%3D%2262%22%20rx%3D%225%22%20fill%3D%22%23ef9c98%22%2F%3E%3Crect%20x%3D%2236%22%20y%3D%2243%22%20width%3D%2218%22%20height%3D%2260%22%20rx%3D%225%22%20fill%3D%22%23f4ca73%22%2F%3E%3Crect%20x%3D%2257%22%20y%3D%2238%22%20width%3D%2218%22%20height%3D%2258%22%20rx%3D%225%22%20fill%3D%22%239acf9b%22%2F%3E%3Crect%20x%3D%2278%22%20y%3D%2233%22%20width%3D%2218%22%20height%3D%2256%22%20rx%3D%225%22%20fill%3D%22%2389c8e5%22%2F%3E%3Crect%20x%3D%2299%22%20y%3D%2228%22%20width%3D%2218%22%20height%3D%2254%22%20rx%3D%225%22%20fill%3D%22%23b09cda%22%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%22M21%2017L54%2047M73%2011L61%2044%22%20fill%3D%22none%22%20stroke%3D%22%23846b5b%22%20stroke-width%3D%226%22%2F%3E%3Ccircle%20cx%3D%2219%22%20cy%3D%2215%22%20r%3D%228%22%20fill%3D%22%23efb7ba%22%2F%3E%3Ccircle%20cx%3D%2276%22%20cy%3D%2210%22%20r%3D%228%22%20fill%3D%22%23b6d5f2%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"q":{"word":"queijo","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M19%2053L80%2020Q109%2033%20114%2053L70%2080Z%22%20fill%3D%22%23ffe28b%22%2F%3E%3Cpath%20d%3D%22M19%2053L70%2080L114%2053V101L69%20120L19%2094Z%22%20fill%3D%22%23f5ca68%22%2F%3E%3Cpath%20d%3D%22M70%2080V120%22%20fill%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2242%22%20cy%3D%2279%22%20r%3D%228%22%20fill%3D%22%23ddab4f%22%20stroke%3D%22none%22%2F%3E%3Ccircle%20cx%3D%2254%22%20cy%3D%22101%22%20r%3D%225%22%20fill%3D%22%23ddab4f%22%20stroke%3D%22none%22%2F%3E%3Cellipse%20cx%3D%2289%22%20cy%3D%2293%22%20rx%3D%226%22%20ry%3D%228%22%20fill%3D%22%23dfae50%22%20stroke%3D%22none%22%2F%3E%3Cellipse%20cx%3D%2277%22%20cy%3D%2243%22%20rx%3D%228%22%20ry%3D%225%22%20fill%3D%22%23e4b95d%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"k":{"word":"kiwi","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cellipse%20cx%3D%2244%22%20cy%3D%2260%22%20rx%3D%2233%22%20ry%3D%2243%22%20fill%3D%22%23b78d68%22%20transform%3D%22rotate%28-25%2044%2060%29%22%2F%3E%3Cellipse%20cx%3D%2276%22%20cy%3D%2277%22%20rx%3D%2238%22%20ry%3D%2243%22%20fill%3D%22%2399ca70%22%20transform%3D%22rotate%2818%2076%2077%29%22%2F%3E%3Cellipse%20cx%3D%2276%22%20cy%3D%2277%22%20rx%3D%2231%22%20ry%3D%2235%22%20fill%3D%22%23bbdf8b%22%20transform%3D%22rotate%2818%2076%2077%29%22%20stroke%3D%22none%22%2F%3E%3Cellipse%20cx%3D%2276%22%20cy%3D%2277%22%20rx%3D%229%22%20ry%3D%2214%22%20fill%3D%22%23edf1c8%22%20stroke%3D%22none%22%2F%3E%3Cg%20fill%3D%22%23454e3a%22%20stroke%3D%22none%22%3E%3Cellipse%20cx%3D%2261%22%20cy%3D%2261%22%20rx%3D%222.5%22%20ry%3D%224%22%2F%3E%3Cellipse%20cx%3D%2277%22%20cy%3D%2253%22%20rx%3D%222.5%22%20ry%3D%224%22%2F%3E%3Cellipse%20cx%3D%2293%22%20cy%3D%2264%22%20rx%3D%222.5%22%20ry%3D%224%22%2F%3E%3Cellipse%20cx%3D%2296%22%20cy%3D%2284%22%20rx%3D%222.5%22%20ry%3D%224%22%2F%3E%3Cellipse%20cx%3D%2279%22%20cy%3D%22101%22%20rx%3D%222.5%22%20ry%3D%224%22%2F%3E%3Cellipse%20cx%3D%2259%22%20cy%3D%2290%22%20rx%3D%222.5%22%20ry%3D%224%22%2F%3E%3Cellipse%20cx%3D%2254%22%20cy%3D%2275%22%20rx%3D%222.5%22%20ry%3D%224%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"w":{"word":"windsurf","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M7%20112Q22%20105%2035%20112T63%20112T91%20112T121%20112%22%20fill%3D%22none%22%20stroke%3D%22%2382cde2%22%20stroke-width%3D%227%22%2F%3E%3Cpath%20d%3D%22M22%20101Q73%2091%20116%20100Q94%20114%2029%20110Z%22%20fill%3D%22%23f4bc70%22%2F%3E%3Cpath%20d%3D%22M73%2013L73%2098%22%20fill%3D%22none%22%20stroke%3D%22%235e7d92%22%20stroke-width%3D%225%22%2F%3E%3Cpath%20d%3D%22M73%2016L111%2080L79%2091Z%22%20fill%3D%22%23efa28c%22%2F%3E%3Cpath%20d%3D%22M73%2018L39%2067L65%2090Z%22%20fill%3D%22%23a1d8e8%22%2F%3E%3Cpath%20d%3D%22M76%2049L91%2055M49%2065L69%2066%22%20fill%3D%22none%22%20stroke%3D%22%23fff5df%22%20stroke-width%3D%225%22%2F%3E%3Ccircle%20cx%3D%2238%22%20cy%3D%2258%22%20r%3D%229%22%20fill%3D%22%23e8ba9b%22%2F%3E%3Cpath%20d%3D%22M40%2071L49%2083L63%2069M49%2083L43%20102M49%2083L61%20101%22%20fill%3D%22none%22%20stroke%3D%22%23526a8c%22%20stroke-width%3D%226%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"},"y":{"word":"yoga","image":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20128%20128%22%20width%3D%22128%22%20height%3D%22128%22%3E%3Cg%20stroke%3D%22%2331546c%22%20stroke-width%3D%223.3%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cellipse%20cx%3D%2265%22%20cy%3D%22112%22%20rx%3D%2251%22%20ry%3D%228%22%20fill%3D%22%23d5e4f1%22%20stroke%3D%22none%22%2F%3E%3Cpath%20d%3D%22M48%2067Q64%2057%2080%2067L85%2095H43Z%22%20fill%3D%22%23a5bbdf%22%2F%3E%3Cpath%20d%3D%22M48%2071L35%2088L21%2078M80%2071L92%2088L108%2078%22%20fill%3D%22none%22%20stroke%3D%22%23e0ae8f%22%20stroke-width%3D%2210%22%2F%3E%3Cpath%20d%3D%22M49%2095Q22%2088%2023%20105Q42%20116%2065%20105Q88%20116%20106%20105Q108%2088%2081%2095L64%20104Z%22%20fill%3D%22%2385b9b4%22%2F%3E%3Ccircle%20cx%3D%2264%22%20cy%3D%2243%22%20r%3D%2221%22%20fill%3D%22%23eabfa0%22%2F%3E%3Cpath%20d%3D%22M43%2043Q36%2020%2057%2017Q76%209%2085%2031L84%2044Q74%2024%2060%2029Q52%2037%2043%2043Z%22%20fill%3D%22%2376635d%22%2F%3E%3Ccircle%20cx%3D%2257%22%20cy%3D%2244%22%20r%3D%222%22%20fill%3D%22%23244c67%22%2F%3E%3Ccircle%20cx%3D%2272%22%20cy%3D%2244%22%20r%3D%222%22%20fill%3D%22%23244c67%22%2F%3E%3Cpath%20d%3D%22M58%2054Q64%2059%2071%2053%22%20fill%3D%22none%22%20stroke-width%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"}};
+function updateLetterPicture(key){
+  const lower=key.toLowerCase(),item=LETTER_PICTURES[lower];if(!item)return;
+  const image=document.getElementById('pictureImage');image.src=item.image;image.alt=item.word;
+  document.getElementById('picturePair').textContent=`${lower} ${lower.toUpperCase()}`;
+  document.getElementById('pictureWord').textContent=item.word;
+  document.getElementById('pictureCue').setAttribute('aria-label',`Ouvir a palavra ${item.word}`);
+}
+document.getElementById('pictureCue').addEventListener('click',()=>{
+  if(done){playCompletionAudio();return}
+  const item=LETTER_PICTURES[letter.toLowerCase()];if(item)speakText(item.word+'.');
+});
+
+const LETTER_GROUPS=[
+  {id:'vowels',letters:'aeiou'},
+  {id:'consonants',letters:'ptldmvcnrbgsjfzhxqkwy'}
+];
+let currentGroup='vowels',letterPage=0;
+function pagePairCount(){return window.innerWidth&&window.innerWidth<460?2:3}
+function groupForLetter(key){return LETTER_GROUPS.find(g=>g.letters.includes(key.toLowerCase()))}
+function updateLetterSelector(){
+  const group=LETTER_GROUPS.find(g=>g.id===currentGroup);
+  const count=pagePairCount(),pages=Math.ceil(group.letters.length/count);
+  letterPage=Math.max(0,Math.min(pages-1,letterPage));
+  const visible=group.letters.slice(letterPage*count,(letterPage+1)*count);
+  for(const g of LETTER_GROUPS)document.getElementById(g.id+'Bank').setAttribute('aria-pressed',g.id===currentGroup);
+  for(const key of Object.keys(LETTERS))document.getElementById(LETTERS[key].buttonId||'choose'+key.toUpperCase()).hidden=!visible.includes(key.toLowerCase());
+  document.getElementById('letterPrev').disabled=letterPage===0;
+  document.getElementById('letterNext').disabled=letterPage===pages-1;
+  document.getElementById('pageStatus').textContent=pages>1?`${letterPage+1} / ${pages}`:'';
+}
+function revealLetterInSelector(key){
+  const group=groupForLetter(key);if(!group)return;
+  currentGroup=group.id;letterPage=Math.floor(group.letters.indexOf(key.toLowerCase())/pagePairCount());
+  updateLetterSelector();
+}
+function showLetterBank(bank,switchLetter=true){
+  if(['first','middle','last'].includes(bank))bank='consonants';
+  const group=LETTER_GROUPS.find(g=>g.id===bank);if(!group)return;
+  const changed=currentGroup!==bank;currentGroup=bank;if(changed)letterPage=0;
+  updateLetterSelector();
+  if(switchLetter&&!group.letters.includes(letter.toLowerCase()))selectLetter(group.letters[0],true);
+  else if(switchLetter){if(done)playCompletionAudio();else speakText(instructionForSpeech())}
+}
+for(const group of LETTER_GROUPS)document.getElementById(group.id+'Bank').addEventListener('click',()=>showLetterBank(group.id));
+document.getElementById('letterPrev').addEventListener('click',()=>{letterPage--;updateLetterSelector()});
+document.getElementById('letterNext').addEventListener('click',()=>{letterPage++;updateLetterSelector()});
+if(typeof window.addEventListener==='function')window.addEventListener('resize',()=>revealLetterInSelector(letter));
+selectLetter('a');
+
+</script></body></html>
