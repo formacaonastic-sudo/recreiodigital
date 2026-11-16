@@ -6,6 +6,13 @@ window.JOGOS_DO_ANO = [
     "icone": "🧩",
     "ficheiro": "jogo-sombras.html"
   },
+  {
+  titulo: "Letras Mágicas no Recreio",
+  descricao: "Desenha as letras com o dedo e descobre imagens com som!",
+  disciplina: "Português",
+  icone: "✍️",
+  ficheiro: "../jogos/letras-magicas-no-recreio.html?ano=pre"
+},
 {
   "titulo": "Formas Mágicas no Recreio",
   "descricao": "Constrói 28 desenhos com formas geométricas!",
