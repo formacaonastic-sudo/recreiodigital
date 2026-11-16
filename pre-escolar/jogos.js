@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "Grafismos no Recreio",
+  descricao: "Segue linhas, curvas, ondas e espirais! Desenvolve a motricidade fina enquanto brincas!",
+  disciplina: "Português",
+  icone: "🌀",
+  ficheiro: "../jogos/grafismos-no-recreio.html?ano=pre"
+},
+  {
   titulo: "Letras Mágicas no Recreio",
   descricao: "Desenha as letras com o dedo e descobre imagens com som!",
   disciplina: "Português",
