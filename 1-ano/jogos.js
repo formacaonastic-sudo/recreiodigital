@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Números Mágicos no Recreio",
+  descricao: "Segue o tracejado dos números do 0 ao 20 e diverte-te a contar as bolinhas!",
+  disciplina: "Matemática",
+  icone: "🪄",
+  ficheiro: "../jogos/numeros-magicos-no-recreio.html?ano=1"
+},
+  {
   titulo: "Grafismos no Recreio",
   descricao: "Treina os grafismos, melhora a coordenação e prepara-te para escrever as primeiras letras!",
   disciplina: "Português",
