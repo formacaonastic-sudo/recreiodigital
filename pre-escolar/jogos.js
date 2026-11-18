@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "Números Mágicos no Recreio",
+  descricao: "Segue o tracejado dos números do 0 ao 20 e diverte-te a contar as bolinhas!",
+  disciplina: "Matemática",
+  icone: "🪄",
+  ficheiro: "../jogos/numeros-magicos-no-recreio.html?ano=pre"
+},
+  {
   titulo: "Grafismos no Recreio",
   descricao: "Segue linhas, curvas, ondas e espirais! Desenvolve a motricidade fina enquanto brincas!",
   disciplina: "Português",
