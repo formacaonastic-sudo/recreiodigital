@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Programa o Robô!",
+  descricao: "Ajuda o robô a chegar a casa! Escolhe as setas e descobre o caminho certo.",
+  disciplina: "Pensamento Computacional",
+  icone: "💻",
+  ficheiro: "../jogos/robo-a-caminho-de-casa.html?ano=1"
+},
+  {
   titulo: "Geoplano Mágico no Recreio",
   descricao: "Cria figuras geométricas com elásticos coloridos num geoplano interativo!",
   disciplina: "Matemática",
