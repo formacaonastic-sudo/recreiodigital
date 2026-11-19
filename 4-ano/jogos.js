@@ -6,6 +6,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "../jogos/pensa-rapido.html?ano=4",
     disciplina: "Matemática"
   },
+   {
+  titulo: "Geoplano Mágico no Recreio",
+  descricao: "Cria figuras geométricas com elásticos coloridos num geoplano interativo!",
+  disciplina: "Matemática",
+  icone: "📐",
+  ficheiro: "../jogos/geoplano-magico-no-recreio.html?ano=4"
+},
   {
   titulo: "O Camião dos Números",
   descricao: "Carrega o camião com os blocos certos e parte para uma nova aventura!",
