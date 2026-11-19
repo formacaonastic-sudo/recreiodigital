@@ -1,0 +1,108 @@
+<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Geoplano Mágico · Recreio Digital</title><style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;background:linear-gradient(145deg,#103f87,#2463ac);color:#17365a;min-height:100dvh;display:flex;flex-direction:column}header{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;color:white;gap:12px;flex-wrap:wrap}header b{font-size:clamp(19px,2.4vw,27px)}nav{display:flex;gap:9px}a{color:white;text-decoration:none;background:#ffffff28;padding:10px;border-radius:12px;font-weight:750}.layout{width:min(1600px,99%);margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 235px;gap:9px;flex:1;min-height:0}.panel{background:#f9fcff;border-radius:23px;padding:10px;border:3px solid #b6dcff;box-shadow:0 7px 0 #082b5e55}.stage{display:flex;flex-direction:column;min-height:0}.heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.heading h1{font-size:clamp(20px,2.5vw,30px);margin:0}.tip{margin:5px 0 6px;font-weight:700;font-size:15px}.board-wrap{flex:1;min-height:0;display:grid;place-items:start center;align-content:start}.board{display:block;width:100%;max-width:100%;height:auto;max-height:79dvh;aspect-ratio:900/520;background:radial-gradient(circle at 40% 30%,#fff9df,#f2d8a8);border:7px solid #e4a54d;border-radius:22px;box-shadow:inset 0 0 0 3px #fff3d2,0 5px 0 #9a5a21;touch-action:none;user-select:none}.side h2{margin:2px 0 10px}.side p{font-size:14px}.palette{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.swatch{height:45px;border:4px solid white;border-radius:13px;box-shadow:0 3px 0 #a9bfd2;cursor:pointer}.swatch.selected{outline:3px solid #194e93}.btn{background:#d8ecff;border:0;border-radius:12px;padding:12px;font-weight:850;color:#174778;cursor:pointer;box-shadow:0 3px 0 #a9c9e6}.primary{background:#ffcb49;color:#583b04;box-shadow:0 4px 0 #cf932b}.buttons{display:grid;gap:8px;margin-top:12px}.row{display:flex;gap:8px}.row>*{flex:1;min-width:0}.status{background:#e7f7eb;padding:12px;border-radius:12px;font-weight:700;min-height:55px;margin-top:12px}.field{display:grid;gap:5px;margin:12px 0}.field select{padding:10px;border-radius:10px;border:2px solid #bbd8f2;font-weight:750;background:white}footer{text-align:center;color:#fff;font-weight:850;background:#082d69;border-top:3px solid #ffcf5c;padding:10px}.peg{cursor:grab}.peg:focus{outline:none}.rubber{cursor:grab;stroke-linecap:round;stroke-linejoin:round;fill-opacity:.09;touch-action:none}.rubber.selected{filter:drop-shadow(0 0 5px #fff)}.handle{cursor:grab;touch-action:none}.hint{font-size:15px;color:#000;font-weight:800;line-height:1.5;margin:12px 5px 2px;padding:12px 15px;background:#edf5ff;border-radius:12px;border:2px solid #c7def8}.year{font-size:14px;font-weight:750}@media(max-width:850px){.layout{grid-template-columns:1fr}.board{height:auto;max-height:74dvh}.side{display:grid;grid-template-columns:1fr 1fr;gap:8px}.side h2,.side .palette,.side .status{grid-column:1/-1}}@media(max-width:500px){header{justify-content:center}.board{height:auto;width:100%;max-height:72dvh}.panel{padding:8px}.side{display:block}}
+@media(min-width:851px){.layout{align-items:stretch}.board-wrap{min-height:0}.stage{justify-content:flex-start}}
+
+/* V13: layout sem scroll em ecrãs de computador e painéis interativos */
+@media (min-width:851px) and (min-height:590px){
+ html,body{height:100%;overflow:hidden}
+ body{height:100dvh;min-height:0}
+ header,footer{flex:0 0 auto}
+ header{padding:7px 15px}
+ footer{padding:7px}
+ .layout{flex:1 1 auto;min-height:0;margin:0 auto;padding:5px 0 8px;overflow:hidden}
+ .panel{min-height:0;overflow:hidden}
+ .stage{min-height:0}
+ .board-wrap{flex:1 1 auto;min-height:0;display:flex;align-items:flex-start;justify-content:center;overflow:hidden}
+ .board{width:auto;height:100%;max-width:100%;max-height:100%;aspect-ratio:900/520;flex:0 1 auto}
+ .hint{flex:0 0 auto;margin:6px 3px 0;padding:7px 10px;font-size:clamp(12px,1.05vw,14px);line-height:1.28}
+ .tip{margin:3px 0 5px}
+ .side{overflow:auto;scrollbar-width:thin}
+ .side .swatch{height:40px}
+ .side .buttons{gap:6px}
+ .side .btn{padding:9px}
+ .side .status{padding:8px;margin-top:8px;min-height:0}
+}
+
+/* V14 — cabeçalho Recreio Digital destacado, sem alterar a altura do jogo */
+header{background:linear-gradient(110deg,#082d68 0%,#1256a6 55%,#1778c7 100%);border-bottom:3px solid #ffcd54;box-shadow:0 4px 14px #061f4a55;position:relative;z-index:2}
+header b{display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:900;letter-spacing:.25px;text-shadow:0 2px 3px #062753aa;font-size:clamp(19px,2.2vw,26px)}
+header nav{display:flex;align-items:center;gap:10px}
+header nav a{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#0c4488;border:2px solid #c9e7ff;border-radius:13px;padding:7px 13px;font-size:clamp(12px,1.15vw,15px);font-weight:900;box-shadow:0 3px 0 #072956;transition:background .15s,transform .15s}
+header nav a:hover,header nav a:focus-visible{background:#ffe38b;transform:translateY(-1px);outline:2px solid #fff;outline-offset:2px}
+@media(max-width:500px){header{gap:5px;padding:7px 8px}header b{font-size:18px}header nav a{padding:6px 8px;font-size:12px}}
+
+/* V21: restaurar proporções estáveis e impedir esticamento */
+@media (min-width:851px) and (min-height:590px){
+ .board-wrap{display:flex;align-items:flex-start;justify-content:center;min-height:0;overflow:hidden}
+ .board{display:block;flex:0 1 auto;width:auto;height:100%;max-width:100%;max-height:100%;aspect-ratio:900 / 520}
+}
+
+/* V22: corujinhas nas margens laterais, sem alterar as dimensões do tabuleiro */
+.board-wrap{position:relative;isolation:isolate}
+.owl-side{position:absolute;top:50%;transform:translateY(-50%);width:clamp(58px,7vw,112px);text-align:center;pointer-events:none;z-index:1;filter:drop-shadow(0 5px 3px #163f6a33)}
+.owl-side.left{left:0}.owl-side.right{right:14px;width:clamp(52px,6vw,90px)}
+.owl-side.right .owl{font-size:clamp(52px,6vw,86px)}
+.owl-side.right .sparkle{font-size:clamp(14px,1.5vw,22px)}
+.owl-side .owl{display:block;font-size:clamp(58px,7.1vw,104px);line-height:1.1}
+.owl-side .sparkle{display:block;font-size:clamp(16px,2vw,29px);line-height:1.4}
+@media(max-width:1100px){.owl-side{display:none}}
+</style></head><body><header><b>🦉 Recreio Digital · Geoplano Mágico</b><nav><a id="back" href="../pre-escolar/">🎮 Voltar aos jogos</a><a href="../index.html">🏠 Página inicial</a></nav></header><main class="layout"><section class="panel stage"><div class="heading"><h1>🌈 Geoplano Mágico no Recreio</h1></div><p class="tip">Tabuleiro com 18 colunas × 10 linhas de pinos. Clica num pino para começar!</p><div class="board-wrap"><div class="owl-side left" aria-hidden="true"><span class="sparkle">✨⭐</span><span class="owl">🦉</span><span class="sparkle">🌈✨</span></div><svg id="board" class="board" viewBox="0 0 900 520" aria-label="Geoplano interativo com elásticos" role="application"></svg><div class="owl-side right" aria-hidden="true"><span class="sparkle">⭐✨</span><span class="owl">🦉</span><span class="sparkle">✨🌟</span></div></div><p class="hint">Clica num pino para iniciar o elástico e noutro para o prender, ou arrasta diretamente. Depois, puxa os lados para criar novos cantos. Arrasta os círculos brancos para mudar a posição dos cantos. Clica num elástico para o selecionar.</p></section><aside class="panel side"><h2>🎨 Oficina dos elásticos</h2><p><b>📐 18 × 10 pinos</b></p><p><b>1.</b> Escolhe uma cor</p><div class="palette" id="palette"></div><div class="buttons"><button class="btn primary" id="add">➕ Novo elástico (opcional)</button><div class="row"><button class="btn" id="undo">↩️ Desfazer</button><button class="btn" id="delete">🗑️ Apagar elástico</button></div><button class="btn" id="clear">🧹 Limpar tabuleiro</button></div><div class="status" id="status" aria-live="polite">✨ Escolhe uma cor e clica num pino: o elástico aparece imediatamente!</div></aside></main><footer>Feito com ❤️ para aprender e brincar · Recreio Digital</footer>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),svg=$('board'),colors=['#ed4779','#2997ed','#f2a900','#22ad75','#9b5bdf','#ef6b32','#15b5ba','#e448a9'];
+let cols=18,rows=10,color=colors[0],bands=[],selected=null,drag=null,pending=null,history=[],nextId=1;
+const NS='http://www.w3.org/2000/svg';
+const pt=(i,j)=>({x:60+i*780/(cols-1),y:45+j*430/(rows-1)});
+const copy=()=>JSON.stringify({bands,selected,nextId});
+const remember=()=>{history.push(copy());if(history.length>60)history.shift()};
+function element(tag,attrs,parent=svg){const e=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));parent.append(e);return e}
+function pos(e){const m=svg.getScreenCTM();if(!m)return null;const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(m.inverse())}
+function nearest(p){if(!p)return null;let best=null,d=Infinity;for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){const a=pt(i,j),v=Math.hypot(p.x-a.x,p.y-a.y);if(v<d){d=v;best=[i,j]}}return d<Math.min(42,Math.min(780/(cols-1),430/(rows-1))*.49)?best:null}
+const xy=v=>pt(v[0],v[1]);
+function draw(){svg.replaceChildren();const bg=element('rect',{x:8,y:8,width:884,height:504,rx:17,fill:'#f8e5be',stroke:'#deb777','stroke-width':2});bg.style.pointerEvents='none';
+for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){const p=pt(i,j);element('circle',{cx:p.x+2,cy:p.y+4,r:12,fill:'#a47744',opacity:'.2'})}
+bands.forEach(b=>{
+const active=b.id===selected,points=b.pts.map(v=>xy(v)),string=points.map(p=>p.x+','+p.y).join(' ');
+const group=element('g',{'data-band':b.id});
+const poly=element('polygon',{points:string,fill:b.color,'fill-opacity':'.09',stroke:b.color,'stroke-width':active?9:7,'stroke-linejoin':'round',class:'rubber'+(active?' selected':'')},group);
+poly.addEventListener('pointerdown',e=>startMove(e,b.id,'whole',-1));
+if(active){points.forEach((p,i)=>{
+const q=points[(i+1)%points.length],mx=(p.x+q.x)/2,my=(p.y+q.y)/2;
+const hit=element('line',{x1:p.x,y1:p.y,x2:q.x,y2:q.y,stroke:'transparent','stroke-width':30,'data-seg':i},group);
+hit.addEventListener('pointerdown',e=>startMove(e,b.id,'edge',i));
+element('circle',{cx:mx,cy:my,r:7,fill:'#fff',stroke:b.color,'stroke-width':3,'pointer-events':'none'},group);
+});
+points.forEach((p,i)=>{const h=element('circle',{cx:p.x,cy:p.y,r:13,fill:'#fff',stroke:b.color,'stroke-width':5,class:'handle'},group);h.addEventListener('pointerdown',e=>startMove(e,b.id,'vertex',i))})}
+});
+if(pending&&!drag){const a=xy(pending.from);element('circle',{cx:a.x,cy:a.y,r:16,fill:'none',stroke:pending.color,'stroke-width':5,'pointer-events':'none'});if(pending.point){element('line',{x1:a.x,y1:a.y,x2:pending.point.x,y2:pending.point.y,stroke:pending.color,'stroke-width':8,'stroke-linecap':'round','stroke-dasharray':'15 7','pointer-events':'none'})}}if(drag&&drag.type==='new'&&drag.point){const a=xy(drag.from);element('line',{x1:a.x,y1:a.y,x2:drag.point.x,y2:drag.point.y,stroke:color,'stroke-width':8,'stroke-linecap':'round','pointer-events':'none'});}if(drag&&drag.point&&drag.type!=='new'){const b=bands.find(x=>x.id===drag.id);if(b){const p=drag.point;const a=xy(b.pts[drag.index]);if(drag.type==='edge'){const q=xy(b.pts[(drag.index+1)%b.pts.length]);element('polyline',{points:`${a.x},${a.y} ${p.x},${p.y} ${q.x},${q.y}`,fill:'none',stroke:b.color,'stroke-width':8,'stroke-linejoin':'round','pointer-events':'none'})}else if(drag.type==='vertex'){element('circle',{cx:p.x,cy:p.y,r:12,fill:b.color,stroke:'white','stroke-width':3,'pointer-events':'none'})}}}
+for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){const p=pt(i,j);element('circle',{cx:p.x,cy:p.y,r:10,fill:'#b67d45',stroke:'#fff1d0','stroke-width':3,'pointer-events':'none'});element('circle',{cx:p.x-2,cy:p.y-3,r:3,fill:'#fff4d4','pointer-events':'none'})}
+}
+function startMove(e,id,type,index){if(e.button!==0&&e.pointerType==='mouse')return;e.preventDefault();e.stopPropagation();selected=id;const b=bands.find(v=>v.id===id);if(!b)return;drag={id,type,index,point:pos(e),moved:false,origin:pos(e),before:copy()};try{svg.setPointerCapture(e.pointerId)}catch(_){}draw()}
+svg.addEventListener('pointerdown',e=>{if(drag||e.button!==0&&e.pointerType==='mouse')return;const start=nearest(pos(e));if(!start)return;e.preventDefault();drag={type:'new',from:start,point:pos(e),origin:pos(e),moved:false};try{svg.setPointerCapture(e.pointerId)}catch(_){}draw()});
+svg.addEventListener('pointermove',e=>{if(!drag){if(pending){pending.point=pos(e);draw()}return}const p=pos(e);if(!p)return;drag.point=p;if(Math.hypot(p.x-drag.origin.x,p.y-drag.origin.y)>8)drag.moved=true;draw()});
+svg.addEventListener('pointerup',e=>{if(!drag)return;const d=drag;drag=null;const target=nearest(pos(e));if(d.type==='new'){
+if(d.moved&&target&&(target[0]!==d.from[0]||target[1]!==d.from[1])){
+ remember();const b={id:nextId++,color,pts:[d.from,target]};bands.push(b);selected=b.id;pending=null;
+ $('status').textContent='🌈 Elástico colocado! Puxa um dos lados para criar novos cantos.';
+}else if(!d.moved){
+ if(!pending){pending={from:d.from,color,point:xy(d.from)};$('status').textContent='✨ Elástico iniciado! Clica noutro pino para o esticar.'}
+ else if(target&&(target[0]!==pending.from[0]||target[1]!==pending.from[1])){
+ remember();const b={id:nextId++,color:pending.color,pts:[pending.from,target]};bands.push(b);selected=b.id;pending=null;
+ $('status').textContent='🎉 Elástico preso! Podes criar outro ou puxar um dos seus lados.';
+ }else{pending=null;$('status').textContent='Elástico cancelado. Escolhe um pino para começar novamente.'}
+}else{$('status').textContent='📍 Larga o elástico sobre um pino.'}
+draw();return}
+const b=bands.find(v=>v.id===d.id);if(b&&d.moved&&target){if(d.type==='vertex'){if(b.pts.length>=2){history.push(d.before);b.pts[d.index]=target}}else if(d.type==='edge'&&b.pts.length<30){const a=b.pts[d.index],z=b.pts[(d.index+1)%b.pts.length];if(!(target[0]===a[0]&&target[1]===a[1])&&!(target[0]===z[0]&&target[1]===z[1])){history.push(d.before);b.pts.splice(d.index+1,0,target)}}$('status').textContent='🎉 Muito bem! O elástico ficou preso no novo pino.'}else if(d.moved){$('status').textContent='📍 Larga o elástico perto de um pino para o prender.'}draw()});
+svg.addEventListener('pointercancel',()=>{drag=null;draw()});
+function add(){pending=null;remember();const cx=Math.floor((cols-1)/2),cy=Math.floor((rows-1)/2);let pts=[[cx-1,cy-1],[cx+1,cy-1],[cx+1,cy+1],[cx-1,cy+1]];bands.push({id:nextId++,color,pts});selected=bands.at(-1).id;$('status').textContent='👆 Puxa um dos lados para outro pino e vê o elástico esticar!';draw()}
+colors.forEach(c=>{const b=document.createElement('button');b.className='swatch';b.style.background=c;b.title='Elástico '+c;b.setAttribute('aria-label','Escolher cor '+c);b.onclick=()=>{color=c;updatePalette()};$('palette').append(b)});
+function updatePalette(){[...$('palette').children].forEach((b,i)=>b.classList.toggle('selected',colors[i]===color))}
+$('add').onclick=add;$('undo').onclick=()=>{if(!history.length)return;const v=JSON.parse(history.pop());bands=v.bands;selected=v.selected;nextId=v.nextId;pending=null;draw()};
+$('delete').onclick=()=>{if(selected===null)return;pending=null;remember();bands=bands.filter(b=>b.id!==selected);selected=bands.at(-1)?.id??null;draw()};
+$('clear').onclick=()=>{remember();bands=[];selected=null;pending=null;draw()};
+const query=new URLSearchParams(location.search).get('ano');
+const origin=['pre','1','2','3','4'].includes(query)?query:'pre';
+$('back').href=origin==='pre'?'../pre-escolar/':`../${origin}-ano/`;
+updatePalette();draw();
+})();
+</script></body></html>
