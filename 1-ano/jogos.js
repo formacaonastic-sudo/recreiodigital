@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Geoplano Mágico no Recreio",
+  descricao: "Cria figuras geométricas com elásticos coloridos num geoplano interativo!",
+  disciplina: "Matemática",
+  icone: "📐",
+  ficheiro: "../jogos/geoplano-magico-no-recreio.html?ano=1"
+},
+  {
   titulo: "Números Mágicos no Recreio",
   descricao: "Segue o tracejado dos números do 0 ao 20 e diverte-te a contar as bolinhas!",
   disciplina: "Matemática",
