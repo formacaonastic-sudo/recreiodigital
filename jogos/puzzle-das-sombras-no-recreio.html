@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🦉%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#0642c6">
+<meta name="description" content="Encontra as sombras num jardim cheio de amigos! Um jogo do Recreio Digital para o pré-escolar, com dificuldade progressiva e controlos para rato e toque.">
+<title>Puzzle das Sombras · Recreio Digital</title>
+<style>
+:root{--blue:#073fc5;--ink:#123773;--navy:#0b2b59;--cream:#fffbec;--yellow:#ffdf24;--green:#36c583;--count:3;font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,sans-serif;color:var(--ink);font-synthesis:none}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;overscroll-behavior:none}body{height:100vh;height:100svh;min-height:600px;overflow:hidden;background:#28c7ef;display:grid;grid-template-rows:auto minmax(0,1fr) auto}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:4px solid #ff9a00;outline-offset:4px}button{touch-action:manipulation}button:disabled{cursor:default}svg{display:block}.defs{position:absolute;width:0;height:0;overflow:hidden}.scene{position:fixed;inset:54px 0 30px;z-index:-1;width:100%;height:calc(100% - 84px);pointer-events:none}
+.topbar{min-height:66px;padding:7px clamp(14px,2.3vw,38px);display:flex;align-items:center;justify-content:space-between;gap:18px;background:linear-gradient(180deg,#1057e2,#0538bc);box-shadow:0 4px 0 #00339a,0 8px 20px #003d7950;color:white;z-index:3}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;font-weight:900;font-size:clamp(23px,2.55vw,37px);letter-spacing:-1px;white-space:nowrap;text-shadow:0 3px #003098}.brand svg{width:54px;height:54px;filter:drop-shadow(0 3px 1px #00277e60)}.nav{display:flex;gap:10px}.nav a{font-weight:900;font-size:clamp(17px,1.55vw,23px);text-decoration:none;border:2px solid #fff5;border-radius:24px;padding:10px 23px;white-space:nowrap;box-shadow:0 5px 0 var(--edge),0 7px 10px #001b6b40;color:#102b50;transition:transform .18s}.nav a:hover{transform:translateY(-2px)}.back{background:linear-gradient(#fff94c,#ffe30c);--edge:#d7ad00}.home{background:linear-gradient(#69f3ff,#18d4ed);--edge:#009caf}
+main{min-height:0;max-width:1560px;width:100%;margin:auto;padding:14px 28px 16px;display:flex;flex-direction:column;gap:13px;height:100%;position:relative}.heading{position:relative;flex-shrink:0;align-self:center;min-width:530px;max-width:800px;padding:10px 68px 19px;background:linear-gradient(#fff,#f6fbff);border:3px solid #fff;border-radius:75px 66px 68px 62px / 60px;box-shadow:0 6px 0 #08a3db,0 9px 16px #027cad35;text-align:center}.heading:before,.heading:after{content:"";position:absolute;width:10px;height:37px;border-radius:10px;background:#fff21d;top:32px;box-shadow:0 47px #fff21d}.heading:before{left:-32px;transform:rotate(-53deg)}.heading:after{right:-32px;transform:rotate(53deg)}.eyebrow{color:#0a45c9;font-weight:900;font-size:clamp(17px,1.75vw,23px);line-height:1.1}.heading h1{margin:1px 0;font-size:clamp(30px,3vw,43px);font-weight:900;line-height:1.12;letter-spacing:-1.1px;color:#112b52}.tagline{font-size:clamp(18px,1.8vw,24px);font-weight:800;margin:2px 0 1px;color:#315486}.stars{position:absolute;left:50%;bottom:-19px;transform:translateX(-50%);display:flex;gap:7px;padding:0 12px;border-radius:20px;background:#f9fcff}.star{width:35px;height:35px;color:#d5e5ef;transition:transform .3s,color .3s;filter:drop-shadow(0 2px 0 #9fb9cc)}.star.earned{color:#ffdc21;filter:drop-shadow(0 2px 0 #df8105);animation:star-pop .55s ease}.play-area{display:flex;align-items:stretch;gap:22px;min-height:0;flex:1;padding-top:8px}.board{flex:1;min-width:0;background:linear-gradient(135deg,#fffef5,#fff7df);border:4px solid white;border-radius:42px;box-shadow:0 8px 0 #cfbd82,0 12px 16px #23572535,inset 0 0 14px #dccb9b40;padding:12px 18px 14px;display:flex;flex-direction:column;gap:12px;position:relative}.board-top{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:27px;padding:0 4px}.challenge{font-size:17px;font-weight:900;color:#31527a}.difficulty{font-size:15px;font-weight:800;background:#e5f4ff;color:#195394;padding:5px 12px;border-radius:20px;display:flex;align-items:center;gap:6px}.difficulty i{width:8px;height:8px;border-radius:50%;background:#b3d5e8}.difficulty i.on{background:#1595ca}.targets,.pieces{display:grid;grid-template-columns:repeat(var(--count),minmax(0,1fr));gap:14px;min-height:0}.targets{flex:1}.target{position:relative;min-width:0;min-height:0;padding:12px;border:3px solid #70c5e9;border-radius:30px;background:radial-gradient(ellipse at 32% 20%,#b5efff,#78d4f1 80%);box-shadow:inset 0 3px 5px #ffffffe0,inset 0 -3px 6px #298eca25,0 3px 0 #419ecc;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s,border-color .2s}.target .figure{width:100%;height:100%;max-height:240px;filter:url(#silhouette);pointer-events:none;opacity:.97}.target:hover:not(:disabled){background:radial-gradient(ellipse at 32% 20%,#d1f9ff,#81daf6)}.target.drag-over{border-color:#ffe62c;box-shadow:0 0 0 5px #fff9,0 5px 0 #db9e08;transform:scale(1.025)}.target.matched{border-color:#32bc78;background:radial-gradient(ellipse at 35% 18%,#f3fff2,#b1f2c2);box-shadow:inset 0 3px 5px #fff,0 3px 0 #1c9c62}.target.matched .figure{filter:drop-shadow(0 4px 1px #24523725);animation:fit .45s ease}.check{position:absolute;bottom:8px;right:9px;width:29px;height:29px;border-radius:50%;display:grid;place-items:center;background:#1bb66b;color:#fff;font-size:23px;font-weight:900;box-shadow:0 2px #118d4e;border:2px solid white}.tray{flex:.84;min-height:0;background:linear-gradient(#8debb1,#59d5a4);padding:12px;border:2px solid #8ce7b0;border-radius:31px;box-shadow:inset 0 4px 7px #24ad8240;display:flex;flex-direction:column;gap:7px}.pieces{flex:1}.piece{position:relative;min-width:0;min-height:0;padding:8px;background:linear-gradient(#fff,#f4fbff);border:3px solid white;border-radius:26px;box-shadow:0 5px 0 #30ac83,0 6px 8px #0c74574a,inset 0 -4px 6px #d6e7f060;display:flex;align-items:center;justify-content:center;touch-action:none;user-select:none;-webkit-user-select:none;transition:transform .18s,box-shadow .18s}.figure{overflow:visible}.piece .figure{width:100%;height:100%;max-height:205px;pointer-events:none;filter:drop-shadow(0 3px 1px #15334b20)}.piece:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 7px 0 #30ac83,0 10px 12px #0c745750}.piece.selected{border-color:#ffb400;background:#fff7ce;box-shadow:0 0 0 4px #fff7,0 5px 0 #e99c00;transform:translateY(-3px)}.piece.used{visibility:hidden}.piece.dragging{opacity:.22}.instruction{margin:0;color:#0a5d46;font-size:clamp(16px,1.4vw,19px);line-height:1.2;font-weight:800;text-align:center;flex-shrink:0}.instruction svg{display:inline-block;width:22px;height:22px;vertical-align:middle;margin-right:5px}.side{width:clamp(190px,20vw,270px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:0}.speech{position:relative;width:100%;min-height:75px;display:flex;align-items:center;justify-content:center;padding:12px 14px;background:#fff;border:3px solid #0c59b1;border-radius:50% 44% 45% 42%;box-shadow:0 5px 0 #1486c45c;text-align:center;transform:rotate(-3deg);flex-shrink:0}.speech:after{content:"";width:22px;height:22px;background:white;position:absolute;bottom:-13px;left:27%;border-bottom:3px solid #0c59b1;border-left:3px solid #0c59b1;transform:skewY(-25deg) rotate(-24deg);border-radius:0 0 0 7px}.speech p{font-size:clamp(20px,2vw,28px);font-weight:900;color:#153361;line-height:1.15;margin:0}.mascot{width:100%;min-height:0;max-height:310px;flex:1;filter:drop-shadow(0 8px 3px #347e3f36);transform-origin:50% 90%;transition:transform .3s}.mascot.happy{animation:owl-dance .65s ease}.help{width:100%;padding:12px 15px;display:flex;align-items:center;justify-content:center;gap:10px;border:4px solid white;border-radius:40px;background:linear-gradient(#c35aff 0,#a326ef 42%,#790cc4 100%);box-shadow:0 6px 0 #680aab,0 9px 12px #42622540,inset 0 3px 0 #d99bff;color:#fff;font-size:clamp(25px,2.65vw,36px);font-weight:900;text-shadow:0 2px #650d99;flex-shrink:0;transition:transform .2s}.help:hover{transform:translateY(-3px)}.help svg{width:36px;height:36px;filter:drop-shadow(0 2px 0 #5f0b97)}.restart{color:#174f72;border:0;background:#fffffff0;font-size:16px;font-weight:800;padding:8px 15px;border-radius:20px;box-shadow:0 2px 0 #6bb78f;margin-top:4px}.restart:hover{background:#fff5af}footer{padding:7px 12px 9px;border-top:5px solid #ffe534;background:linear-gradient(#0d50d6,#0339bb);color:#fff;text-align:center;font-size:clamp(17px,1.7vw,23px);font-weight:900;line-height:1.1;z-index:2;text-shadow:0 2px #0035a2}
+.hint{animation:hint 1s ease-in-out 3!important;z-index:1}.wrong{animation:wobble .45s ease}.drag-ghost{position:fixed;z-index:30;pointer-events:none;width:150px;height:150px;filter:drop-shadow(0 8px 4px #003d6950);transform:translate(-50%,-52%) rotate(-4deg)}.drag-ghost svg{width:100%;height:100%}.round-toast{position:absolute;inset:0;z-index:8;background:#ffffff24;backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;border-radius:38px;pointer-events:none}.round-toast[hidden]{display:none}.toast-card{width:min(85%,500px);background:linear-gradient(#fff,#fffbea);border:5px solid #ffdb24;border-radius:35px;box-shadow:0 10px 0 #cba13c70,0 14px 50px #11375140;padding:24px;text-align:center;animation:fit .4s ease}.toast-card .big-star{width:70px;height:70px;color:#ffcf15;filter:drop-shadow(0 4px #e99108);margin:0 auto 7px}.toast-card strong{font-size:clamp(27px,3vw,41px);color:#14529a;display:block}.toast-card p{font-weight:800;font-size:20px;margin:7px 0 0;color:#388354}.confetti{position:fixed;inset:0;pointer-events:none;z-index:45;overflow:hidden}.confetti i{position:absolute;top:-25px;left:var(--x);width:var(--size);height:calc(var(--size)*1.65);border-radius:3px;background:var(--color);animation:confetti var(--duration) linear var(--delay) forwards}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}dialog{width:min(92vw,530px);border:5px solid #fff;background:linear-gradient(#fff,#effaff);border-radius:34px;box-shadow:0 10px 0 #0a68bd,0 20px 80px #09396955;padding:28px;text-align:center;color:#14396f}dialog::backdrop{background:#07346285;backdrop-filter:blur(6px)}dialog h2{font-size:32px;margin:6px 0 10px;font-weight:900}dialog p{font-size:20px;line-height:1.4;margin:10px 0 20px}.dialog-art{height:120px;width:150px;margin:auto}.dialog-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}.dialog-actions button{border:2px solid white;border-radius:22px;padding:12px 22px;font-size:19px;font-weight:900;background:#dceefb;color:#17497e;box-shadow:0 4px #a0c6df}.dialog-actions .primary{background:linear-gradient(#ffeb48,#ffd41c);color:#4f3c03;box-shadow:0 4px #d5a313}.summary{background:#e7f7f0;border:2px solid #c3e8d7;border-radius:20px;padding:12px;font-size:18px;font-weight:800;color:#247151;margin-bottom:20px}
+@keyframes star-pop{0%{transform:scale(.5) rotate(-15deg)}65%{transform:scale(1.3) rotate(8deg)}100%{transform:scale(1)}}@keyframes fit{0%{transform:scale(.75)}65%{transform:scale(1.05)}100%{transform:scale(1)}}@keyframes hint{0%,100%{box-shadow:0 0 0 0 #ffdc00;border-color:#ffb400}50%{box-shadow:0 0 0 7px #ffe72ac0;border-color:#ffb400}}@keyframes wobble{20%{transform:translateX(-5px)}40%{transform:translateX(5px)}65%{transform:translateX(-3px)}85%{transform:translateX(3px)}}@keyframes owl-dance{25%{transform:rotate(-7deg) translateY(-5px)}65%{transform:rotate(6deg) translateY(-9px)}100%{transform:rotate(0)}}@keyframes confetti{to{transform:translate3d(var(--drift),110vh,0) rotate(620deg)}}
+@media(min-width:1600px){main{padding-top:20px;padding-bottom:24px}.board{padding:16px 22px 18px;gap:16px}.heading{padding-top:13px;padding-bottom:23px}.heading h1{font-size:47px}.heading .eyebrow{font-size:25px}}
+@media(max-height:760px) and (min-width:761px){body{min-height:540px}.topbar{min-height:57px;padding-top:4px;padding-bottom:4px}.brand svg{height:45px;width:45px}.nav a{padding:8px 18px}main{padding-top:10px;padding-bottom:13px;gap:10px}.heading{padding:7px 48px 16px;min-width:470px}.heading h1{font-size:35px}.eyebrow{font-size:18px}.tagline{font-size:20px}.star{width:29px;height:29px}.stars{bottom:-16px}.play-area{gap:18px}.board{padding:9px 14px 11px;gap:9px;border-radius:34px}.board-top{min-height:25px}.target{border-radius:25px;padding:10px}.tray{padding:9px;border-radius:27px}.piece{border-radius:22px}.speech{min-height:65px}.speech p{font-size:23px}.side{gap:8px}.help{padding:9px 12px;font-size:29px}.restart{padding:6px 13px}footer{font-size:18px;padding:6px 12px}}
+@media(max-width:1050px) and (min-width:761px){main{padding-left:17px;padding-right:17px}.play-area{gap:15px}.side{width:178px}.speech p{font-size:22px}.help{font-size:27px}.brand{font-size:27px}.nav a{font-size:17px;padding:10px 15px}.board{padding-left:12px;padding-right:12px}.targets,.pieces{gap:9px}.tray{padding:9px}.target{padding:7px}.piece{padding:4px}.difficulty{font-size:14px}}
+@media(max-width:760px){body{height:100svh;min-height:660px;overflow:auto;grid-template-rows:58px minmax(0,1fr) 37px}.topbar{min-height:58px;padding:5px 10px;gap:8px}.brand{font-size:21px;letter-spacing:-.6px;gap:5px}.brand svg{width:39px;height:43px}.nav{gap:6px}.nav a{font-size:14px;padding:8px 10px;border-radius:17px;box-shadow:0 3px 0 var(--edge)}.home{display:none}main{padding:13px 12px 12px;gap:14px;min-height:0}.heading{min-width:0;width:calc(100% - 40px);max-width:510px;padding:9px 10px 18px;border-radius:45px}.heading h1{font-size:clamp(26px,5.4vw,37px);letter-spacing:-.8px}.eyebrow{font-size:16px}.tagline{font-size:18px}.heading:before,.heading:after{width:7px;height:23px;box-shadow:0 33px #fff21d;top:24px}.heading:before{left:-18px}.heading:after{right:-18px}.stars{gap:5px;bottom:-14px;padding:0 8px}.star{width:27px;height:27px}.play-area{flex-direction:column;gap:10px;padding-top:5px}.board{flex:1;min-height:290px;border-radius:28px;padding:9px 10px 11px;gap:10px;box-shadow:0 5px 0 #cfbd82,0 8px 12px #23572535}.board-top{min-height:24px;padding:0 2px}.challenge{font-size:15px}.difficulty{font-size:13px;padding:5px 8px;gap:4px}.difficulty i{width:6px;height:6px}.targets,.pieces{gap:8px}.target{border-radius:20px;border-width:2px;padding:6px}.tray{border-radius:22px;padding:8px;gap:8px;flex:.9}.piece{border-radius:17px;padding:4px;border-width:2px}.instruction{font-size:14px}.instruction svg{width:17px;height:17px}.side{width:100%;height:75px;flex-shrink:0;display:grid;grid-template-columns:60px minmax(0,1fr) 104px;gap:8px;position:relative;padding:0 3px}.mascot{grid-column:1;grid-row:1;width:70px;height:75px;max-height:none;z-index:1}.speech{grid-column:2;grid-row:1;min-height:48px;padding:10px 8px;border-width:2px;transform:none;border-radius:22px;box-shadow:0 3px 0 #1486c45c}.speech p{font-size:17px}.speech:after{width:12px;height:12px;bottom:auto;left:-8px;top:18px;transform:rotate(45deg);border-width:2px}.help{grid-column:3;grid-row:1;font-size:20px;padding:9px 9px;gap:4px;border-width:3px;box-shadow:0 4px 0 #680aab}.help svg{width:25px;height:25px}.restart{position:absolute;bottom:-6px;right:14px;font-size:12px;padding:2px 7px;box-shadow:none;margin:0;background:transparent;color:#124f50}.check{width:22px;height:22px;font-size:17px;bottom:4px;right:4px}footer{font-size:15px;padding:7px 4px;border-top-width:4px}.round-toast{border-radius:24px}.toast-card{padding:16px}.toast-card .big-star{width:55px;height:55px}.toast-card strong{font-size:29px}.toast-card p{font-size:18px}.drag-ghost{width:110px;height:110px}.board[data-count="5"] .targets,.board[data-count="5"] .pieces{gap:5px}.board[data-count="5"] .target{padding:3px;border-radius:14px}.board[data-count="5"] .piece{padding:2px;border-radius:12px}.board[data-count="5"] .tray{padding:6px}.board[data-count="5"] .instruction{font-size:13px}}
+@media(max-width:760px){.board[data-count="4"] .targets,.board[data-count="4"] .pieces{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.board[data-count="5"] .targets,.board[data-count="5"] .pieces{grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}.board[data-count="5"] .target,.board[data-count="5"] .piece{grid-column:span 2}.board[data-count="5"] .target:nth-child(4),.board[data-count="5"] .piece:nth-child(4){grid-column:2/span 2}.board[data-count="5"] .target:nth-child(5),.board[data-count="5"] .piece:nth-child(5){grid-column:4/span 2}.board[data-count="4"] .figure,.board[data-count="5"] .figure{max-height:105px}.board[data-count="4"] .target,.board[data-count="5"] .target{padding:3px}.board[data-count="4"] .piece,.board[data-count="5"] .piece{padding:2px}.board[data-count="4"] .tray,.board[data-count="5"] .tray{flex:1}.board[data-count="4"] .instruction,.board[data-count="5"] .instruction{font-size:13px}}
+@media(max-width:390px){.brand{font-size:18px}.brand svg{width:34px}.nav a{font-size:13px;padding:8px}.heading h1{font-size:25px}.speech p{font-size:15px}.side{grid-template-columns:53px minmax(0,1fr) 98px;gap:6px}.mascot{width:62px}.help{font-size:18px}.difficulty{font-size:12px}.challenge{font-size:14px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.confetti{display:none}}
+.target .figure{transform:rotate(var(--turn,0deg))}
+</style>
+</head>
+<body>
+<!-- Todas as ilustrações estão incluídas neste ficheiro. Não necessita de Internet. -->
+<svg class="defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<linearGradient id="orange" x2=".8" y2="1"><stop stop-color="#ffd765"/><stop offset=".5" stop-color="#f5a318"/><stop offset="1" stop-color="#cf710c"/></linearGradient>
+<linearGradient id="gold" x2=".7" y2="1"><stop stop-color="#fff45c"/><stop offset=".5" stop-color="#ffcd15"/><stop offset="1" stop-color="#f8a510"/></linearGradient>
+<linearGradient id="red" x2=".4" y2="1"><stop stop-color="#ff7351"/><stop offset=".5" stop-color="#ff3823"/><stop offset="1" stop-color="#cf1a17"/></linearGradient>
+<linearGradient id="purple" x2=".6" y2="1"><stop stop-color="#e888ff"/><stop offset=".5" stop-color="#c53ee3"/><stop offset="1" stop-color="#8f20bd"/></linearGradient>
+<linearGradient id="green" x2=".7" y2="1"><stop stop-color="#b2ef68"/><stop offset=".5" stop-color="#72cd3f"/><stop offset="1" stop-color="#36a53c"/></linearGradient>
+<linearGradient id="aqua" x2=".7" y2="1"><stop stop-color="#b6f4ff"/><stop offset=".5" stop-color="#5bd3f8"/><stop offset="1" stop-color="#1c9fdd"/></linearGradient>
+<linearGradient id="pink" x2=".7" y2="1"><stop stop-color="#ffb3d9"/><stop offset=".5" stop-color="#ff73b3"/><stop offset="1" stop-color="#e43e84"/></linearGradient>
+<linearGradient id="cream" x2=".7" y2="1"><stop stop-color="#fffce4"/><stop offset="1" stop-color="#ffe49d"/></linearGradient>
+<linearGradient id="tyre" x2=".8" y2="1"><stop stop-color="#617486"/><stop offset="1" stop-color="#243345"/></linearGradient>
+<radialGradient id="owl-face" cx=".4" cy=".3"><stop stop-color="#fffef0"/><stop offset="1" stop-color="#ffe4a4"/></radialGradient>
+<filter id="silhouette" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .035 0 0 0 0 .16 0 0 0 0 .34 0 0 0 1 0"/></filter>
+<symbol id="star-shape" viewBox="0 0 100 100"><path d="M50 6 Q53 4 56 12 L65 31 87 34 Q96 35 90 43 L74 59 77 82 Q79 92 70 88 L50 78 29 88 Q20 92 22 82 L26 59 9 43 Q3 35 13 34 L35 31 45 12 Q48 5 50 6Z" fill="currentColor" stroke="#e2910c" stroke-width="4" stroke-linejoin="round"/><path d="M49 16 39 38 17 41" fill="none" stroke="#fff8b4" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="hand" viewBox="0 0 60 60"><path d="M18 30V10c0-7 9-7 9 0v15-6c0-6 8-6 8 0v9-6c0-6 8-6 8 0v9-5c0-5 8-5 8 0v13c0 10-8 17-19 17-9 0-12-5-17-10L7 36c-5-6 1-11 6-7l5 4Z" fill="white" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+<symbol id="car" viewBox="0 0 240 210">
+<path d="M22 124 34 96Q45 83 61 82L76 52Q86 29 121 29H145Q165 31 178 57L191 87Q217 95 218 119L221 153Q220 165 203 165H30Q16 165 17 151Z" fill="url(#red)" stroke="#a82c1f" stroke-width="5"/>
+<path d="M68 87 82 57Q90 43 115 43v44Z M129 43H143Q155 43 165 61L177 87h-48Z" fill="url(#aqua)" stroke="#bd2d1b" stroke-width="4" stroke-linejoin="round"/>
+<path d="m88 72 17-19M138 77l17-18" stroke="#d9faff" stroke-width="8" stroke-linecap="round" opacity=".8"/><path d="M29 120Q28 99 43 101q14 3 7 21-7 14-19 6M204 101q13 4 10 26-19 3-20-11 0-12 10-15Z" fill="url(#gold)" stroke="#b5480b" stroke-width="3"/>
+<path d="M59 91q-19 4-25 11" fill="none" stroke="#ffb28f" stroke-width="5" stroke-linecap="round"/><path d="M126 107h15" stroke="#a7211b" stroke-width="5" stroke-linecap="round"/>
+<circle cx="66" cy="159" r="31" fill="url(#tyre)" stroke="#152a3e" stroke-width="5"/><circle cx="66" cy="159" r="17" fill="#cbdce5" stroke="#879aaa" stroke-width="3"/><circle cx="179" cy="159" r="31" fill="url(#tyre)" stroke="#152a3e" stroke-width="5"/><circle cx="179" cy="159" r="17" fill="#cbdce5" stroke="#879aaa" stroke-width="3"/>
+</symbol>
+<symbol id="butterfly" viewBox="0 0 240 210">
+<path d="M110 72q-8-40-27-51M131 72q7-42 28-51" fill="none" stroke="#57216d" stroke-width="6" stroke-linecap="round"/><circle cx="81" cy="20" r="9" fill="url(#purple)" stroke="#702289" stroke-width="3"/><circle cx="161" cy="20" r="9" fill="url(#purple)" stroke="#702289" stroke-width="3"/>
+<path d="M113 85C62-19 1 52 18 103q8 24 35 28C10 168 44 212 87 188q29-15 33-49 8 39 36 51 44 22 65-16 16-28-19-44 36-11 26-53-18-66-72-34-22 15-30 43Z" fill="url(#purple)" stroke="#77208b" stroke-width="5"/>
+<path d="M102 118Q49 65 32 100q-10 30 63 43M140 120q53-56 69-19 10 28-62 41" fill="url(#pink)" stroke="#db4d97" stroke-width="2"/>
+<g fill="#ffeb30"><circle cx="57" cy="69" r="14"/><circle cx="186" cy="68" r="14"/><circle cx="66" cy="166" r="12"/><circle cx="179" cy="165" r="12"/></g>
+<ellipse cx="122" cy="140" rx="20" ry="50" fill="url(#purple)" stroke="#732184" stroke-width="4"/><path d="M105 129q17 9 34 0m-33 21q17 9 31 0m-25 19q11 6 20 0" fill="none" stroke="#9521ac" stroke-width="3"/>
+<circle cx="122" cy="86" r="28" fill="url(#gold)" stroke="#bb7c21" stroke-width="4"/><ellipse cx="111" cy="82" rx="4" ry="6" fill="#2a2330"/><ellipse cx="132" cy="82" rx="4" ry="6" fill="#2a2330"/><path d="M112 95q10 12 20-1" fill="none" stroke="#5c361b" stroke-width="3" stroke-linecap="round"/><path d="M27 82q8-27 33-28" stroke="#f4b8ff" stroke-width="5" fill="none" stroke-linecap="round"/>
+</symbol>
+<symbol id="duck" viewBox="0 0 240 210">
+<path d="M99 96C63 54 98 14 137 21q47 5 44 51 27-1 28 13 0 18-34 25 15 14 12 36-6 40-64 43-63 4-84-28-15-22-12-43-17-33-3-37 3 23 33 28 26 1 42-13Z" fill="url(#gold)" stroke="#c28b0b" stroke-width="5" stroke-linejoin="round"/>
+<path d="M174 71q11 7 28 2 15-6 15 7-2 24-43 28l-9-17Z" fill="url(#orange)" stroke="#cb6410" stroke-width="4"/><path d="M176 91q21 2 31-7" stroke="#df6c0c" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M87 126q54-22 59 3 8 31-32 39-35 7-47-15" fill="#ffce23" stroke="#e6a10a" stroke-width="4" stroke-linecap="round"/><path d="M88 131q20-8 38-5M101 31q21-13 40-2" fill="none" stroke="#fff690" stroke-width="5" stroke-linecap="round"/><ellipse cx="148" cy="60" rx="9" ry="12" fill="#242731"/><ellipse cx="145" cy="56" rx="3" ry="4" fill="white"/><ellipse cx="140" cy="83" rx="12" ry="9" fill="#ff9998"/>
+</symbol>
+<symbol id="flower" viewBox="0 0 240 210">
+<path d="M120 102v88" stroke="#287b3b" stroke-width="14" stroke-linecap="round"/><path d="M116 168q-47 7-51-30 37-4 52 17M125 179q49-2 50-38-36 0-49 24" fill="url(#green)" stroke="#2d943e" stroke-width="4"/>
+<path d="M96 48C75 7 126-4 139 30c42-19 60 27 28 46 41 27 9 64-21 48-10 44-59 30-54-6-44 10-58-39-22-55-28-28 5-59 26-15Z" fill="url(#pink)" stroke="#c93c87" stroke-width="5" stroke-linejoin="round"/>
+<circle cx="120" cy="78" r="29" fill="url(#gold)" stroke="#d89b13" stroke-width="4"/><ellipse cx="109" cy="75" rx="4" ry="5" fill="#443633"/><ellipse cx="131" cy="75" rx="4" ry="5" fill="#443633"/><path d="M111 87q10 10 19-1" fill="none" stroke="#8e521e" stroke-width="3" stroke-linecap="round"/><path d="M88 28q9-8 15 3" fill="none" stroke="#ffd2eb" stroke-width="5" stroke-linecap="round"/>
+</symbol>
+<symbol id="fish" viewBox="0 0 240 210">
+<path d="M87 72q17-52 48-29l19 26M93 139q24 49 54 8" fill="url(#gold)" stroke="#d98410" stroke-width="4"/><path d="M75 98 28 62q-12-7-12 8 15 35 0 69-2 18 13 10l48-32" fill="url(#orange)" stroke="#c87411" stroke-width="5" stroke-linejoin="round"/>
+<path d="M63 105q20-54 77-46 51 2 79 45-25 45-80 47-55 2-76-46Z" fill="url(#orange)" stroke="#c87411" stroke-width="5"/><path d="M105 66q-14 37 3 78M130 63q-16 41 2 84" fill="none" stroke="#ffea70" stroke-width="14"/><path d="M128 117q26-37 38-11-5 23-35 24" fill="url(#gold)" stroke="#d98410" stroke-width="3"/>
+<ellipse cx="175" cy="93" rx="11" ry="14" fill="white"/><ellipse cx="178" cy="94" rx="5" ry="8" fill="#193d58"/><path d="m211 112-8 1" stroke="#9c5810" stroke-width="4" stroke-linecap="round"/><path d="M77 94q9-14 16-15" stroke="#ffe1a0" stroke-width="4" stroke-linecap="round"/>
+</symbol>
+<symbol id="apple" viewBox="0 0 240 210">
+<path d="M121 55q-5-28 10-39" fill="none" stroke="#845021" stroke-width="10" stroke-linecap="round"/><path d="M130 39q19-37 53-20-3 32-45 29" fill="url(#green)" stroke="#389a38" stroke-width="4"/>
+<path d="M120 62C38 10 23 101 55 155q23 44 65 26 39 17 63-23 40-68-2-100-28-22-61 4Z" fill="url(#red)" stroke="#b72c2a" stroke-width="5"/><path d="M65 82q7-24 27-20" fill="none" stroke="#ffc2a7" stroke-width="9" stroke-linecap="round"/><ellipse cx="97" cy="120" rx="6" ry="8" fill="#3f2935"/><ellipse cx="146" cy="120" rx="6" ry="8" fill="#3f2935"/><path d="M110 137q12 12 24 0" stroke="#853039" stroke-width="4" stroke-linecap="round" fill="none"/><g fill="#ff9996"><ellipse cx="82" cy="137" rx="11" ry="7"/><ellipse cx="161" cy="137" rx="11" ry="7"/></g>
+</symbol>
+<symbol id="boat" viewBox="0 0 240 210">
+<path d="M120 25v121" stroke="#935326" stroke-width="8" stroke-linecap="round"/><path d="M110 38 38 128h72Z" fill="url(#aqua)" stroke="#167aaf" stroke-width="4" stroke-linejoin="round"/><path d="m131 54 66 73h-66Z" fill="url(#gold)" stroke="#db9414" stroke-width="4" stroke-linejoin="round"/><path d="m124 24 35 9-35 12" fill="url(#red)" stroke="#b53325" stroke-width="3"/>
+<path d="M25 143h192q-14 44-50 47H74q-31-3-49-47Z" fill="url(#red)" stroke="#b82b25" stroke-width="5" stroke-linejoin="round"/><path d="M35 151h168" stroke="#ff9d6b" stroke-width="6" stroke-linecap="round"/><g fill="url(#gold)" stroke="#ba7317" stroke-width="3"><circle cx="81" cy="166" r="10"/><circle cx="120" cy="166" r="10"/><circle cx="159" cy="166" r="10"/></g><path d="m58 115 42-53" stroke="#d2f6ff" stroke-width="6" stroke-linecap="round"/>
+</symbol>
+<symbol id="rabbit" viewBox="0 0 240 210">
+<path d="M85 85C51-2 105-11 112 66c8-77 62-71 39 19 28 21 28 65 6 79 43 2 33 26 2 25H81c-37 0-44-27-12-29-28-25-12-63 16-75Z" fill="url(#cream)" stroke="#c59c6e" stroke-width="5"/>
+<path d="M87 29q-9 12 10 44M141 28q10 7-5 45" stroke="#f2a5b5" stroke-width="12" stroke-linecap="round"/><ellipse cx="98" cy="112" rx="6" ry="9" fill="#3f3444"/><ellipse cx="143" cy="112" rx="6" ry="9" fill="#3f3444"/><path d="M111 128q10-9 20 0l-10 11Z" fill="#ec87a0"/><path d="M121 139q-10 13-20 3m20-3q11 13 21 3" fill="none" stroke="#956051" stroke-width="3" stroke-linecap="round"/><ellipse cx="121" cy="162" rx="17" ry="20" fill="#ffe7c5"/><g fill="#ffc3c5"><ellipse cx="82" cy="133" rx="12" ry="8"/><ellipse cx="158" cy="133" rx="12" ry="8"/></g>
+</symbol>
+<symbol id="turtle" viewBox="0 0 240 210">
+<path d="m57 128-9 31q3 17 25 6l14-21m58-7 11 27q23 13 27-2l-5-27M40 122 20 111q-11 17 20 23" fill="url(#green)" stroke="#3a8e38" stroke-width="5" stroke-linejoin="round"/>
+<path d="M153 108q14-52 48-35 25 16 12 42-8 19-38 16" fill="url(#green)" stroke="#3a8e38" stroke-width="5"/><path d="M40 132C29 29 163 14 176 130Z" fill="url(#green)" stroke="#2f7e39" stroke-width="5"/><path d="m101 64 25 16-7 31H85L75 83Z" fill="#5bb43a" stroke="#2d8b3b" stroke-width="4"/><path d="m47 91 28-8m44 28 26 20M86 111l-19 20m59-51 27-6M101 64l3-18" fill="none" stroke="#2f8d3b" stroke-width="4"/><path d="M38 132h137" stroke="#9edc4b" stroke-width="12" stroke-linecap="round"/><path d="M38 138h137" stroke="#3a8e38" stroke-width="4" stroke-linecap="round"/><ellipse cx="200" cy="86" rx="5" ry="7" fill="#263a32"/><path d="M207 107q-10 8-17 0" fill="none" stroke="#3a6d31" stroke-width="3" stroke-linecap="round"/><path d="M64 75q9-12 20-15" fill="none" stroke="#ddf8a1" stroke-width="5" stroke-linecap="round"/>
+</symbol>
+<symbol id="cat" viewBox="0 0 240 210">
+<path d="M166 158q48 3 35-47-8-27 7-36 18 1 13 21 30 82-38 88H80q-29-1-24-18 8-13 27-7L81 127C42 100 54 67 61 32l41 21q19-6 36 0l40-21q12 42-2 67-9 17-22 26Z" fill="url(#orange)" stroke="#b87525" stroke-width="5" stroke-linejoin="round"/>
+<path d="m68 46 24 15-24 19m99-34-24 16 24 17" fill="#ef9b93"/><path d="M105 55v18m22-18-2 18" stroke="#bf7b21" stroke-width="6" stroke-linecap="round"/><ellipse cx="93" cy="94" rx="7" ry="9" fill="#3d3441"/><ellipse cx="145" cy="94" rx="7" ry="9" fill="#3d3441"/><path d="m110 108 18 0-9 9Z" fill="#a75659"/><path d="M119 117q-9 10-18 3m18-3q9 10 18 3" fill="none" stroke="#804c32" stroke-width="3" stroke-linecap="round"/><path d="m79 111-26-5m26 15-29 4m106-14 29-5m-29 16 29 3" stroke="#a46529" stroke-width="3" stroke-linecap="round"/><ellipse cx="120" cy="155" rx="20" ry="27" fill="#ffe2a0"/>
+</symbol>
+<symbol id="bird" viewBox="0 0 240 210">
+<path d="m107 165-7 22m30-22 6 22" stroke="#c88224" stroke-width="7" stroke-linecap="round"/><path d="M75 109 27 84q-15-4-6 13l18 26-17 4q-6 16 46 17 12 28 56 26 70-6 63-68-3-20-14-31 6-34-24-38-31-5-40 24-32 5-34 52Z" fill="url(#aqua)" stroke="#277ba9" stroke-width="5" stroke-linejoin="round"/>
+<path d="m177 76 37 13-31 15" fill="url(#gold)" stroke="#d08e15" stroke-width="4" stroke-linejoin="round"/><path d="M133 97q-46-14-48 15 7 28 47 27" fill="#3ab8e9" stroke="#228dbd" stroke-width="4" stroke-linecap="round"/><ellipse cx="156" cy="68" rx="6" ry="8" fill="#223d52"/><circle cx="154" cy="65" r="2" fill="white"/><ellipse cx="158" cy="91" rx="9" ry="6" fill="#ffa5b0"/><path d="M120 50q8-12 20-11" stroke="#d4faff" stroke-width="5" stroke-linecap="round" fill="none"/>
+</symbol>
+<symbol id="plane" viewBox="0 0 240 210">
+<path d="m95 98-23-70q-3-8 9-7l19 3 56 70 41 1q27 1 30 18-4 17-29 16h-43l-56 62-23 2q-8 0-5-8l23-59-48-4-21 23H9l13-33L10 79h16l24 20Z" fill="url(#aqua)" stroke="#237da9" stroke-width="5" stroke-linejoin="round"/><path d="m102 96-17-60 9 2 45 57M103 132l-18 48 9-1 46-47" fill="#ffdc32" stroke="#e5a71b" stroke-width="3" stroke-linejoin="round"/><path d="M196 100q18 4 21 13h-28v-13Z" fill="#165c8f"/><g fill="#226e9b"><circle cx="159" cy="112" r="5"/><circle cx="139" cy="112" r="5"/><circle cx="119" cy="112" r="5"/></g><path d="M58 107h33" stroke="#d9fbff" stroke-width="5" stroke-linecap="round"/>
+</symbol>
+<symbol id="bus" viewBox="0 0 240 210">
+<path d="M29 61q0-23 23-23h132q27 0 29 25l7 87q0 15-16 15H38q-17 0-17-17Z" fill="url(#gold)" stroke="#c88b13" stroke-width="5"/>
+<path d="M41 55h31v44H37Zm43 0h31v44H84Zm43 0h31v44h-31Zm43 0h19q12 0 13 14l2 30h-34Z" fill="url(#aqua)" stroke="#bc8619" stroke-width="3" stroke-linejoin="round"/><path d="M33 115h175" stroke="#f39718" stroke-width="5"/><path d="M127 108v47m33-48v47" stroke="#db9b15" stroke-width="3"/><circle cx="64" cy="160" r="26" fill="url(#tyre)" stroke="#203243" stroke-width="5"/><circle cx="64" cy="160" r="13" fill="#dbe4e8" stroke="#8fa3af" stroke-width="3"/><circle cx="178" cy="160" r="26" fill="url(#tyre)" stroke="#203243" stroke-width="5"/><circle cx="178" cy="160" r="13" fill="#dbe4e8" stroke="#8fa3af" stroke-width="3"/><path d="M32 132h13m152 0h13" stroke="#fff6ab" stroke-width="8" stroke-linecap="round"/><path d="M51 44h125" stroke="#fff6b0" stroke-width="4" stroke-linecap="round"/>
+</symbol>
+<symbol id="ladybird" viewBox="0 0 240 210">
+<path d="m81 92-30-18m25 43-31 4m36 21-24 26m103-76 29-17m-25 42 31 4m-36 21 24 26M108 53 94 26m36 27 14-27" fill="none" stroke="#354052" stroke-width="8" stroke-linecap="round"/>
+<ellipse cx="119" cy="67" rx="37" ry="34" fill="url(#tyre)" stroke="#202e42" stroke-width="5"/><ellipse cx="120" cy="127" rx="64" ry="64" fill="url(#red)" stroke="#a82b2e" stroke-width="5"/><path d="M120 68v121" stroke="#782d37" stroke-width="5"/><g fill="#303849"><circle cx="88" cy="104" r="13"/><circle cx="150" cy="104" r="13"/><circle cx="83" cy="143" r="11"/><circle cx="157" cy="143" r="11"/><circle cx="100" cy="174" r="9"/><circle cx="140" cy="174" r="9"/></g><g fill="white"><ellipse cx="105" cy="60" rx="10" ry="12"/><ellipse cx="133" cy="60" rx="10" ry="12"/></g><g fill="#18283c"><circle cx="108" cy="61" r="5"/><circle cx="130" cy="61" r="5"/></g><path d="M72 94q7-13 16-14" stroke="#ffa290" stroke-width="5" stroke-linecap="round" fill="none"/>
+</symbol>
+<symbol id="pear" viewBox="0 0 240 210">
+<path d="M121 46q-2-23 11-32" stroke="#85502a" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M129 35q17-26 42-13-2 28-34 23" fill="url(#green)" stroke="#3c913b" stroke-width="4"/>
+<path d="M121 43q25 0 31 37 3 19 23 44 28 41-6 62-20 14-49 9-32 5-53-12-28-22 0-60 24-28 27-52 4-29 27-28Z" fill="url(#green)" stroke="#7ba32b" stroke-width="5"/><path d="M106 63q-8 5-10 25M80 137l-7 17" fill="none" stroke="#eafaaf" stroke-width="7" stroke-linecap="round"/><g fill="#3c4a2c"><ellipse cx="99" cy="133" rx="6" ry="8"/><ellipse cx="144" cy="133" rx="6" ry="8"/></g><path d="M110 150q11 13 23 0" stroke="#6e7c2c" stroke-width="4" fill="none" stroke-linecap="round"/><g fill="#e7b16a"><ellipse cx="83" cy="150" rx="11" ry="7"/><ellipse cx="158" cy="150" rx="11" ry="7"/></g>
+</symbol>
+<symbol id="train" viewBox="0 0 240 210">
+<path d="M140 42h54v87h20v29H29v-36h18V91h91Z" fill="url(#red)" stroke="#aa332c" stroke-width="5" stroke-linejoin="round"/><path d="M133 34h68v17h-68Z" fill="url(#gold)" stroke="#c78b12" stroke-width="4" stroke-linejoin="round"/><path d="M151 61h30v34h-30Z" fill="url(#aqua)" stroke="#b63225" stroke-width="3"/>
+<path d="M54 69h30v24H54Z" fill="url(#gold)" stroke="#c88d1a" stroke-width="4"/><path d="M49 58h40v14H49Z" fill="url(#gold)" stroke="#c88d1a" stroke-width="4" stroke-linejoin="round"/><path d="M37 121h98V96H44Z" fill="url(#aqua)" stroke="#2485b6" stroke-width="4"/><path d="m27 143-14 23h34" fill="url(#gold)" stroke="#c88d1a" stroke-width="4" stroke-linejoin="round"/>
+<g fill="url(#tyre)" stroke="#24384d" stroke-width="4"><circle cx="67" cy="158" r="23"/><circle cx="120" cy="158" r="23"/><circle cx="176" cy="157" r="28"/></g><g fill="#d4e2e8" stroke="#839cad" stroke-width="3"><circle cx="67" cy="158" r="11"/><circle cx="120" cy="158" r="11"/><circle cx="176" cy="157" r="14"/></g><path d="m67 158 53 0 56-1" stroke="#f4cb3c" stroke-width="6" stroke-linecap="round"/><path d="M54 102h67" stroke="#c4f3ff" stroke-width="4" stroke-linecap="round"/>
+</symbol>
+<symbol id="dog" viewBox="0 0 240 210">
+<path d="M162 159q39 5 39-28-1-14 11-15 15 6 6 30-9 35-49 35H76q-30 0-25-16 5-12 26-8l4-33q-25-10-25-46 1-33 34-43 27-10 55 2 35 8 37 43 2 29-26 45Z" fill="url(#orange)" stroke="#a96728" stroke-width="5" stroke-linejoin="round"/>
+<path d="M83 38C43 19 32 65 47 96q13 22 28 1 17-30 8-59Zm65 0c34-20 56 18 44 49q-12 29-29 10-15-27-15-59Z" fill="#a86737" stroke="#85502c" stroke-width="5"/>
+<ellipse cx="119" cy="151" rx="23" ry="31" fill="#ffe1a3"/><ellipse cx="96" cy="77" rx="6" ry="8" fill="#382e35"/><ellipse cx="144" cy="77" rx="6" ry="8" fill="#382e35"/>
+<ellipse cx="119" cy="103" rx="30" ry="24" fill="url(#cream)"/><path d="M107 95q12-9 24 0-2 14-12 13-10 0-12-13Z" fill="#493431"/><path d="M119 107v9m0-1q-10 11-18 3m18-3q10 11 18 3" fill="none" stroke="#986345" stroke-width="3" stroke-linecap="round"/><path d="M119 121q-2 20 10 19 12-4 6-19" fill="#f58aa1" stroke="#c85e76" stroke-width="3"/><path d="M90 131q30 13 59-1" stroke="#ea4a3a" stroke-width="8" fill="none"/><circle cx="121" cy="139" r="7" fill="url(#gold)" stroke="#c18d14" stroke-width="2"/>
+</symbol>
+<symbol id="bear" viewBox="0 0 240 210">
+<g fill="url(#orange)" stroke="#9e672f" stroke-width="5"><circle cx="76" cy="46" r="24"/><circle cx="164" cy="46" r="24"/><ellipse cx="120" cy="136" rx="54" ry="52"/><ellipse cx="64" cy="132" rx="20" ry="33" transform="rotate(29 64 132)"/><ellipse cx="176" cy="132" rx="20" ry="33" transform="rotate(-29 176 132)"/><ellipse cx="83" cy="180" rx="28" ry="18"/><ellipse cx="157" cy="180" rx="28" ry="18"/></g>
+<g fill="#ffe0a4"><circle cx="76" cy="46" r="13"/><circle cx="164" cy="46" r="13"/><ellipse cx="120" cy="143" rx="32" ry="36"/><ellipse cx="83" cy="180" rx="16" ry="10"/><ellipse cx="157" cy="180" rx="16" ry="10"/></g><ellipse cx="120" cy="77" rx="58" ry="49" fill="url(#orange)" stroke="#9e672f" stroke-width="5"/>
+<ellipse cx="98" cy="69" rx="6" ry="8" fill="#3c3030"/><ellipse cx="143" cy="69" rx="6" ry="8" fill="#3c3030"/><ellipse cx="120" cy="93" rx="28" ry="22" fill="url(#cream)"/><path d="M109 84q11-8 22 0-1 12-11 12-9 0-11-12Z" fill="#5b3b29"/><path d="M120 96v8m-13-2q13 13 26 0" stroke="#996447" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M83 51q8-10 17-10" stroke="#ffde94" stroke-width="5" stroke-linecap="round" fill="none"/>
+</symbol>
+<symbol id="hen" viewBox="0 0 240 210">
+<path d="m115 166-4 24m29-24 3 24m-41 0h19m15 0h18" stroke="#cc8c21" stroke-width="6" stroke-linecap="round"/>
+<path d="M139 52q-13-26 3-30 13-2 14 12 9-20 20-9 8 8-1 21 16-1 14 13Z" fill="url(#red)" stroke="#b93c2e" stroke-width="4"/><path d="M69 122Q20 112 29 66q18 0 25 24-2-42 15-37 17 8 11 43 18-14 36-17 0-35 32-36 39-1 42 35 4 17-15 30 6 44-29 57-50 22-77-11Z" fill="url(#cream)" stroke="#c3924a" stroke-width="5" stroke-linejoin="round"/>
+<path d="m183 71 29 10-26 14" fill="url(#gold)" stroke="#cd9417" stroke-width="4" stroke-linejoin="round"/><path d="M176 98q15 27 2 29-18-3-14-23" fill="url(#red)" stroke="#b93c2e" stroke-width="3"/><path d="M89 117q30-32 48-2 10 21-19 29-22 4-32-9" fill="#fbd589" stroke="#dbac5e" stroke-width="4" stroke-linecap="round"/><ellipse cx="163" cy="70" rx="6" ry="8" fill="#3d342c"/><circle cx="161" cy="67" r="2" fill="white"/><ellipse cx="159" cy="88" rx="9" ry="6" fill="#f4aaa4"/>
+</symbol>
+<symbol id="rocket" viewBox="0 0 240 210">
+<path d="M101 151q-12 25 19 46 31-23 19-46" fill="url(#orange)" stroke="#db7612" stroke-width="4" stroke-linejoin="round"/><path d="M114 157q-5 15 6 28 12-14 6-28" fill="#fff180"/>
+<path d="M89 100q-42 18-32 64l36-13m58-51q42 18 32 64l-36-13" fill="url(#red)" stroke="#b93934" stroke-width="5" stroke-linejoin="round"/>
+<path d="M120 14C77 43 74 99 91 154h58c17-55 14-111-29-140Z" fill="url(#aqua)" stroke="#267ba9" stroke-width="5" stroke-linejoin="round"/><path d="M120 14q-21 14-30 37h60q-9-23-30-37Z" fill="url(#red)" stroke="#b93934" stroke-width="4" stroke-linejoin="round"/><path d="M91 140h58v15H91Z" fill="url(#gold)" stroke="#d29319" stroke-width="3"/>
+<circle cx="120" cy="87" r="23" fill="#ffe15c" stroke="#ca901b" stroke-width="4"/><circle cx="120" cy="87" r="16" fill="#2175ae"/><path d="m112 91 14-16" stroke="#b9f1ff" stroke-width="5" stroke-linecap="round"/><path d="M90 75q-5 25 0 43" fill="none" stroke="#d5faff" stroke-width="5" stroke-linecap="round"/>
+</symbol>
+<symbol id="strawberry" viewBox="0 0 240 210">
+<path d="M120 56C64 17 27 70 59 125q29 52 61 68 31-17 61-68 32-56-5-75-28-14-56 6Z" fill="url(#red)" stroke="#b93138" stroke-width="5"/>
+<path d="M120 61 81 75l11-27-30-7 37-9-4-21 27 20 20-20-2 24 39 7-29 12 10 22Z" fill="url(#green)" stroke="#3d923b" stroke-width="4" stroke-linejoin="round"/>
+<g fill="#ffe29a" stroke="#d39550" stroke-width="1"><ellipse cx="76" cy="93" rx="3" ry="5" transform="rotate(-20 76 93)"/><ellipse cx="101" cy="89" rx="3" ry="5"/><ellipse cx="138" cy="88" rx="3" ry="5"/><ellipse cx="165" cy="93" rx="3" ry="5" transform="rotate(20 165 93)"/><ellipse cx="90" cy="120" rx="3" ry="5"/><ellipse cx="120" cy="115" rx="3" ry="5"/><ellipse cx="150" cy="120" rx="3" ry="5"/><ellipse cx="105" cy="146" rx="3" ry="5"/><ellipse cx="135" cy="146" rx="3" ry="5"/><ellipse cx="120" cy="170" rx="3" ry="5"/></g><path d="M61 82q4-16 17-19" fill="none" stroke="#ffb5a5" stroke-width="6" stroke-linecap="round"/>
+</symbol>
+<symbol id="orange-fruit" viewBox="0 0 240 210">
+<path d="M119 54q-6-23 9-35" fill="none" stroke="#94612c" stroke-width="8" stroke-linecap="round"/><path d="M132 40q15-36 51-21-1 32-41 33Z" fill="url(#green)" stroke="#44983e" stroke-width="4"/>
+<path d="M120 52C26 42 30 184 118 189c91 5 101-145 2-137Z" fill="url(#orange)" stroke="#cb7b14" stroke-width="5"/><path d="M63 99q2-24 28-31" fill="none" stroke="#ffe3a3" stroke-width="8" stroke-linecap="round"/>
+<g fill="#dc8e22"><circle cx="70" cy="145" r="3"/><circle cx="89" cy="163" r="3"/><circle cx="154" cy="161" r="3"/><circle cx="172" cy="136" r="3"/><circle cx="126" cy="176" r="3"/></g><g fill="#4d3729"><ellipse cx="97" cy="117" rx="6" ry="8"/><ellipse cx="144" cy="117" rx="6" ry="8"/></g><path d="M109 139q12 13 25 0" fill="none" stroke="#ab5c24" stroke-width="4" stroke-linecap="round"/><g fill="#f79265"><ellipse cx="82" cy="138" rx="11" ry="7"/><ellipse cx="158" cy="138" rx="11" ry="7"/></g>
+</symbol>
+<symbol id="banana" viewBox="0 0 240 210">
+<path d="M48 39q31 115 139 49l18-26 14 6-4 24C200 165 99 206 49 130 24 92 35 51 37 39Z" fill="url(#gold)" stroke="#c39521" stroke-width="5" stroke-linejoin="round"/><path d="M46 50q28 121 153 52" fill="none" stroke="#fff18a" stroke-width="8" stroke-linecap="round"/><path d="M62 129q50 58 119-8" fill="none" stroke="#e1ad1e" stroke-width="4" stroke-linecap="round"/><path d="m37 40 11-1 1 13-11 1m166 13 8-8 11 6-5 11" fill="#8b6333" stroke="#8b6333" stroke-width="4" stroke-linejoin="round"/>
+<ellipse cx="107" cy="130" rx="5" ry="7" fill="#725324"/><ellipse cx="143" cy="124" rx="5" ry="7" fill="#725324"/><path d="M119 143q12 10 23-3" fill="none" stroke="#a87626" stroke-width="3" stroke-linecap="round"/>
+</symbol>
+<symbol id="umbrella" viewBox="0 0 240 210">
+<path d="M121 22v139q0 30-23 29-23 0-23-22" fill="none" stroke="#5d4f95" stroke-width="10" stroke-linecap="round"/>
+<path d="M20 110Q29 36 120 31q91 4 100 79-25-20-49 0-25-20-51 0-25-20-50 0-25-20-50 0Z" fill="url(#pink)" stroke="#a93c89" stroke-width="5" stroke-linejoin="round"/>
+<path d="M120 32q-44 22-50 78 25-20 50 0Z" fill="url(#purple)" stroke="#9c3c9e" stroke-width="3" stroke-linejoin="round"/><path d="M120 32q44 22 51 78-25-20-51 0Z" fill="url(#aqua)" stroke="#448fc2" stroke-width="3" stroke-linejoin="round"/><path d="M37 83q11-23 35-33" fill="none" stroke="#ffc6e8" stroke-width="6" stroke-linecap="round"/>
+</symbol>
+<symbol id="owl" viewBox="0 0 260 300">
+<g stroke="#b27319" stroke-linejoin="round"><path d="M60 152Q22 117 20 141q0 9 12 25-23-9-21 5 5 35 51 42" fill="url(#orange)" stroke-width="5"/><path d="M202 148q35-21 38 10 22 17 0 48-13 9-29 4" fill="url(#orange)" stroke-width="5"/>
+<path d="M86 265q-24 5-23 17 14 12 28 2 20 10 29-1-5-15-18-17m53 0q-9 14-5 20 12 6 22-2 16 10 28-1 1-12-27-18" fill="url(#orange)" stroke-width="4"/>
+<path d="M62 129C36 195 47 269 127 271c86 0 107-54 75-141Z" fill="url(#orange)" stroke-width="5"/>
+<ellipse cx="128" cy="212" rx="57" ry="53" fill="url(#cream)" stroke-width="3"/><path d="M96 194q10 16 20 0m8 0q10 16 20 0m-54 21q10 16 20 0m8 0q10 16 20 0m7 0q10 16 20 0m-55 21q10 15 20 0m8 0q10 15 20 0" fill="none" stroke="#eeb85e" stroke-width="4" stroke-linecap="round"/>
+<path d="M66 58 42 24q33-1 56 16 39-13 64-1 35-15 59-10-4 19-28 31 34 16 37 58 7 65-88 69C53 197 22 145 41 103q8-29 25-45Z" fill="url(#orange)" stroke-width="5"/>
+<path d="M125 74C67 34 39 99 60 140q19 35 66 12 48 26 75-10 29-47-6-71-31-26-70 3Z" fill="url(#owl-face)" stroke="#e7ae48" stroke-width="3"/>
+<path d="M77 112q4-26 26-23 17 3 20 22m22 1q3-25 22-22 19 2 22 22" fill="none" stroke="#322518" stroke-width="9" stroke-linecap="round"/>
+<path d="M115 125q15-16 29 0l-14 20Z" fill="#ffb716" stroke="#d17b0e" stroke-width="3"/><path d="M114 143q14 22 33 0-4 27-16 28-14-4-17-28Z" fill="#9b461b" stroke="#b86b23" stroke-width="2"/><path d="M121 159q12-12 20 0l-10 9Z" fill="#ff977d" stroke="none"/><g fill="#f7b868" stroke="none"><ellipse cx="77" cy="138" rx="15" ry="9"/><ellipse cx="184" cy="138" rx="15" ry="9"/></g>
+<path d="M56 60q13-15 35-12m92 0 24-9" stroke="#ffe298" stroke-width="5" stroke-linecap="round" fill="none"/>
+<path d="M165 198q40-13 44 6 1 20-39 25" fill="url(#orange)" stroke-width="4"/>
+</g><g transform="translate(143 171) rotate(-13 40 40)"><use href="#star-shape" width="77" height="77" style="color:#ffdf24"/></g>
+</symbol>
+<symbol id="owl-head" viewBox="20 20 220 185"><use href="#owl" width="260" height="300"/></symbol>
+</defs></svg>
+
+<svg class="scene" viewBox="0 0 1600 920" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#09adf1"/><stop offset=".7" stop-color="#71e3fc"/><stop offset="1" stop-color="#c6f6ff"/></linearGradient><linearGradient id="grass" x2=".2" y2="1"><stop stop-color="#b6ed53"/><stop offset="1" stop-color="#6ccc27"/></linearGradient><linearGradient id="cloud" x2="0" y2="1"><stop stop-color="#fff"/><stop offset=".65" stop-color="#fff"/><stop offset="1" stop-color="#c0f2ff"/></linearGradient><symbol id="cloud-art" viewBox="0 0 260 130"><path d="M39 112C-7 112 1 60 42 65 38 19 82 17 100 40 112-12 192-9 197 52c37-9 64 12 53 37-6 27-48 26-71 26Z" fill="url(#cloud)"/></symbol><symbol id="daisy" viewBox="0 0 100 160"><path d="M51 159V57" stroke="#24933e" stroke-width="9"/><path d="M49 137Q5 140 7 104q27-3 42 22m6 16q40-3 42-36-29-1-42 22" fill="#52b93d" stroke="#26953a" stroke-width="3"/><g fill="#fffef0"><ellipse cx="49" cy="31" rx="13" ry="25"/><ellipse cx="27" cy="48" rx="25" ry="13" transform="rotate(20 27 48)"/><ellipse cx="72" cy="47" rx="25" ry="13" transform="rotate(-22 72 47)"/><ellipse cx="33" cy="68" rx="13" ry="23" transform="rotate(28 33 68)"/><ellipse cx="66" cy="67" rx="13" ry="23" transform="rotate(-28 66 67)"/></g><ellipse cx="50" cy="51" rx="16" ry="13" fill="#ffd62e"/></symbol></defs>
+<path fill="url(#sky)" d="M0 0h1600v920H0Z"/><use href="#cloud-art" x="20" y="50" width="290" height="145"/><use href="#cloud-art" x="1305" y="70" width="220" height="115"/><use href="#cloud-art" x="1200" y="205" width="110" height="60"/>
+<g fill="#50c97c"><circle cx="-10" cy="555" r="120"/><circle cx="90" cy="595" r="105"/><circle cx="1570" cy="620" r="128"/></g><g fill="#3fb969"><circle cx="38" cy="617" r="83"/><circle cx="-17" cy="640" r="97"/></g><path d="M0 579q267-90 561 35 260 100 559-3 300-101 480 1v308H0Z" fill="url(#grass)"/><path d="M0 760q250-94 572 12 320 111 615 0 271-77 413-24v172H0Z" fill="#8fda34"/><path d="M0 858q313-80 611 5 407 110 989-26v83H0Z" fill="#71c92b"/>
+<use href="#daisy" x="20" y="685" width="62" height="145"/><use href="#daisy" x="1508" y="757" width="75" height="160"/><use href="#daisy" x="42" y="812" width="78" height="150"/><use href="#daisy" x="1401" y="834" width="58" height="104"/>
+<g fill="#fff04b" stroke="#ffe43d" stroke-width="3"><path d="m71 227 7 15 17 2-12 12 3 17-15-8-15 8 3-17-12-12 17-2Z"/><path d="m1519 205 7 15 17 2-12 12 3 17-15-8-15 8 3-17-12-12 17-2Z"/></g>
+</svg>
+
+<header class="topbar">
+<a class="brand" href="https://www.recreiodigital.pt/" aria-label="Recreio Digital — página inicial"><svg aria-hidden="true"><use href="#owl-head"/></svg><span>Recreio Digital</span></a>
+<nav class="nav" aria-label="Navegação"><a class="back" id="back-link" href="https://www.recreiodigital.pt/pre-escolar/">Voltar aos jogos</a><a class="home" href="https://www.recreiodigital.pt/">Página inicial</a></nav>
+</header>
+<main>
+<section class="heading" aria-labelledby="game-title"><div class="eyebrow">Pré-escolar</div><h1 id="game-title">Puzzle das Sombras</h1><p class="tagline">Encontra a sombra!</p><div class="stars" id="stars" aria-label="0 de 3 pares encontrados"></div></section>
+<div class="play-area">
+<section class="board" id="board" data-count="3" aria-label="Jardim das sombras">
+<div class="board-top"><span class="challenge" id="challenge">Desafio 1 de 40</span><span class="difficulty" id="difficulty"></span></div>
+<div class="targets" id="targets" role="group" aria-label="Sombras para encaixar"></div>
+<div class="tray"><div class="pieces" id="pieces" role="group" aria-label="Figuras para escolher"></div><p class="instruction" id="instruction"><svg aria-hidden="true"><use href="#hand"/></svg>Arrasta ou toca na figura e na sombra.</p></div>
+<div class="round-toast" id="round-toast" hidden><div class="toast-card"><svg class="big-star" aria-hidden="true"><use href="#star-shape"/></svg><strong id="toast-title">Que belo trabalho!</strong><p id="toast-message">Encontraste todas as sombras!</p></div></div>
+</section>
+<aside class="side" aria-label="A tua amiga coruja"><div class="speech"><p id="speech">Tu consegues!</p></div><svg class="mascot" id="mascot" aria-hidden="true"><use href="#owl"/></svg><button class="help" id="help"><svg aria-hidden="true"><use href="#hand"/></svg>Ajuda</button><button class="restart" id="restart">Recomeçar</button></aside>
+</div>
+</main>
+<footer>Feito com ❤️ para aprender e brincar</footer>
+<div class="visually-hidden" id="live" role="status" aria-live="polite" aria-atomic="true"></div>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+<dialog id="restart-dialog" aria-labelledby="restart-title"><svg class="dialog-art" aria-hidden="true"><use href="#owl"/></svg><h2 id="restart-title">Voltar ao início?</h2><p>O jogo começa de novo com 3 peças.</p><div class="dialog-actions"><button id="keep-playing">Continuar a jogar</button><button class="primary" id="confirm-restart">Recomeçar</button></div></dialog>
+<dialog id="finish-dialog" aria-labelledby="finish-title"><svg class="dialog-art" aria-hidden="true"><use href="#owl"/></svg><h2 id="finish-title">Detetive das sombras!</h2><p>Completaste todos os desafios.<br>A coruja está muito feliz contigo!</p><div class="summary" id="summary"></div><div class="dialog-actions"><button id="play-again">Jogar de novo</button><button class="primary" id="more-challenges">Mais desafios</button></div></dialog>
+<script>
+(()=>{
+'use strict';
+const labels={car:'carro',butterfly:'borboleta',duck:'pato',flower:'flor',fish:'peixe',apple:'maçã',boat:'barco',rabbit:'coelho',turtle:'tartaruga',cat:'gato',bird:'pássaro',plane:'avião',bus:'autocarro',ladybird:'joaninha',pear:'pera',train:'comboio',dog:'cão',bear:'urso',hen:'galinha',rocket:'foguetão',strawberry:'morango','orange-fruit':'laranja',banana:'banana',umbrella:'guarda-chuva'};
+// Primeiro aparecem formas muito diferentes. Depois aumentam as peças e a semelhança dos contornos.
+const levels=[
+ ['butterfly','duck','car'],['flower','fish','rabbit'],['apple','boat','cat'],['turtle','plane','pear'],
+ ['car','butterfly','duck','flower'],['rabbit','apple','boat','ladybird'],['fish','cat','plane','pear'],['bird','turtle','bus','flower'],['car','boat','train','rabbit'],['duck','bird','butterfly','apple'],
+ ['car','flower','rabbit','boat','fish'],['butterfly','duck','apple','cat','train'],['turtle','pear','plane','ladybird','bus'],
+ ['duck','bird','rabbit','cat','turtle'],['car','bus','train','boat','plane'],['butterfly','ladybird','bird','duck','fish'],['apple','pear','flower','turtle','rabbit'],['duck','bird','car','bus','train'],
+ // Novos amigos: mantêm-se cinco peças, com maior variedade de contornos.
+ ['dog','bear','hen','flower','boat'],['strawberry','orange-fruit','banana','butterfly','bus'],['umbrella','rocket','car','turtle','fish'],
+ ['dog','cat','rabbit','bear','turtle'],['apple','pear','strawberry','orange-fruit','banana'],['rocket','plane','boat','bus','train'],
+ ['hen','duck','bird','fish','turtle'],['butterfly','ladybird','flower','strawberry','pear'],['umbrella','banana','boat','fish','rocket'],['bear','cat','dog','rabbit','hen'],
+ // Nos últimos doze desafios, as sombras rodam ligeiramente.
+ ['car','bus','train','rocket','umbrella'],['apple','orange-fruit','pear','strawberry','flower'],['duck','hen','bird','butterfly','ladybird'],
+ ['dog','turtle','cat','fish','bear'],['plane','rocket','umbrella','butterfly','bird'],['banana','pear','strawberry','rabbit','flower'],
+ ['hen','duck','bird','rabbit','bear'],['car','bus','train','plane','rocket'],['apple','orange-fruit','pear','strawberry','ladybird'],
+ ['cat','dog','bear','rabbit','bird'],['umbrella','boat','banana','fish','plane'],['hen','duck','bird','butterfly','rocket']
+];
+const $=id=>document.getElementById(id);
+const targets=$('targets'),pieces=$('pieces'),board=$('board'),speech=$('speech'),stars=$('stars');
+const praise=['Muito bem!','Boa descoberta!','És espetacular!','Que boa observação!','Isso mesmo!'];
+let level=0,freePlay=false,freeRound=0,current=[],matched=new Set(),selected=null,busy=false,drag=null,advanceTimer=null,hintTimer=null,feedbackTimer=null,celebrationTimer=null,totalPairs=0,session=0;
+const shuffle=a=>{const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;};
+const figure=id=>'<svg class="figure" viewBox="0 0 240 210" aria-hidden="true"><use href="#'+id+'"/></svg>';
+const say=text=>{speech.textContent=text;$('live').textContent='';requestAnimationFrame(()=>{$('live').textContent=text;});};
+function tier(){return freePlay||level>=13?3:level>=10?2:level>=4?1:0;}
+function setInstruction(text){$('instruction').innerHTML='<svg aria-hidden="true"><use href="#hand"/></svg>'; $('instruction').append(document.createTextNode(text));}
+function cancelTimers(){clearTimeout(advanceTimer);clearTimeout(hintTimer);clearTimeout(feedbackTimer);clearTimeout(celebrationTimer);advanceTimer=hintTimer=feedbackTimer=celebrationTimer=null;}
+function clearHint(){clearTimeout(hintTimer);document.querySelectorAll('.hint').forEach(el=>el.classList.remove('hint'));}
+function renderStars(){stars.innerHTML=current.map((_,i)=>'<svg class="star '+(i<matched.size?'earned':'')+'" aria-hidden="true"><use href="#star-shape"/></svg>').join('');stars.setAttribute('aria-label',matched.size+' de '+current.length+' pares encontrados');}
+function render(){
+ cancelTimers();clearHint();selected=null;matched=new Set();busy=false;$('round-toast').hidden=true;
+ current=freePlay?shuffle(Object.keys(labels)).slice(0,5):[...levels[level]];
+ const count=current.length;board.style.setProperty('--count',count);board.dataset.count=count;
+ const t=tier(),stage=freePlay||level>=28?'Super detetives':['Primeiras sombras','Mais amigos','Olhos atentos','Pequenos detetives'][t];
+ $('challenge').textContent=freePlay?'Mais desafios · '+(freeRound+1):'Desafio '+(level+1)+' de '+levels.length;
+ $('difficulty').innerHTML='<span>'+stage+'</span>'+[0,1,2,3].map(i=>'<i class="'+(i<=t?'on':'')+'" aria-hidden="true"></i>').join('');
+ const targetOrder=level===0&&!freePlay?[...current]:shuffle(current);
+ const pieceOrder=level===0&&!freePlay?['car','butterfly','duck']:shuffle(current);
+ const turn=freePlay||level>=34?18:level>=28?10:0;
+ targets.innerHTML=targetOrder.map((id,i)=>{const angle=turn*(i%2===0?1:-1);return '<button class="target" data-id="'+id+'" style="--turn:'+angle+'deg" aria-label="Sombra '+(i+1)+'" aria-describedby="target-help">'+figure(id)+'</button>';}).join('');
+ pieces.innerHTML=pieceOrder.map(id=>'<button class="piece" data-id="'+id+'" aria-label="Escolher '+labels[id]+'" aria-pressed="false">'+figure(id)+'</button>').join('');
+ renderStars();setInstruction('Arrasta ou toca na figura e na sombra.');
+ say(level===0&&!freePlay?'Tu consegues!':level===4&&!freePlay?'Agora são 4 peças!':level===10&&!freePlay?'Vamos tentar 5 peças?':level===18&&!freePlay?'Novos amigos no jardim!':level===28&&!freePlay?'As sombras rodaram um bocadinho!':level===34&&!freePlay?'Olha com muita atenção!':level===13&&!freePlay?'Olha com atenção!':'Vamos descobrir mais?');
+}
+function select(id){
+ if(busy||matched.has(id))return;clearHint();selected=selected===id?null:id;
+ pieces.querySelectorAll('.piece').forEach(el=>{const active=el.dataset.id===selected;el.classList.toggle('selected',active);el.setAttribute('aria-pressed',String(active));});
+ setInstruction(selected?'Agora toca na sombra da figura.':'Arrasta ou toca na figura e na sombra.');
+ if(selected)say('Onde está esta sombra?');
+}
+function celebrate(){
+ $('mascot').classList.remove('happy');void $('mascot').getBoundingClientRect();$('mascot').classList.add('happy');
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduced)return;
+ const colors=['#ffdb23','#ff76ac','#26d0ef','#a84cf4','#53d58c','#ff9447'];
+ const fragment=document.createDocumentFragment();for(let i=0;i<38;i++){const p=document.createElement('i');p.style.cssText='--x:'+Math.random()*100+'%;--size:'+(7+Math.random()*6)+'px;--color:'+colors[i%colors.length]+';--duration:'+(1.4+Math.random()*.9)+'s;--delay:'+Math.random()*.25+'s;--drift:'+(Math.random()-.5)*200+'px';fragment.appendChild(p);}$('confetti').replaceChildren(fragment);celebrationTimer=setTimeout(()=>$('confetti').replaceChildren(),2900);
+}
+function match(id,target){
+ if(busy||!id||matched.has(id)||!target||target.disabled)return;
+ clearHint();clearTimeout(feedbackTimer);
+ if(id!==target.dataset.id){
+  target.classList.remove('wrong');void target.getBoundingClientRect();target.classList.add('wrong');say('Boa tentativa! Procura outra sombra.');
+  feedbackTimer=setTimeout(()=>{target.classList.remove('wrong');if(!busy)say('Olha para a forma. Tu consegues!');},1800);return;
+ }
+ matched.add(id);totalPairs++;selected=null;
+ const piece=pieces.querySelector('[data-id="'+id+'"]');const hadKeyboardFocus=document.activeElement===target||document.activeElement===piece;
+ piece.classList.add('used');piece.disabled=true;piece.setAttribute('aria-pressed','false');
+ pieces.querySelectorAll('.selected').forEach(el=>{el.classList.remove('selected');el.setAttribute('aria-pressed','false');});
+ target.classList.add('matched');target.disabled=true;target.setAttribute('aria-label',labels[id]+': par encontrado');target.innerHTML=figure(id)+'<span class="check" aria-hidden="true">✓</span>';
+ renderStars();setInstruction('Arrasta ou toca na figura e na sombra.');say(praise[Math.floor(Math.random()*praise.length)]);
+ $('mascot').classList.remove('happy');void $('mascot').getBoundingClientRect();$('mascot').classList.add('happy');
+ if(matched.size===current.length){
+  busy=true;celebrate();const done=!freePlay&&level===levels.length-1;
+  $('toast-title').textContent=done?'Conseguiste!':'Que belo trabalho!';
+  $('toast-message').textContent=!freePlay&&level===3?'A seguir, vamos descobrir 4 peças!':!freePlay&&level===9?'A seguir, vamos descobrir 5 peças!':'Encontraste todas as sombras!';
+  $('round-toast').hidden=false;say('Encontraste todas as sombras!');const roundSession=session;
+  advanceTimer=setTimeout(()=>{if(roundSession!==session)return;if($('restart-dialog').open)return;if(done){$('summary').textContent=totalPairs+' pares encontrados · '+levels.length+' desafios completos';$('finish-dialog').showModal();}else{if(freePlay)freeRound++;else level++;render();if(hadKeyboardFocus)pieces.querySelector('.piece')?.focus();}},2500);
+ }else if(hadKeyboardFocus){pieces.querySelector('.piece:not(:disabled)')?.focus();}
+}
+function help(){
+ if(busy)return;clearHint();const id=selected&&!matched.has(selected)?selected:current.find(id=>!matched.has(id));if(!id)return;
+ const a=pieces.querySelector('[data-id="'+id+'"]'),b=targets.querySelector('[data-id="'+id+'"]');a.classList.add('hint');b.classList.add('hint');say('Estas duas formas são iguais!');
+ hintTimer=setTimeout(()=>{a.classList.remove('hint');b.classList.remove('hint');if(!busy)say('Experimenta. Tu consegues!');},3300);
+}
+function dropTarget(x,y){const el=document.elementFromPoint(x,y);return el?.closest('.target:not(:disabled)')||null;}
+function clearHover(){targets.querySelectorAll('.drag-over').forEach(el=>el.classList.remove('drag-over'));}
+function endDrag(){if(!drag)return;drag.piece.classList.remove('dragging');drag.ghost?.remove();clearHover();try{if(drag.piece.hasPointerCapture(drag.pointerId))drag.piece.releasePointerCapture(drag.pointerId);}catch{}drag=null;}
+pieces.addEventListener('pointerdown',event=>{
+ const piece=event.target.closest('.piece');if(!piece||piece.disabled||busy||event.isPrimary===false||event.button!==0)return;
+ clearHint();drag={piece,id:piece.dataset.id,pointerId:event.pointerId,startX:event.clientX,startY:event.clientY,active:false,ghost:null};piece.setPointerCapture?.(event.pointerId);
+});
+pieces.addEventListener('pointermove',event=>{
+ if(!drag||event.pointerId!==drag.pointerId)return;
+ if(!drag.active&&Math.hypot(event.clientX-drag.startX,event.clientY-drag.startY)>8){
+  drag.active=true;selected=drag.id;pieces.querySelectorAll('.selected').forEach(el=>{el.classList.remove('selected');el.setAttribute('aria-pressed','false');});drag.piece.classList.add('dragging');drag.ghost=document.createElement('div');drag.ghost.className='drag-ghost';drag.ghost.setAttribute('aria-hidden','true');drag.ghost.innerHTML=figure(drag.id);document.body.appendChild(drag.ghost);
+ }
+ if(drag.active){event.preventDefault();drag.ghost.style.left=event.clientX+'px';drag.ghost.style.top=event.clientY+'px';clearHover();const target=dropTarget(event.clientX,event.clientY);if(target)target.classList.add('drag-over');}
+});
+let suppressClickUntil=0;
+pieces.addEventListener('pointerup',event=>{
+ if(!drag||event.pointerId!==drag.pointerId)return;const id=drag.id,active=drag.active;const target=active?dropTarget(event.clientX,event.clientY):null;endDrag();
+ if(active){suppressClickUntil=Date.now()+500;event.preventDefault();selected=null;select(id);if(target)match(id,target);}
+});
+pieces.addEventListener('pointercancel',()=>{endDrag();selected=null;pieces.querySelectorAll('.selected').forEach(el=>{el.classList.remove('selected');el.setAttribute('aria-pressed','false');});setInstruction('Arrasta ou toca na figura e na sombra.');});
+pieces.addEventListener('lostpointercapture',()=>{if(drag)endDrag();});
+pieces.addEventListener('click',event=>{if(Date.now()<suppressClickUntil)return;const piece=event.target.closest('.piece');if(piece)select(piece.dataset.id);});
+targets.addEventListener('click',event=>{const target=event.target.closest('.target');if(!target||busy||target.disabled)return;if(selected)match(selected,target);else{say('Escolhe primeiro uma figura.');pieces.querySelector('.piece:not(:disabled)')?.focus();}});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&selected){selected=null;pieces.querySelectorAll('.selected').forEach(el=>{el.classList.remove('selected');el.setAttribute('aria-pressed','false');});setInstruction('Arrasta ou toca na figura e na sombra.');}});
+$('help').addEventListener('click',help);
+let restartPaused=false;
+$('restart').addEventListener('click',()=>{if($('finish-dialog').open)return;endDrag();restartPaused=busy;clearTimeout(advanceTimer);$('restart-dialog').showModal();});
+function resume(){if(!restartPaused)return;restartPaused=false;advanceTimer=setTimeout(()=>{if(!freePlay&&level===levels.length-1){$('summary').textContent=totalPairs+' pares encontrados · '+levels.length+' desafios completos';$('finish-dialog').showModal();}else{if(freePlay)freeRound++;else level++;render();}},800);}
+$('keep-playing').addEventListener('click',()=>{$('restart-dialog').close();});
+$('restart-dialog').addEventListener('close',resume);
+function newGame(){session++;cancelTimers();endDrag();restartPaused=false;level=0;freePlay=false;freeRound=0;totalPairs=0;$('confetti').replaceChildren();render();}
+$('confirm-restart').addEventListener('click',()=>{restartPaused=false;$('restart-dialog').close();newGame();});
+$('play-again').addEventListener('click',()=>{$('finish-dialog').close();newGame();});
+$('more-challenges').addEventListener('click',()=>{$('finish-dialog').close();session++;freePlay=true;freeRound=0;render();});
+// O parâmetro do portal é validado antes de construir a ligação de regresso.
+const year=new URLSearchParams(location.search).get('ano');const paths={pre:'pre-escolar','1':'1-ano','2':'2-ano','3':'3-ano','4':'4-ano'};
+if(year&&Object.hasOwn(paths,year))$('back-link').href='https://www.recreiodigital.pt/'+paths[year]+'/';
+const targetHelp=document.createElement('p');targetHelp.id='target-help';targetHelp.className='visually-hidden';targetHelp.textContent='Escolhe uma figura e depois esta sombra. Também podes arrastar a figura.';document.body.appendChild(targetHelp);
+render();
+})();
+</script>
+</body>
+</html>
