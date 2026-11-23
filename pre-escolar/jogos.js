@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "Puzzle das Sombras",
+  descricao: "Observa as figuras, encontra as sombras e supera 40 desafios cada vez mais difíceis!",
+  disciplina: "Estudo do Meio",
+  icone: "👤✨",
+  ficheiro: "../jogos/puzzle-das-sombras-no-recreio.html?ano=pre"
+},
+  {
   titulo: "Programa o Robô!",
   descricao: "Ajuda o robô a chegar a casa! Escolhe as setas e descobre o caminho certo.",
   disciplina: "Pensamento Computacional",
