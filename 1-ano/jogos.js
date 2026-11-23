@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Frases no Recreio",
+  descricao: "Lê, copia frases com o teclado e conquista estrelas!",
+  disciplina: "Português",
+  icone: "🪶✨",
+  ficheiro: "../jogos/frases-no-recreio.html?ano=1"
+},
+  {
   titulo: "Programa o Robô!",
   descricao: "Ajuda o robô a chegar a casa! Escolhe as setas e descobre o caminho certo.",
   disciplina: "Pensamento Computacional",
