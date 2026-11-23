@@ -9,6 +9,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "../jogos/pensa-rapido.html?ano=2",
     disciplina: "Matemática"
   },
+  {
+  titulo: "Frases no Recreio",
+  descricao: "Lê, copia frases com o teclado e conquista estrelas!",
+  disciplina: "Português",
+  icone: "🪶✨",
+  ficheiro: "../jogos/frases-no-recreio.html?ano=2"
+},
    {
   titulo: "Geoplano Mágico no Recreio",
   descricao: "Cria figuras geométricas com elásticos coloridos num geoplano interativo!",
