@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "Lupa no Recreio",
+  descricao: "Explora diferentes cenários e descobre animais e objetos escondidos com a tua lupa mágica!",
+  disciplina: "Estudo do Meio",
+  icone: "🧭",
+  ficheiro: "../jogos/lupa-no-recreio.html?ano=pre"
+},
+  {
   titulo: "Puzzle das Sombras",
   descricao: "Observa as figuras, encontra as sombras e supera 40 desafios cada vez mais difíceis!",
   disciplina: "Estudo do Meio",
