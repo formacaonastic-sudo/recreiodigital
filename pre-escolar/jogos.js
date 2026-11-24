@@ -7,6 +7,12 @@ window.JOGOS_DO_ANO = [
     "ficheiro": "jogo-sombras.html"
   },
   {
+  titulo: "Puzzles para os pequenitos",
+  descricao: "Junta as peças e descobre 12 cenários coloridos, com puzzles de 4 a 8 peças!",
+  icone: "🖼️",
+  ficheiro: "../jogos/puzzles-para-os-pequenitos.html?ano=pre"
+},
+  {
   titulo: "Lupa no Recreio",
   descricao: "Explora diferentes cenários e descobre animais e objetos escondidos com a tua lupa mágica!",
   disciplina: "Estudo do Meio",
