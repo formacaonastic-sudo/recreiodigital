@@ -7,6 +7,12 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "Puzzles para os pequenitos",
+  descricao: "Observa, encaixa as peças e completa 36 puzzles de dificuldade crescente!",
+  icone: "🖼️",
+  ficheiro: "../jogos/puzzles-para-os-pequenitos.html?ano=1"
+},
+  {
   titulo: "Puzzle das Sombras",
   descricao: "Observa as figuras, encontra as sombras e supera 40 desafios cada vez mais difíceis!",
   disciplina: "Estudo do Meio",
