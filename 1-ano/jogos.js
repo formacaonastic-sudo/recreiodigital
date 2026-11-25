@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     ficheiro: "livrodasletras.html"
   },
   {
+  titulo: "O Cofre dos Números",
+  descricao: "Abre cofres e aprende a ler números até 100 por ordens e por classes!",
+  disciplina: "Matemática",
+  icone: "🔐",
+  ficheiro: "../jogos/o-cofre-dos-numeros.html?ano=1"
+},
+  {
   titulo: "Puzzles para os pequenitos",
   descricao: "Observa, encaixa as peças e completa 36 puzzles de dificuldade crescente!",
   icone: "🖼️",
