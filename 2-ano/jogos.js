@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Missão Respeito no Recreio",
+  descricao: "Reconhece o cyberbullying, apoia os colegas e aprende a pedir ajuda!",
+  disciplina: "Estudo do Meio",
+  icone: "🤝",
+  ficheiro: "../jogos/missao-respeito-no-recreio.html?ano=2"
+},
+  {
   titulo: "Frases no Recreio",
   descricao: "Lê, copia frases com o teclado e conquista estrelas!",
   disciplina: "Português",
