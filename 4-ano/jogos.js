@@ -7,6 +7,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "O Cofre dos Números",
+  descricao: "Decifra números por ordens e por classes, aventura-te pelos milhões e conquista estrelas!",
+  disciplina: "Matemática",
+  icone: "🔐",
+  ficheiro: "../jogos/o-cofre-dos-numeros.html?ano=4"
+},
+  {
   titulo: "Missão Respeito no Recreio",
   descricao: "Reconhece o cyberbullying, apoia os colegas e aprende a pedir ajuda!",
   disciplina: "Estudo do Meio",
