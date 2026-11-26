@@ -10,6 +10,13 @@ window.JOGOS_DO_ANO = [
     disciplina: "Matemática"
   },
   {
+  titulo: "Pequenas Leituras no Recreio",
+  descricao: "Lê pequenos textos com diferentes casos de leitura e faz a cópia com o teclado. Cada palavra é uma conquista!",
+  disciplina: "Português",
+  icone: "📒",
+  ficheiro: "../jogos/pequenas-leituras-no-recreio.html?ano=2"
+},
+  {
   titulo: "O Cofre dos Números",
   descricao: "Decifra números até 1 000 por ordens e por classes e conquista estrelas!",
   disciplina: "Matemática",
