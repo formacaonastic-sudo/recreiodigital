@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,interactive-widget=resizes-content">
+<meta name="description" content="Pequenas leituras com casos de leitura para o 2.º ano. Lê textos simples e pratica a cópia com o teclado no Recreio Digital.">
+<title>Pequenas Leituras no Recreio · Recreio Digital</title>
+<style>
+:root{--ink:#162b47;--blue:#1756a0;--green:#13764f;--purple:#7046a4;--paper:#fffdf5;--font:"Trebuchet MS",Verdana,Arial,sans-serif;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:var(--font);background:#ffcf45;isolation:isolate}
+button,input,select,textarea{font:inherit}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}button{cursor:pointer;touch-action:manipulation}button:disabled{cursor:default}button,a,select,input{outline-offset:4px}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #ee9e12}button{color:inherit}button svg{width:21px;height:21px;vertical-align:middle;flex-shrink:0}svg{display:block}button:disabled{opacity:.62}
+.app{height:100vh;height:100svh;min-height:610px;display:flex;flex-direction:column}header{flex-shrink:0;background:linear-gradient(115deg,#153e7a,#1e63af);border-bottom:4px solid #ffd568;color:#fff;padding:10px 24px;box-shadow:0 4px 0 #ffffff55}.topbar{max-width:1260px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:18px}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff;font-size:23px;font-weight:bold;white-space:nowrap}.brand-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:14px;background:#fff3c4;border:2px solid #ffda73;font-size:30px;box-shadow:0 3px 0 #102d5a}.nav{display:flex;gap:10px}.nav a{min-height:42px;display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 14px;border:2px solid;border-bottom-width:4px;border-radius:12px;font-size:15px;font-weight:bold;text-decoration:none}.back{background:#ffda5e;color:#332603;border-color:#ffe8a0!important;border-bottom-color:#c18c19!important}.home{color:#164878;background:#edf7ff;border-color:#c8e7ff!important;border-bottom-color:#79b3dc!important}.nav svg{height:21px;width:21px;flex-shrink:0}
+main{width:min(1260px,calc(100% - 40px));margin:0 auto;flex:1;min-height:0;padding:15px 0 13px;display:flex;flex-direction:column;gap:13px}.hero{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-shrink:0;background:#fff;border:2px solid #fff;border-radius:23px;padding:11px 20px;box-shadow:0 4px 0 #c2b4db}.hero-title{display:flex;align-items:center;gap:16px}.book-icon{width:63px;height:63px;border-radius:19px;background:#fff0b3;display:grid;place-items:center;transform:rotate(-5deg);box-shadow:0 4px 0 #d8b353;border:2px solid #fff9e1;font-size:37px;flex-shrink:0}.eyebrow{font-size:14px;font-weight:bold;color:#705295;margin:0 0 3px}.hero h1{font-size:clamp(25px,2.65vw,36px);line-height:1.14;letter-spacing:-1px;margin:0;color:#111}.tagline{font-size:16px;color:#283b54;margin:5px 0 0}.score{display:flex;align-items:center;gap:11px;padding-left:18px;border-left:2px solid #e6e0ee;flex-shrink:0}.score-owl{width:79px;height:75px;overflow:visible}.score-label{display:block;font-size:14px;font-weight:bold;color:#53607b}.score strong{font-size:32px;color:#186246;line-height:1.15}.score-total{font-size:16px;color:#647084}.score-stars{display:flex;gap:2px;color:#e6d9b4;font-size:20px;letter-spacing:2px}.score-stars .earned{color:#d08a00;text-shadow:0 1px 0 #ffe191}.score.happy .score-owl{animation:cheer .7s ease}
+.toolbar{flex-shrink:0;display:grid;grid-template-columns:minmax(180px,.8fr) minmax(220px,1.4fr) auto;align-items:end;gap:14px;padding:0 4px}.field label{display:block;font-size:14px;font-weight:bold;color:#4e3b70;margin:0 0 5px 2px}.select-wrap{position:relative}.select-wrap:after{content:"";width:8px;height:8px;border:solid #5c4380;border-width:0 2px 2px 0;transform:rotate(45deg);position:absolute;right:18px;top:16px;pointer-events:none}select{width:100%;appearance:none;-webkit-appearance:none;min-height:44px;border:2px solid #baa4d4;border-bottom-width:4px;border-radius:12px;padding:8px 37px 8px 13px;background:#fff;color:#25233a;font-size:16px;font-weight:bold;text-overflow:ellipsis;cursor:pointer}.highlight-toggle{height:44px;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:bold;color:#513b70;cursor:pointer;padding:0 5px;white-space:nowrap}.highlight-toggle input{accent-color:#774eaa;width:19px;height:19px;margin:0}
+.workbook{flex:1;min-height:0;display:flex;flex-direction:column;border:3px solid #41638d;border-bottom-width:7px;border-radius:23px;box-shadow:0 5px 0 #fff8,0 10px 19px #48276212;background:#fff;overflow:hidden}.book-ribbon{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 19px;background:#204f88;color:#fff;border-bottom:3px solid #193e6a;font-size:15px;font-weight:bold}.ribbon-title{display:flex;align-items:center;gap:9px}.ribbon-title svg{width:20px;height:20px;color:#ffe088}.reading-count{font-size:14px;color:#e5effc}.pages{display:grid;grid-template-columns:1fr 1fr;flex:1;min-height:0}.page{min-width:0;min-height:0;display:flex;flex-direction:column;position:relative;padding:19px 22px 16px}.reading-page{background:var(--paper);border-right:2px solid #d8d9e0;box-shadow:inset -12px 0 16px -15px #24375866}.writing-page{background:#fff;box-shadow:inset 12px 0 16px -15px #24375866}.page-heading{display:flex;align-items:center;gap:9px;flex-shrink:0;font-size:19px;font-weight:bold;margin:0 0 14px}.step{display:grid;place-items:center;background:#ffdd79;border:2px solid #f5c85a;width:31px;height:31px;border-radius:11px;font-size:18px;color:#5c4107}.writing-page .step{background:#e8d9ff;border-color:#d0b7f4;color:#56317d}.text-heading{display:flex;align-items:center;gap:12px;flex-shrink:0;margin-bottom:12px}.story-icon{display:grid;place-items:center;width:59px;height:59px;font-size:36px;border-radius:18px;background:#fff0c4;border:2px solid #f3d58c;box-shadow:0 3px 0 #ebd79b;flex-shrink:0}.text-title{min-width:0;flex:1}.case-chip{display:inline-block;font-size:14px;font-weight:bold;background:#e9dcf9;color:#603a8d;border:1px solid #d3b9ed;border-radius:7px;padding:3px 8px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle}.text-title h2{font-size:25px;line-height:1.18;letter-spacing:-.4px;margin:6px 0 0;color:#2e2945}.model-scroll{min-height:0;flex:1;overflow:auto;scrollbar-width:thin;scrollbar-color:#d1bb8c transparent;padding:0 4px 2px 0}.model{font-size:clamp(22px,2.05vw,28px);line-height:1.68;margin:0;color:#151c2a;overflow-wrap:anywhere;white-space:pre-wrap;letter-spacing:.1px}.model .case-mark{font-weight:bold;color:#674090;background:#efe3ff;border-radius:3px;padding:0 1px;box-decoration-break:clone;-webkit-box-decoration-break:clone}.model .review-mark{color:#8b3910;background:#ffe3b5;border-radius:4px;text-decoration:underline;text-decoration-color:#bd651b;text-underline-offset:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone}.model .review-mark .case-mark{color:inherit;background:transparent}.reading-foot{font-size:14px;color:#756140;margin-top:9px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:8px}.reading-foot span:first-child{font-style:italic}.mini-stars{color:#bd8930;letter-spacing:3px}
+.writing-heading{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-shrink:0;margin-bottom:13px}.writing-heading .page-heading{margin:0}.word-counter{font-size:14px;color:#65537f;white-space:nowrap}.writing-area{position:relative;flex:1;min-height:120px;display:flex}.writing-area:before{content:"";position:absolute;left:17px;top:3px;bottom:3px;width:2px;background:#e4d0e9;pointer-events:none;z-index:1}textarea{resize:none;display:block;width:100%;min-height:0;flex:1;border:2px solid #b29acb;border-bottom-width:4px;border-radius:14px;padding:14px 15px 14px 30px;outline:none;font:normal clamp(22px,2.05vw,28px)/1.68 var(--font);color:#1c2540;caret-color:#7448a4;background-color:#fcfaff;background-image:repeating-linear-gradient(transparent 0,transparent calc(1.68em - 2px),#e6dcf2 calc(1.68em - 2px),#e6dcf2 1.68em);background-origin:content-box;background-attachment:local;letter-spacing:.1px;scrollbar-width:thin;scrollbar-color:#c3aedb transparent}textarea::placeholder{font-size:21px;color:#7e6e94}textarea:focus{border-color:#7a50a7;box-shadow:0 0 0 3px #8858b71c}textarea.review{border-color:#c78c28}textarea.success{border-color:#359066;background-color:#f3fff8;background-image:none}.writing-area:has(textarea.success):before{background:#c7e9d4}.writing-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-shrink:0;margin-top:10px;position:relative;min-height:35px}.writing-tip{font-size:14px;color:#605575;margin:0}.tool-buttons{display:flex;gap:7px;flex-shrink:0}.small-button{display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid #cab7dd;border-bottom:3px solid #b49ccb;border-radius:9px;background:#f3edf9;color:#634581;padding:6px 10px;font-size:14px;font-weight:bold;min-height:34px}.small-button:hover{background:#eaddf7}.small-button .accent-icon{font-size:19px;line-height:1;font-weight:bold}.accent-panel{position:absolute;right:0;bottom:44px;z-index:4;border:2px solid #ac8bc9;border-radius:15px;padding:11px;background:#fff;box-shadow:0 7px 22px #32214b26;width:266px}.accent-panel[hidden]{display:none}.accent-panel p{font-size:14px;margin:0 0 9px;color:#5d4972}.accent-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.accent-key{height:36px;background:#f4edff;border:1px solid #c7b0df;border-bottom:3px solid #b394d2;border-radius:8px;font-size:22px;font-weight:bold;color:#5d357c}.accent-case{width:100%;margin-top:8px;font-size:14px}.actions{flex-shrink:0;display:flex;gap:14px;align-items:center;justify-content:space-between;border-top:2px solid #e4e7ed;background:#f4f7fc;padding:12px 18px;min-height:83px}.feedback{min-width:0;display:flex;align-items:center;gap:11px}.feedback-symbol{font-size:28px;line-height:1;flex-shrink:0;display:grid;place-items:center;height:43px;width:43px;border-radius:14px;background:#e3edf9}.feedback h3{font-size:17px;line-height:1.25;margin:0;color:#233e64}.feedback p{font-size:14px;line-height:1.4;margin:3px 0 0;color:#546780;overflow-wrap:anywhere}.feedback.warning .feedback-symbol{background:#ffedc5}.feedback.warning h3{color:#7b4914}.feedback.good .feedback-symbol{background:#d8f2e2}.feedback.good h3{color:#176847}.action-buttons{display:flex;align-items:center;gap:9px;flex-shrink:0}.skip{height:44px;min-width:110px;background:#fff;color:#3a5c86;border:2px solid #c7d5e8;border-bottom:4px solid #a4b9d5;border-radius:12px;padding:7px 12px;font-size:14px;font-weight:bold}.primary{display:flex;align-items:center;justify-content:center;gap:9px;min-height:51px;padding:10px 18px;background:#19865b;color:#fff;border:2px solid #249b6b;border-bottom:5px solid #105738;border-radius:13px;font-size:18px;font-weight:bold;box-shadow:0 3px 0 #cee6db;white-space:nowrap}.primary:hover{background:#13794e}.primary.next{background:#2869b7;border-color:#397dcc;border-bottom-color:#19467d;box-shadow:0 3px 0 #d0e0f4}.primary.next:hover{background:#1a5aa3}.primary:active,.skip:active,.small-button:active{transform:translateY(2px)}
+footer{flex-shrink:0;text-align:center;background:#194a86;color:#fff;border-top:3px solid #f4cd65;padding:9px 16px;font-size:14px}.confetti{position:fixed;inset:0;pointer-events:none;z-index:10;overflow:hidden}.confetti i{position:absolute;left:var(--x);top:-18px;width:9px;height:14px;background:var(--c);border-radius:2px;animation:fall 1.7s ease-in var(--delay) forwards}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@keyframes cheer{30%{transform:translateY(-6px) rotate(-7deg)}65%{transform:translateY(-3px) rotate(5deg)}}@keyframes fall{to{transform:translate(var(--drift),105vh) rotate(540deg);opacity:0}}
+@media(min-width:901px) and (max-height:800px){.app{min-height:600px}header{padding:7px 20px}.brand-icon{width:38px;height:38px;font-size:27px}.brand{font-size:21px}.nav a{min-height:38px;padding:6px 12px;font-size:14px}main{gap:11px;padding:12px 0}.hero{padding:9px 17px}.book-icon{width:52px;height:52px;font-size:32px;border-radius:17px}.hero h1{font-size:30px}.eyebrow{font-size:13px}.tagline{font-size:14px}.score-owl{width:65px;height:63px}.score-label{font-size:13px}.score strong{font-size:28px}.score-stars{font-size:18px}.toolbar{gap:12px}.field label{font-size:13px;margin-bottom:4px}select,.highlight-toggle{min-height:40px;height:40px;font-size:14px}.select-wrap:after{top:14px}.book-ribbon{padding:8px 16px;font-size:14px}.reading-count{font-size:13px}.page{padding:14px 18px 12px}.page-heading{font-size:18px;margin-bottom:11px}.step{height:29px;width:29px;font-size:17px}.writing-heading{margin-bottom:10px}.text-heading{gap:10px;margin-bottom:9px}.story-icon{width:49px;height:49px;font-size:30px;border-radius:14px}.text-title h2{font-size:23px;margin-top:4px}.case-chip{font-size:13px;padding:2px 7px}.model,textarea{font-size:25px;line-height:1.58}textarea{background-image:repeating-linear-gradient(transparent 0,transparent calc(1.58em - 2px),#e6dcf2 calc(1.58em - 2px),#e6dcf2 1.58em);padding-top:11px}.writing-tip,.reading-foot,.word-counter{font-size:13px}.small-button{font-size:13px;padding:5px 8px;min-height:32px}.actions{padding:10px 15px;min-height:76px}.feedback h3{font-size:16px}.feedback p{font-size:13px}.primary{font-size:17px;min-height:47px;padding:9px 15px}footer{font-size:13px;padding:7px 14px}}
+@media(min-width:901px) and (max-width:1100px){main{width:calc(100% - 28px)}.hero h1{font-size:27px}.hero-title{gap:12px}.hero{padding-left:14px;padding-right:14px}.score{padding-left:12px;gap:6px}.score-owl{width:61px}.tagline{font-size:14px}.toolbar{grid-template-columns:minmax(165px,.9fr) minmax(180px,1.2fr) auto;gap:9px}.highlight-toggle{font-size:13px;gap:6px}.model,textarea{font-size:23px}.page{padding-left:15px;padding-right:15px}.text-title h2{font-size:22px}.writing-tip{max-width:160px}.writing-foot{gap:5px}.small-button{padding-left:7px;padding-right:7px}.skip{min-width:90px;padding:6px 9px;font-size:13px}.feedback p{max-width:410px}}
+@media(max-width:900px){.app{min-height:780px}main{width:calc(100% - 26px);gap:11px;padding:12px 0}.hero{padding:10px 14px}.hero-title{gap:12px}.hero h1{font-size:27px}.book-icon{width:47px;height:49px;font-size:28px;border-radius:14px}.eyebrow{font-size:13px}.tagline{font-size:14px}.score{padding-left:11px;gap:8px}.score-owl{display:none}.score-label{font-size:13px}.score strong{font-size:27px}.score-stars{font-size:17px}.toolbar{grid-template-columns:minmax(130px,.8fr) minmax(180px,1.3fr);gap:8px 12px}.highlight-toggle{grid-column:1/-1;justify-self:start;height:24px;padding:0 2px}.field label{font-size:13px;margin-bottom:4px}select{min-height:40px;font-size:15px}.select-wrap:after{top:14px}.pages{grid-template-columns:1fr;grid-template-rows:1fr 1fr}.reading-page{border-right:0;border-bottom:2px solid #dbd9de;box-shadow:inset 0 -12px 16px -15px #24375866}.writing-page{box-shadow:inset 0 12px 16px -15px #24375866}.page{padding:13px 18px}.page-heading{font-size:17px;margin-bottom:9px}.step{height:27px;width:27px;font-size:16px}.reading-page .page-heading{margin:0;position:absolute;top:14px;right:18px}.reading-page .page-heading .step{display:none}.text-heading{margin:0 0 9px;gap:10px;padding-right:160px}.story-icon{width:43px;height:43px;font-size:28px;border-radius:13px}.text-title h2{font-size:22px;margin-top:4px}.case-chip{font-size:13px;padding:2px 7px}.model,textarea{font-size:24px;line-height:1.6}.reading-foot{font-size:13px;margin-top:6px}.writing-heading{margin-bottom:8px}.word-counter{font-size:13px}.writing-area{min-height:80px}textarea{padding-top:8px;background-image:repeating-linear-gradient(transparent 0,transparent calc(1.6em - 2px),#e6dcf2 calc(1.6em - 2px),#e6dcf2 1.6em)}textarea::placeholder{font-size:20px}.writing-foot{margin-top:7px;min-height:30px}.writing-tip{font-size:13px}.small-button{font-size:13px;min-height:30px;padding:4px 8px}.book-ribbon{padding:8px 16px;font-size:14px}.reading-count{font-size:13px}.actions{gap:12px;padding:10px 14px;min-height:77px}.feedback{gap:8px}.feedback-symbol{height:36px;width:36px;font-size:25px}.feedback h3{font-size:15px}.feedback p{font-size:13px}.action-buttons{gap:7px}.skip{min-width:90px;font-size:13px;height:40px;padding:6px 9px}.primary{font-size:16px;padding:8px 13px;min-height:45px}footer{font-size:13px;padding:8px 12px}.topbar{gap:10px}.brand{font-size:20px;gap:8px}.brand-icon{width:38px;height:38px;font-size:26px}.nav{gap:7px}.nav a{font-size:13px;padding:7px 10px;min-height:39px}header{padding:8px 15px}}
+@media(max-width:600px){.app{height:auto;min-height:100svh}main{flex:initial;gap:12px}.topbar{flex-direction:column;gap:9px}.brand{font-size:22px}.nav{width:100%}.nav a{flex:1;font-size:13px;padding:7px 8px}header{padding:9px 14px 11px}.hero{align-items:flex-start;flex-wrap:wrap;gap:12px;padding:13px}.hero-title{gap:10px}.book-icon{width:42px;height:46px;font-size:27px}.hero h1{font-size:26px;letter-spacing:-.7px}.eyebrow{font-size:12px}.tagline{font-size:14px;line-height:1.4}.score{width:100%;border:0;border-top:1px solid #e4dbef;padding:9px 0 0;justify-content:space-between;gap:8px}.score-text{display:flex;align-items:center;gap:10px}.score-label{font-size:13px}.score strong{font-size:25px}.score-total{font-size:14px}.score-stars{font-size:19px}.toolbar{grid-template-columns:1fr}.highlight-toggle{grid-column:auto;font-size:14px;height:27px}.field label{font-size:14px}.select-wrap:after{top:15px}select{min-height:42px;font-size:16px}.workbook{flex:initial;border-radius:20px}.book-ribbon{padding:9px 12px;font-size:13px}.ribbon-title{gap:6px}.ribbon-title svg{width:18px;height:18px}.reading-count{font-size:12px}.pages{display:flex;flex-direction:column}.page{padding:15px}.reading-page .page-heading{position:static;font-size:16px;margin:0 0 11px}.reading-page .page-heading .step{display:grid}.text-heading{padding:0;margin-bottom:11px}.story-icon{height:47px;width:47px;font-size:29px}.text-title h2{font-size:22px}.case-chip{max-width:240px}.model{font-size:24px;line-height:1.65}.model-scroll{max-height:330px;flex:initial}.reading-foot{margin-top:12px}.reading-foot span:first-child{font-size:12px}.mini-stars{display:none}.writing-heading .page-heading{font-size:16px}.word-counter{font-size:12px}.writing-area{height:205px;min-height:205px;flex:initial}textarea{font-size:24px;line-height:1.65;padding-left:25px;padding-right:10px;background-image:repeating-linear-gradient(transparent 0,transparent calc(1.65em - 2px),#e6dcf2 calc(1.65em - 2px),#e6dcf2 1.65em)}textarea::placeholder{font-size:20px}.writing-area:before{left:14px}.writing-tip{font-size:12px;max-width:140px}.writing-foot{margin-top:10px}.tool-buttons{gap:5px}.small-button{font-size:12px;padding:5px 7px}.actions{align-items:stretch;flex-direction:column;padding:13px;gap:13px}.feedback h3{font-size:16px}.feedback p{font-size:13px}.action-buttons{width:100%}.primary{flex:1;font-size:16px;min-height:46px;padding-left:9px;padding-right:9px}.skip{font-size:13px;min-width:99px;min-height:43px}.accent-panel{width:250px}.reading-count{white-space:nowrap}footer{font-size:12px;padding:10px 8px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.confetti{display:none}}
+.text-title h2.review-title{color:#8b3910;background:#ffe3b5;border-radius:5px;text-decoration:underline;text-decoration-color:#bd651b;text-underline-offset:4px}
+.reading-scenery{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}.reading-scenery svg{display:block;width:100%;height:100%}.hero{box-shadow:0 4px 0 #dba03a}
+/* Instruções e controlos a preto e negrito. */
+.reading-foot span:first-child,
+#copyHeading, #copyHeading .step,
+#wordCount, label[for="copyText"], #writingTip,
+#accentToggle, #restartButton,
+#feedbackTitle, #feedbackDetail{color:#000;font-weight:700}
+.reading-foot span:first-child{font-style:normal}
+#copyText::placeholder{color:#000;font-weight:700;opacity:1}
+/* Cabeçalho do livro e cartão de conquistas. */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:15px;align-items:stretch;background:transparent;border:0;border-radius:0;padding:0;box-shadow:none}
+.hero-title{min-width:0;position:relative;display:flex;align-items:center;gap:17px;padding:14px 20px 14px 17px;background:linear-gradient(110deg,#fff,#f4faff);border:3px solid #fff;border-bottom:6px solid #5283b3;border-radius:23px;box-shadow:0 3px 0 #2a57882b;overflow:hidden}
+.hero-title:after{content:"";position:absolute;right:-16px;top:-25px;width:75px;height:75px;border:12px solid #f6db8f;border-radius:50%;opacity:.44;pointer-events:none}
+.hero-copy{min-width:0;position:relative;z-index:1}.book-icon{display:grid;width:78px;height:84px;flex-shrink:0;background:linear-gradient(145deg,#fff9dc,#ffe29a);border:2px solid #fffdf0;border-radius:21px;box-shadow:0 4px 0 #d5a64a;transform:rotate(-5deg)}.book-icon svg{width:69px;height:74px;overflow:visible}
+.eyebrow{display:flex;align-items:center;gap:7px;font-size:14px;margin:0 0 7px;line-height:1.1}.subject-badge,.year-badge{display:inline-flex;align-items:center;min-height:25px;border-radius:8px;padding:4px 10px;font-weight:bold}.subject-badge{background:#235a9a;color:#fff;border:1px solid #174579}.year-badge{background:#ffdf76;color:#3d2c08;border:1px solid #e5b63d}
+.hero h1{font-size:clamp(29px,2.7vw,37px);line-height:1.13;letter-spacing:-1.2px;color:#000;margin:0}.hero h1 span{white-space:nowrap}.tagline{font-size:15px;line-height:1.4;margin:6px 0 0;color:#000}.tagline strong{font-weight:700;color:#194d83}.tagline-break{display:none}
+.score{position:relative;display:grid;grid-template-columns:107px minmax(0,1fr);align-items:center;gap:9px;min-width:0;padding:10px 13px 8px 8px;border:3px solid #fff;border-bottom:6px solid #d6a23b;border-radius:23px;background:linear-gradient(125deg,#fffdf3,#ffe9a2);box-shadow:0 3px 0 #9e6a2026;overflow:hidden}
+.owl-medallion{width:107px;height:107px;display:grid;place-items:center;position:relative;border-radius:50%;background:radial-gradient(circle at 43% 35%,#fffef4,#ffdf7c);border:2px solid #f0c758;box-shadow:inset 0 0 0 4px #fff7d6}.score .score-owl{display:block;width:116px;height:120px;max-width:none;position:relative;top:-4px;overflow:visible}
+.score-text{display:block;min-width:0}.score-label{display:block;font-size:14px;color:#193e68;font-weight:700;line-height:1.25;margin:0 0 3px}.score-numbers{display:flex;align-items:baseline;gap:4px;white-space:nowrap}.score strong{color:#174d86;font-size:37px;line-height:1.05;font-weight:800;letter-spacing:-1px}.score-total{color:#46556b;font-size:18px;font-weight:bold}.score-trophy{font-size:24px;margin-left:auto;align-self:center;line-height:1}.score-stars{display:flex;font-size:19px;line-height:1.05;letter-spacing:1px;gap:3px;margin-top:6px;color:#d6bd7c}.score-stars .earned{color:#bd7902;text-shadow:0 1px 0 #fff4b8}
+#readingProgress{display:block;width:100%;height:7px;margin:6px 0 0;appearance:none;-webkit-appearance:none;border:0;border-radius:8px;overflow:hidden;background:#e9d494;color:#2776b6}#readingProgress::-webkit-progress-bar{background:#e9d494;border-radius:8px}#readingProgress::-webkit-progress-value{background:linear-gradient(90deg,#2b7bb8,#46afa0);border-radius:8px}#readingProgress::-moz-progress-bar{background:#287cb6;border-radius:8px}
+.field label{color:#163f73}.select-wrap:after{border-color:#3c6090}select{border-color:#b1c9df;border-bottom-color:#6895bd;border-radius:13px;color:#193859;box-shadow:0 2px 0 #ffffff70}.highlight-toggle{border:2px solid #e3bb53;border-bottom-width:4px;border-radius:12px;background:#fff8dd;padding:0 11px;color:#47321e}
+.workbook{border-color:#3c6999}.book-ribbon{background:linear-gradient(100deg,#194b83,#2d6da7)}.story-icon{background:linear-gradient(140deg,#fff7dd,#ffe4a3)}
+@media(min-width:901px) and (max-height:800px){.hero{grid-template-columns:minmax(0,1fr) 288px;gap:12px}.hero-title{padding:10px 14px;gap:14px;border-radius:20px;border-bottom-width:5px}.book-icon{width:64px;height:70px;border-radius:17px}.book-icon svg{width:58px;height:62px}.eyebrow{font-size:13px;margin-bottom:5px}.subject-badge,.year-badge{min-height:22px;padding:3px 8px;border-radius:7px}.hero h1{font-size:30px;letter-spacing:-1px}.tagline{font-size:13px;margin-top:5px;line-height:1.35}.score{grid-template-columns:94px minmax(0,1fr);padding:8px 11px 7px 7px;gap:8px;border-radius:20px;border-bottom-width:5px}.owl-medallion{height:92px;width:92px}.score .score-owl{width:100px;height:104px;top:-3px}.score-label{font-size:13px}.score strong{font-size:33px}.score-total{font-size:16px}.score-trophy{font-size:22px}.score-stars{font-size:18px;margin-top:5px}#readingProgress{height:6px;margin-top:5px}}
+@media(min-width:901px) and (max-width:1100px){.hero h1{font-size:28px}.hero-title{padding-left:12px;padding-right:12px;gap:12px}.tagline{font-size:13px}.highlight-toggle{font-size:12px;padding:0 8px;gap:6px}.toolbar{grid-template-columns:minmax(160px,.8fr) minmax(195px,1.2fr) auto}}
+@media(max-width:900px){.hero{grid-template-columns:minmax(0,1fr) 238px;gap:11px}.hero-title{padding:13px 12px;gap:12px;border-radius:20px;border-bottom-width:5px}.book-icon{width:52px;height:60px;border-radius:15px}.book-icon svg{width:48px;height:52px}.hero h1{font-size:27px;line-height:1.13;letter-spacing:-.8px}.eyebrow{font-size:13px;margin-bottom:6px}.subject-badge,.year-badge{padding:3px 8px;min-height:23px}.tagline{font-size:13px;line-height:1.4;margin-top:6px}.score{grid-template-columns:86px minmax(0,1fr);gap:6px;padding:10px 10px 9px 6px;border-radius:20px;border-bottom-width:5px}.owl-medallion{height:83px;width:83px}.score .score-owl{display:block;height:96px;width:92px;top:-3px}.score-label{font-size:13px;line-height:1.25}.score strong{font-size:32px}.score-total{font-size:16px}.score-trophy{font-size:19px}.score-stars{font-size:16px;gap:2px;letter-spacing:1px}#readingProgress{height:6px}.highlight-toggle{height:32px;font-size:13px;padding:0 10px;border-radius:10px}.toolbar{gap:7px 12px}}
+@media(max-width:600px){.hero{grid-template-columns:1fr;gap:11px}.hero-title{padding:14px 13px;gap:12px;align-items:center}.hero h1{font-size:27px}.hero-copy{flex:1}.book-icon{width:52px;height:63px}.eyebrow{font-size:12px;gap:5px}.tagline{font-size:13px;margin-top:7px}.tagline-break{display:block}.score{grid-template-columns:88px minmax(0,1fr);padding:7px 17px 7px 13px;gap:16px;border-top:3px solid #fff}.owl-medallion{height:83px;width:83px}.score .score-owl{height:96px;width:92px}.score-text{display:block}.score-label{font-size:14px;margin-bottom:2px}.score-numbers{gap:5px}.score strong{font-size:33px}.score-total{font-size:17px}.score-trophy{font-size:26px;margin-right:1px}.score-stars{font-size:17px;gap:5px;margin-top:5px}#readingProgress{height:6px;max-width:240px;margin-top:4px}.highlight-toggle{height:35px;font-size:13px;justify-self:start}.toolbar{gap:9px}.writing-heading{flex-wrap:wrap;gap:6px}.writing-heading .word-counter{margin-left:auto}}
+/* Espaço para o teclado virtual, quando este ocupa parte do ecrã. */
+body.keyboard-open .app{height:auto;min-height:100svh}body.keyboard-open main{flex:initial}body.keyboard-open .workbook{flex:initial}body.keyboard-open .pages{min-height:330px}body.keyboard-open .writing-area{min-height:180px}
+@media(pointer:coarse){select{min-height:44px}.small-button,.accent-key,.skip,.primary,.nav a{min-height:44px}.accent-key{height:44px}.highlight-toggle{min-height:44px}.highlight-toggle input{width:22px;height:22px}.tool-buttons{gap:9px}.writing-foot{gap:10px}}
+@media(pointer:coarse) and (max-height:600px){.app{height:auto;min-height:100svh}main{flex:initial}.workbook{flex:initial}.pages{min-height:330px}.writing-area{min-height:180px}}
+
+/* O caderno de escrita ganha uma moldura e uma faixa próprias. */
+.writing-page{background:linear-gradient(140deg,#edf7ff,#d8eafb);box-shadow:inset 12px 0 16px -15px #24375866}
+.writing-heading{padding:7px 10px;background:linear-gradient(110deg,#fff2bf,#ffdc75);border:2px solid #e4b84c;border-bottom:4px solid #c8962d;border-radius:13px;margin-bottom:12px;gap:10px;box-shadow:0 2px 0 #fff9}
+.writing-heading #copyHeading{font-size:19px;line-height:1.2;color:#000;font-weight:700}.writing-heading #copyHeading .step{background:#fffaf0;border:2px solid #d49b2d;box-shadow:0 2px 0 #e9ba4f;border-radius:9px;color:#000}
+.writing-heading #wordCount{display:inline-flex;align-items:center;justify-content:center;min-height:29px;padding:4px 8px;background:#fffdf5;border:1px solid #d9ad45;border-bottom:3px solid #d3a13b;border-radius:9px;line-height:1.1;color:#000;font-weight:700;white-space:nowrap}
+.writing-area{border-radius:17px;box-shadow:0 5px 0 #6a9cc338}
+.writing-area:before{left:23px;top:5px;bottom:7px;width:2px;background:#e89f9f;z-index:1}
+.writing-area:after{content:"";position:absolute;left:27px;top:5px;bottom:7px;width:1px;background:#efd0d0;pointer-events:none;z-index:1}
+#copyText{border:4px solid #347cb5;border-bottom:7px solid #1b5488;border-radius:16px;padding-left:37px;background-color:#fff;--writing-line:1.68em;background-image:repeating-linear-gradient(transparent 0,transparent calc(var(--writing-line) - 2px),#b6cfe7 calc(var(--writing-line) - 2px),#b6cfe7 var(--writing-line));color:#162c46;caret-color:#145b9c;box-shadow:inset 0 2px 0 #eef6fd;scrollbar-color:#719fc7 #eff6fc}
+#copyText:focus{border-color:#1763a2;border-bottom-color:#104b81;box-shadow:0 0 0 4px #ffcf59,inset 0 2px 0 #eef6fd}
+#copyText::placeholder{color:#000;font-weight:700;opacity:1}
+#copyText.review{border-color:#d39c2f;border-bottom-color:#a5701a;box-shadow:0 0 0 3px #ffdda0;background-color:#fffdf6}
+#copyText.success{border-color:#32966a;border-bottom-color:#176441;box-shadow:0 0 0 3px #d4efdf;background-color:#f3fff8;background-image:none}
+.writing-area:has(#copyText.success):before,.writing-area:has(#copyText.success):after{background:#b6dcc8}
+.writing-foot{align-items:center;gap:10px}.writing-page #writingTip{max-width:none;flex:1;line-height:1.4;color:#000;font-weight:700}
+.writing-page #accentToggle,.writing-page #restartButton{background:#fff;border-color:#8bb7d9;border-bottom-color:#5d91ba;border-radius:10px;box-shadow:0 2px 0 #fff7;color:#000;font-weight:700}.writing-page #accentToggle:hover,.writing-page #restartButton:hover{background:#fff4cd;border-color:#dfb44c;border-bottom-color:#c99a31}
+@media(min-width:901px) and (max-height:800px){.writing-heading{padding:6px 9px;margin-bottom:10px;border-radius:12px}.writing-heading #copyHeading{font-size:18px}.writing-heading #wordCount{font-size:12px;padding:4px 7px;min-height:27px}#copyText{--writing-line:1.58em}.writing-foot{margin-top:9px}}
+@media(min-width:901px) and (max-width:1100px){.writing-heading{gap:7px;padding-left:8px;padding-right:8px}.writing-heading #copyHeading{font-size:17px;gap:7px}.writing-heading #wordCount{font-size:12px;padding-left:6px;padding-right:6px}}
+@media(max-width:900px){.writing-heading{padding:6px 9px;margin-bottom:10px}.writing-heading #copyHeading{font-size:17px}.writing-heading #wordCount{font-size:12px;min-height:27px}#copyText{--writing-line:1.6em}.writing-area:before{left:22px}.writing-area:after{left:26px}}
+@media(max-width:600px){.writing-heading{padding:7px 8px;gap:6px}.writing-heading #copyHeading{font-size:16px;gap:7px}.writing-heading #wordCount{font-size:11px;padding:4px 6px;min-height:25px}#copyText{--writing-line:1.65em;padding-left:30px}.writing-area:before{left:18px}.writing-area:after{left:22px}.writing-foot{gap:7px}.writing-page #writingTip{font-size:12px}}
+
+/* Leitura, escrita e mensagens com a mesma clareza visual. */
+.reading-page{background:linear-gradient(145deg,#fffdf6,#fff6dc)}
+#readingHeading{position:static;min-height:31px;padding:0 9px;background:linear-gradient(100deg,#ffedb1,#fff7db);border-radius:10px;box-shadow:0 0 0 2px #e3bd5c;line-height:1.2;color:#000;font-weight:700;gap:9px}
+#readingHeading .step{background:#fffdf4;border-color:#d6a63f;box-shadow:0 1px 0 #e5c36d;border-radius:9px;color:#000}
+.text-heading{padding-left:10px;border-left:4px solid #dba72f;border-radius:3px;margin-top:2px}.text-title h2{color:#000;font-weight:700}.story-icon{background:#fffdf3;border-color:#e3c874;box-shadow:0 3px 0 #e2c987}
+.model{color:#000}.model .case-mark{padding:0;background:#eee0ff;color:#593184;border-radius:3px}.model .review-mark{background:#ffe2a0;color:#693700;text-decoration-color:#b7741d;text-decoration-thickness:2px}
+.reading-foot{padding-top:7px;border-top:1px dashed #d9bd75}.reading-foot span:first-child{font-size:14px;color:#000;font-weight:700}
+.actions{background:linear-gradient(115deg,#f1f7ff,#f8fbff);border-top-color:#bad2e8}.actions:has(.feedback.warning){background:linear-gradient(110deg,#fff5d7,#fffaf0);border-top-color:#e2bd65}.actions:has(.feedback.good){background:linear-gradient(110deg,#daf1e3,#effbf3);border-top-color:#88c5a2}
+.feedback-symbol{border:2px solid #c5d9ef;background:#fff;box-shadow:0 2px 0 #b1cae340;border-radius:14px}.feedback.warning .feedback-symbol{border-color:#e3bb61;background:#fffdf3}.feedback.good .feedback-symbol{border-color:#83be9e;background:#fffdf0}.feedback p{line-height:1.45}
+.primary{box-shadow:0 4px 0 #c6dfd2}.primary.next{box-shadow:0 4px 0 #c7dcef}.primary .next-symbol{display:none}.primary.next .verify-symbol{display:none}.primary.next .next-symbol{display:block}
+@media(min-width:901px) and (max-height:800px){#readingHeading{min-height:29px}.reading-foot{padding-top:5px}.reading-foot span:first-child{font-size:13px}}
+@media(max-width:900px){#readingHeading{position:absolute;right:18px;top:14px;min-height:25px;font-size:15px;padding:3px 9px}.text-heading{padding-right:160px;margin-top:0}.reading-foot{padding-top:5px}.reading-foot span:first-child{font-size:13px}}
+@media(max-width:600px){#readingHeading{position:static;min-height:29px;padding:0 8px;font-size:16px}.text-heading{padding-right:0;padding-left:8px;margin-top:2px}.reading-foot span:first-child{font-size:12px}.feedback-symbol{height:39px;width:39px}.feedback p{font-size:13px}}
+
+/* Navegação com ícones em destaque e relevo. */
+.nav{gap:12px}.nav a{min-height:49px;padding:7px 16px 8px 9px;gap:10px;border-width:3px;border-bottom-width:6px;border-radius:16px;font-size:16px;line-height:1.15;font-weight:800;box-shadow:0 3px 0 #0c316455,inset 0 1px 0 #fff8;transition:transform .15s,box-shadow .15s,background .15s}
+.nav a.back,.nav a.back:visited{background:linear-gradient(135deg,#ffeaa1,#ffd04e);color:#000;border-color:#fff1b0!important;border-bottom-color:#bc851a!important}.nav a.home,.nav a.home:visited{background:#31ad46;color:#000;border-color:#a8e69f!important;border-bottom-color:#18752a!important}
+.nav-icon{display:grid;place-items:center;width:33px;height:33px;flex-shrink:0;background:#fff8da;border:2px solid #d8aa44;border-radius:11px;box-shadow:0 2px 0 #ca97334d;color:#5c367e}.home .nav-icon{background:#f1ffe5;border-color:#258135;box-shadow:0 2px 0 #1e742b40;color:#155d22}.nav-icon svg{width:25px;height:25px;stroke-width:2.1}.nav-label{display:block;font-weight:800}
+.nav a:hover{transform:translateY(-2px);box-shadow:0 5px 0 #0c316455,inset 0 1px 0 #fff8}.nav a.back:hover{background:linear-gradient(135deg,#fff2ba,#ffdb67)}.nav a.home:hover{background:#45be57}.nav a:active{transform:translateY(3px);box-shadow:0 1px 0 #0c31642a}.nav a:focus-visible{outline:3px solid #fff;outline-offset:4px}
+@media(min-width:901px) and (max-height:800px){.nav{gap:11px}.nav a{min-height:44px;padding:5px 13px 6px 8px;font-size:15px;border-radius:14px;border-bottom-width:5px;gap:9px}.nav-icon{height:29px;width:29px;border-radius:9px}.nav-icon svg{height:22px;width:22px}}
+@media(max-width:900px){.nav{gap:9px}.nav a{min-height:45px;padding:6px 12px 7px 8px;font-size:14px;border-radius:14px;border-bottom-width:5px;gap:8px}.nav-icon{height:29px;width:29px;border-radius:10px}.nav-icon svg{height:23px;width:23px}}
+@media(max-width:600px){.nav{gap:10px}.nav a{min-width:0;min-height:48px;flex:1;padding:6px 8px 7px;gap:7px;font-size:13px;border-radius:14px}.nav-icon{height:29px;width:29px;border-radius:10px}.nav-icon svg{height:22px;width:22px}.nav-label{min-width:0;text-align:left;line-height:1.2}.topbar{gap:11px}}
+
+</style>
+</head>
+<body>
+<div class="reading-scenery" aria-hidden="true"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs><linearGradient id="sunnyReading" x2="0" y2="1"><stop stop-color="#ffcc38"/><stop offset=".48" stop-color="#ffe66b"/><stop offset="1" stop-color="#ffb83e"/></linearGradient></defs>
+  <path fill="url(#sunnyReading)" d="M0 0H1600V1000H0Z"/>
+  <circle cx="1440" cy="145" r="130" fill="#fff8c8" opacity=".36"/><circle cx="1440" cy="145" r="90" fill="#fff0a0"/>
+  <g fill="#fff" opacity=".62"><path d="M-60 210Q-60 175-20 174Q-5 125 38 144Q65 101 105 132Q150 122 168 164Q211 165 215 210Z"/><path d="M1320 359Q1323 327 1357 322Q1367 275 1410 292Q1440 253 1480 288Q1522 273 1545 319Q1590 319 1601 359Z"/><path d="M370 34Q377 6 404 13Q429-15 454 6Q492-6 500 22Q530 23 535 42Z" opacity=".5"/></g>
+  <path d="M-40 942Q165 842 390 957Q680 866 918 957Q1240 841 1650 924V1020H-40Z" fill="#ff9e34" opacity=".55"/>
+  <path d="M-50 989Q222 898 525 993Q855 928 1087 982Q1375 894 1650 994V1040H-50Z" fill="#f48d32" opacity=".3"/>
+  <g transform="translate(34 377) rotate(-14 45 35)"><path d="M0 10Q22-1 45 13Q68-1 90 10V64Q68 53 45 67Q22 53 0 64Z" fill="#287cca" stroke="#fff7d7" stroke-width="4" stroke-linejoin="round"/><path d="M7 8Q25 3 45 15Q65 3 83 8V55Q65 50 45 61Q25 50 7 55Z" fill="#fffdf0"/><path d="M45 15V61M14 20l22 7m-21 4 21 7m-21 4 21 7m18-22 22-7m-22 18 21-7m-21 18 21-7" stroke="#c2d2df" stroke-width="2" stroke-linecap="round"/><path d="M66 10v21l6-5 5 3V8Z" fill="#f08078"/></g>
+  <g transform="translate(1521 538) rotate(16 14 60)"><path d="M0 12Q0 0 12 0h5q12 0 12 12v91L14 128 0 103Z" fill="#9162c1" stroke="#fff8d8" stroke-width="4"/><path d="M0 18h29M8 24v73m13-73v73" stroke="#c9a5eb" stroke-width="3"/><path d="M1 102h27l-14 25Z" fill="#ffe2a4"/><path d="m9 117 5 10 5-10Z" fill="#4d3b70"/></g>
+  <g fill="#fff7bf" stroke="#edac2a" stroke-width="2" stroke-linejoin="round"><path d="m58 632 8 17 19 3-14 13 3 19-17-9-17 9 4-19-14-13 19-3Z"/><path d="m1508 779 7 15 17 3-12 12 3 17-15-8-16 8 3-17-12-12 17-3Z"/><path d="m122 91 5 12 14 2-10 9 2 14-11-6-12 6 2-14-10-9 14-2Z"/></g>
+  <g fill="none" stroke="#fff6bf" stroke-width="4" stroke-linecap="round" opacity=".65"><path d="M72 768v15m-8-8h16M1527 419v16m-8-8h16M148 849v12m-6-6h12"/><path d="M47 491Q8 540 34 581" stroke-dasharray="3 12"/><path d="M1522 697q39 17 28 54" stroke-dasharray="3 12"/></g>
+</svg></div>
+<div class="app">
+<header><div class="topbar">
+  <a class="brand" href="https://www.recreiodigital.pt/"><span class="brand-icon" aria-hidden="true">🦉</span>Recreio Digital</a>
+  <nav class="nav" aria-label="Navegação"><a id="backToGames" class="back" href="https://www.recreiodigital.pt/2-ano/index.html"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 7h10c3 0 4 5 4 9s-3 4-5 1H8c-2 3-5 3-5-1S4 7 7 7Z"/><path d="M7 10v5m-2.5-2.5h5"/><circle cx="16" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="18" cy="14" r="1" fill="currentColor" stroke="none"/></svg></span><span class="nav-label">Voltar aos jogos</span></a><a class="home" href="https://www.recreiodigital.pt/"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7M5 9v11h14V9M9 20v-7h6v7"/></svg></span><span class="nav-label">Página inicial</span></a></nav>
+</div></header>
+<main>
+  <section class="hero" aria-labelledby="appTitle">
+    <div class="hero-title">
+      <span class="book-icon" aria-hidden="true"><svg viewBox="0 0 100 104" fill="none"><path d="m15 14 25-2 3 13-25 3Z" fill="#e78773"/><path d="m61 9 25 6-7 24-25-6Z" fill="#51b7aa"/><path d="M12 32Q31 22 50 36Q69 22 88 32L92 86Q71 78 50 92Q29 78 8 86Z" fill="#174e8e" stroke="#fff" stroke-width="3" stroke-linejoin="round"/><path d="M15 28Q32 21 50 35Q68 21 85 28L87 78Q69 74 50 86Q31 74 13 78Z" fill="#fff9e5"/><path d="M50 35V86M21 40l20 7m-20 4 20 7m-20 4 20 7m18-22 20-7m-20 18 20-7m-20 18 20-7" stroke="#d2b888" stroke-width="2.5" stroke-linecap="round"/><path d="m65 29 13-3v29l-6-5-7 7Z" fill="#ed8574"/><path d="m13 6 2 5 5 1-4 3 1 5-4-3-5 3 1-5-4-3 5-1Z" fill="#e4ae30"/><circle cx="91" cy="13" r="3" fill="#e7ab30"/><path d="M3 61v9m-4-5h9" stroke="#8aa9cc" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+      <div class="hero-copy"><p class="eyebrow"><span class="subject-badge">Português</span><span class="year-badge">2.º ano</span></p><h1 id="appTitle">Pequenas Leituras <span>no Recreio</span></h1><p class="tagline">Lê com calma. Escreve com atenção.<br class="tagline-break"> <strong>Cada palavra é uma conquista!</strong></p></div>
+    </div>
+    <div class="score" id="score">
+      <div class="owl-medallion" aria-hidden="true">
+        <svg class="score-owl" viewBox="0 0 160 166" fill="none">
+          <defs><linearGradient id="readerBody" x1="30" y1="29" x2="123" y2="139" gradientUnits="userSpaceOnUse"><stop stop-color="#dcaa68"/><stop offset=".55" stop-color="#bd824b"/><stop offset="1" stop-color="#8b542e"/></linearGradient><linearGradient id="readerWing" x1="30" y1="78" x2="44" y2="129" gradientUnits="userSpaceOnUse"><stop stop-color="#b27441"/><stop offset="1" stop-color="#8a502d"/></linearGradient><linearGradient id="readerBook" x1="28" y1="118" x2="124" y2="154" gradientUnits="userSpaceOnUse"><stop stop-color="#438fca"/><stop offset="1" stop-color="#184f8c"/></linearGradient></defs>
+          <ellipse cx="80" cy="155" rx="49" ry="7" fill="#d69f3b" opacity=".22"/>
+          <path d="M37 65 29 23 59 38Q80 27 101 38L131 23 123 65Q142 132 80 144Q18 132 37 65Z" fill="url(#readerBody)" stroke="#81502f" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="m36 32 7 23 12-13Zm88 0-7 23-12-13Z" fill="#74482e"/><path d="m38 34 6 15 7-6Zm84 0-6 15-7-6Z" fill="#dca881"/>
+          <ellipse cx="80" cy="106" rx="38" ry="34" fill="#f7dcb0"/>
+          <path d="M80 51Q56 29 40 52Q30 73 45 88Q63 102 80 83Q97 102 115 88Q130 73 120 52Q104 29 80 51Z" fill="#fff3d5"/>
+          <path d="M40 57Q49 42 65 49M95 49Q111 42 120 57" stroke="#c38b50" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="58" cy="66" rx="18" ry="21" fill="#fff"/><ellipse cx="102" cy="66" rx="18" ry="21" fill="#fff"/>
+          <ellipse cx="62" cy="69" rx="8.5" ry="11" fill="#29354a"/><ellipse cx="98" cy="69" rx="8.5" ry="11" fill="#29354a"/>
+          <circle cx="65" cy="64" r="3" fill="#fff"/><circle cx="101" cy="64" r="3" fill="#fff"/><circle cx="59" cy="74" r="1.5" fill="#fff" opacity=".6"/><circle cx="95" cy="74" r="1.5" fill="#fff" opacity=".6"/>
+          <path d="m72 84 8 11 8-11Q80 79 72 84Z" fill="#e6a032" stroke="#c17c25" stroke-width="1.2"/>
+          <ellipse cx="42" cy="84" rx="7" ry="4" fill="#ecb395" opacity=".8"/><ellipse cx="118" cy="84" rx="7" ry="4" fill="#ecb395" opacity=".8"/>
+          <path d="m56 103 4 4 4-4m12 1 4 4 4-4m12-1 4 4 4-4m-37 11 4 4 4-4m12 0 4 4 4-4" stroke="#cfab78" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M33 81Q14 83 25 115Q29 127 42 130L50 101Z" fill="url(#readerWing)" stroke="#81502f" stroke-width="2"/><path d="M127 81Q146 83 135 115Q131 127 118 130L110 101Z" fill="url(#readerWing)" stroke="#81502f" stroke-width="2"/>
+          <path d="M26 116Q53 104 80 121Q107 104 134 116L130 151Q106 145 80 158Q54 145 30 151Z" fill="url(#readerBook)" stroke="#194b7c" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M33 112Q57 105 80 120Q103 105 127 112L123 143Q101 139 80 151Q59 139 37 143Z" fill="#fff9e9"/><path d="M80 120v31m-38-30 27 10m-26-1 25 10m23-9 27-10m-26 19 25-10" stroke="#d8c49c" stroke-width="2" stroke-linecap="round"/>
+          <path d="m104 112 10-2-1 26-5-5-5 4Z" fill="#ed8e77"/>
+          <path d="M31 102q-6 6 3 13l10 4 3-12Z" fill="#c58d53" stroke="#81502f" stroke-width="1.7"/><path d="M129 102q6 6-3 13l-10 4-3-12Z" fill="#c58d53" stroke="#81502f" stroke-width="1.7"/>
+          <path d="m15 43 3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1Z" fill="#f3ba42" stroke="#fff" stroke-width="1.5"/><path d="m141 70 2 5 6 1-4 4 1 5-5-2-5 2 1-5-4-4 6-1Z" fill="#f0b63b"/>
+        </svg>
+      </div>
+      <div class="score-text"><span class="score-label">Leituras concluídas</span><div class="score-numbers"><strong id="completedCount">0</strong><span class="score-total" id="totalCount"> / 30</span><span class="score-trophy" aria-hidden="true">🏅</span></div><progress id="readingProgress" value="0" max="30" aria-label="Leituras concluídas"></progress><div class="score-stars" id="scoreStars" aria-hidden="true">★★★★★</div></div>
+    </div>
+  </section>
+  <section class="toolbar" aria-label="Escolher a atividade">
+    <div class="field"><label for="caseFilter">Quero praticar</label><div class="select-wrap"><select id="caseFilter"></select></div></div>
+    <div class="field"><label for="textSelect">Escolhe uma leitura</label><div class="select-wrap"><select id="textSelect"></select></div></div>
+    <label class="highlight-toggle"><input type="checkbox" id="highlightToggle" checked>Destacar o caso de leitura</label>
+  </section>
+  <section class="workbook" aria-label="Livro de leitura e escrita">
+    <div class="book-ribbon"><span class="ribbon-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5q5-2 9 1 4-3 9-1v15q-5-2-9 1-4-3-9-1ZM12 6v15M6 9h3m-3 4h3m6-4h3m-3 4h3"/></svg>O teu livro de pequenas leituras</span><span class="reading-count" id="readingCount">Leitura 1 de 30</span></div>
+    <div class="pages">
+      <article class="page reading-page" aria-labelledby="storyTitle">
+        <p class="page-heading" id="readingHeading"><span class="step" aria-hidden="true">1</span>Lê com atenção</p>
+        <div class="text-heading"><span class="story-icon" id="storyIcon" aria-hidden="true">☕</span><div class="text-title"><span class="case-chip" id="caseChip">Caso de leitura: ch</span><h2 id="storyTitle"></h2></div></div>
+        <div class="model-scroll" id="modelScroll"><p class="model" id="modelText"></p></div>
+        <div class="reading-foot"><span>Primeiro, lê o texto até ao fim.</span><span class="mini-stars" aria-hidden="true">✦ ✧ ✦</span></div>
+      </article>
+      <section class="page writing-page" aria-labelledby="copyHeading">
+        <div class="writing-heading"><h2 class="page-heading" id="copyHeading"><span class="step" aria-hidden="true">2</span>Agora, faz a cópia</h2><span class="word-counter" id="wordCount">0 de 0 palavras</span></div>
+        <label class="sr-only" for="copyText">Escreve aqui a cópia do texto</label>
+        <div class="writing-area"><textarea id="copyText" placeholder="Escreve o título e o texto…" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" maxlength="2000" aria-describedby="writingTip"></textarea></div>
+        <div class="writing-foot"><p class="writing-tip" id="writingTip">Atenção às maiúsculas, aos acentos e à pontuação.</p><div class="tool-buttons"><button type="button" class="small-button" id="accentToggle" aria-expanded="false" aria-controls="accentPanel"><span class="accent-icon" aria-hidden="true">á</span>Acentos</button><button type="button" class="small-button" id="restartButton" title="Recomeçar a cópia desta leitura">Recomeçar</button></div>
+          <div class="accent-panel" id="accentPanel" hidden><p>Escolhe a letra de que precisas.</p><div class="accent-grid" id="accentGrid"></div><button type="button" class="small-button accent-case" id="accentCase" aria-pressed="false">Usar maiúsculas</button></div>
+        </div>
+      </section>
+    </div>
+    <div class="actions"><div class="feedback" id="feedback" role="status" aria-live="polite" aria-atomic="true"><span class="feedback-symbol" id="feedbackSymbol" aria-hidden="true">✦</span><div><h3 id="feedbackTitle">Pequenas leituras, grandes descobertas!</h3><p id="feedbackDetail">Lê o título e o texto e faz a cópia. No fim, verifica a escrita.</p></div></div><div class="action-buttons"><button type="button" class="skip" id="skipButton">Outra leitura</button><button type="button" class="primary" id="checkButton"><svg class="verify-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><svg class="next-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5q5-2 9 1 4-3 9-1v15q-5-2-9 1-4-3-9-1ZM12 6v15M6 10h3m6 0h3"/></svg><span id="checkLabel">Verificar a cópia</span></button></div></div>
+  </section>
+</main>
+<footer>Feito com ❤️ para aprender e brincar · Recreio Digital</footer>
+</div>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+<script>
+"use strict";
+/* =====================================================================
+   TEXTOS — ACRESCENTAR NOVAS LEITURAS AQUI
+   =====================================================================
+   Cada leitura tem um título, um caso de leitura, as letras a destacar,
+    um ícone e o texto que o aluno deve copiar. O aluno copia o título e o texto.
+
+   Para acrescentar um texto, copie um dos blocos da lista e altere os
+   valores entre aspas. Separe os blocos com uma vírgula.
+   Os menus e o total de leituras são atualizados automaticamente.
+   Pode repetir um caso existente ou criar outro, por exemplo «fl · pl».
+   Para não destacar letras, use destaque: [].
+
+   EXEMPLO:
+   {
+     titulo: "A chave do Chico",
+     caso: "ch",
+     destaque: ["ch"],
+     icone: "🔑",
+     texto: "O Chico tem uma chave. A chave está na mochila."
+   }
+   ===================================================================== */
+const TEXTOS = [
+  {
+    "titulo": "O lanche do Chico",
+    "caso": "ch",
+    "destaque": [
+      "ch"
+    ],
+    "icone": "☕",
+    "texto": "O Chico chega a casa. Fecha a porta e lava as mãos. Na mesa, há uma chávena de chá e uma bolacha. Que bom lanche!"
+  },
+  {
+    "titulo": "Um dia de chuva",
+    "caso": "ch",
+    "destaque": [
+      "ch"
+    ],
+    "icone": "🌧️",
+    "texto": "A chuva cai no chão. A Rita veste o casaco e põe o chapéu. Leva a mochila às costas. No caminho, vê um charco muito grande."
+  },
+  {
+    "titulo": "O coelho e a folha",
+    "caso": "lh",
+    "destaque": [
+      "lh"
+    ],
+    "icone": "🐰",
+    "texto": "O coelho está no jardim. Ao lado da palha, vê uma folha. Olha para ela e mexe o nariz. Depois, dá um salto até ao velho moinho."
+  },
+  {
+    "titulo": "Um desenho para a avó",
+    "caso": "lh",
+    "destaque": [
+      "lh"
+    ],
+    "icone": "🎨",
+    "texto": "A filha da Ana pega numa folha. Desenha um coelho com orelhas grandes. Usa um lápis vermelho. A avó olha para o desenho e sorri."
+  },
+  {
+    "titulo": "A galinha e o ninho",
+    "caso": "nh",
+    "destaque": [
+      "nh"
+    ],
+    "icone": "🐔",
+    "texto": "A galinha anda no quintal. Perto da vinha, há um ninho de palha. A Joana leva milho numa tacinha. A galinha corre para junto dela."
+  },
+  {
+    "titulo": "O banho do boneco",
+    "caso": "nh",
+    "destaque": [
+      "nh"
+    ],
+    "icone": "🛁",
+    "texto": "O Martim dá banho ao boneco. Põe água na banheira pequena. Lava as mãos e os pezinhos do boneco. Depois, seca tudo com uma toalha."
+  },
+  {
+    "titulo": "O carro do Rui",
+    "caso": "rr",
+    "destaque": [
+      "rr"
+    ],
+    "icone": "🚗",
+    "texto": "O Rui tem um carro de brincar. O carro é vermelho e tem rodas pretas. Corre pelo corredor até à sala. Depois, fica junto de uma torre de cubos."
+  },
+  {
+    "titulo": "A horta do avô",
+    "caso": "rr",
+    "destaque": [
+      "rr"
+    ],
+    "icone": "🥕",
+    "texto": "O avô leva o carrinho para a horta. A Sara enche um jarro com água. Juntos, regam a terra. No fim, apanham uma cenoura grande."
+  },
+  {
+    "titulo": "O passeio do pássaro",
+    "caso": "ss",
+    "destaque": [
+      "ss"
+    ],
+    "icone": "🐦",
+    "texto": "O pássaro pousa no muro. A Inês passa devagar e fica a olhar. O pássaro dá um salto para o ramo. Que belo passeio pelo jardim!"
+  },
+  {
+    "titulo": "A massa da mãe",
+    "caso": "ss",
+    "destaque": [
+      "ss"
+    ],
+    "icone": "🍝",
+    "texto": "A mãe faz massa para o almoço. O Tomás põe os pratos na mesa. A irmã leva uma travessa. Todos se sentam e comem sem pressa."
+  },
+  {
+    "titulo": "A pera da Vera",
+    "caso": "r entre vogais",
+    "destaque": [
+      "r"
+    ],
+    "icone": "🍐",
+    "texto": "A Vera lava uma pera madura. Corta a pera e põe os pedaços num prato. O irmão come um pedaço. A Vera guarda o resto para o lanche."
+  },
+  {
+    "titulo": "O pirata e o tesouro",
+    "caso": "r entre vogais",
+    "destaque": [
+      "r"
+    ],
+    "icone": "⛵",
+    "texto": "O pirata olha para o mar. Na areia, vê uma pequena caixa. Abre a caixa com cuidado. Lá dentro, há um colar dourado e um mapa."
+  },
+  {
+    "titulo": "A casa da Rosa",
+    "caso": "s entre vogais",
+    "destaque": [
+      "s"
+    ],
+    "icone": "🏡",
+    "texto": "A Rosa mora numa casa pequena. Na sala, há uma mesa e um vaso. A Rosa põe uma rosa no vaso. A casa fica mais bonita."
+  },
+  {
+    "titulo": "Uma visita à Luísa",
+    "caso": "s entre vogais",
+    "destaque": [
+      "s"
+    ],
+    "icone": "🌷",
+    "texto": "A Luísa recebe a visita da prima. As duas brincam na sala. Depois, levam uma camisola para o jardim. A brisa está fresca, mas o dia é bonito."
+  },
+  {
+    "titulo": "O piquenique",
+    "caso": "qu",
+    "destaque": [
+      "qu"
+    ],
+    "icone": "🧺",
+    "texto": "O Quim vai a um piquenique. Leva pão, queijo e sumo. A Raquel leva quatro maçãs. Juntos, escolhem um lugar à sombra para comer."
+  },
+  {
+    "titulo": "Quatro patinhos",
+    "caso": "qu",
+    "destaque": [
+      "qu"
+    ],
+    "icone": "🦆",
+    "texto": "Na quinta, há quatro patinhos. O Quim dá água aos animais. A pata chama os filhos para o tanque. Que belo dia para nadar!"
+  },
+  {
+    "titulo": "A guitarra do Miguel",
+    "caso": "gue · gui",
+    "destaque": [
+      "gue",
+      "gui"
+    ],
+    "icone": "🎸",
+    "texto": "O Miguel tem uma guitarra. Toca uma música para a amiga. A Guida bate palmas e canta. No fim, os dois guardam a guitarra com cuidado."
+  },
+  {
+    "titulo": "O figo e a formiga",
+    "caso": "gue · gui",
+    "destaque": [
+      "gue",
+      "gui"
+    ],
+    "icone": "🌳",
+    "texto": "A Guida está debaixo da figueira. No chão, vê um figo maduro. Uma formiga segue pelo ramo. A Guida fica quieta e observa o caminho da formiga."
+  },
+  {
+    "titulo": "A cesta de cerejas",
+    "caso": "ce · ci",
+    "destaque": [
+      "ce",
+      "ci"
+    ],
+    "icone": "🍒",
+    "texto": "A Célia leva uma cesta de cerejas. A Cecília recebe cinco cerejas. As duas sentam-se no jardim. Depois do lanche, vão dar uma volta de bicicleta."
+  },
+  {
+    "titulo": "O cinema da escola",
+    "caso": "ce · ci",
+    "destaque": [
+      "ce",
+      "ci"
+    ],
+    "icone": "🎬",
+    "texto": "A turma vai ao cinema da escola. A Célia senta-se perto da Cecília. O filme mostra uma cidade cheia de luz. No fim, todos batem palmas."
+  },
+  {
+    "titulo": "A girafa e o gigante",
+    "caso": "ge · gi",
+    "destaque": [
+      "ge",
+      "gi"
+    ],
+    "icone": "🦒",
+    "texto": "A Gisela lê uma história. Na primeira página, há uma girafa. Na outra, aparece um gigante gentil. A Gisela imagina uma viagem com os dois amigos."
+  },
+  {
+    "titulo": "O gelado da Gigi",
+    "caso": "ge · gi",
+    "destaque": [
+      "ge",
+      "gi"
+    ],
+    "icone": "🍦",
+    "texto": "A Gigi vai à geladaria com a mãe. Escolhe um gelado de morango. Senta-se num banco do jardim. O gelado é fresco e o dia está quente."
+  },
+  {
+    "titulo": "O laço azul",
+    "caso": "ç",
+    "destaque": [
+      "ç"
+    ],
+    "icone": "🎀",
+    "texto": "A Conceição tem uma fita azul. Com ajuda da mãe, faz um laço. Põe o laço na cabeça e sorri. Depois, leva uma maçã para o lanche."
+  },
+  {
+    "titulo": "O almoço na praça",
+    "caso": "ç",
+    "destaque": [
+      "ç"
+    ],
+    "icone": "🍲",
+    "texto": "O Gonçalo vai à praça com o pai. Os dois levam uma cesta de maçãs. Ao almoço, comem sopa e peixe. No fim, o Gonçalo lava a taça."
+  },
+  {
+    "titulo": "O cão e o pão",
+    "caso": "ão",
+    "destaque": [
+      "ão"
+    ],
+    "icone": "🐶",
+    "texto": "O João leva pão na mão. O seu cão corre pelo jardim. De repente, ouve-se um trovão. O João e o cão entram em casa depressa."
+  },
+  {
+    "titulo": "O balão do Simão",
+    "caso": "ão",
+    "destaque": [
+      "ão"
+    ],
+    "icone": "🎈",
+    "texto": "O Simão recebe um balão amarelo. Segura o fio com a mão. Mostra o balão ao irmão e dá uma gargalhada. Que bela tarde de verão!"
+  },
+  {
+    "titulo": "A prenda da Bruna",
+    "caso": "br · cr · dr · fr · gr · pr · tr",
+    "destaque": [
+      "br",
+      "cr",
+      "dr",
+      "fr",
+      "gr",
+      "pr",
+      "tr"
+    ],
+    "icone": "🎁",
+    "texto": "A Bruna abre uma prenda. Lá dentro, há um livro de dragões. O Pedro lê a primeira frase. Depois, a Bruna desenha um dragão verde e grande."
+  },
+  {
+    "titulo": "O trator na quinta",
+    "caso": "br · cr · dr · fr · gr · pr · tr",
+    "destaque": [
+      "br",
+      "cr",
+      "dr",
+      "fr",
+      "gr",
+      "pr",
+      "tr"
+    ],
+    "icone": "🚜",
+    "texto": "O Bruno vê um trator na quinta. O trator passa perto do prado. O avô leva fruta num cesto grande. O Bruno prova uma pera e sorri."
+  },
+  {
+    "titulo": "O caracol ao sol",
+    "caso": "al · el · il · ol · ul",
+    "destaque": [
+      "al",
+      "el",
+      "il",
+      "ol",
+      "ul"
+    ],
+    "icone": "🐌",
+    "texto": "O caracol sobe pela folha. O sol brilha no céu azul. A Filipa vê o animal e chama o Manuel. Os dois ficam em silêncio a observar."
+  },
+  {
+    "titulo": "Um papel especial",
+    "caso": "al · el · il · ol · ul",
+    "destaque": [
+      "al",
+      "el",
+      "il",
+      "ol",
+      "ul"
+    ],
+    "icone": "📜",
+    "texto": "O Abel pega num papel azul. Dobra o papel e faz um barco. Põe o barco num alguidar com água. O pequeno barco flutua até ao outro lado."
+  }
+];
+// FIM DOS TEXTOS. Não é necessário alterar o código que se segue.
+
+const $ = id => document.getElementById(id);
+const normalize = text => String(text).normalize("NFC").replace(/\s+/g," ").trim();
+const words = text => normalize(text) ? normalize(text).split(" ") : [];
+const bare = text => text.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("pt-PT");
+const wordShape = text => bare(text).replace(/[^a-z0-9]/g,"");
+const vowel = ch => /[aeiouáàâãéèêíóôõúü]/i.test(ch || "");
+const drafts = new Map(), completed = new Set();
+let current=0, filtered=[], reviewWords=new Set(), reviewTitle=false, solved=false, upperAccents=false, confettiTimer;
+const accents=["á","à","â","ã","é","ê","í","ó","ô","õ","ú","ç"];
+
+function highlightRange(text, item){
+  const ranges=new Array(text.length).fill(false);
+  if(!(item.destaque || []).length) return ranges;
+  const lower=bare(text);
+  if(item.caso==="r entre vogais" || item.caso==="s entre vogais"){
+    const letter=item.caso[0];
+    for(let i=1;i<text.length-1;i++) if(lower[i]===letter && vowel(text[i-1]) && vowel(text[i+1])) ranges[i]=true;
+    return ranges;
+  }
+  for(const value of item.destaque || []){
+    const needle=bare(String(value)); if(!needle) continue;
+    let start=0, pos;
+    while((pos=lower.indexOf(needle,start))!==-1){
+      const isCodaL=item.caso==="al · el · il · ol · ul";
+      // Em «folha» e «brilha», o l pertence a lh; não forma ol ou il.
+      if(!isCodaL || (!vowel(text[pos+needle.length]) && !/[hH]/.test(text[pos+needle.length] || ""))) for(let i=pos;i<pos+needle.length;i++) ranges[i]=true;
+      start=pos+Math.max(1,needle.length);
+    }
+  }
+  return ranges;
+}
+
+function renderModel(){
+  const item=TEXTOS[current], text=item.texto;
+  $("storyTitle").classList.toggle("review-title",reviewTitle);
+  const ranges=$("highlightToggle").checked ? highlightRange(text,item) : [];
+  const fragment=document.createDocumentFragment();
+  let wordIndex=0;
+  for(const token of text.match(/\S+|\s+/g) || []){
+    const space=/^\s+$/.test(token); let parent=fragment;
+    if(!space && reviewWords.has(wordIndex)){
+      parent=document.createElement("span");parent.className="review-mark";fragment.append(parent);
+    }
+    const tokenStart=renderModel.offset || 0;
+    let segment="", active=false;
+    const append=()=>{if(!segment)return; if(active){const mark=document.createElement("span");mark.className="case-mark";mark.textContent=segment;parent.append(mark);}else parent.append(document.createTextNode(segment));segment="";};
+    for(let j=0;j<token.length;j++){
+      const next=Boolean(ranges[tokenStart+j]);if(next!==active){append();active=next;}segment+=token[j];
+    }
+    append();renderModel.offset=tokenStart+token.length;if(!space)wordIndex++;
+  }
+  renderModel.offset=0;$("modelText").replaceChildren(fragment);
+}
+
+function setFeedback(kind,title,detail,symbol){
+  $("feedback").className="feedback"+(kind?" "+kind:"");
+  $("feedbackTitle").textContent=title;$("feedbackDetail").textContent=detail;$("feedbackSymbol").textContent=symbol || "✦";
+}
+
+function setSolved(value){
+  solved=value;$("copyText").readOnly=value;$("copyText").classList.toggle("success",value);
+  $("copyText").setAttribute("aria-invalid","false");
+  $("checkButton").classList.toggle("next",value);$("checkLabel").textContent=value?"Próxima leitura":"Verificar a cópia";
+  $("skipButton").hidden=value;$("accentToggle").disabled=value;
+  if(value) closeAccents();
+}
+
+function updateCount(){
+  const count=words($("copyText").value).length;
+  const total=words(TEXTOS[current].titulo+" "+TEXTOS[current].texto).length;
+  $("wordCount").textContent=count+" de "+total+" palavras";
+  $("wordCount").title="O total inclui todas as palavras do título e do texto.";
+}
+
+function updateScore(){
+  $("completedCount").textContent=completed.size;$("totalCount").textContent=" / "+TEXTOS.length;
+  $("readingProgress").max=TEXTOS.length;$("readingProgress").value=completed.size;
+  const count=Math.min(5,completed.size);
+  $("scoreStars").replaceChildren(...Array.from({length:5},(_,i)=>{const star=document.createElement("span");star.textContent="★";if(i<count)star.className="earned";return star;}));
+}
+
+function fillTexts(){
+  const active=$("caseFilter").value;
+  filtered=TEXTOS.map((_,i)=>i).filter(i=>active==="todos" || TEXTOS[i].caso===active);
+  $("textSelect").replaceChildren(...filtered.map(i=>{const option=document.createElement("option");option.value=String(i);option.textContent=TEXTOS[i].titulo+(completed.has(i)?" ✓":"");return option;}));
+}
+
+function loadText(index,focus=false){
+  drafts.set(current,$("copyText").value);current=index;reviewWords.clear();reviewTitle=false;
+  $("textSelect").value=String(index);$("storyTitle").textContent=TEXTOS[index].titulo;
+  $("storyIcon").textContent=TEXTOS[index].icone || "📖";$("caseChip").textContent="Caso de leitura: "+TEXTOS[index].caso;
+  $("readingCount").textContent="Leitura "+(filtered.indexOf(index)+1)+" de "+filtered.length;
+  $("copyText").value=drafts.get(index) || "";$("copyText").className="";setSolved(false);
+  renderModel();$("modelScroll").scrollTop=0;$("copyText").scrollTop=0;updateCount();closeAccents();
+  if(completed.has(index) && isCorrectCopy(TEXTOS[index],$("copyText").value)){
+    setSolved(true);setFeedback("good","Já concluíste esta leitura!","Podes voltar a praticar com «Recomeçar» ou escolher outra leitura.","⭐");
+  }else setFeedback("","Lê primeiro. Depois, escreve ao teu ritmo.","Copia o título e o texto.","📖");
+  if(focus)$("copyText").focus();
+}
+
+// Alinhamento de palavras: uma palavra a mais ou em falta não desloca
+// todas as restantes. Acentos, maiúsculas e pontuação são verificados.
+function compareWords(expected,actual){
+  const a=words(expected),b=words(actual),n=a.length,m=b.length;
+  // Limita o trabalho em textos colados muito maiores do que o modelo.
+  if(m>n+120)return {issues:[{type:"long",index:0,expected:a[0] || "",actual:""}],correct:0};
+  const matrix=Array.from({length:n+1},()=>new Uint16Array(m+1));
+  for(let i=0;i<=n;i++)matrix[i][0]=i;for(let j=0;j<=m;j++)matrix[0][j]=j;
+  for(let i=1;i<=n;i++)for(let j=1;j<=m;j++)matrix[i][j]=Math.min(matrix[i-1][j]+1,matrix[i][j-1]+1,matrix[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+  const issues=[];let i=n,j=m,correct=0;
+  while(i || j){
+    if(i && j && a[i-1]===b[j-1]){correct++;i--;j--;}
+    else if(i && j && matrix[i][j]===matrix[i-1][j-1]+1){issues.push({type:"replace",index:i-1,expected:a[i-1],actual:b[j-1]});i--;j--;}
+    else if(i && matrix[i][j]===matrix[i-1][j]+1){issues.push({type:"missing",index:i-1,expected:a[i-1],actual:""});i--;}
+    else{issues.push({type:"extra",index:Math.min(i,n-1),expected:"",actual:b[j-1]});j--;}
+  }
+  issues.reverse();return {issues,correct};
+}
+
+function describeIssue(issue){
+  if(issue.type==="long")return "A tua cópia tem muitas palavras a mais. Confirma que estás a copiar o texto desta leitura.";
+  if(issue.type==="missing")return "Falta a palavra «"+issue.expected+"». Procura a parte assinalada no texto.";
+  if(issue.type==="extra")return "A palavra «"+issue.actual+"» está a mais nesta parte da cópia. Compara com o texto.";
+  if(issue.expected.toLocaleLowerCase("pt-PT")===issue.actual.toLocaleLowerCase("pt-PT"))return "Revê as maiúsculas e as minúsculas em «"+issue.expected+"».";
+  if(bare(issue.expected)===bare(issue.actual))return "Atenção aos acentos em «"+issue.expected+"». Compara com a tua cópia.";
+  if(wordShape(issue.expected)===wordShape(issue.actual))return "Revê os sinais de pontuação junto de «"+issue.expected+"».";
+  return "No texto está «"+issue.expected+"». Na tua cópia está «"+issue.actual+"». Compara com atenção.";
+}
+
+// O título faz parte da cópia, da contagem e da verificação da escrita.
+function isCorrectCopy(item,value){
+  return normalize(value)===normalize(item.titulo+" "+item.texto);
+}
+
+function compareCopy(item,value){
+  return Object.assign({},compareWords(item.titulo+" "+item.texto,value),{titleWords:words(item.titulo).length});
+}
+
+function checkCopy(){
+  if(solved){nextText();return;}
+  const actual=normalize($("copyText").value);
+  if(!actual){setFeedback("warning","Vamos começar?","Começa pelo título. Depois, copia o texto na página da direita.","✏️");$("copyText").focus();return;}
+  if(isCorrectCopy(TEXTOS[current],actual)){
+    const first=!completed.has(current);completed.add(current);drafts.set(current,$("copyText").value);
+    reviewWords.clear();reviewTitle=false;renderModel();$("copyText").classList.remove("review");setSolved(true);updateScore();
+    const total=completed.size;
+    const title=total===TEXTOS.length?"Leste e copiaste todas as leituras!":(total===5?"Cinco leituras concluídas! Já tens cinco estrelas!":(total%5===0?"Já concluíste "+total+" leituras. Muito bem!":"Muito bem! A tua cópia está correta!"));
+    setFeedback("good",title,"Mais uma conquista! Quando quiseres, passa à próxima leitura.","🌟");
+    const option=$("textSelect").selectedOptions[0];if(option)option.textContent=TEXTOS[current].titulo+" ✓";
+    if(first)celebrate();return;
+  }
+  if(actual===normalize(TEXTOS[current].texto)){
+    reviewWords.clear();reviewTitle=true;renderModel();$("copyText").classList.add("review");$("copyText").setAttribute("aria-invalid","true");
+    setFeedback("warning","O texto está correto! Falta copiar o título.","Escreve «"+TEXTOS[current].titulo+"» antes do texto.","📖");return;
+  }
+  const expected=normalize(TEXTOS[current].titulo+" "+TEXTOS[current].texto);
+  if(expected.startsWith(actual)){
+    reviewWords.clear();reviewTitle=false;renderModel();$("copyText").classList.remove("review");$("copyText").setAttribute("aria-invalid","false");
+    setFeedback("","Bom começo! Continua a tua cópia.","Ainda há texto para escrever. Segue o modelo até ao fim.","✏️");return;
+  }
+  const result=compareCopy(TEXTOS[current],actual),issue=result.issues[0];
+  reviewTitle=result.titleWords>0 && issue.index<result.titleWords;
+  reviewWords=new Set(reviewTitle?[]:[Math.max(0,issue.index-result.titleWords)]);
+  renderModel();$("copyText").classList.add("review");$("copyText").setAttribute("aria-invalid","true");
+  const praise=result.correct>0?"Já tens "+result.correct+(result.correct===1?" palavra correta!":" palavras corretas!"):"Vamos rever a tua cópia com calma.";
+  setFeedback("warning",praise,describeIssue(issue),"🔎");
+  const marked=$("modelText").querySelector(".review-mark");
+  if(marked){const box=$("modelScroll");if(marked.offsetTop>box.scrollTop+box.clientHeight-40 || marked.offsetTop<box.scrollTop)box.scrollTop=Math.max(0,marked.offsetTop-box.offsetTop-15);}
+}
+
+function nextText(){
+  if(filtered.length<2){setFeedback("","Esta é a única leitura deste caso.","Escolhe outro caso de leitura ou volta a praticar com «Recomeçar».","📖");return;}
+  const position=filtered.indexOf(current);let next;
+  for(let offset=1;offset<filtered.length;offset++){const candidate=filtered[(position+offset)%filtered.length];if(!completed.has(candidate)){next=candidate;break;}}
+  if(next===undefined)next=filtered[(position+1)%filtered.length];loadText(next);
+}
+
+function celebrate(){
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  clearTimeout(confettiTimer);$("confetti").replaceChildren();$("score").classList.remove("happy");void $("score").offsetWidth;$("score").classList.add("happy");
+  const colors=["#f1bc37","#8b60bc","#3d92cc","#40b18b","#e88979"];
+  for(let i=0;i<32;i++){const piece=document.createElement("i");piece.style.cssText="--x:"+(Math.random()*100)+"%;--c:"+colors[i%colors.length]+";--delay:"+(Math.random()*.25)+"s;--drift:"+(Math.random()*120-60)+"px";$("confetti").append(piece);}
+  confettiTimer=setTimeout(()=>{$("confetti").replaceChildren();$("score").classList.remove("happy");},2200);
+}
+
+function closeAccents(){$("accentPanel").hidden=true;$("accentToggle").setAttribute("aria-expanded","false");}
+function renderAccents(){
+  $("accentGrid").replaceChildren(...accents.map(letter=>{const button=document.createElement("button");button.type="button";button.className="accent-key";button.textContent=upperAccents?letter.toLocaleUpperCase("pt-PT"):letter;button.setAttribute("aria-label","Inserir "+button.textContent);button.addEventListener("pointerdown",event=>event.preventDefault());button.addEventListener("click",()=>insertAccent(button.textContent));return button;}));
+  $("accentCase").textContent=upperAccents?"Usar minúsculas":"Usar maiúsculas";$("accentCase").setAttribute("aria-pressed",String(upperAccents));
+}
+function insertAccent(letter){const input=$("copyText");if(solved)return;const start=input.selectionStart,end=input.selectionEnd;if(input.value.length-(end-start)+letter.length>input.maxLength)return;input.setRangeText(letter,start,end,"end");input.dispatchEvent(new Event("input",{bubbles:true}));input.focus();}
+
+$("caseFilter").addEventListener("change",()=>{fillTexts();loadText(filtered[0]);});
+$("textSelect").addEventListener("change",()=>loadText(Number($("textSelect").value)));
+$("highlightToggle").addEventListener("change",renderModel);
+$("copyText").addEventListener("input",()=>{drafts.set(current,$("copyText").value);updateCount();if(reviewTitle || reviewWords.size || $("copyText").classList.contains("review")){reviewWords.clear();reviewTitle=false;renderModel();$("copyText").classList.remove("review");$("copyText").setAttribute("aria-invalid","false");setFeedback("","Continua, estás no bom caminho!","Quando terminares de rever, volta a verificar a tua cópia.","✏️");}});
+$("copyText").addEventListener("keydown",event=>{if((event.ctrlKey || event.metaKey) && event.key==="Enter"){event.preventDefault();checkCopy();}});
+$("checkButton").addEventListener("click",checkCopy);$("skipButton").addEventListener("click",nextText);
+$("restartButton").addEventListener("click",()=>{setSolved(false);reviewWords.clear();reviewTitle=false;$("copyText").value="";$("copyText").classList.remove("review");drafts.set(current,"");updateCount();renderModel();setFeedback("","Uma nova oportunidade para praticar!","Lê com calma e escreve uma palavra de cada vez.","✏️");$("copyText").focus();});
+$("accentToggle").addEventListener("click",()=>{const show=$("accentPanel").hidden;$("accentPanel").hidden=!show;$("accentToggle").setAttribute("aria-expanded",String(show));});
+$("accentCase").addEventListener("click",()=>{upperAccents=!upperAccents;renderAccents();});
+document.addEventListener("pointerdown",event=>{if(!event.target.closest("#accentPanel, #accentToggle"))closeAccents();});
+document.addEventListener("keydown",event=>{if(event.key==="Escape" && !$("accentPanel").hidden){closeAccents();$("accentToggle").focus();}});
+
+// O teclado virtual pode reduzir a área visível, sobretudo nos tablets.
+function updateKeyboardLayout(){
+  const viewport=window.visualViewport;
+  const open=viewport && document.activeElement===$("copyText") && window.innerHeight-viewport.height>120;
+  document.body.classList.toggle("keyboard-open",Boolean(open));
+}
+if(window.visualViewport)window.visualViewport.addEventListener("resize",updateKeyboardLayout);
+$("copyText").addEventListener("focus",updateKeyboardLayout);
+$("copyText").addEventListener("blur",updateKeyboardLayout);
+window.addEventListener("orientationchange",updateKeyboardLayout);
+
+function init(){
+  if(!TEXTOS.length){setFeedback("warning","Ainda não há leituras.","Acrescente textos na lista TEXTOS do ficheiro HTML.","📖");$("checkButton").disabled=true;$("skipButton").disabled=true;$("restartButton").disabled=true;$("accentToggle").disabled=true;$("caseFilter").disabled=true;$("textSelect").disabled=true;$("copyText").disabled=true;return;}
+  for(const item of TEXTOS){item.texto=String(item.texto).normalize("NFC");item.titulo=String(item.titulo);item.caso=String(item.caso);}
+  const all=document.createElement("option");all.value="todos";all.textContent="Todos os casos de leitura";$("caseFilter").append(all);
+  for(const value of new Set(TEXTOS.map(item=>item.caso))){const option=document.createElement("option");option.value=value;option.textContent=value;$("caseFilter").append(option);}
+  const year=new URLSearchParams(location.search).get("ano");
+  const paths={pre:"pre-escolar",1:"1-ano",2:"2-ano",3:"3-ano",4:"4-ano"};
+  if(Object.prototype.hasOwnProperty.call(paths,year))$("backToGames").href="https://www.recreiodigital.pt/"+paths[year]+"/index.html";
+  fillTexts();renderAccents();updateScore();loadText(0);
+}
+init();
+</script>
+</body>
+</html>
